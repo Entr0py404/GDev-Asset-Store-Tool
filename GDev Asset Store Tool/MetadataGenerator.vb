@@ -7,10 +7,15 @@ Public Class MetadataGenerator
     Dim isPaused As Boolean = False
     ReadOnly Font_MSS As New Font(New FontFamily("Microsoft Sans Serif"), 8, FontStyle.Bold)
     Dim LoopedAnimationKeywords As String() = {"idle", "idling", "walk", "walking", "run", "running", "swim", "swimming", "loop", "looping", "movement", "spinning", "rippling", "flowing", "climb", "climbing", "fly", "flying", "up", "down", "left", "right", "walk up", "walk down", "walk left", "walk right", "idle up", "idle down", "idle left", "idle right"} 'These strings will no longer be used unless the file is missing
-    ReadOnly regexValidWords As New Regex("^[a-zA-Z0-9 _&.-]*$") '("\|!#$%&/()=?»«@£§€{}.-;'<>,")
+    ReadOnly regexValidWords As New Regex("^[a-zA-Z0-9 ()_&.-]*$") '("\|!#$%&/()=?»«@£§€{}.-;'<>,")
     Dim regexInvalidWords As Regex = New Regex("\s{2,}|_\s|\s_|__") '(  )(_ ) (_ ) (__)
     'MetadataGenerator - Load
     Private Sub MetadataGenerator_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        ImageList1.Images.Add("Folder", My.Resources.Folder) '0: 
+        ImageList1.Images.Add("Metadata", My.Resources.Metadata) '1: 
+        ImageList1.Images.Add("SelectionArrow", My.Resources.SelectionArrow) '2: 
+        TreeView1.SelectedImageIndex = 2
+
         PixelBox_Animation.Location = New Point(CInt((Panel_Animation.Width / 2 - PixelBox_Animation.Width / 2)), CInt((Panel_Animation.Height / 2 - PixelBox_Animation.Height / 2) + 4))
         Dim tBF_Str As String = CStr(Math.Round(NumericUpDown_TimeBetweenFrames.Value, 4))
         tBF_Str = tBF_Str.TrimEnd(CChar("0"))
@@ -769,7 +774,7 @@ Public Class MetadataGenerator
                 node.TreeView.LabelEdit = True
                 node.BeginEdit()
                 node.NodeFont = Font_MSS
-                node.ForeColor = Color.DodgerBlue
+                node.ForeColor = Color.FromArgb(27, 179, 245)
                 node.Nodes.Add(" ")
                 node.EndEdit(False)
                 node.TreeView.LabelEdit = False

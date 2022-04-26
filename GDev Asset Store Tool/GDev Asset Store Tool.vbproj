@@ -164,6 +164,7 @@
   <ItemGroup>
     <EmbeddedResource Include="MetadataGenerator.resx">
       <DependentUpon>MetadataGenerator.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="FileNameValidator.resx">
       <DependentUpon>FileNameValidator.vb</DependentUpon>
@@ -221,7 +222,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Application_Icon.ico" />
+    <Content Include="Resources\Folder.png" />
+    <Content Include="Resources\Metadata.png" />
     <Content Include="Resources\Pause.png" />
+    <Content Include="Resources\SelectionArrow.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Play.png" />

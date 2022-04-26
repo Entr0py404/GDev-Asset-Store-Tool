@@ -93,6 +93,26 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized resource of type System.Drawing.Bitmap.
         '''</summary>
+        Friend ReadOnly Property Folder() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("Folder", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property Metadata() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("Metadata", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
         Friend ReadOnly Property Minimize_Blue() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("Minimize_Blue", resourceCulture)
@@ -136,6 +156,16 @@ Namespace My.Resources
         Friend ReadOnly Property Replay() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("Replay", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property SelectionArrow() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("SelectionArrow", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property

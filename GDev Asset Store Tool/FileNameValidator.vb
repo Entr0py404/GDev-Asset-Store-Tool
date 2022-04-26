@@ -1,6 +1,6 @@
 ﻿
 Public Class FileNameValidator
-    ReadOnly regexValidWords As New Regex("^[a-zA-Z0-9 _&.-]*$") '("\|!#$%&/()=?»«@£§€{}.-;'<>,")
+    ReadOnly regexValidWords As New Regex("^[a-zA-Z0-9 ()_&.-]*$") '("\|!#$%&/()=?»«@£§€{}.-;'<>,")
     Dim regexInvalidWords As Regex = New Regex("\s{2,}|_\s|\s_|__") '(  )(_ ) (_ ) (__)
     'FileNameValidator - Load
     Private Sub FileNameValidator_Load(sender As Object, e As EventArgs) Handles MyBase.Load
