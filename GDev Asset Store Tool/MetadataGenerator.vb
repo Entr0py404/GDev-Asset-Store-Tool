@@ -311,7 +311,8 @@ Public Class MetadataGenerator
                 node.ForeColor = Color.WhiteSmoke
                 node.Nodes.Add(" ").ImageIndex = 0
             Next
-            Dim i As Integer = -1
+
+            Dim i As Integer = courentNode.Nodes.Count - 1 'used to be -1
             For Each file As String In Directory.GetFiles(folderPath.FullName, "*.json", SearchOption.TopDirectoryOnly) 'path.GetFiles()
                 i += 1
                 courentNode.Nodes.Add(Path.GetFileName(file)).ImageIndex = 1

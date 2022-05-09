@@ -355,7 +355,7 @@ Partial Class FileNameValidator
         Me.LinkLabel_Wiki_Info.LinkColor = System.Drawing.Color.DodgerBlue
         Me.LinkLabel_Wiki_Info.Location = New System.Drawing.Point(736, 32)
         Me.LinkLabel_Wiki_Info.Name = "LinkLabel_Wiki_Info"
-        Me.LinkLabel_Wiki_Info.Size = New System.Drawing.Size(57, 16)
+        Me.LinkLabel_Wiki_Info.Size = New System.Drawing.Size(58, 16)
         Me.LinkLabel_Wiki_Info.TabIndex = 101
         Me.LinkLabel_Wiki_Info.TabStop = True
         Me.LinkLabel_Wiki_Info.Text = "Wiki Info"

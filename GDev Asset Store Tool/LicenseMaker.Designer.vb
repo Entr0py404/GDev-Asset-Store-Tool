@@ -264,7 +264,7 @@ Partial Class LicenseMaker
         Me.LinkLabel_Wiki_Info.LinkColor = System.Drawing.Color.DodgerBlue
         Me.LinkLabel_Wiki_Info.Location = New System.Drawing.Point(168, 64)
         Me.LinkLabel_Wiki_Info.Name = "LinkLabel_Wiki_Info"
-        Me.LinkLabel_Wiki_Info.Size = New System.Drawing.Size(57, 16)
+        Me.LinkLabel_Wiki_Info.Size = New System.Drawing.Size(58, 16)
         Me.LinkLabel_Wiki_Info.TabIndex = 107
         Me.LinkLabel_Wiki_Info.TabStop = True
         Me.LinkLabel_Wiki_Info.Text = "Wiki Info"

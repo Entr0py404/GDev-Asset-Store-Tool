@@ -80,6 +80,7 @@ Partial Class MetadataGenerator
         Me.Panel_Animation = New System.Windows.Forms.Panel()
         Me.Label_ZoomLvl = New System.Windows.Forms.Label()
         Me.Label_Frames = New System.Windows.Forms.Label()
+        Me.PixelBox_Animation = New GDev_Asset_Store_Tool.PixelBox()
         Me.ShapeContainer6 = New Microsoft.VisualBasic.PowerPacks.ShapeContainer()
         Me.Panel_Controls = New System.Windows.Forms.Panel()
         Me.TextBox_TimeBetweenFrames = New System.Windows.Forms.TextBox()
@@ -99,7 +100,6 @@ Partial Class MetadataGenerator
         Me.LinkLabel1 = New System.Windows.Forms.LinkLabel()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.PixelBox_Animation = New GDev_Asset_Store_Tool.PixelBox()
         Me.ContextMenuStrip_TreeView.SuspendLayout()
         Me.ContextMenuStrip_Log.SuspendLayout()
         Me.Panel_Main.SuspendLayout()
@@ -114,11 +114,11 @@ Partial Class MetadataGenerator
         CType(Me.FastColoredTextBox_Selected_File, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ContextMenuStrip_FastColoredTextBox_Selected_File.SuspendLayout()
         Me.Panel_Animation.SuspendLayout()
+        CType(Me.PixelBox_Animation, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel_Controls.SuspendLayout()
         CType(Me.NumericUpDown_TimeBetweenFrames, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox_Clock, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.NumericUpDown_FPS, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PixelBox_Animation, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'TextBox_Selected_Directory
@@ -687,6 +687,17 @@ Partial Class MetadataGenerator
         Me.Label_Frames.TabIndex = 85
         Me.Label_Frames.Text = "Frames: 0"
         '
+        'PixelBox_Animation
+        '
+        Me.PixelBox_Animation.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(49, Byte), Integer), CType(CType(54, Byte), Integer))
+        Me.PixelBox_Animation.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality
+        Me.PixelBox_Animation.Location = New System.Drawing.Point(16, 24)
+        Me.PixelBox_Animation.Name = "PixelBox_Animation"
+        Me.PixelBox_Animation.Size = New System.Drawing.Size(232, 232)
+        Me.PixelBox_Animation.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.PixelBox_Animation.TabIndex = 86
+        Me.PixelBox_Animation.TabStop = False
+        '
         'ShapeContainer6
         '
         Me.ShapeContainer6.Location = New System.Drawing.Point(0, 0)
@@ -936,17 +947,6 @@ Partial Class MetadataGenerator
         Me.Label1.TabIndex = 97
         Me.Label1.Text = "GDev AST v1.0.1"
         '
-        'PixelBox_Animation
-        '
-        Me.PixelBox_Animation.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(49, Byte), Integer), CType(CType(54, Byte), Integer))
-        Me.PixelBox_Animation.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality
-        Me.PixelBox_Animation.Location = New System.Drawing.Point(16, 24)
-        Me.PixelBox_Animation.Name = "PixelBox_Animation"
-        Me.PixelBox_Animation.Size = New System.Drawing.Size(232, 232)
-        Me.PixelBox_Animation.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
-        Me.PixelBox_Animation.TabIndex = 86
-        Me.PixelBox_Animation.TabStop = False
-        '
         'MetadataGenerator
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -991,12 +991,12 @@ Partial Class MetadataGenerator
         Me.ContextMenuStrip_FastColoredTextBox_Selected_File.ResumeLayout(False)
         Me.Panel_Animation.ResumeLayout(False)
         Me.Panel_Animation.PerformLayout()
+        CType(Me.PixelBox_Animation, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel_Controls.ResumeLayout(False)
         Me.Panel_Controls.PerformLayout()
         CType(Me.NumericUpDown_TimeBetweenFrames, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox_Clock, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.NumericUpDown_FPS, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PixelBox_Animation, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

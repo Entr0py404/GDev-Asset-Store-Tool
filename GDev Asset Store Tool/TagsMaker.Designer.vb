@@ -54,10 +54,7 @@ Partial Class TagsMaker
         Me.ShapeContainer6 = New Microsoft.VisualBasic.PowerPacks.ShapeContainer()
         Me.Panel_Main = New System.Windows.Forms.Panel()
         Me.Panel_ControlBox = New System.Windows.Forms.Panel()
-        Me.PictureBox_Close = New System.Windows.Forms.PictureBox()
-        Me.PictureBox_Minimize = New System.Windows.Forms.PictureBox()
         Me.Label_Application_Title = New System.Windows.Forms.Label()
-        Me.PictureBox_AppIcon = New System.Windows.Forms.PictureBox()
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
         Me.Button_Download = New System.Windows.Forms.Button()
         Me.Label_FileAge = New System.Windows.Forms.Label()
@@ -65,6 +62,9 @@ Partial Class TagsMaker
         Me.LinkLabel_Wiki_Info = New System.Windows.Forms.LinkLabel()
         Me.SaveFileDialog1 = New System.Windows.Forms.SaveFileDialog()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
+        Me.PictureBox_Close = New System.Windows.Forms.PictureBox()
+        Me.PictureBox_Minimize = New System.Windows.Forms.PictureBox()
+        Me.PictureBox_AppIcon = New System.Windows.Forms.PictureBox()
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
         Me.Panel3.SuspendLayout()
@@ -72,10 +72,10 @@ Partial Class TagsMaker
         Me.Panel5.SuspendLayout()
         Me.Panel_Main.SuspendLayout()
         Me.Panel_ControlBox.SuspendLayout()
+        Me.Panel7.SuspendLayout()
         CType(Me.PictureBox_Close, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox_Minimize, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox_AppIcon, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.Panel7.SuspendLayout()
         Me.SuspendLayout()
         '
         'TextBox1
@@ -422,24 +422,6 @@ Partial Class TagsMaker
         Me.Panel_ControlBox.Size = New System.Drawing.Size(52, 26)
         Me.Panel_ControlBox.TabIndex = 4
         '
-        'PictureBox_Close
-        '
-        Me.PictureBox_Close.Image = Global.GDev_Asset_Store_Tool.My.Resources.Resources.Close_Grey
-        Me.PictureBox_Close.Location = New System.Drawing.Point(30, 5)
-        Me.PictureBox_Close.Name = "PictureBox_Close"
-        Me.PictureBox_Close.Size = New System.Drawing.Size(16, 16)
-        Me.PictureBox_Close.TabIndex = 0
-        Me.PictureBox_Close.TabStop = False
-        '
-        'PictureBox_Minimize
-        '
-        Me.PictureBox_Minimize.Image = Global.GDev_Asset_Store_Tool.My.Resources.Resources.Minimize_Grey
-        Me.PictureBox_Minimize.Location = New System.Drawing.Point(8, 5)
-        Me.PictureBox_Minimize.Name = "PictureBox_Minimize"
-        Me.PictureBox_Minimize.Size = New System.Drawing.Size(16, 16)
-        Me.PictureBox_Minimize.TabIndex = 1
-        Me.PictureBox_Minimize.TabStop = False
-        '
         'Label_Application_Title
         '
         Me.Label_Application_Title.Dock = System.Windows.Forms.DockStyle.Left
@@ -449,17 +431,6 @@ Partial Class TagsMaker
         Me.Label_Application_Title.TabIndex = 2
         Me.Label_Application_Title.Text = "Tags Maker"
         Me.Label_Application_Title.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        '
-        'PictureBox_AppIcon
-        '
-        Me.PictureBox_AppIcon.Dock = System.Windows.Forms.DockStyle.Left
-        Me.PictureBox_AppIcon.Image = Global.GDev_Asset_Store_Tool.My.Resources.Resources.Application_Icon
-        Me.PictureBox_AppIcon.Location = New System.Drawing.Point(0, 0)
-        Me.PictureBox_AppIcon.Name = "PictureBox_AppIcon"
-        Me.PictureBox_AppIcon.Size = New System.Drawing.Size(30, 26)
-        Me.PictureBox_AppIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage
-        Me.PictureBox_AppIcon.TabIndex = 3
-        Me.PictureBox_AppIcon.TabStop = False
         '
         'OpenFileDialog1
         '
@@ -509,7 +480,7 @@ Partial Class TagsMaker
         Me.LinkLabel_Wiki_Info.LinkColor = System.Drawing.Color.DodgerBlue
         Me.LinkLabel_Wiki_Info.Location = New System.Drawing.Point(432, 16)
         Me.LinkLabel_Wiki_Info.Name = "LinkLabel_Wiki_Info"
-        Me.LinkLabel_Wiki_Info.Size = New System.Drawing.Size(57, 16)
+        Me.LinkLabel_Wiki_Info.Size = New System.Drawing.Size(58, 16)
         Me.LinkLabel_Wiki_Info.TabIndex = 108
         Me.LinkLabel_Wiki_Info.TabStop = True
         Me.LinkLabel_Wiki_Info.Text = "Wiki Info"
@@ -524,6 +495,35 @@ Partial Class TagsMaker
         '
         Me.ToolTip1.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info
         Me.ToolTip1.ToolTipTitle = "Tags Maker"
+        '
+        'PictureBox_Close
+        '
+        Me.PictureBox_Close.Image = Global.GDev_Asset_Store_Tool.My.Resources.Resources.Close_Grey
+        Me.PictureBox_Close.Location = New System.Drawing.Point(30, 5)
+        Me.PictureBox_Close.Name = "PictureBox_Close"
+        Me.PictureBox_Close.Size = New System.Drawing.Size(16, 16)
+        Me.PictureBox_Close.TabIndex = 0
+        Me.PictureBox_Close.TabStop = False
+        '
+        'PictureBox_Minimize
+        '
+        Me.PictureBox_Minimize.Image = Global.GDev_Asset_Store_Tool.My.Resources.Resources.Minimize_Grey
+        Me.PictureBox_Minimize.Location = New System.Drawing.Point(8, 5)
+        Me.PictureBox_Minimize.Name = "PictureBox_Minimize"
+        Me.PictureBox_Minimize.Size = New System.Drawing.Size(16, 16)
+        Me.PictureBox_Minimize.TabIndex = 1
+        Me.PictureBox_Minimize.TabStop = False
+        '
+        'PictureBox_AppIcon
+        '
+        Me.PictureBox_AppIcon.Dock = System.Windows.Forms.DockStyle.Left
+        Me.PictureBox_AppIcon.Image = Global.GDev_Asset_Store_Tool.My.Resources.Resources.Application_Icon
+        Me.PictureBox_AppIcon.Location = New System.Drawing.Point(0, 0)
+        Me.PictureBox_AppIcon.Name = "PictureBox_AppIcon"
+        Me.PictureBox_AppIcon.Size = New System.Drawing.Size(30, 26)
+        Me.PictureBox_AppIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage
+        Me.PictureBox_AppIcon.TabIndex = 3
+        Me.PictureBox_AppIcon.TabStop = False
         '
         'TagsMaker
         '
@@ -558,11 +558,11 @@ Partial Class TagsMaker
         Me.Panel5.PerformLayout()
         Me.Panel_Main.ResumeLayout(False)
         Me.Panel_ControlBox.ResumeLayout(False)
+        Me.Panel7.ResumeLayout(False)
+        Me.Panel7.PerformLayout()
         CType(Me.PictureBox_Close, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox_Minimize, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox_AppIcon, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.Panel7.ResumeLayout(False)
-        Me.Panel7.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
