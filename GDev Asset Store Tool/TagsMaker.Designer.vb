@@ -34,7 +34,7 @@ Partial Class TagsMaker
         Me.Label_Existingtags = New System.Windows.Forms.Label()
         Me.ShapeContainer2 = New Microsoft.VisualBasic.PowerPacks.ShapeContainer()
         Me.RectangleShape_Animation = New Microsoft.VisualBasic.PowerPacks.RectangleShape()
-        Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.Panel_TAGSmd = New System.Windows.Forms.Panel()
         Me.Button_Open = New System.Windows.Forms.Button()
         Me.Button_Save = New System.Windows.Forms.Button()
         Me.Label_TAGSmd = New System.Windows.Forms.Label()
@@ -54,7 +54,10 @@ Partial Class TagsMaker
         Me.ShapeContainer6 = New Microsoft.VisualBasic.PowerPacks.ShapeContainer()
         Me.Panel_Main = New System.Windows.Forms.Panel()
         Me.Panel_ControlBox = New System.Windows.Forms.Panel()
+        Me.PictureBox_Close = New System.Windows.Forms.PictureBox()
+        Me.PictureBox_Minimize = New System.Windows.Forms.PictureBox()
         Me.Label_Application_Title = New System.Windows.Forms.Label()
+        Me.PictureBox_AppIcon = New System.Windows.Forms.PictureBox()
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
         Me.Button_Download = New System.Windows.Forms.Button()
         Me.Label_FileAge = New System.Windows.Forms.Label()
@@ -62,20 +65,17 @@ Partial Class TagsMaker
         Me.LinkLabel_Wiki_Info = New System.Windows.Forms.LinkLabel()
         Me.SaveFileDialog1 = New System.Windows.Forms.SaveFileDialog()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
-        Me.PictureBox_Close = New System.Windows.Forms.PictureBox()
-        Me.PictureBox_Minimize = New System.Windows.Forms.PictureBox()
-        Me.PictureBox_AppIcon = New System.Windows.Forms.PictureBox()
         Me.Panel1.SuspendLayout()
-        Me.Panel2.SuspendLayout()
+        Me.Panel_TAGSmd.SuspendLayout()
         Me.Panel3.SuspendLayout()
         Me.Panel4.SuspendLayout()
         Me.Panel5.SuspendLayout()
         Me.Panel_Main.SuspendLayout()
         Me.Panel_ControlBox.SuspendLayout()
-        Me.Panel7.SuspendLayout()
         CType(Me.PictureBox_Close, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox_Minimize, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox_AppIcon, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Panel7.SuspendLayout()
         Me.SuspendLayout()
         '
         'TextBox1
@@ -126,8 +126,7 @@ Partial Class TagsMaker
         Me.ListBox_TAGS.Name = "ListBox_TAGS"
         Me.ListBox_TAGS.Size = New System.Drawing.Size(208, 208)
         Me.ListBox_TAGS.TabIndex = 5
-        Me.ToolTip1.SetToolTip(Me.ListBox_TAGS, "Double-click to remove tag from list." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Hint: You can drag drop a TAGS.md file her" &
-        "e.")
+        Me.ToolTip1.SetToolTip(Me.ListBox_TAGS, "Double-click to remove tag from list." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "You can drag & drop a TAGS.md file here.")
         '
         'TextBox2
         '
@@ -196,21 +195,23 @@ Partial Class TagsMaker
         Me.RectangleShape_Animation.SelectionColor = System.Drawing.Color.Transparent
         Me.RectangleShape_Animation.Size = New System.Drawing.Size(224, 192)
         '
-        'Panel2
+        'Panel_TAGSmd
         '
-        Me.Panel2.Controls.Add(Me.Button_Open)
-        Me.Panel2.Controls.Add(Me.Button_Save)
-        Me.Panel2.Controls.Add(Me.Label_TAGSmd)
-        Me.Panel2.Controls.Add(Me.ListBox_TAGS)
-        Me.Panel2.Controls.Add(Me.ShapeContainer3)
-        Me.Panel2.Location = New System.Drawing.Point(248, 128)
-        Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(240, 288)
-        Me.Panel2.TabIndex = 12
+        Me.Panel_TAGSmd.AllowDrop = True
+        Me.Panel_TAGSmd.Controls.Add(Me.Button_Open)
+        Me.Panel_TAGSmd.Controls.Add(Me.Button_Save)
+        Me.Panel_TAGSmd.Controls.Add(Me.Label_TAGSmd)
+        Me.Panel_TAGSmd.Controls.Add(Me.ListBox_TAGS)
+        Me.Panel_TAGSmd.Controls.Add(Me.ShapeContainer3)
+        Me.Panel_TAGSmd.Location = New System.Drawing.Point(248, 128)
+        Me.Panel_TAGSmd.Name = "Panel_TAGSmd"
+        Me.Panel_TAGSmd.Size = New System.Drawing.Size(240, 288)
+        Me.Panel_TAGSmd.TabIndex = 12
         '
         'Button_Open
         '
         Me.Button_Open.BackColor = System.Drawing.Color.DodgerBlue
+        Me.Button_Open.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer))
         Me.Button_Open.FlatAppearance.BorderSize = 0
         Me.Button_Open.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button_Open.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -219,13 +220,14 @@ Partial Class TagsMaker
         Me.Button_Open.Size = New System.Drawing.Size(96, 24)
         Me.Button_Open.TabIndex = 93
         Me.Button_Open.Text = "Open"
-        Me.ToolTip1.SetToolTip(Me.Button_Open, "Hint: You can drag drop a TAGS.md file here.")
+        Me.ToolTip1.SetToolTip(Me.Button_Open, "You can drag & drop a TAGS.md file here.")
         Me.Button_Open.UseVisualStyleBackColor = False
         '
         'Button_Save
         '
         Me.Button_Save.BackColor = System.Drawing.Color.MediumSeaGreen
         Me.Button_Save.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Button_Save.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer))
         Me.Button_Save.FlatAppearance.BorderSize = 0
         Me.Button_Save.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button_Save.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -422,6 +424,24 @@ Partial Class TagsMaker
         Me.Panel_ControlBox.Size = New System.Drawing.Size(52, 26)
         Me.Panel_ControlBox.TabIndex = 4
         '
+        'PictureBox_Close
+        '
+        Me.PictureBox_Close.Image = Global.GDev_Asset_Store_Tool.My.Resources.Resources.Close_Grey
+        Me.PictureBox_Close.Location = New System.Drawing.Point(30, 5)
+        Me.PictureBox_Close.Name = "PictureBox_Close"
+        Me.PictureBox_Close.Size = New System.Drawing.Size(16, 16)
+        Me.PictureBox_Close.TabIndex = 0
+        Me.PictureBox_Close.TabStop = False
+        '
+        'PictureBox_Minimize
+        '
+        Me.PictureBox_Minimize.Image = Global.GDev_Asset_Store_Tool.My.Resources.Resources.Minimize_Grey
+        Me.PictureBox_Minimize.Location = New System.Drawing.Point(8, 5)
+        Me.PictureBox_Minimize.Name = "PictureBox_Minimize"
+        Me.PictureBox_Minimize.Size = New System.Drawing.Size(16, 16)
+        Me.PictureBox_Minimize.TabIndex = 1
+        Me.PictureBox_Minimize.TabStop = False
+        '
         'Label_Application_Title
         '
         Me.Label_Application_Title.Dock = System.Windows.Forms.DockStyle.Left
@@ -432,6 +452,17 @@ Partial Class TagsMaker
         Me.Label_Application_Title.Text = "Tags Maker"
         Me.Label_Application_Title.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
+        'PictureBox_AppIcon
+        '
+        Me.PictureBox_AppIcon.Dock = System.Windows.Forms.DockStyle.Left
+        Me.PictureBox_AppIcon.Image = Global.GDev_Asset_Store_Tool.My.Resources.Resources.Application_Icon
+        Me.PictureBox_AppIcon.Location = New System.Drawing.Point(0, 0)
+        Me.PictureBox_AppIcon.Name = "PictureBox_AppIcon"
+        Me.PictureBox_AppIcon.Size = New System.Drawing.Size(30, 26)
+        Me.PictureBox_AppIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage
+        Me.PictureBox_AppIcon.TabIndex = 3
+        Me.PictureBox_AppIcon.TabStop = False
+        '
         'OpenFileDialog1
         '
         Me.OpenFileDialog1.Filter = "Markdown files (*.md)|*.md"
@@ -440,12 +471,13 @@ Partial Class TagsMaker
         '
         Me.Button_Download.BackColor = System.Drawing.Color.MediumSeaGreen
         Me.Button_Download.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Button_Download.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer))
         Me.Button_Download.FlatAppearance.BorderSize = 0
         Me.Button_Download.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button_Download.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button_Download.Location = New System.Drawing.Point(256, 8)
         Me.Button_Download.Name = "Button_Download"
-        Me.Button_Download.Size = New System.Drawing.Size(112, 22)
+        Me.Button_Download.Size = New System.Drawing.Size(112, 24)
         Me.Button_Download.TabIndex = 97
         Me.Button_Download.Text = "Download"
         Me.Button_Download.UseVisualStyleBackColor = False
@@ -475,15 +507,15 @@ Partial Class TagsMaker
         'LinkLabel_Wiki_Info
         '
         Me.LinkLabel_Wiki_Info.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.LinkLabel_Wiki_Info.AutoSize = True
         Me.LinkLabel_Wiki_Info.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LinkLabel_Wiki_Info.LinkColor = System.Drawing.Color.DodgerBlue
-        Me.LinkLabel_Wiki_Info.Location = New System.Drawing.Point(432, 16)
+        Me.LinkLabel_Wiki_Info.Location = New System.Drawing.Point(424, 8)
         Me.LinkLabel_Wiki_Info.Name = "LinkLabel_Wiki_Info"
-        Me.LinkLabel_Wiki_Info.Size = New System.Drawing.Size(58, 16)
+        Me.LinkLabel_Wiki_Info.Size = New System.Drawing.Size(65, 24)
         Me.LinkLabel_Wiki_Info.TabIndex = 108
         Me.LinkLabel_Wiki_Info.TabStop = True
         Me.LinkLabel_Wiki_Info.Text = "Wiki Info"
+        Me.LinkLabel_Wiki_Info.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.LinkLabel_Wiki_Info.VisitedLinkColor = System.Drawing.Color.DarkOrchid
         '
         'SaveFileDialog1
@@ -494,36 +526,7 @@ Partial Class TagsMaker
         'ToolTip1
         '
         Me.ToolTip1.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info
-        Me.ToolTip1.ToolTipTitle = "Tags Maker"
-        '
-        'PictureBox_Close
-        '
-        Me.PictureBox_Close.Image = Global.GDev_Asset_Store_Tool.My.Resources.Resources.Close_Grey
-        Me.PictureBox_Close.Location = New System.Drawing.Point(30, 5)
-        Me.PictureBox_Close.Name = "PictureBox_Close"
-        Me.PictureBox_Close.Size = New System.Drawing.Size(16, 16)
-        Me.PictureBox_Close.TabIndex = 0
-        Me.PictureBox_Close.TabStop = False
-        '
-        'PictureBox_Minimize
-        '
-        Me.PictureBox_Minimize.Image = Global.GDev_Asset_Store_Tool.My.Resources.Resources.Minimize_Grey
-        Me.PictureBox_Minimize.Location = New System.Drawing.Point(8, 5)
-        Me.PictureBox_Minimize.Name = "PictureBox_Minimize"
-        Me.PictureBox_Minimize.Size = New System.Drawing.Size(16, 16)
-        Me.PictureBox_Minimize.TabIndex = 1
-        Me.PictureBox_Minimize.TabStop = False
-        '
-        'PictureBox_AppIcon
-        '
-        Me.PictureBox_AppIcon.Dock = System.Windows.Forms.DockStyle.Left
-        Me.PictureBox_AppIcon.Image = Global.GDev_Asset_Store_Tool.My.Resources.Resources.Application_Icon
-        Me.PictureBox_AppIcon.Location = New System.Drawing.Point(0, 0)
-        Me.PictureBox_AppIcon.Name = "PictureBox_AppIcon"
-        Me.PictureBox_AppIcon.Size = New System.Drawing.Size(30, 26)
-        Me.PictureBox_AppIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage
-        Me.PictureBox_AppIcon.TabIndex = 3
-        Me.PictureBox_AppIcon.TabStop = False
+        Me.ToolTip1.ToolTipTitle = "Hint"
         '
         'TagsMaker
         '
@@ -536,7 +539,7 @@ Partial Class TagsMaker
         Me.Controls.Add(Me.Panel5)
         Me.Controls.Add(Me.Panel4)
         Me.Controls.Add(Me.Panel3)
-        Me.Controls.Add(Me.Panel2)
+        Me.Controls.Add(Me.Panel_TAGSmd)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.TextBox1)
         Me.ForeColor = System.Drawing.Color.WhiteSmoke
@@ -548,8 +551,8 @@ Partial Class TagsMaker
         Me.Text = "Tags Maker"
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
-        Me.Panel2.ResumeLayout(False)
-        Me.Panel2.PerformLayout()
+        Me.Panel_TAGSmd.ResumeLayout(False)
+        Me.Panel_TAGSmd.PerformLayout()
         Me.Panel3.ResumeLayout(False)
         Me.Panel3.PerformLayout()
         Me.Panel4.ResumeLayout(False)
@@ -558,11 +561,10 @@ Partial Class TagsMaker
         Me.Panel5.PerformLayout()
         Me.Panel_Main.ResumeLayout(False)
         Me.Panel_ControlBox.ResumeLayout(False)
-        Me.Panel7.ResumeLayout(False)
-        Me.Panel7.PerformLayout()
         CType(Me.PictureBox_Close, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox_Minimize, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox_AppIcon, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Panel7.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -577,7 +579,7 @@ Partial Class TagsMaker
     Friend WithEvents Panel1 As Panel
     Friend WithEvents ShapeContainer2 As ShapeContainer
     Friend WithEvents RectangleShape_Animation As RectangleShape
-    Friend WithEvents Panel2 As Panel
+    Friend WithEvents Panel_TAGSmd As Panel
     Friend WithEvents ShapeContainer3 As ShapeContainer
     Friend WithEvents RectangleShape1 As RectangleShape
     Friend WithEvents Panel3 As Panel

@@ -1,24 +1,40 @@
-﻿
-Public Class LicenseMaker
-    'Button_Open - Click
-    Private Sub Button_Open_Click(sender As Object, e As EventArgs) Handles Button_Open.Click
-        If OpenFileDialog1.ShowDialog = DialogResult.OK Then
-            Dim Readfile As String() = File.ReadAllLines(OpenFileDialog1.FileName)
-            SaveFileDialog1.InitialDirectory = Path.GetDirectoryName(OpenFileDialog1.FileName)
-            If Readfile(0) = "CC0 (public domain)" Then
-                ComboBox_License.SelectedIndex = 0
-            Else
-                Dim index As Integer = ComboBox_License.FindStringExact(Readfile(0))
-                ComboBox_License.SelectedIndex = index
+﻿Public Class ClipboardAsset
+    Dim ObjectsJson As New JArray
+    'Button_PasteObjects - Click
+    Private Sub Button_PasteObjects_Click(sender As Object, e As EventArgs) Handles Button_PasteObject.Click
+        If Clipboard.ContainsText Then
+            Dim CB_Text As String = Clipboard.GetText
+            If CB_Text.Contains("GDEVELOP_Object_CLIPBOARD_KIND") Or CB_Text.Contains("000kind") Then
+                Dim jsonFromClipboard As JObject = JObject.Parse(CB_Text)
+                ListBox_Objects.Items.Add(jsonFromClipboard.Item("content")("name"))
+                ObjectsJson.Add(jsonFromClipboard.SelectToken("content"))
             End If
-            TextBox_Artist.Text = Readfile(1)
-            TextBox_ArtistLink.Text = Readfile(2)
+        End If
+    End Sub
+    'ListBox_Objects - DoubleClick
+    Private Sub ListBox_Objects_DoubleClick(sender As Object, e As EventArgs) Handles ListBox_Objects.DoubleClick
+        If Not ListBox_Objects.SelectedIndex = -1 Then
+            ObjectsJson.RemoveAt(ListBox_Objects.SelectedIndex)
+            ListBox_Objects.Items.RemoveAt(ListBox_Objects.SelectedIndex)
+        End If
+    End Sub
+    'Button_GenerateAsset - Click
+    Private Sub Button_GenerateAsset_Click(sender As Object, e As EventArgs) Handles Button_GenerateAsset.Click
+        If TextBox_Description.Text.Length > 0 And ListBox_Objects.Items.Count > 0 Then
+            Dim jsonFile As JObject = JObject.Parse(My.Resources.asset_template)
+            jsonFile.Item("description") = TextBox_Description.Text
+            If ListBox_Objects.Items.Count = 1 Then
+                jsonFile.Item("objectAssets")(0)("object") = CType(ObjectsJson.Item(0), JToken)
+            Else
+                jsonFile.Item("objectAssets")(0)("object") = ObjectsJson
+                Console.WriteLine(ObjectsJson)
+            End If
+            FastColoredTextBox_AssetJson.Text = jsonFile.ToString
         End If
     End Sub
     'Button_Save - Click
     Private Sub Button_Save_Click(sender As Object, e As EventArgs) Handles Button_Save.Click
-        If ComboBox_License.SelectedIndex > -1 And Not TextBox_Artist.Text = "" And Not TextBox_ArtistLink.Text = "" Then
-            SaveFileDialog1.FileName = "license.txt"
+        If TextBox_Description.Text.Length > 0 And FastColoredTextBox_AssetJson.Text.Length > 0 Then
             If SaveFileDialog1.InitialDirectory = "" Then
                 If Directory.Exists(MetadataGenerator.FolderBrowserDialog_Selected_Directory.SelectedPath) Then
                     SaveFileDialog1.InitialDirectory = MetadataGenerator.FolderBrowserDialog_Selected_Directory.SelectedPath
@@ -28,49 +44,11 @@ Public Class LicenseMaker
             End If
 
             If SaveFileDialog1.ShowDialog = DialogResult.OK Then
-                Dim file As StreamWriter
-                file = My.Computer.FileSystem.OpenTextFileWriter(SaveFileDialog1.FileName, False)
-                file.WriteLine(ComboBox_License.SelectedItem.ToString)
-                file.WriteLine(TextBox_Artist.Text)
-                file.WriteLine(TextBox_ArtistLink.Text)
-                file.Close()
-                'Clear all for next
-                SaveFileDialog1.InitialDirectory = ""
-                ComboBox_License.SelectedIndex = -1
-                TextBox_Artist.Clear()
-                TextBox_ArtistLink.Clear()
+                My.Computer.FileSystem.WriteAllText(SaveFileDialog1.FileName, FastColoredTextBox_AssetJson.Text, False)
             End If
         Else
             MsgBox("Please fill out all fields.", MsgBoxStyle.Information)
         End If
-    End Sub
-    'LicenseMaker - DragEnter
-    Private Sub LicenseMaker_DragEnter(sender As Object, e As DragEventArgs) Handles Me.DragEnter
-        Dim files() As String = CType(e.Data.GetData(DataFormats.FileDrop), String())
-        If e.Data.GetDataPresent(DataFormats.FileDrop) And Path.GetFileName(files(0)) = "license.txt" Then
-            e.Effect = DragDropEffects.Copy
-        Else
-            e.Effect = DragDropEffects.None
-        End If
-    End Sub
-    'LicenseMaker - DragDrop
-    Private Sub LicenseMaker_DragDrop(sender As Object, e As DragEventArgs) Handles Me.DragDrop
-        Dim files() As String = CType(e.Data.GetData(DataFormats.FileDrop), String())
-        Dim Readfile As String() = File.ReadAllLines(files(0))
-        SaveFileDialog1.InitialDirectory = Path.GetDirectoryName(files(0))
-        If Readfile(0) = "CC0 (public domain)" Then
-            ComboBox_License.SelectedIndex = 0
-        Else
-            Dim index As Integer = ComboBox_License.FindStringExact(Readfile(0))
-            ComboBox_License.SelectedIndex = index
-        End If
-        TextBox_Artist.Text = Readfile(1)
-        TextBox_ArtistLink.Text = Readfile(2)
-    End Sub
-    'LinkLabel_Wiki_Info - LinkClicked
-    Private Sub LinkLabel_Wiki_Info_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LinkLabel_Wiki_Info.LinkClicked
-        LinkLabel_Wiki_Info.LinkVisited = True
-        Process.Start("https://wiki.gdevelop.io/gdevelop5/community/contribute-to-the-assets-store#license")
     End Sub
     '
     'Window Handle Code

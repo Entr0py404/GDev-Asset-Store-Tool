@@ -223,6 +223,7 @@ Partial Class LicenseMaker
         '
         Me.Button_Save.BackColor = System.Drawing.Color.MediumSeaGreen
         Me.Button_Save.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Button_Save.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer))
         Me.Button_Save.FlatAppearance.BorderSize = 0
         Me.Button_Save.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button_Save.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -236,11 +237,12 @@ Partial Class LicenseMaker
         'ToolTip1
         '
         Me.ToolTip1.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info
-        Me.ToolTip1.ToolTipTitle = "License Maker"
+        Me.ToolTip1.ToolTipTitle = "Hint"
         '
         'Button_Open
         '
         Me.Button_Open.BackColor = System.Drawing.Color.DodgerBlue
+        Me.Button_Open.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer))
         Me.Button_Open.FlatAppearance.BorderSize = 0
         Me.Button_Open.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button_Open.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -249,7 +251,7 @@ Partial Class LicenseMaker
         Me.Button_Open.Size = New System.Drawing.Size(96, 24)
         Me.Button_Open.TabIndex = 106
         Me.Button_Open.Text = "Open"
-        Me.ToolTip1.SetToolTip(Me.Button_Open, "Hint: You can drag drop a license file here.")
+        Me.ToolTip1.SetToolTip(Me.Button_Open, "You can drag & drop a license file here.")
         Me.Button_Open.UseVisualStyleBackColor = False
         '
         'OpenFileDialog1
@@ -259,19 +261,20 @@ Partial Class LicenseMaker
         'LinkLabel_Wiki_Info
         '
         Me.LinkLabel_Wiki_Info.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.LinkLabel_Wiki_Info.AutoSize = True
         Me.LinkLabel_Wiki_Info.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LinkLabel_Wiki_Info.LinkColor = System.Drawing.Color.DodgerBlue
-        Me.LinkLabel_Wiki_Info.Location = New System.Drawing.Point(168, 64)
+        Me.LinkLabel_Wiki_Info.Location = New System.Drawing.Point(160, 56)
         Me.LinkLabel_Wiki_Info.Name = "LinkLabel_Wiki_Info"
-        Me.LinkLabel_Wiki_Info.Size = New System.Drawing.Size(58, 16)
+        Me.LinkLabel_Wiki_Info.Size = New System.Drawing.Size(65, 24)
         Me.LinkLabel_Wiki_Info.TabIndex = 107
         Me.LinkLabel_Wiki_Info.TabStop = True
         Me.LinkLabel_Wiki_Info.Text = "Wiki Info"
+        Me.LinkLabel_Wiki_Info.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.LinkLabel_Wiki_Info.VisitedLinkColor = System.Drawing.Color.DarkOrchid
         '
         'LicenseMaker
         '
+        Me.AllowDrop = True
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(54, Byte), Integer), CType(CType(57, Byte), Integer), CType(CType(62, Byte), Integer))
@@ -294,7 +297,7 @@ Partial Class LicenseMaker
         Me.Name = "LicenseMaker"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "License Maker"
-        Me.ToolTip1.SetToolTip(Me, "Hint: You can drag drop a license file here.")
+        Me.ToolTip1.SetToolTip(Me, "Hint: You can drag & drop a license file here.")
         Me.Panel_Main.ResumeLayout(False)
         Me.Panel_ControlBox.ResumeLayout(False)
         CType(Me.PictureBox_Close, System.ComponentModel.ISupportInitialize).EndInit()

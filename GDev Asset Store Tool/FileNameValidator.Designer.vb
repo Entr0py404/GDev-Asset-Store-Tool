@@ -335,6 +335,7 @@ Partial Class FileNameValidator
         '
         'Panel_Selected_Directory_Controls
         '
+        Me.Panel_Selected_Directory_Controls.AllowDrop = True
         Me.Panel_Selected_Directory_Controls.Controls.Add(Me.LinkLabel_Wiki_Info)
         Me.Panel_Selected_Directory_Controls.Controls.Add(Me.Button_Reload)
         Me.Panel_Selected_Directory_Controls.Controls.Add(Me.Button_Select_Directory)
@@ -350,21 +351,22 @@ Partial Class FileNameValidator
         'LinkLabel_Wiki_Info
         '
         Me.LinkLabel_Wiki_Info.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.LinkLabel_Wiki_Info.AutoSize = True
         Me.LinkLabel_Wiki_Info.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LinkLabel_Wiki_Info.LinkColor = System.Drawing.Color.DodgerBlue
-        Me.LinkLabel_Wiki_Info.Location = New System.Drawing.Point(736, 32)
+        Me.LinkLabel_Wiki_Info.Location = New System.Drawing.Point(728, 24)
         Me.LinkLabel_Wiki_Info.Name = "LinkLabel_Wiki_Info"
-        Me.LinkLabel_Wiki_Info.Size = New System.Drawing.Size(58, 16)
+        Me.LinkLabel_Wiki_Info.Size = New System.Drawing.Size(65, 24)
         Me.LinkLabel_Wiki_Info.TabIndex = 101
         Me.LinkLabel_Wiki_Info.TabStop = True
         Me.LinkLabel_Wiki_Info.Text = "Wiki Info"
+        Me.LinkLabel_Wiki_Info.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.LinkLabel_Wiki_Info.VisitedLinkColor = System.Drawing.Color.DarkOrchid
         '
         'Button_Reload
         '
         Me.Button_Reload.BackColor = System.Drawing.Color.MediumSeaGreen
         Me.Button_Reload.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Button_Reload.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer))
         Me.Button_Reload.FlatAppearance.BorderSize = 0
         Me.Button_Reload.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button_Reload.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -379,6 +381,7 @@ Partial Class FileNameValidator
         '
         Me.Button_Select_Directory.BackColor = System.Drawing.Color.DodgerBlue
         Me.Button_Select_Directory.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Button_Select_Directory.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer))
         Me.Button_Select_Directory.FlatAppearance.BorderSize = 0
         Me.Button_Select_Directory.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button_Select_Directory.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -387,7 +390,7 @@ Partial Class FileNameValidator
         Me.Button_Select_Directory.Size = New System.Drawing.Size(80, 24)
         Me.Button_Select_Directory.TabIndex = 3
         Me.Button_Select_Directory.Text = "..."
-        Me.ToolTip1.SetToolTip(Me.Button_Select_Directory, "Hint: You can drag drop a directory here.")
+        Me.ToolTip1.SetToolTip(Me.Button_Select_Directory, "You can drag & drop a directory here.")
         Me.Button_Select_Directory.UseVisualStyleBackColor = False
         '
         'Label_Selected_Directory
@@ -411,7 +414,7 @@ Partial Class FileNameValidator
         Me.TextBox_Selected_Directory.Name = "TextBox_Selected_Directory"
         Me.TextBox_Selected_Directory.Size = New System.Drawing.Size(472, 13)
         Me.TextBox_Selected_Directory.TabIndex = 1
-        Me.ToolTip1.SetToolTip(Me.TextBox_Selected_Directory, "Hint: You can drag drop a directory here.")
+        Me.ToolTip1.SetToolTip(Me.TextBox_Selected_Directory, "You can drag & drop a directory here.")
         '
         'ShapeContainer1
         '
@@ -439,7 +442,7 @@ Partial Class FileNameValidator
         'ToolTip1
         '
         Me.ToolTip1.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info
-        Me.ToolTip1.ToolTipTitle = "File Name Validator"
+        Me.ToolTip1.ToolTipTitle = "Hint"
         '
         'FileNameValidator
         '

@@ -37,7 +37,6 @@ Partial Class MetadataGenerator
         Me.OpenDirectoryToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator6 = New System.Windows.Forms.ToolStripSeparator()
         Me.AddAnimationNameToFileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ReloadLoopedAnimationKeywordsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ContextMenuStrip_Log = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.ClearToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.FolderBrowserDialog_Selected_Directory = New System.Windows.Forms.FolderBrowserDialog()
@@ -61,6 +60,7 @@ Partial Class MetadataGenerator
         Me.Label_Metadata_Files = New System.Windows.Forms.Label()
         Me.Label_Selected_Directory = New System.Windows.Forms.Label()
         Me.Panel_Selected_Directory_Controls = New System.Windows.Forms.Panel()
+        Me.LinkLabel_Trello = New System.Windows.Forms.LinkLabel()
         Me.Button_Reload = New System.Windows.Forms.Button()
         Me.Button_Select_Directory = New System.Windows.Forms.Button()
         Me.ShapeContainer2 = New Microsoft.VisualBasic.PowerPacks.ShapeContainer()
@@ -94,12 +94,18 @@ Partial Class MetadataGenerator
         Me.NumericUpDown_FPS = New System.Windows.Forms.NumericUpDown()
         Me.ShapeContainer1 = New Microsoft.VisualBasic.PowerPacks.ShapeContainer()
         Me.RectangleShape3 = New Microsoft.VisualBasic.PowerPacks.RectangleShape()
-        Me.Button_LicenseMaker = New System.Windows.Forms.Button()
-        Me.Button_TagsMaker = New System.Windows.Forms.Button()
-        Me.Button_FileNameValidator = New System.Windows.Forms.Button()
-        Me.LinkLabel1 = New System.Windows.Forms.LinkLabel()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
-        Me.Label1 = New System.Windows.Forms.Label()
+        Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
+        Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
+        Me.ToolsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.TagsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.LicenseToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.PackageToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ClipboardAssetToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.FileNameValidatorToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.LoopedAnimationKeywordsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ReloadToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ImportToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ContextMenuStrip_TreeView.SuspendLayout()
         Me.ContextMenuStrip_Log.SuspendLayout()
         Me.Panel_Main.SuspendLayout()
@@ -119,6 +125,7 @@ Partial Class MetadataGenerator
         CType(Me.NumericUpDown_TimeBetweenFrames, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox_Clock, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.NumericUpDown_FPS, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'TextBox_Selected_Directory
@@ -129,38 +136,38 @@ Partial Class MetadataGenerator
         Me.TextBox_Selected_Directory.ForeColor = System.Drawing.Color.WhiteSmoke
         Me.TextBox_Selected_Directory.Location = New System.Drawing.Point(13, 22)
         Me.TextBox_Selected_Directory.Name = "TextBox_Selected_Directory"
-        Me.TextBox_Selected_Directory.Size = New System.Drawing.Size(523, 13)
+        Me.TextBox_Selected_Directory.Size = New System.Drawing.Size(467, 13)
         Me.TextBox_Selected_Directory.TabIndex = 1
-        Me.ToolTip1.SetToolTip(Me.TextBox_Selected_Directory, "Hint: You can drag drop a directory here.")
+        Me.ToolTip1.SetToolTip(Me.TextBox_Selected_Directory, "You can drag & drop a directory here.")
         '
         'ContextMenuStrip_TreeView
         '
         Me.ContextMenuStrip_TreeView.BackColor = System.Drawing.Color.FromArgb(CType(CType(54, Byte), Integer), CType(CType(57, Byte), Integer), CType(CType(62, Byte), Integer))
-        Me.ContextMenuStrip_TreeView.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.RegenerateSelectedFileToolStripMenuItem, Me.ToolStripSeparator1, Me.GenerateMetadataFilesToolStripMenuItem, Me.RegenerateMetadataFilesToolStripMenuItem, Me.ToolStripSeparator3, Me.XFramesToolStripMenuItem, Me.ToolStripSeparator4, Me.OpenFileToolStripMenuItem, Me.OpenDirectoryToolStripMenuItem, Me.ToolStripSeparator6, Me.AddAnimationNameToFileToolStripMenuItem, Me.ReloadLoopedAnimationKeywordsToolStripMenuItem})
+        Me.ContextMenuStrip_TreeView.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.RegenerateSelectedFileToolStripMenuItem, Me.ToolStripSeparator1, Me.GenerateMetadataFilesToolStripMenuItem, Me.RegenerateMetadataFilesToolStripMenuItem, Me.ToolStripSeparator3, Me.XFramesToolStripMenuItem, Me.ToolStripSeparator4, Me.OpenFileToolStripMenuItem, Me.OpenDirectoryToolStripMenuItem, Me.ToolStripSeparator6, Me.AddAnimationNameToFileToolStripMenuItem})
         Me.ContextMenuStrip_TreeView.Name = "ContextMenuStrip_Listbox"
         Me.ContextMenuStrip_TreeView.ShowCheckMargin = True
         Me.ContextMenuStrip_TreeView.ShowImageMargin = False
-        Me.ContextMenuStrip_TreeView.Size = New System.Drawing.Size(261, 204)
+        Me.ContextMenuStrip_TreeView.Size = New System.Drawing.Size(220, 182)
         '
         'RegenerateSelectedFileToolStripMenuItem
         '
         Me.RegenerateSelectedFileToolStripMenuItem.Enabled = False
         Me.RegenerateSelectedFileToolStripMenuItem.ForeColor = System.Drawing.Color.WhiteSmoke
         Me.RegenerateSelectedFileToolStripMenuItem.Name = "RegenerateSelectedFileToolStripMenuItem"
-        Me.RegenerateSelectedFileToolStripMenuItem.Size = New System.Drawing.Size(260, 22)
+        Me.RegenerateSelectedFileToolStripMenuItem.Size = New System.Drawing.Size(219, 22)
         Me.RegenerateSelectedFileToolStripMenuItem.Text = "Regenerate selected file"
         '
         'ToolStripSeparator1
         '
         Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(257, 6)
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(216, 6)
         '
         'GenerateMetadataFilesToolStripMenuItem
         '
         Me.GenerateMetadataFilesToolStripMenuItem.Enabled = False
         Me.GenerateMetadataFilesToolStripMenuItem.ForeColor = System.Drawing.Color.WhiteSmoke
         Me.GenerateMetadataFilesToolStripMenuItem.Name = "GenerateMetadataFilesToolStripMenuItem"
-        Me.GenerateMetadataFilesToolStripMenuItem.Size = New System.Drawing.Size(260, 22)
+        Me.GenerateMetadataFilesToolStripMenuItem.Size = New System.Drawing.Size(219, 22)
         Me.GenerateMetadataFilesToolStripMenuItem.Text = "Generate metadata files"
         '
         'RegenerateMetadataFilesToolStripMenuItem
@@ -168,32 +175,32 @@ Partial Class MetadataGenerator
         Me.RegenerateMetadataFilesToolStripMenuItem.Enabled = False
         Me.RegenerateMetadataFilesToolStripMenuItem.ForeColor = System.Drawing.Color.WhiteSmoke
         Me.RegenerateMetadataFilesToolStripMenuItem.Name = "RegenerateMetadataFilesToolStripMenuItem"
-        Me.RegenerateMetadataFilesToolStripMenuItem.Size = New System.Drawing.Size(260, 22)
+        Me.RegenerateMetadataFilesToolStripMenuItem.Size = New System.Drawing.Size(219, 22)
         Me.RegenerateMetadataFilesToolStripMenuItem.Text = "Regenerate metadata files"
         '
         'ToolStripSeparator3
         '
         Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
-        Me.ToolStripSeparator3.Size = New System.Drawing.Size(257, 6)
+        Me.ToolStripSeparator3.Size = New System.Drawing.Size(216, 6)
         '
         'XFramesToolStripMenuItem
         '
         Me.XFramesToolStripMenuItem.ForeColor = System.Drawing.Color.WhiteSmoke
         Me.XFramesToolStripMenuItem.Name = "XFramesToolStripMenuItem"
-        Me.XFramesToolStripMenuItem.Size = New System.Drawing.Size(260, 22)
+        Me.XFramesToolStripMenuItem.Size = New System.Drawing.Size(219, 22)
         Me.XFramesToolStripMenuItem.Text = "2X frames"
         '
         'ToolStripSeparator4
         '
         Me.ToolStripSeparator4.Name = "ToolStripSeparator4"
-        Me.ToolStripSeparator4.Size = New System.Drawing.Size(257, 6)
+        Me.ToolStripSeparator4.Size = New System.Drawing.Size(216, 6)
         '
         'OpenFileToolStripMenuItem
         '
         Me.OpenFileToolStripMenuItem.Enabled = False
         Me.OpenFileToolStripMenuItem.ForeColor = System.Drawing.Color.WhiteSmoke
         Me.OpenFileToolStripMenuItem.Name = "OpenFileToolStripMenuItem"
-        Me.OpenFileToolStripMenuItem.Size = New System.Drawing.Size(260, 22)
+        Me.OpenFileToolStripMenuItem.Size = New System.Drawing.Size(219, 22)
         Me.OpenFileToolStripMenuItem.Text = "Open file"
         '
         'OpenDirectoryToolStripMenuItem
@@ -201,28 +208,21 @@ Partial Class MetadataGenerator
         Me.OpenDirectoryToolStripMenuItem.Enabled = False
         Me.OpenDirectoryToolStripMenuItem.ForeColor = System.Drawing.Color.WhiteSmoke
         Me.OpenDirectoryToolStripMenuItem.Name = "OpenDirectoryToolStripMenuItem"
-        Me.OpenDirectoryToolStripMenuItem.Size = New System.Drawing.Size(260, 22)
+        Me.OpenDirectoryToolStripMenuItem.Size = New System.Drawing.Size(219, 22)
         Me.OpenDirectoryToolStripMenuItem.Text = "Open directory"
         '
         'ToolStripSeparator6
         '
         Me.ToolStripSeparator6.Name = "ToolStripSeparator6"
-        Me.ToolStripSeparator6.Size = New System.Drawing.Size(257, 6)
+        Me.ToolStripSeparator6.Size = New System.Drawing.Size(216, 6)
         '
         'AddAnimationNameToFileToolStripMenuItem
         '
         Me.AddAnimationNameToFileToolStripMenuItem.Enabled = False
         Me.AddAnimationNameToFileToolStripMenuItem.ForeColor = System.Drawing.Color.WhiteSmoke
         Me.AddAnimationNameToFileToolStripMenuItem.Name = "AddAnimationNameToFileToolStripMenuItem"
-        Me.AddAnimationNameToFileToolStripMenuItem.Size = New System.Drawing.Size(260, 22)
+        Me.AddAnimationNameToFileToolStripMenuItem.Size = New System.Drawing.Size(219, 22)
         Me.AddAnimationNameToFileToolStripMenuItem.Text = "Add animation name to file"
-        '
-        'ReloadLoopedAnimationKeywordsToolStripMenuItem
-        '
-        Me.ReloadLoopedAnimationKeywordsToolStripMenuItem.ForeColor = System.Drawing.Color.WhiteSmoke
-        Me.ReloadLoopedAnimationKeywordsToolStripMenuItem.Name = "ReloadLoopedAnimationKeywordsToolStripMenuItem"
-        Me.ReloadLoopedAnimationKeywordsToolStripMenuItem.Size = New System.Drawing.Size(260, 22)
-        Me.ReloadLoopedAnimationKeywordsToolStripMenuItem.Text = "Reload looped animation keywords"
         '
         'ContextMenuStrip_Log
         '
@@ -258,7 +258,7 @@ Partial Class MetadataGenerator
         Me.TreeView1.SelectedImageIndex = 0
         Me.TreeView1.Size = New System.Drawing.Size(328, 328)
         Me.TreeView1.TabIndex = 17
-        Me.ToolTip1.SetToolTip(Me.TreeView1, "Right-click for options." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Hint: You can drag drop a directory here.")
+        Me.ToolTip1.SetToolTip(Me.TreeView1, "Right-click for options." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "You can drag & drop a directory here.")
         '
         'ImageList1
         '
@@ -277,7 +277,7 @@ Partial Class MetadataGenerator
         Me.Panel_Main.ForeColor = System.Drawing.Color.White
         Me.Panel_Main.Location = New System.Drawing.Point(0, 0)
         Me.Panel_Main.Name = "Panel_Main"
-        Me.Panel_Main.Size = New System.Drawing.Size(765, 26)
+        Me.Panel_Main.Size = New System.Drawing.Size(753, 26)
         Me.Panel_Main.TabIndex = 78
         '
         'Panel_ControlBox
@@ -285,7 +285,7 @@ Partial Class MetadataGenerator
         Me.Panel_ControlBox.Controls.Add(Me.PictureBox_Close)
         Me.Panel_ControlBox.Controls.Add(Me.PictureBox_Minimize)
         Me.Panel_ControlBox.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Panel_ControlBox.Location = New System.Drawing.Point(713, 0)
+        Me.Panel_ControlBox.Location = New System.Drawing.Point(701, 0)
         Me.Panel_ControlBox.Name = "Panel_ControlBox"
         Me.Panel_ControlBox.Size = New System.Drawing.Size(52, 26)
         Me.Panel_ControlBox.TabIndex = 4
@@ -392,7 +392,7 @@ Partial Class MetadataGenerator
         Me.RectangleShape_Selected_Directory.Location = New System.Drawing.Point(8, 16)
         Me.RectangleShape_Selected_Directory.Name = "RectangleShape_Selected_Directory"
         Me.RectangleShape_Selected_Directory.SelectionColor = System.Drawing.Color.Transparent
-        Me.RectangleShape_Selected_Directory.Size = New System.Drawing.Size(536, 24)
+        Me.RectangleShape_Selected_Directory.Size = New System.Drawing.Size(480, 24)
         '
         'Label_Log
         '
@@ -456,24 +456,40 @@ Partial Class MetadataGenerator
         '
         'Panel_Selected_Directory_Controls
         '
+        Me.Panel_Selected_Directory_Controls.Controls.Add(Me.LinkLabel_Trello)
         Me.Panel_Selected_Directory_Controls.Controls.Add(Me.Button_Reload)
         Me.Panel_Selected_Directory_Controls.Controls.Add(Me.Button_Select_Directory)
         Me.Panel_Selected_Directory_Controls.Controls.Add(Me.Label_Selected_Directory)
         Me.Panel_Selected_Directory_Controls.Controls.Add(Me.TextBox_Selected_Directory)
         Me.Panel_Selected_Directory_Controls.Controls.Add(Me.ShapeContainer2)
-        Me.Panel_Selected_Directory_Controls.Location = New System.Drawing.Point(8, 32)
+        Me.Panel_Selected_Directory_Controls.Location = New System.Drawing.Point(0, 64)
         Me.Panel_Selected_Directory_Controls.Name = "Panel_Selected_Directory_Controls"
         Me.Panel_Selected_Directory_Controls.Size = New System.Drawing.Size(752, 48)
         Me.Panel_Selected_Directory_Controls.TabIndex = 85
+        '
+        'LinkLabel_Trello
+        '
+        Me.LinkLabel_Trello.BackColor = System.Drawing.Color.FromArgb(CType(CType(54, Byte), Integer), CType(CType(57, Byte), Integer), CType(CType(62, Byte), Integer))
+        Me.LinkLabel_Trello.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LinkLabel_Trello.LinkColor = System.Drawing.Color.DodgerBlue
+        Me.LinkLabel_Trello.Location = New System.Drawing.Point(696, 16)
+        Me.LinkLabel_Trello.Name = "LinkLabel_Trello"
+        Me.LinkLabel_Trello.Size = New System.Drawing.Size(50, 24)
+        Me.LinkLabel_Trello.TabIndex = 96
+        Me.LinkLabel_Trello.TabStop = True
+        Me.LinkLabel_Trello.Text = "Trello"
+        Me.LinkLabel_Trello.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.LinkLabel_Trello.VisitedLinkColor = System.Drawing.Color.DarkOrchid
         '
         'Button_Reload
         '
         Me.Button_Reload.BackColor = System.Drawing.Color.MediumSeaGreen
         Me.Button_Reload.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Button_Reload.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer))
         Me.Button_Reload.FlatAppearance.BorderSize = 0
         Me.Button_Reload.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button_Reload.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button_Reload.Location = New System.Drawing.Point(656, 16)
+        Me.Button_Reload.Location = New System.Drawing.Point(600, 16)
         Me.Button_Reload.Name = "Button_Reload"
         Me.Button_Reload.Size = New System.Drawing.Size(80, 24)
         Me.Button_Reload.TabIndex = 95
@@ -484,15 +500,16 @@ Partial Class MetadataGenerator
         '
         Me.Button_Select_Directory.BackColor = System.Drawing.Color.DodgerBlue
         Me.Button_Select_Directory.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Button_Select_Directory.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer))
         Me.Button_Select_Directory.FlatAppearance.BorderSize = 0
         Me.Button_Select_Directory.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button_Select_Directory.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button_Select_Directory.Location = New System.Drawing.Point(560, 16)
+        Me.Button_Select_Directory.Location = New System.Drawing.Point(504, 16)
         Me.Button_Select_Directory.Name = "Button_Select_Directory"
         Me.Button_Select_Directory.Size = New System.Drawing.Size(80, 24)
         Me.Button_Select_Directory.TabIndex = 3
         Me.Button_Select_Directory.Text = "..."
-        Me.ToolTip1.SetToolTip(Me.Button_Select_Directory, "Hint: You can drag drop a directory here.")
+        Me.ToolTip1.SetToolTip(Me.Button_Select_Directory, "You can drag & drop a directory here.")
         Me.Button_Select_Directory.UseVisualStyleBackColor = False
         '
         'ShapeContainer2
@@ -510,7 +527,7 @@ Partial Class MetadataGenerator
         Me.Panel_Log.Controls.Add(Me.RichTextBox_Log)
         Me.Panel_Log.Controls.Add(Me.Label_Log)
         Me.Panel_Log.Controls.Add(Me.ShapeContainer3)
-        Me.Panel_Log.Location = New System.Drawing.Point(8, 464)
+        Me.Panel_Log.Location = New System.Drawing.Point(0, 496)
         Me.Panel_Log.Name = "Panel_Log"
         Me.Panel_Log.Size = New System.Drawing.Size(752, 136)
         Me.Panel_Log.TabIndex = 86
@@ -547,7 +564,7 @@ Partial Class MetadataGenerator
         Me.Panel_Metadata_Files.Controls.Add(Me.Label_Metadata_Files)
         Me.Panel_Metadata_Files.Controls.Add(Me.TreeView1)
         Me.Panel_Metadata_Files.Controls.Add(Me.ShapeContainer4)
-        Me.Panel_Metadata_Files.Location = New System.Drawing.Point(8, 80)
+        Me.Panel_Metadata_Files.Location = New System.Drawing.Point(0, 112)
         Me.Panel_Metadata_Files.Name = "Panel_Metadata_Files"
         Me.Panel_Metadata_Files.Size = New System.Drawing.Size(360, 384)
         Me.Panel_Metadata_Files.TabIndex = 87
@@ -579,7 +596,7 @@ Partial Class MetadataGenerator
         Me.Panel_Selected_File.Controls.Add(Me.FastColoredTextBox_Selected_File)
         Me.Panel_Selected_File.Controls.Add(Me.Label_Selected_File)
         Me.Panel_Selected_File.Controls.Add(Me.ShapeContainer5)
-        Me.Panel_Selected_File.Location = New System.Drawing.Point(368, 352)
+        Me.Panel_Selected_File.Location = New System.Drawing.Point(360, 384)
         Me.Panel_Selected_File.Name = "Panel_Selected_File"
         Me.Panel_Selected_File.Size = New System.Drawing.Size(392, 112)
         Me.Panel_Selected_File.TabIndex = 88
@@ -658,7 +675,7 @@ Partial Class MetadataGenerator
         Me.Panel_Animation.Controls.Add(Me.PixelBox_Animation)
         Me.Panel_Animation.Controls.Add(Me.Label_Animation)
         Me.Panel_Animation.Controls.Add(Me.ShapeContainer6)
-        Me.Panel_Animation.Location = New System.Drawing.Point(368, 80)
+        Me.Panel_Animation.Location = New System.Drawing.Point(360, 112)
         Me.Panel_Animation.Name = "Panel_Animation"
         Me.Panel_Animation.Size = New System.Drawing.Size(264, 272)
         Me.Panel_Animation.TabIndex = 89
@@ -720,7 +737,7 @@ Partial Class MetadataGenerator
         Me.Panel_Controls.Controls.Add(Me.PictureBox_Clock)
         Me.Panel_Controls.Controls.Add(Me.NumericUpDown_FPS)
         Me.Panel_Controls.Controls.Add(Me.ShapeContainer1)
-        Me.Panel_Controls.Location = New System.Drawing.Point(632, 80)
+        Me.Panel_Controls.Location = New System.Drawing.Point(624, 112)
         Me.Panel_Controls.Name = "Panel_Controls"
         Me.Panel_Controls.Size = New System.Drawing.Size(128, 272)
         Me.Panel_Controls.TabIndex = 93
@@ -759,6 +776,7 @@ Partial Class MetadataGenerator
         '
         Me.Button_Save.BackColor = System.Drawing.Color.MediumSeaGreen
         Me.Button_Save.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Button_Save.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer))
         Me.Button_Save.FlatAppearance.BorderSize = 0
         Me.Button_Save.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button_Save.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -878,88 +896,109 @@ Partial Class MetadataGenerator
         Me.RectangleShape3.SelectionColor = System.Drawing.Color.Transparent
         Me.RectangleShape3.Size = New System.Drawing.Size(112, 248)
         '
-        'Button_LicenseMaker
-        '
-        Me.Button_LicenseMaker.BackColor = System.Drawing.Color.DodgerBlue
-        Me.Button_LicenseMaker.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.Button_LicenseMaker.FlatAppearance.BorderSize = 0
-        Me.Button_LicenseMaker.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button_LicenseMaker.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button_LicenseMaker.Location = New System.Drawing.Point(320, 608)
-        Me.Button_LicenseMaker.Name = "Button_LicenseMaker"
-        Me.Button_LicenseMaker.Size = New System.Drawing.Size(136, 24)
-        Me.Button_LicenseMaker.TabIndex = 95
-        Me.Button_LicenseMaker.Text = "License Maker"
-        Me.Button_LicenseMaker.UseVisualStyleBackColor = False
-        '
-        'Button_TagsMaker
-        '
-        Me.Button_TagsMaker.BackColor = System.Drawing.Color.DodgerBlue
-        Me.Button_TagsMaker.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.Button_TagsMaker.FlatAppearance.BorderSize = 0
-        Me.Button_TagsMaker.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button_TagsMaker.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button_TagsMaker.Location = New System.Drawing.Point(184, 608)
-        Me.Button_TagsMaker.Name = "Button_TagsMaker"
-        Me.Button_TagsMaker.Size = New System.Drawing.Size(128, 24)
-        Me.Button_TagsMaker.TabIndex = 94
-        Me.Button_TagsMaker.Text = "Tags Maker"
-        Me.Button_TagsMaker.UseVisualStyleBackColor = False
-        '
-        'Button_FileNameValidator
-        '
-        Me.Button_FileNameValidator.BackColor = System.Drawing.Color.DodgerBlue
-        Me.Button_FileNameValidator.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.Button_FileNameValidator.FlatAppearance.BorderSize = 0
-        Me.Button_FileNameValidator.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button_FileNameValidator.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button_FileNameValidator.Location = New System.Drawing.Point(16, 608)
-        Me.Button_FileNameValidator.Name = "Button_FileNameValidator"
-        Me.Button_FileNameValidator.Size = New System.Drawing.Size(160, 24)
-        Me.Button_FileNameValidator.TabIndex = 92
-        Me.Button_FileNameValidator.Text = "File Name Validator"
-        Me.Button_FileNameValidator.UseVisualStyleBackColor = False
-        '
-        'LinkLabel1
-        '
-        Me.LinkLabel1.AutoSize = True
-        Me.LinkLabel1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LinkLabel1.LinkColor = System.Drawing.Color.DodgerBlue
-        Me.LinkLabel1.Location = New System.Drawing.Point(488, 616)
-        Me.LinkLabel1.Name = "LinkLabel1"
-        Me.LinkLabel1.Size = New System.Drawing.Size(151, 16)
-        Me.LinkLabel1.TabIndex = 96
-        Me.LinkLabel1.TabStop = True
-        Me.LinkLabel1.Text = "GDevelop Assets Trello"
-        Me.LinkLabel1.VisitedLinkColor = System.Drawing.Color.DarkOrchid
-        '
         'ToolTip1
         '
         Me.ToolTip1.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info
-        Me.ToolTip1.ToolTipTitle = "Metadata Generator"
+        Me.ToolTip1.ToolTipTitle = "Hint"
         '
-        'Label1
+        'OpenFileDialog1
         '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(664, 624)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(92, 13)
-        Me.Label1.TabIndex = 97
-        Me.Label1.Text = "GDev AST v1.0.1"
+        Me.OpenFileDialog1.Filter = "Text files (*.txt)|*.txt"
+        '
+        'MenuStrip1
+        '
+        Me.MenuStrip1.BackColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer))
+        Me.MenuStrip1.ImageScalingSize = New System.Drawing.Size(24, 24)
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolsToolStripMenuItem})
+        Me.MenuStrip1.Location = New System.Drawing.Point(0, 26)
+        Me.MenuStrip1.Name = "MenuStrip1"
+        Me.MenuStrip1.Size = New System.Drawing.Size(753, 32)
+        Me.MenuStrip1.TabIndex = 99
+        '
+        'ToolsToolStripMenuItem
+        '
+        Me.ToolsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.TagsToolStripMenuItem, Me.LicenseToolStripMenuItem, Me.PackageToolStripMenuItem, Me.ClipboardAssetToolStripMenuItem, Me.FileNameValidatorToolStripMenuItem, Me.LoopedAnimationKeywordsToolStripMenuItem})
+        Me.ToolsToolStripMenuItem.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ToolsToolStripMenuItem.ForeColor = System.Drawing.Color.WhiteSmoke
+        Me.ToolsToolStripMenuItem.Image = Global.GDev_Asset_Store_Tool.My.Resources.Resources.Tools
+        Me.ToolsToolStripMenuItem.Name = "ToolsToolStripMenuItem"
+        Me.ToolsToolStripMenuItem.Size = New System.Drawing.Size(81, 28)
+        Me.ToolsToolStripMenuItem.Text = "Tools"
+        '
+        'TagsToolStripMenuItem
+        '
+        Me.TagsToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(CType(CType(54, Byte), Integer), CType(CType(57, Byte), Integer), CType(CType(62, Byte), Integer))
+        Me.TagsToolStripMenuItem.ForeColor = System.Drawing.Color.WhiteSmoke
+        Me.TagsToolStripMenuItem.Name = "TagsToolStripMenuItem"
+        Me.TagsToolStripMenuItem.Size = New System.Drawing.Size(280, 26)
+        Me.TagsToolStripMenuItem.Text = "Tags"
+        '
+        'LicenseToolStripMenuItem
+        '
+        Me.LicenseToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(CType(CType(54, Byte), Integer), CType(CType(57, Byte), Integer), CType(CType(62, Byte), Integer))
+        Me.LicenseToolStripMenuItem.ForeColor = System.Drawing.Color.WhiteSmoke
+        Me.LicenseToolStripMenuItem.Name = "LicenseToolStripMenuItem"
+        Me.LicenseToolStripMenuItem.Size = New System.Drawing.Size(280, 26)
+        Me.LicenseToolStripMenuItem.Text = "License"
+        '
+        'PackageToolStripMenuItem
+        '
+        Me.PackageToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(CType(CType(54, Byte), Integer), CType(CType(57, Byte), Integer), CType(CType(62, Byte), Integer))
+        Me.PackageToolStripMenuItem.ForeColor = System.Drawing.Color.WhiteSmoke
+        Me.PackageToolStripMenuItem.Name = "PackageToolStripMenuItem"
+        Me.PackageToolStripMenuItem.Size = New System.Drawing.Size(280, 26)
+        Me.PackageToolStripMenuItem.Text = "Package"
+        '
+        'ClipboardAssetToolStripMenuItem
+        '
+        Me.ClipboardAssetToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(CType(CType(54, Byte), Integer), CType(CType(57, Byte), Integer), CType(CType(62, Byte), Integer))
+        Me.ClipboardAssetToolStripMenuItem.ForeColor = System.Drawing.Color.WhiteSmoke
+        Me.ClipboardAssetToolStripMenuItem.Name = "ClipboardAssetToolStripMenuItem"
+        Me.ClipboardAssetToolStripMenuItem.Size = New System.Drawing.Size(280, 26)
+        Me.ClipboardAssetToolStripMenuItem.Text = "Clipboard Asset"
+        '
+        'FileNameValidatorToolStripMenuItem
+        '
+        Me.FileNameValidatorToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(CType(CType(54, Byte), Integer), CType(CType(57, Byte), Integer), CType(CType(62, Byte), Integer))
+        Me.FileNameValidatorToolStripMenuItem.ForeColor = System.Drawing.Color.WhiteSmoke
+        Me.FileNameValidatorToolStripMenuItem.Name = "FileNameValidatorToolStripMenuItem"
+        Me.FileNameValidatorToolStripMenuItem.Size = New System.Drawing.Size(280, 26)
+        Me.FileNameValidatorToolStripMenuItem.Text = "File Name Validator"
+        '
+        'LoopedAnimationKeywordsToolStripMenuItem
+        '
+        Me.LoopedAnimationKeywordsToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(CType(CType(54, Byte), Integer), CType(CType(57, Byte), Integer), CType(CType(62, Byte), Integer))
+        Me.LoopedAnimationKeywordsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ReloadToolStripMenuItem, Me.ImportToolStripMenuItem})
+        Me.LoopedAnimationKeywordsToolStripMenuItem.ForeColor = System.Drawing.Color.WhiteSmoke
+        Me.LoopedAnimationKeywordsToolStripMenuItem.Name = "LoopedAnimationKeywordsToolStripMenuItem"
+        Me.LoopedAnimationKeywordsToolStripMenuItem.Size = New System.Drawing.Size(280, 26)
+        Me.LoopedAnimationKeywordsToolStripMenuItem.Text = "Looped Animation Keywords"
+        '
+        'ReloadToolStripMenuItem
+        '
+        Me.ReloadToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(CType(CType(54, Byte), Integer), CType(CType(57, Byte), Integer), CType(CType(62, Byte), Integer))
+        Me.ReloadToolStripMenuItem.ForeColor = System.Drawing.Color.WhiteSmoke
+        Me.ReloadToolStripMenuItem.Name = "ReloadToolStripMenuItem"
+        Me.ReloadToolStripMenuItem.Size = New System.Drawing.Size(128, 26)
+        Me.ReloadToolStripMenuItem.Text = "Reload"
+        '
+        'ImportToolStripMenuItem
+        '
+        Me.ImportToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(CType(CType(54, Byte), Integer), CType(CType(57, Byte), Integer), CType(CType(62, Byte), Integer))
+        Me.ImportToolStripMenuItem.ForeColor = System.Drawing.Color.WhiteSmoke
+        Me.ImportToolStripMenuItem.Name = "ImportToolStripMenuItem"
+        Me.ImportToolStripMenuItem.Size = New System.Drawing.Size(128, 26)
+        Me.ImportToolStripMenuItem.Text = "Import"
         '
         'MetadataGenerator
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(54, Byte), Integer), CType(CType(57, Byte), Integer), CType(CType(62, Byte), Integer))
-        Me.ClientSize = New System.Drawing.Size(765, 644)
-        Me.Controls.Add(Me.Label1)
-        Me.Controls.Add(Me.LinkLabel1)
-        Me.Controls.Add(Me.Button_LicenseMaker)
-        Me.Controls.Add(Me.Button_TagsMaker)
+        Me.ClientSize = New System.Drawing.Size(753, 632)
+        Me.Controls.Add(Me.MenuStrip1)
         Me.Controls.Add(Me.Panel_Selected_File)
         Me.Controls.Add(Me.Panel_Controls)
-        Me.Controls.Add(Me.Button_FileNameValidator)
         Me.Controls.Add(Me.Panel_Animation)
         Me.Controls.Add(Me.Panel_Metadata_Files)
         Me.Controls.Add(Me.Panel_Log)
@@ -997,6 +1036,8 @@ Partial Class MetadataGenerator
         CType(Me.NumericUpDown_TimeBetweenFrames, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox_Clock, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.NumericUpDown_FPS, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.MenuStrip1.ResumeLayout(False)
+        Me.MenuStrip1.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -1045,7 +1086,6 @@ Partial Class MetadataGenerator
     Friend WithEvents ShapeContainer6 As ShapeContainer
     Friend WithEvents FastColoredTextBox_Selected_File As FastColoredTextBoxNS.FastColoredTextBox
     Friend WithEvents RichTextBox_Log As RichTextBox
-    Friend WithEvents Button_FileNameValidator As Button
     Friend WithEvents Label_ZoomLvl As Label
     Friend WithEvents ContextMenuStrip_FastColoredTextBox_Selected_File As ContextMenuStrip
     Friend WithEvents SaveToolStripMenuItem As ToolStripMenuItem
@@ -1066,15 +1106,22 @@ Partial Class MetadataGenerator
     Friend WithEvents RegenerateMetadataFilesToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents Label_Frames As Label
     Friend WithEvents ToolStripSeparator5 As ToolStripSeparator
-    Friend WithEvents Button_TagsMaker As Button
-    Friend WithEvents Button_LicenseMaker As Button
     Friend WithEvents ImageList1 As ImageList
-    Friend WithEvents LinkLabel1 As LinkLabel
+    Friend WithEvents LinkLabel_Trello As LinkLabel
     Friend WithEvents PixelBox_Animation As PixelBox
     Friend WithEvents ToolTip1 As ToolTip
     Friend WithEvents AddAnimationNameToFileToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents Label1 As Label
     Friend WithEvents ToolStripSeparator6 As ToolStripSeparator
-    Friend WithEvents ReloadLoopedAnimationKeywordsToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents Button_Reload As Button
+    Friend WithEvents OpenFileDialog1 As OpenFileDialog
+    Friend WithEvents MenuStrip1 As MenuStrip
+    Friend WithEvents ToolsToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents TagsToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents LicenseToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents PackageToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents FileNameValidatorToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents LoopedAnimationKeywordsToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ReloadToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ImportToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ClipboardAssetToolStripMenuItem As ToolStripMenuItem
 End Class

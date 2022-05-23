@@ -4,8 +4,6 @@ Public Class TagsMaker
     ReadOnly SpecialTags As String() = {"top-down", "side view", "isometric", "interface"}
     'TagsMaker - Load
     Private Sub TagsMaker_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        ListBox_TAGS.AllowDrop = True
-        Button_Open.AllowDrop = True
         ReadFileAssetFilters()
         SetFileAgeLable()
     End Sub
@@ -31,8 +29,8 @@ Public Class TagsMaker
             ListBox_TAGS.Items.RemoveAt(ListBox_TAGS.SelectedIndex)
         End If
     End Sub
-    'ListBox_TAGS - DragDrop
-    Private Sub ListBox_TAGS_DragDrop(sender As Object, e As DragEventArgs) Handles ListBox_TAGS.DragDrop
+    'Panel_TAGSmd - DragDrop
+    Private Sub Panel_TAGSmd_DragDrop(sender As Object, e As DragEventArgs) Handles Panel_TAGSmd.DragDrop
         Dim files() As String = CType(e.Data.GetData(DataFormats.FileDrop), String())
         If files.Length <> 0 Then
             Try
@@ -48,8 +46,8 @@ Public Class TagsMaker
             End Try
         End If
     End Sub
-    'ListBox_TAGS - DragEnter
-    Private Sub ListBox_TAGS_DragEnter(sender As Object, e As DragEventArgs) Handles ListBox_TAGS.DragEnter
+    'Panel_TAGSmd - DragEnter
+    Private Sub Panel_TAGSmd_DragEnter(sender As Object, e As DragEventArgs) Handles Panel_TAGSmd.DragEnter
         Dim files() As String = CType(e.Data.GetData(DataFormats.FileDrop), String())
         If e.Data.GetDataPresent(DataFormats.FileDrop) And Path.GetExtension(files(0)) = ".md" Then
             e.Effect = DragDropEffects.Copy
@@ -57,32 +55,7 @@ Public Class TagsMaker
             e.Effect = DragDropEffects.None
         End If
     End Sub
-    'Button_Open - DragDrop
-    Private Sub Button_Open_DragDrop(sender As Object, e As DragEventArgs) Handles Button_Open.DragDrop
-        Dim files() As String = CType(e.Data.GetData(DataFormats.FileDrop), String())
-        If files.Length <> 0 Then
-            Try
-                ListBox_TAGS.Items.Clear()
-                SaveFileDialog1.InitialDirectory = Path.GetDirectoryName(files(0))
-                Dim TagsFileStr As String = File.ReadAllText(files(0))
-                Dim Tags As String() = TagsFileStr.Split(New Char() {","c})
-                For Each Tag As String In Tags
-                    ListBox_TAGS.Items.Add(Tag)
-                Next
-            Catch ex As Exception
-                MsgBox("Problem opening file.", MsgBoxStyle.Critical)
-            End Try
-        End If
-    End Sub
-    'Button_Open - DragEnter
-    Private Sub Button_Open_DragEnter(sender As Object, e As DragEventArgs) Handles Button_Open.DragEnter
-        Dim files() As String = CType(e.Data.GetData(DataFormats.FileDrop), String())
-        If e.Data.GetDataPresent(DataFormats.FileDrop) And Path.GetExtension(files(0)) = ".md" Then
-            e.Effect = DragDropEffects.Copy
-        Else
-            e.Effect = DragDropEffects.None
-        End If
-    End Sub
+
     'TextBox_NewTag - KeyPress
     Private Sub TextBox_NewTag_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TextBox_NewTag.KeyPress
         If e.KeyChar = ChrW(Keys.Enter) And TextBox_NewTag.Text.Length > 0 Then

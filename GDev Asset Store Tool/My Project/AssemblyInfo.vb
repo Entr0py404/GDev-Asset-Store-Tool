@@ -10,7 +10,7 @@ Imports System.Runtime.InteropServices
 ' Review the values of the assembly attributes
 
 <Assembly: AssemblyTitle("GDev Asset Store Tool")>
-<Assembly: AssemblyDescription("GDev Asset Store Tool")>
+<Assembly: AssemblyDescription("")>
 <Assembly: AssemblyCompany("Entropy Software")>
 <Assembly: AssemblyProduct("GDev Asset Store Tool")>
 <Assembly: AssemblyCopyright("MIT")>
@@ -33,5 +33,5 @@ Imports System.Runtime.InteropServices
 ' <Assembly: AssemblyVersion("1.0.*")>
 
 <Assembly: AssemblyVersion("1.0.0.0")>
-<Assembly: AssemblyFileVersion("1.0.1.0")>
+<Assembly: AssemblyFileVersion("1.1.0.0")>
 <Assembly: NeutralResourcesLanguage("")>

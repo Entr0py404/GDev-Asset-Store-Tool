@@ -1,6 +1,4 @@
-﻿Imports System.ComponentModel
-Imports System.Drawing.Drawing2D
-Public Class MetadataGenerator
+﻿Public Class MetadataGenerator
     Dim AnimationFiles As New List(Of String)()
     Dim AnimLoopCounter As Integer = -1
     Dim ZoomCounter As Integer = 100
@@ -30,6 +28,11 @@ Public Class MetadataGenerator
             'Generate needed file
             File.WriteAllLines(Application.StartupPath & "\Looped Animation Keywords.txt", LoopedAnimationKeywords)
         End If
+
+        MenuStrip1.Renderer = New ToolStripProfessionalRenderer(New ColorTable())
+        ContextMenuStrip_FastColoredTextBox_Selected_File.Renderer = New ToolStripProfessionalRenderer(New ColorTable())
+        ContextMenuStrip_Log.Renderer = New ToolStripProfessionalRenderer(New ColorTable())
+        ContextMenuStrip_TreeView.Renderer = New ToolStripProfessionalRenderer(New ColorTable())
     End Sub
     'TextBox_Selected_Directory - KeyPress
     Private Sub TextBox_Selected_Directory_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TextBox_Selected_Directory.KeyPress
@@ -335,8 +338,8 @@ Public Class MetadataGenerator
         Try
             Dim selectedItem_filepath As String = FolderBrowserDialog_Selected_Directory.SelectedPath + "\" + TreeView1.SelectedNode.FullPath
             Dim tempdirstr As String = FolderBrowserDialog_Selected_Directory.SelectedPath + "\" + Path.GetDirectoryName(TreeView1.SelectedNode.FullPath)
-
-            If e.Node.Level > 0 And e.Node.Text.EndsWith(".json") Then
+            Console.WriteLine(e.Node.Level)
+            If e.Node.Text.EndsWith(".json") Then 'e.Node.Level > 0 And
                 If File.Exists(selectedItem_filepath) Then
 
                     Label_MetadataFileToGen.Text = ""
@@ -712,7 +715,7 @@ Public Class MetadataGenerator
             End If
         End If
     End Sub
-    'AddAnimationNameToFile - ToolStripMenuItem - Click
+    'AddAnimationNameToFile - (ToolStripMenuItem) - Click
     Private Sub AddAnimationNameToFileToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AddAnimationNameToFileToolStripMenuItem.Click
         If File.Exists(Application.StartupPath & "\Looped Animation Keywords.txt") Then
             LoopedAnimationKeywords = File.ReadAllLines(Application.StartupPath & "\Looped Animation Keywords.txt").ToArray
@@ -736,18 +739,6 @@ Public Class MetadataGenerator
             Else
                 MsgBox("Animation name: " & animationName & ", is already in file.", MsgBoxStyle.Information)
             End If
-        Else
-            MsgBox("File not found: Looped Animation Keywords.txt" & vbNewLine & "This file will be regenerated from a internal list.", MsgBoxStyle.Information)
-            'Generate needed file
-            File.WriteAllLines(Application.StartupPath & "\Looped Animation Keywords.txt", LoopedAnimationKeywords)
-        End If
-    End Sub
-    'ReloadLoopedAnimationKeywordsToolStripMenuItem - Click
-    Private Sub ReloadLoopedAnimationKeywordsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ReloadLoopedAnimationKeywordsToolStripMenuItem.Click
-        If File.Exists(Application.StartupPath & "\Looped Animation Keywords.txt") Then
-            LoopedAnimationKeywords = File.ReadAllLines(Application.StartupPath & "\Looped Animation Keywords.txt").ToArray
-
-            AppendToLog("Looped animation keywords reloaded", Color.MediumSpringGreen, True)
         Else
             MsgBox("File not found: Looped Animation Keywords.txt" & vbNewLine & "This file will be regenerated from a internal list.", MsgBoxStyle.Information)
             'Generate needed file
@@ -779,6 +770,21 @@ Public Class MetadataGenerator
                 node.Nodes.Add(" ")
                 node.EndEdit(False)
                 node.TreeView.LabelEdit = False
+            Next
+
+            For Each file As String In Directory.GetFiles(folderPath.FullName, "*.json", SearchOption.TopDirectoryOnly) 'path.GetFiles()
+                'courentNode.Nodes.Add(Path.GetFileName(file)).ImageIndex = 1
+                'courentNode.Nodes.Item(i).ForeColor = Color.PaleGoldenrod
+                Dim node2 As TreeNode = TreeView1.Nodes.Add(Path.GetFileName(file))
+
+                node2.TreeView.LabelEdit = True
+                node2.BeginEdit()
+                node2.ImageIndex = 1
+                'node2.NodeFont = Font_MSS
+                node2.ForeColor = Color.PaleGoldenrod
+                'node2.Nodes.Add(" ")
+                node2.EndEdit(False)
+                node2.TreeView.LabelEdit = False
             Next
         Catch ex As Exception
             MsgBox(ex.Message, MsgBoxStyle.Critical)
@@ -967,24 +973,67 @@ Public Class MetadataGenerator
         End If
         Label_MetadataFileToGen.Text = metadataitems.Count.ToString & " Metadata files can be generated."
     End Sub
-    'Button_FileNameValidator - Click
-    Private Sub Button_FileNameValidator_Click(sender As Object, e As EventArgs) Handles Button_FileNameValidator.Click
-        FileNameValidator.Show()
-        FileNameValidator.BringToFront()
-    End Sub
-    'Button_TagsMaker - Click
-    Private Sub Button_TagsMaker_Click(sender As Object, e As EventArgs) Handles Button_TagsMaker.Click
+    'Tags (ToolStripMenuItem) - Click
+    Private Sub TagsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TagsToolStripMenuItem.Click
         TagsMaker.Show()
         TagsMaker.BringToFront()
     End Sub
-    'Button_LicenseMaker - Click
-    Private Sub Button_LicenseMaker_Click(sender As Object, e As EventArgs) Handles Button_LicenseMaker.Click
+    'License (ToolStripMenuItem) - Click
+    Private Sub LicenseToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LicenseToolStripMenuItem.Click
         LicenseMaker.Show()
         LicenseMaker.BringToFront()
     End Sub
+    'Package (ToolStripMenuItem) - Click
+    Private Sub PackageToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PackageToolStripMenuItem.Click
+        PackageMaker.Show()
+        PackageMaker.BringToFront()
+    End Sub
+    'ClipboardAsset (ToolStripMenuItem) - Click
+    Private Sub ClipboardAssetToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ClipboardAssetToolStripMenuItem.Click
+        ClipboardAsset.Show()
+        ClipboardAsset.BringToFront()
+    End Sub
+    'FileNameValidator (ToolStripMenuItem) - Click
+    Private Sub FileNameValidatorToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles FileNameValidatorToolStripMenuItem.Click
+        FileNameValidator.Show()
+        FileNameValidator.BringToFront()
+    End Sub
+    'Reload (ToolStripMenuItem) - Click
+    Private Sub ReloadToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ReloadToolStripMenuItem.Click
+        If File.Exists(Application.StartupPath & "\Looped Animation Keywords.txt") Then
+            LoopedAnimationKeywords = File.ReadAllLines(Application.StartupPath & "\Looped Animation Keywords.txt").ToArray
+            AppendToLog("Looped animation keywords reloaded", Color.MediumSpringGreen, True)
+        Else
+            MsgBox("File not found: Looped Animation Keywords.txt" & vbNewLine & "This file will be regenerated from a internal list.", MsgBoxStyle.Information)
+            'Generate needed file
+            File.WriteAllLines(Application.StartupPath & "\Looped Animation Keywords.txt", LoopedAnimationKeywords)
+        End If
+    End Sub
+    'Import (ToolStripMenuItem) - Click
+    Private Sub ImportToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ImportToolStripMenuItem.Click
+        If OpenFileDialog1.ShowDialog = DialogResult.OK Then
+            Dim Readfile As String() = File.ReadAllLines(OpenFileDialog1.FileName)
+            Dim Oldfile As String() = File.ReadAllLines(Application.StartupPath & "\Looped Animation Keywords.txt")
+            Dim NewKeywordsFromFile As New ArrayList
+
+            For Each Keyword As String In Readfile
+                If Not Oldfile.Contains(Keyword) Then
+                    NewKeywordsFromFile.Add(Keyword)
+                End If
+            Next
+
+            Dim sw As StreamWriter = My.Computer.FileSystem.OpenTextFileWriter(Application.StartupPath & "\Looped Animation Keywords.txt", True)
+            For Each line As String In NewKeywordsFromFile
+                sw.WriteLine(line)
+            Next
+            sw.Close()
+
+            MsgBox("Added " & NewKeywordsFromFile.Count & " Keywords.", MsgBoxStyle.Information)
+        End If
+    End Sub
     'LinkLabel1 - LinkClicked
-    Private Sub LinkLabel1_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LinkLabel1.LinkClicked
-        LinkLabel1.LinkVisited = True
+    Private Sub LinkLabel1_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LinkLabel_Trello.LinkClicked
+        LinkLabel_Trello.LinkVisited = True
         Process.Start("https://trello.com/b/xoOCKFOf/gdevelop-assets")
     End Sub
     '
@@ -1035,33 +1084,5 @@ Public Class MetadataGenerator
     Private Sub Main_Activated(sender As Object, e As EventArgs) Handles Me.Activated
         PictureBox_Close.Image = My.Resources.Close_Red
         Panel_Main.BackColor = Color.Black
-    End Sub
-End Class
-
-Public Class PixelBox
-    Inherits PictureBox
-
-    <Category("Behavior")>
-    <DefaultValue(InterpolationMode.NearestNeighbor)>
-    Public Property InterpolationMode As InterpolationMode = InterpolationMode.NearestNeighbor
-
-    <Category("Behavior")>
-    <DefaultValue(PixelOffsetMode.Default)>
-    Public Property PixelOffsetMode As PixelOffsetMode = PixelOffsetMode.Default
-
-    <Category("Behavior")>
-    <DefaultValue(SmoothingMode.Default)>
-    Public Property SmoothingMode As SmoothingMode = SmoothingMode.Default
-
-    <Category("Behavior")>
-    <DefaultValue(CompositingQuality.Default)>
-    Public Property CompositingQuality As CompositingQuality = CompositingQuality.Default
-
-    Protected Overrides Sub OnPaint(e As PaintEventArgs)
-        e.Graphics.InterpolationMode = Me.InterpolationMode
-        e.Graphics.PixelOffsetMode = Me.PixelOffsetMode
-        e.Graphics.SmoothingMode = Me.SmoothingMode
-        e.Graphics.CompositingQuality = Me.CompositingQuality
-        MyBase.OnPaint(e)
     End Sub
 End Class

@@ -119,6 +119,28 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationEvents.vb" />
+    <Compile Include="MenuStripColors.vb" />
+    <Compile Include="PixelBox.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ClipboardAsset.Designer.vb">
+      <DependentUpon>ClipboardAsset.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ClipboardAsset.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.vb">
+      <DependentUpon>Form1.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form1.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PackageMaker.Designer.vb">
+      <DependentUpon>PackageMaker.vb</DependentUpon>
+    </Compile>
+    <Compile Include="PackageMaker.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="MetadataGenerator.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -162,6 +184,15 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="ClipboardAsset.resx">
+      <DependentUpon>ClipboardAsset.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PackageMaker.resx">
+      <DependentUpon>PackageMaker.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MetadataGenerator.resx">
       <DependentUpon>MetadataGenerator.vb</DependentUpon>
       <SubType>Designer</SubType>
