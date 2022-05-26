@@ -1,5 +1,4 @@
-﻿
-Public Class TagsMaker
+﻿Public Class TagsMaker
     Dim TAGS_StringBuilder As New StringBuilder
     ReadOnly SpecialTags As String() = {"top-down", "side view", "isometric", "interface"}
     'TagsMaker - Load

@@ -39,11 +39,11 @@ Partial Class LicenseMaker
         Me.Label_License = New System.Windows.Forms.Label()
         Me.Label_Artist = New System.Windows.Forms.Label()
         Me.Label_ArtistLink = New System.Windows.Forms.Label()
-        Me.SaveFileDialog1 = New System.Windows.Forms.SaveFileDialog()
+        Me.SaveFileDialog_License = New System.Windows.Forms.SaveFileDialog()
         Me.Button_Save = New System.Windows.Forms.Button()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
         Me.Button_Open = New System.Windows.Forms.Button()
-        Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
+        Me.OpenFileDialog_License = New System.Windows.Forms.OpenFileDialog()
         Me.LinkLabel_Wiki_Info = New System.Windows.Forms.LinkLabel()
         Me.Panel_Main.SuspendLayout()
         Me.Panel_ControlBox.SuspendLayout()
@@ -175,7 +175,6 @@ Partial Class LicenseMaker
         '
         Me.ComboBox_License.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(49, Byte), Integer), CType(CType(54, Byte), Integer))
         Me.ComboBox_License.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.ComboBox_License.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.ComboBox_License.ForeColor = System.Drawing.Color.WhiteSmoke
         Me.ComboBox_License.FormattingEnabled = True
         Me.ComboBox_License.Items.AddRange(New Object() {"CC0", "CC BY 3.0", "CC BY 4.0", "CC BY-SA 3.0", "CC BY-SA 4.0"})
@@ -214,10 +213,10 @@ Partial Class LicenseMaker
         Me.Label_ArtistLink.TabIndex = 103
         Me.Label_ArtistLink.Text = "Artist Link"
         '
-        'SaveFileDialog1
+        'SaveFileDialog_License
         '
-        Me.SaveFileDialog1.FileName = "license.txt"
-        Me.SaveFileDialog1.Filter = "Text files (*.txt)|*.txt"
+        Me.SaveFileDialog_License.FileName = "license.txt"
+        Me.SaveFileDialog_License.Filter = "Text files (*.txt)|*.txt"
         '
         'Button_Save
         '
@@ -254,9 +253,9 @@ Partial Class LicenseMaker
         Me.ToolTip1.SetToolTip(Me.Button_Open, "You can drag & drop a license file here.")
         Me.Button_Open.UseVisualStyleBackColor = False
         '
-        'OpenFileDialog1
+        'OpenFileDialog_License
         '
-        Me.OpenFileDialog1.Filter = "Text files (*.txt)|*.txt"
+        Me.OpenFileDialog_License.Filter = "Text files (*.txt)|*.txt"
         '
         'LinkLabel_Wiki_Info
         '
@@ -297,7 +296,7 @@ Partial Class LicenseMaker
         Me.Name = "LicenseMaker"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "License Maker"
-        Me.ToolTip1.SetToolTip(Me, "Hint: You can drag & drop a license file here.")
+        Me.ToolTip1.SetToolTip(Me, "You can drag & drop a license file here.")
         Me.Panel_Main.ResumeLayout(False)
         Me.Panel_ControlBox.ResumeLayout(False)
         CType(Me.PictureBox_Close, System.ComponentModel.ISupportInitialize).EndInit()
@@ -324,9 +323,9 @@ Partial Class LicenseMaker
     Friend WithEvents Label_Artist As Label
     Friend WithEvents Label_ArtistLink As Label
     Friend WithEvents Button_Save As Button
-    Friend WithEvents SaveFileDialog1 As SaveFileDialog
+    Friend WithEvents SaveFileDialog_License As SaveFileDialog
     Friend WithEvents ToolTip1 As ToolTip
     Friend WithEvents Button_Open As Button
-    Friend WithEvents OpenFileDialog1 As OpenFileDialog
+    Friend WithEvents OpenFileDialog_License As OpenFileDialog
     Friend WithEvents LinkLabel_Wiki_Info As LinkLabel
 End Class

@@ -51,6 +51,15 @@ Partial Class ClipboardAsset
         Me.ShapeContainer1 = New Microsoft.VisualBasic.PowerPacks.ShapeContainer()
         Me.RectangleShape1 = New Microsoft.VisualBasic.PowerPacks.RectangleShape()
         Me.Button_GenerateAsset = New System.Windows.Forms.Button()
+        Me.Panel_PreviewImage = New System.Windows.Forms.Panel()
+        Me.Label_Image = New System.Windows.Forms.Label()
+        Me.PixelBox_PreviewImage = New GDev_Asset_Store_Tool.PixelBox()
+        Me.ContextMenuStrip_PreviewImage = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.SaveToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ShapeContainer3 = New Microsoft.VisualBasic.PowerPacks.ShapeContainer()
+        Me.RectangleShape_Image = New Microsoft.VisualBasic.PowerPacks.RectangleShape()
+        Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
+        Me.SaveFileDialog_PreviewImage = New System.Windows.Forms.SaveFileDialog()
         Me.Panel_Main.SuspendLayout()
         Me.Panel_ControlBox.SuspendLayout()
         CType(Me.PictureBox_Close, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -60,6 +69,9 @@ Partial Class ClipboardAsset
         CType(Me.FastColoredTextBox_AssetJson, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel_SelectedFont.SuspendLayout()
         Me.Panel1.SuspendLayout()
+        Me.Panel_PreviewImage.SuspendLayout()
+        CType(Me.PixelBox_PreviewImage, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.ContextMenuStrip_PreviewImage.SuspendLayout()
         Me.SuspendLayout()
         '
         'Panel_Main
@@ -137,7 +149,7 @@ Partial Class ClipboardAsset
         Me.Button_Save.FlatAppearance.BorderSize = 0
         Me.Button_Save.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button_Save.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button_Save.Location = New System.Drawing.Point(352, 456)
+        Me.Button_Save.Location = New System.Drawing.Point(352, 496)
         Me.Button_Save.Name = "Button_Save"
         Me.Button_Save.Size = New System.Drawing.Size(104, 24)
         Me.Button_Save.TabIndex = 105
@@ -174,9 +186,9 @@ Partial Class ClipboardAsset
         Me.Button_PasteObject.FlatAppearance.BorderSize = 0
         Me.Button_PasteObject.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button_PasteObject.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button_PasteObject.Location = New System.Drawing.Point(256, 48)
+        Me.Button_PasteObject.Location = New System.Drawing.Point(8, 120)
         Me.Button_PasteObject.Name = "Button_PasteObject"
-        Me.Button_PasteObject.Size = New System.Drawing.Size(200, 24)
+        Me.Button_PasteObject.Size = New System.Drawing.Size(224, 24)
         Me.Button_PasteObject.TabIndex = 109
         Me.Button_PasteObject.Text = "Paste Object From GDevelop"
         Me.Button_PasteObject.UseVisualStyleBackColor = False
@@ -186,7 +198,7 @@ Partial Class ClipboardAsset
         Me.Panel2.Controls.Add(Me.FastColoredTextBox_AssetJson)
         Me.Panel2.Controls.Add(Me.Label_assetjson)
         Me.Panel2.Controls.Add(Me.ShapeContainer5)
-        Me.Panel2.Location = New System.Drawing.Point(0, 200)
+        Me.Panel2.Location = New System.Drawing.Point(0, 232)
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(464, 256)
         Me.Panel2.TabIndex = 110
@@ -203,6 +215,7 @@ Partial Class ClipboardAsset
         Me.FastColoredTextBox_AssetJson.CommentPrefix = "'"
         Me.FastColoredTextBox_AssetJson.Cursor = System.Windows.Forms.Cursors.IBeam
         Me.FastColoredTextBox_AssetJson.DisabledColor = System.Drawing.Color.FromArgb(CType(CType(100, Byte), Integer), CType(CType(180, Byte), Integer), CType(CType(180, Byte), Integer), CType(CType(180, Byte), Integer))
+        Me.FastColoredTextBox_AssetJson.Font = New System.Drawing.Font("Courier New", 9.75!)
         Me.FastColoredTextBox_AssetJson.ForeColor = System.Drawing.Color.Black
         Me.FastColoredTextBox_AssetJson.IndentBackColor = System.Drawing.Color.Black
         Me.FastColoredTextBox_AssetJson.IsReplaceMode = False
@@ -303,7 +316,7 @@ Partial Class ClipboardAsset
         Me.ListBox_Objects.FormattingEnabled = True
         Me.ListBox_Objects.Location = New System.Drawing.Point(16, 24)
         Me.ListBox_Objects.Name = "ListBox_Objects"
-        Me.ListBox_Objects.Size = New System.Drawing.Size(224, 78)
+        Me.ListBox_Objects.Size = New System.Drawing.Size(208, 78)
         Me.ListBox_Objects.TabIndex = 114
         '
         'Panel1
@@ -314,7 +327,7 @@ Partial Class ClipboardAsset
         Me.Panel1.Controls.Add(Me.ShapeContainer1)
         Me.Panel1.Location = New System.Drawing.Point(0, 80)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(464, 120)
+        Me.Panel1.Size = New System.Drawing.Size(240, 152)
         Me.Panel1.TabIndex = 115
         '
         'Label1
@@ -335,7 +348,7 @@ Partial Class ClipboardAsset
         Me.ShapeContainer1.Margin = New System.Windows.Forms.Padding(0)
         Me.ShapeContainer1.Name = "ShapeContainer1"
         Me.ShapeContainer1.Shapes.AddRange(New Microsoft.VisualBasic.PowerPacks.Shape() {Me.RectangleShape1})
-        Me.ShapeContainer1.Size = New System.Drawing.Size(464, 120)
+        Me.ShapeContainer1.Size = New System.Drawing.Size(240, 152)
         Me.ShapeContainer1.TabIndex = 116
         Me.ShapeContainer1.TabStop = False
         '
@@ -350,7 +363,7 @@ Partial Class ClipboardAsset
         Me.RectangleShape1.Location = New System.Drawing.Point(8, 16)
         Me.RectangleShape1.Name = "RectangleShape1"
         Me.RectangleShape1.SelectionColor = System.Drawing.Color.Transparent
-        Me.RectangleShape1.Size = New System.Drawing.Size(240, 96)
+        Me.RectangleShape1.Size = New System.Drawing.Size(224, 96)
         '
         'Button_GenerateAsset
         '
@@ -359,19 +372,101 @@ Partial Class ClipboardAsset
         Me.Button_GenerateAsset.FlatAppearance.BorderSize = 0
         Me.Button_GenerateAsset.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button_GenerateAsset.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button_GenerateAsset.Location = New System.Drawing.Point(8, 456)
+        Me.Button_GenerateAsset.Location = New System.Drawing.Point(8, 496)
         Me.Button_GenerateAsset.Name = "Button_GenerateAsset"
         Me.Button_GenerateAsset.Size = New System.Drawing.Size(144, 24)
         Me.Button_GenerateAsset.TabIndex = 116
         Me.Button_GenerateAsset.Text = "Generate Asset"
         Me.Button_GenerateAsset.UseVisualStyleBackColor = False
         '
+        'Panel_PreviewImage
+        '
+        Me.Panel_PreviewImage.AllowDrop = True
+        Me.Panel_PreviewImage.Controls.Add(Me.Label_Image)
+        Me.Panel_PreviewImage.Controls.Add(Me.PixelBox_PreviewImage)
+        Me.Panel_PreviewImage.Controls.Add(Me.ShapeContainer3)
+        Me.Panel_PreviewImage.Location = New System.Drawing.Point(240, 80)
+        Me.Panel_PreviewImage.Name = "Panel_PreviewImage"
+        Me.Panel_PreviewImage.Padding = New System.Windows.Forms.Padding(0, 8, 0, 0)
+        Me.Panel_PreviewImage.Size = New System.Drawing.Size(224, 152)
+        Me.Panel_PreviewImage.TabIndex = 117
+        '
+        'Label_Image
+        '
+        Me.Label_Image.AutoSize = True
+        Me.Label_Image.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold)
+        Me.Label_Image.Location = New System.Drawing.Point(0, 0)
+        Me.Label_Image.Name = "Label_Image"
+        Me.Label_Image.Padding = New System.Windows.Forms.Padding(8, 0, 0, 0)
+        Me.Label_Image.Size = New System.Drawing.Size(98, 13)
+        Me.Label_Image.TabIndex = 103
+        Me.Label_Image.Text = "Preview Image"
+        '
+        'PixelBox_PreviewImage
+        '
+        Me.PixelBox_PreviewImage.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(49, Byte), Integer), CType(CType(54, Byte), Integer))
+        Me.PixelBox_PreviewImage.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality
+        Me.PixelBox_PreviewImage.ContextMenuStrip = Me.ContextMenuStrip_PreviewImage
+        Me.PixelBox_PreviewImage.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.[Default]
+        Me.PixelBox_PreviewImage.Location = New System.Drawing.Point(16, 24)
+        Me.PixelBox_PreviewImage.Name = "PixelBox_PreviewImage"
+        Me.PixelBox_PreviewImage.Size = New System.Drawing.Size(192, 108)
+        Me.PixelBox_PreviewImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.PixelBox_PreviewImage.TabIndex = 103
+        Me.PixelBox_PreviewImage.TabStop = False
+        Me.ToolTip1.SetToolTip(Me.PixelBox_PreviewImage, "Right-click for options." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "You can drag & drop a image here." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Saved image will be " &
+        "scaled to a 16:9 aspect ratio.")
+        '
+        'ContextMenuStrip_PreviewImage
+        '
+        Me.ContextMenuStrip_PreviewImage.BackColor = System.Drawing.Color.FromArgb(CType(CType(54, Byte), Integer), CType(CType(57, Byte), Integer), CType(CType(62, Byte), Integer))
+        Me.ContextMenuStrip_PreviewImage.Font = New System.Drawing.Font("Segoe UI", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ContextMenuStrip_PreviewImage.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SaveToolStripMenuItem})
+        Me.ContextMenuStrip_PreviewImage.Name = "ContextMenuStrip_PackageThumbnail"
+        Me.ContextMenuStrip_PreviewImage.ShowImageMargin = False
+        Me.ContextMenuStrip_PreviewImage.Size = New System.Drawing.Size(85, 28)
+        '
+        'SaveToolStripMenuItem
+        '
+        Me.SaveToolStripMenuItem.ForeColor = System.Drawing.Color.WhiteSmoke
+        Me.SaveToolStripMenuItem.Name = "SaveToolStripMenuItem"
+        Me.SaveToolStripMenuItem.Size = New System.Drawing.Size(84, 24)
+        Me.SaveToolStripMenuItem.Text = "Save"
+        '
+        'ShapeContainer3
+        '
+        Me.ShapeContainer3.Location = New System.Drawing.Point(0, 8)
+        Me.ShapeContainer3.Margin = New System.Windows.Forms.Padding(0)
+        Me.ShapeContainer3.Name = "ShapeContainer3"
+        Me.ShapeContainer3.Shapes.AddRange(New Microsoft.VisualBasic.PowerPacks.Shape() {Me.RectangleShape_Image})
+        Me.ShapeContainer3.Size = New System.Drawing.Size(224, 144)
+        Me.ShapeContainer3.TabIndex = 104
+        Me.ShapeContainer3.TabStop = False
+        '
+        'RectangleShape_Image
+        '
+        Me.RectangleShape_Image.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(49, Byte), Integer), CType(CType(54, Byte), Integer))
+        Me.RectangleShape_Image.BackStyle = Microsoft.VisualBasic.PowerPacks.BackStyle.Opaque
+        Me.RectangleShape_Image.BorderColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer))
+        Me.RectangleShape_Image.CornerRadius = 3
+        Me.RectangleShape_Image.FillColor = System.Drawing.Color.WhiteSmoke
+        Me.RectangleShape_Image.FillGradientColor = System.Drawing.Color.WhiteSmoke
+        Me.RectangleShape_Image.Location = New System.Drawing.Point(8, 8)
+        Me.RectangleShape_Image.Name = "RectangleShape_Image"
+        Me.RectangleShape_Image.SelectionColor = System.Drawing.Color.Transparent
+        Me.RectangleShape_Image.Size = New System.Drawing.Size(208, 128)
+        '
+        'SaveFileDialog_PreviewImage
+        '
+        Me.SaveFileDialog_PreviewImage.Filter = "Png Image (*.preview.png)|*.preview.png"
+        '
         'ClipboardAsset
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(54, Byte), Integer), CType(CType(57, Byte), Integer), CType(CType(62, Byte), Integer))
-        Me.ClientSize = New System.Drawing.Size(465, 489)
+        Me.ClientSize = New System.Drawing.Size(465, 531)
+        Me.Controls.Add(Me.Panel_PreviewImage)
         Me.Controls.Add(Me.Button_GenerateAsset)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.Panel_SelectedFont)
@@ -384,7 +479,7 @@ Partial Class ClipboardAsset
         Me.MaximizeBox = False
         Me.Name = "ClipboardAsset"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "BBText"
+        Me.Text = "Clipboard Asset"
         Me.Panel_Main.ResumeLayout(False)
         Me.Panel_ControlBox.ResumeLayout(False)
         CType(Me.PictureBox_Close, System.ComponentModel.ISupportInitialize).EndInit()
@@ -397,6 +492,10 @@ Partial Class ClipboardAsset
         Me.Panel_SelectedFont.PerformLayout()
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
+        Me.Panel_PreviewImage.ResumeLayout(False)
+        Me.Panel_PreviewImage.PerformLayout()
+        CType(Me.PixelBox_PreviewImage, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.ContextMenuStrip_PreviewImage.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
@@ -428,4 +527,13 @@ Partial Class ClipboardAsset
     Friend WithEvents Button_GenerateAsset As Button
     Friend WithEvents ShapeContainer1 As ShapeContainer
     Friend WithEvents RectangleShape1 As RectangleShape
+    Friend WithEvents Panel_PreviewImage As Panel
+    Friend WithEvents Label_Image As Label
+    Friend WithEvents PixelBox_PreviewImage As PixelBox
+    Friend WithEvents ShapeContainer3 As ShapeContainer
+    Friend WithEvents RectangleShape_Image As RectangleShape
+    Friend WithEvents ToolTip1 As ToolTip
+    Friend WithEvents ContextMenuStrip_PreviewImage As ContextMenuStrip
+    Friend WithEvents SaveToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents SaveFileDialog_PreviewImage As SaveFileDialog
 End Class

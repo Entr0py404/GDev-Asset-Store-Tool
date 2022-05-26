@@ -338,8 +338,8 @@
         Try
             Dim selectedItem_filepath As String = FolderBrowserDialog_Selected_Directory.SelectedPath + "\" + TreeView1.SelectedNode.FullPath
             Dim tempdirstr As String = FolderBrowserDialog_Selected_Directory.SelectedPath + "\" + Path.GetDirectoryName(TreeView1.SelectedNode.FullPath)
-            Console.WriteLine(e.Node.Level)
-            If e.Node.Text.EndsWith(".json") Then 'e.Node.Level > 0 And
+            'Console.WriteLine(e.Node.Level)
+            If e.Node.Text.EndsWith(".json") And Not e.Node.Text.EndsWith(".asset.json") And Not e.Node.Text = "PACK.json" Then 'Ignore PACK.json and .asset.json 'e.Node.Level > 0 And
                 If File.Exists(selectedItem_filepath) Then
 
                     Label_MetadataFileToGen.Text = ""
@@ -992,6 +992,11 @@
     Private Sub ClipboardAssetToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ClipboardAssetToolStripMenuItem.Click
         ClipboardAsset.Show()
         ClipboardAsset.BringToFront()
+    End Sub
+    'TemplateAsset (ToolStripMenuItem) - Click
+    Private Sub TemplateAssetToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TemplateAssetToolStripMenuItem.Click
+        TemplateAsset.Show()
+        TemplateAsset.BringToFront()
     End Sub
     'FileNameValidator (ToolStripMenuItem) - Click
     Private Sub FileNameValidatorToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles FileNameValidatorToolStripMenuItem.Click

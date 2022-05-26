@@ -101,6 +101,7 @@ Partial Class MetadataGenerator
         Me.TagsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.LicenseToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.PackageToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.TemplateAssetToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ClipboardAssetToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.FileNameValidatorToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.LoopedAnimationKeywordsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -143,31 +144,32 @@ Partial Class MetadataGenerator
         'ContextMenuStrip_TreeView
         '
         Me.ContextMenuStrip_TreeView.BackColor = System.Drawing.Color.FromArgb(CType(CType(54, Byte), Integer), CType(CType(57, Byte), Integer), CType(CType(62, Byte), Integer))
+        Me.ContextMenuStrip_TreeView.Font = New System.Drawing.Font("Segoe UI", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ContextMenuStrip_TreeView.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.RegenerateSelectedFileToolStripMenuItem, Me.ToolStripSeparator1, Me.GenerateMetadataFilesToolStripMenuItem, Me.RegenerateMetadataFilesToolStripMenuItem, Me.ToolStripSeparator3, Me.XFramesToolStripMenuItem, Me.ToolStripSeparator4, Me.OpenFileToolStripMenuItem, Me.OpenDirectoryToolStripMenuItem, Me.ToolStripSeparator6, Me.AddAnimationNameToFileToolStripMenuItem})
         Me.ContextMenuStrip_TreeView.Name = "ContextMenuStrip_Listbox"
         Me.ContextMenuStrip_TreeView.ShowCheckMargin = True
         Me.ContextMenuStrip_TreeView.ShowImageMargin = False
-        Me.ContextMenuStrip_TreeView.Size = New System.Drawing.Size(220, 182)
+        Me.ContextMenuStrip_TreeView.Size = New System.Drawing.Size(262, 196)
         '
         'RegenerateSelectedFileToolStripMenuItem
         '
         Me.RegenerateSelectedFileToolStripMenuItem.Enabled = False
         Me.RegenerateSelectedFileToolStripMenuItem.ForeColor = System.Drawing.Color.WhiteSmoke
         Me.RegenerateSelectedFileToolStripMenuItem.Name = "RegenerateSelectedFileToolStripMenuItem"
-        Me.RegenerateSelectedFileToolStripMenuItem.Size = New System.Drawing.Size(219, 22)
+        Me.RegenerateSelectedFileToolStripMenuItem.Size = New System.Drawing.Size(261, 24)
         Me.RegenerateSelectedFileToolStripMenuItem.Text = "Regenerate selected file"
         '
         'ToolStripSeparator1
         '
         Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(216, 6)
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(258, 6)
         '
         'GenerateMetadataFilesToolStripMenuItem
         '
         Me.GenerateMetadataFilesToolStripMenuItem.Enabled = False
         Me.GenerateMetadataFilesToolStripMenuItem.ForeColor = System.Drawing.Color.WhiteSmoke
         Me.GenerateMetadataFilesToolStripMenuItem.Name = "GenerateMetadataFilesToolStripMenuItem"
-        Me.GenerateMetadataFilesToolStripMenuItem.Size = New System.Drawing.Size(219, 22)
+        Me.GenerateMetadataFilesToolStripMenuItem.Size = New System.Drawing.Size(261, 24)
         Me.GenerateMetadataFilesToolStripMenuItem.Text = "Generate metadata files"
         '
         'RegenerateMetadataFilesToolStripMenuItem
@@ -175,32 +177,32 @@ Partial Class MetadataGenerator
         Me.RegenerateMetadataFilesToolStripMenuItem.Enabled = False
         Me.RegenerateMetadataFilesToolStripMenuItem.ForeColor = System.Drawing.Color.WhiteSmoke
         Me.RegenerateMetadataFilesToolStripMenuItem.Name = "RegenerateMetadataFilesToolStripMenuItem"
-        Me.RegenerateMetadataFilesToolStripMenuItem.Size = New System.Drawing.Size(219, 22)
+        Me.RegenerateMetadataFilesToolStripMenuItem.Size = New System.Drawing.Size(261, 24)
         Me.RegenerateMetadataFilesToolStripMenuItem.Text = "Regenerate metadata files"
         '
         'ToolStripSeparator3
         '
         Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
-        Me.ToolStripSeparator3.Size = New System.Drawing.Size(216, 6)
+        Me.ToolStripSeparator3.Size = New System.Drawing.Size(258, 6)
         '
         'XFramesToolStripMenuItem
         '
         Me.XFramesToolStripMenuItem.ForeColor = System.Drawing.Color.WhiteSmoke
         Me.XFramesToolStripMenuItem.Name = "XFramesToolStripMenuItem"
-        Me.XFramesToolStripMenuItem.Size = New System.Drawing.Size(219, 22)
+        Me.XFramesToolStripMenuItem.Size = New System.Drawing.Size(261, 24)
         Me.XFramesToolStripMenuItem.Text = "2X frames"
         '
         'ToolStripSeparator4
         '
         Me.ToolStripSeparator4.Name = "ToolStripSeparator4"
-        Me.ToolStripSeparator4.Size = New System.Drawing.Size(216, 6)
+        Me.ToolStripSeparator4.Size = New System.Drawing.Size(258, 6)
         '
         'OpenFileToolStripMenuItem
         '
         Me.OpenFileToolStripMenuItem.Enabled = False
         Me.OpenFileToolStripMenuItem.ForeColor = System.Drawing.Color.WhiteSmoke
         Me.OpenFileToolStripMenuItem.Name = "OpenFileToolStripMenuItem"
-        Me.OpenFileToolStripMenuItem.Size = New System.Drawing.Size(219, 22)
+        Me.OpenFileToolStripMenuItem.Size = New System.Drawing.Size(261, 24)
         Me.OpenFileToolStripMenuItem.Text = "Open file"
         '
         'OpenDirectoryToolStripMenuItem
@@ -208,35 +210,36 @@ Partial Class MetadataGenerator
         Me.OpenDirectoryToolStripMenuItem.Enabled = False
         Me.OpenDirectoryToolStripMenuItem.ForeColor = System.Drawing.Color.WhiteSmoke
         Me.OpenDirectoryToolStripMenuItem.Name = "OpenDirectoryToolStripMenuItem"
-        Me.OpenDirectoryToolStripMenuItem.Size = New System.Drawing.Size(219, 22)
+        Me.OpenDirectoryToolStripMenuItem.Size = New System.Drawing.Size(261, 24)
         Me.OpenDirectoryToolStripMenuItem.Text = "Open directory"
         '
         'ToolStripSeparator6
         '
         Me.ToolStripSeparator6.Name = "ToolStripSeparator6"
-        Me.ToolStripSeparator6.Size = New System.Drawing.Size(216, 6)
+        Me.ToolStripSeparator6.Size = New System.Drawing.Size(258, 6)
         '
         'AddAnimationNameToFileToolStripMenuItem
         '
         Me.AddAnimationNameToFileToolStripMenuItem.Enabled = False
         Me.AddAnimationNameToFileToolStripMenuItem.ForeColor = System.Drawing.Color.WhiteSmoke
         Me.AddAnimationNameToFileToolStripMenuItem.Name = "AddAnimationNameToFileToolStripMenuItem"
-        Me.AddAnimationNameToFileToolStripMenuItem.Size = New System.Drawing.Size(219, 22)
+        Me.AddAnimationNameToFileToolStripMenuItem.Size = New System.Drawing.Size(261, 24)
         Me.AddAnimationNameToFileToolStripMenuItem.Text = "Add animation name to file"
         '
         'ContextMenuStrip_Log
         '
         Me.ContextMenuStrip_Log.BackColor = System.Drawing.Color.FromArgb(CType(CType(54, Byte), Integer), CType(CType(57, Byte), Integer), CType(CType(62, Byte), Integer))
+        Me.ContextMenuStrip_Log.Font = New System.Drawing.Font("Segoe UI", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ContextMenuStrip_Log.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ClearToolStripMenuItem})
         Me.ContextMenuStrip_Log.Name = "ContextMenuStrip_Log"
         Me.ContextMenuStrip_Log.ShowImageMargin = False
-        Me.ContextMenuStrip_Log.Size = New System.Drawing.Size(100, 26)
+        Me.ContextMenuStrip_Log.Size = New System.Drawing.Size(117, 28)
         '
         'ClearToolStripMenuItem
         '
         Me.ClearToolStripMenuItem.ForeColor = System.Drawing.Color.WhiteSmoke
         Me.ClearToolStripMenuItem.Name = "ClearToolStripMenuItem"
-        Me.ClearToolStripMenuItem.Size = New System.Drawing.Size(99, 22)
+        Me.ClearToolStripMenuItem.Size = New System.Drawing.Size(116, 24)
         Me.ClearToolStripMenuItem.Text = "Clear Log"
         '
         'Timer_Animation
@@ -634,28 +637,29 @@ Partial Class MetadataGenerator
         'ContextMenuStrip_FastColoredTextBox_Selected_File
         '
         Me.ContextMenuStrip_FastColoredTextBox_Selected_File.BackColor = System.Drawing.Color.FromArgb(CType(CType(54, Byte), Integer), CType(CType(57, Byte), Integer), CType(CType(62, Byte), Integer))
+        Me.ContextMenuStrip_FastColoredTextBox_Selected_File.Font = New System.Drawing.Font("Segoe UI", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ContextMenuStrip_FastColoredTextBox_Selected_File.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FlipLoopBooleanToolStripMenuItem, Me.ToolStripSeparator5, Me.SaveToolStripMenuItem})
         Me.ContextMenuStrip_FastColoredTextBox_Selected_File.Name = "ContextMenuStrip_FastColoredTextBox_Selected_File"
         Me.ContextMenuStrip_FastColoredTextBox_Selected_File.ShowImageMargin = False
-        Me.ContextMenuStrip_FastColoredTextBox_Selected_File.Size = New System.Drawing.Size(142, 54)
+        Me.ContextMenuStrip_FastColoredTextBox_Selected_File.Size = New System.Drawing.Size(172, 58)
         '
         'FlipLoopBooleanToolStripMenuItem
         '
         Me.FlipLoopBooleanToolStripMenuItem.ForeColor = System.Drawing.Color.WhiteSmoke
         Me.FlipLoopBooleanToolStripMenuItem.Name = "FlipLoopBooleanToolStripMenuItem"
-        Me.FlipLoopBooleanToolStripMenuItem.Size = New System.Drawing.Size(141, 22)
+        Me.FlipLoopBooleanToolStripMenuItem.Size = New System.Drawing.Size(171, 24)
         Me.FlipLoopBooleanToolStripMenuItem.Text = "Flip loop boolean"
         '
         'ToolStripSeparator5
         '
         Me.ToolStripSeparator5.Name = "ToolStripSeparator5"
-        Me.ToolStripSeparator5.Size = New System.Drawing.Size(138, 6)
+        Me.ToolStripSeparator5.Size = New System.Drawing.Size(168, 6)
         '
         'SaveToolStripMenuItem
         '
         Me.SaveToolStripMenuItem.ForeColor = System.Drawing.Color.WhiteSmoke
         Me.SaveToolStripMenuItem.Name = "SaveToolStripMenuItem"
-        Me.SaveToolStripMenuItem.Size = New System.Drawing.Size(141, 22)
+        Me.SaveToolStripMenuItem.Size = New System.Drawing.Size(171, 24)
         Me.SaveToolStripMenuItem.Text = "Save"
         '
         'ShapeContainer5
@@ -908,6 +912,7 @@ Partial Class MetadataGenerator
         'MenuStrip1
         '
         Me.MenuStrip1.BackColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer))
+        Me.MenuStrip1.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.MenuStrip1.ImageScalingSize = New System.Drawing.Size(24, 24)
         Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolsToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 26)
@@ -917,8 +922,7 @@ Partial Class MetadataGenerator
         '
         'ToolsToolStripMenuItem
         '
-        Me.ToolsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.TagsToolStripMenuItem, Me.LicenseToolStripMenuItem, Me.PackageToolStripMenuItem, Me.ClipboardAssetToolStripMenuItem, Me.FileNameValidatorToolStripMenuItem, Me.LoopedAnimationKeywordsToolStripMenuItem})
-        Me.ToolsToolStripMenuItem.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ToolsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.TagsToolStripMenuItem, Me.LicenseToolStripMenuItem, Me.PackageToolStripMenuItem, Me.TemplateAssetToolStripMenuItem, Me.ClipboardAssetToolStripMenuItem, Me.FileNameValidatorToolStripMenuItem, Me.LoopedAnimationKeywordsToolStripMenuItem})
         Me.ToolsToolStripMenuItem.ForeColor = System.Drawing.Color.WhiteSmoke
         Me.ToolsToolStripMenuItem.Image = Global.GDev_Asset_Store_Tool.My.Resources.Resources.Tools
         Me.ToolsToolStripMenuItem.Name = "ToolsToolStripMenuItem"
@@ -948,6 +952,14 @@ Partial Class MetadataGenerator
         Me.PackageToolStripMenuItem.Name = "PackageToolStripMenuItem"
         Me.PackageToolStripMenuItem.Size = New System.Drawing.Size(280, 26)
         Me.PackageToolStripMenuItem.Text = "Package"
+        '
+        'TemplateAssetToolStripMenuItem
+        '
+        Me.TemplateAssetToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(CType(CType(54, Byte), Integer), CType(CType(57, Byte), Integer), CType(CType(62, Byte), Integer))
+        Me.TemplateAssetToolStripMenuItem.ForeColor = System.Drawing.Color.WhiteSmoke
+        Me.TemplateAssetToolStripMenuItem.Name = "TemplateAssetToolStripMenuItem"
+        Me.TemplateAssetToolStripMenuItem.Size = New System.Drawing.Size(280, 26)
+        Me.TemplateAssetToolStripMenuItem.Text = "Template Asset"
         '
         'ClipboardAssetToolStripMenuItem
         '
@@ -1124,4 +1136,5 @@ Partial Class MetadataGenerator
     Friend WithEvents ReloadToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ImportToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ClipboardAssetToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents TemplateAssetToolStripMenuItem As ToolStripMenuItem
 End Class

@@ -1,10 +1,9 @@
-﻿
-Public Class LicenseMaker
+﻿Public Class LicenseMaker
     'Button_Open - Click
     Private Sub Button_Open_Click(sender As Object, e As EventArgs) Handles Button_Open.Click
-        If OpenFileDialog1.ShowDialog = DialogResult.OK Then
-            Dim Readfile As String() = File.ReadAllLines(OpenFileDialog1.FileName)
-            SaveFileDialog1.InitialDirectory = Path.GetDirectoryName(OpenFileDialog1.FileName)
+        If OpenFileDialog_License.ShowDialog = DialogResult.OK Then
+            Dim Readfile As String() = File.ReadAllLines(OpenFileDialog_License.FileName)
+            SaveFileDialog_License.InitialDirectory = Path.GetDirectoryName(OpenFileDialog_License.FileName)
             If Readfile(0) = "CC0 (public domain)" Then
                 ComboBox_License.SelectedIndex = 0
             Else
@@ -18,24 +17,24 @@ Public Class LicenseMaker
     'Button_Save - Click
     Private Sub Button_Save_Click(sender As Object, e As EventArgs) Handles Button_Save.Click
         If ComboBox_License.SelectedIndex > -1 And Not TextBox_Artist.Text = "" And Not TextBox_ArtistLink.Text = "" Then
-            SaveFileDialog1.FileName = "license.txt"
-            If SaveFileDialog1.InitialDirectory = "" Then
+            SaveFileDialog_License.FileName = "license.txt"
+            If SaveFileDialog_License.InitialDirectory = "" Then
                 If Directory.Exists(MetadataGenerator.FolderBrowserDialog_Selected_Directory.SelectedPath) Then
-                    SaveFileDialog1.InitialDirectory = MetadataGenerator.FolderBrowserDialog_Selected_Directory.SelectedPath
+                    SaveFileDialog_License.InitialDirectory = MetadataGenerator.FolderBrowserDialog_Selected_Directory.SelectedPath
                 Else
-                    SaveFileDialog1.InitialDirectory = My.Computer.FileSystem.SpecialDirectories.Desktop
+                    SaveFileDialog_License.InitialDirectory = My.Computer.FileSystem.SpecialDirectories.Desktop
                 End If
             End If
 
-            If SaveFileDialog1.ShowDialog = DialogResult.OK Then
+            If SaveFileDialog_License.ShowDialog = DialogResult.OK Then
                 Dim file As StreamWriter
-                file = My.Computer.FileSystem.OpenTextFileWriter(SaveFileDialog1.FileName, False)
+                file = My.Computer.FileSystem.OpenTextFileWriter(SaveFileDialog_License.FileName, False)
                 file.WriteLine(ComboBox_License.SelectedItem.ToString)
                 file.WriteLine(TextBox_Artist.Text)
                 file.WriteLine(TextBox_ArtistLink.Text)
                 file.Close()
                 'Clear all for next
-                SaveFileDialog1.InitialDirectory = ""
+                SaveFileDialog_License.InitialDirectory = ""
                 ComboBox_License.SelectedIndex = -1
                 TextBox_Artist.Clear()
                 TextBox_ArtistLink.Clear()
@@ -57,7 +56,7 @@ Public Class LicenseMaker
     Private Sub LicenseMaker_DragDrop(sender As Object, e As DragEventArgs) Handles Me.DragDrop
         Dim files() As String = CType(e.Data.GetData(DataFormats.FileDrop), String())
         Dim Readfile As String() = File.ReadAllLines(files(0))
-        SaveFileDialog1.InitialDirectory = Path.GetDirectoryName(files(0))
+        SaveFileDialog_License.InitialDirectory = Path.GetDirectoryName(files(0))
         If Readfile(0) = "CC0 (public domain)" Then
             ComboBox_License.SelectedIndex = 0
         Else

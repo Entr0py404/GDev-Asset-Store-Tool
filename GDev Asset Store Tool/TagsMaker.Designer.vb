@@ -157,7 +157,7 @@ Partial Class TagsMaker
         Me.Panel1.Controls.Add(Me.ListBox_ExistingTags)
         Me.Panel1.Controls.Add(Me.Label_Existingtags)
         Me.Panel1.Controls.Add(Me.ShapeContainer2)
-        Me.Panel1.Location = New System.Drawing.Point(8, 72)
+        Me.Panel1.Location = New System.Drawing.Point(0, 72)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(240, 224)
         Me.Panel1.TabIndex = 11
@@ -203,7 +203,7 @@ Partial Class TagsMaker
         Me.Panel_TAGSmd.Controls.Add(Me.Label_TAGSmd)
         Me.Panel_TAGSmd.Controls.Add(Me.ListBox_TAGS)
         Me.Panel_TAGSmd.Controls.Add(Me.ShapeContainer3)
-        Me.Panel_TAGSmd.Location = New System.Drawing.Point(248, 128)
+        Me.Panel_TAGSmd.Location = New System.Drawing.Point(240, 128)
         Me.Panel_TAGSmd.Name = "Panel_TAGSmd"
         Me.Panel_TAGSmd.Size = New System.Drawing.Size(240, 288)
         Me.Panel_TAGSmd.TabIndex = 12
@@ -276,7 +276,7 @@ Partial Class TagsMaker
         Me.Panel3.Controls.Add(Me.Label_Newtag)
         Me.Panel3.Controls.Add(Me.TextBox_NewTag)
         Me.Panel3.Controls.Add(Me.ShapeContainer4)
-        Me.Panel3.Location = New System.Drawing.Point(248, 72)
+        Me.Panel3.Location = New System.Drawing.Point(240, 72)
         Me.Panel3.Name = "Panel3"
         Me.Panel3.Size = New System.Drawing.Size(240, 56)
         Me.Panel3.TabIndex = 13
@@ -342,7 +342,7 @@ Partial Class TagsMaker
         Me.Panel4.Controls.Add(Me.ListBox_SpecialTags)
         Me.Panel4.Controls.Add(Me.Label_Specialtags)
         Me.Panel4.Controls.Add(Me.ShapeContainer5)
-        Me.Panel4.Location = New System.Drawing.Point(8, 296)
+        Me.Panel4.Location = New System.Drawing.Point(0, 296)
         Me.Panel4.Name = "Panel4"
         Me.Panel4.Size = New System.Drawing.Size(240, 120)
         Me.Panel4.TabIndex = 88
@@ -411,7 +411,7 @@ Partial Class TagsMaker
         Me.Panel_Main.ForeColor = System.Drawing.Color.White
         Me.Panel_Main.Location = New System.Drawing.Point(0, 0)
         Me.Panel_Main.Name = "Panel_Main"
-        Me.Panel_Main.Size = New System.Drawing.Size(497, 26)
+        Me.Panel_Main.Size = New System.Drawing.Size(481, 26)
         Me.Panel_Main.TabIndex = 95
         '
         'Panel_ControlBox
@@ -419,7 +419,7 @@ Partial Class TagsMaker
         Me.Panel_ControlBox.Controls.Add(Me.PictureBox_Close)
         Me.Panel_ControlBox.Controls.Add(Me.PictureBox_Minimize)
         Me.Panel_ControlBox.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Panel_ControlBox.Location = New System.Drawing.Point(445, 0)
+        Me.Panel_ControlBox.Location = New System.Drawing.Point(429, 0)
         Me.Panel_ControlBox.Name = "Panel_ControlBox"
         Me.Panel_ControlBox.Size = New System.Drawing.Size(52, 26)
         Me.Panel_ControlBox.TabIndex = 4
@@ -501,7 +501,7 @@ Partial Class TagsMaker
         Me.Panel7.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel7.Location = New System.Drawing.Point(0, 26)
         Me.Panel7.Name = "Panel7"
-        Me.Panel7.Size = New System.Drawing.Size(497, 40)
+        Me.Panel7.Size = New System.Drawing.Size(481, 40)
         Me.Panel7.TabIndex = 97
         '
         'LinkLabel_Wiki_Info
@@ -509,7 +509,7 @@ Partial Class TagsMaker
         Me.LinkLabel_Wiki_Info.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.LinkLabel_Wiki_Info.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LinkLabel_Wiki_Info.LinkColor = System.Drawing.Color.DodgerBlue
-        Me.LinkLabel_Wiki_Info.Location = New System.Drawing.Point(424, 8)
+        Me.LinkLabel_Wiki_Info.Location = New System.Drawing.Point(408, 8)
         Me.LinkLabel_Wiki_Info.Name = "LinkLabel_Wiki_Info"
         Me.LinkLabel_Wiki_Info.Size = New System.Drawing.Size(65, 24)
         Me.LinkLabel_Wiki_Info.TabIndex = 108
@@ -533,7 +533,7 @@ Partial Class TagsMaker
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(54, Byte), Integer), CType(CType(57, Byte), Integer), CType(CType(62, Byte), Integer))
-        Me.ClientSize = New System.Drawing.Size(497, 423)
+        Me.ClientSize = New System.Drawing.Size(481, 418)
         Me.Controls.Add(Me.Panel7)
         Me.Controls.Add(Me.Panel_Main)
         Me.Controls.Add(Me.Panel5)
