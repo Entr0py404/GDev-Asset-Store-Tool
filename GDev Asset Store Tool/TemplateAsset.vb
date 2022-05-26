@@ -1,4 +1,6 @@
-﻿Public Class TemplateAsset
+﻿Imports FastColoredTextBoxNS
+
+Public Class TemplateAsset
     ReadOnly SupportedIamgeFormats() As String = {".png", ".bmp", ".jpeg", ".jpg", ".tiff", ".tif"}
     Dim ForceImageAspectRatio_16_9_Size As Size
     Dim aspectRatio_IsAlready_16_9 As Boolean = False
@@ -54,13 +56,14 @@
                 jsonFile.Item("objectAssets")(0)("object")("content")("bitmapFontResourceName") = TextBox_BitmapFont.Text
                 jsonFile.Item("objectAssets")(0)("object")("content")("textureAtlasResourceName") = TextBox_BitmapAtlasImage.Text
                 FastColoredTextBox_AssetJson.Text = jsonFile.ToString
+                ErrorProvider1.SetError(FastColoredTextBox_AssetJson, Nothing)
             Else
 
-                If Not TextBox_Name.Text.Length > 0 Then
+                If TextBox_Name.Text.Length = 0 Then
                     ErrorProvider1.SetError(TextBox_Name, "Required")
                 End If
 
-                If Not TextBox_Description.Text.Length > 0 Then
+                If TextBox_Description.Text.Length = 0 Then
                     ErrorProvider1.SetError(TextBox_Description, "Required")
                 End If
 
@@ -88,11 +91,11 @@
                 FastColoredTextBox_AssetJson.Text = jsonFile.ToString
             Else
 
-                If Not TextBox_Name.Text.Length > 0 Then
+                If TextBox_Name.Text.Length = 0 Then
                     ErrorProvider1.SetError(TextBox_Name, "Required")
                 End If
 
-                If Not TextBox_Description.Text.Length > 0 Then
+                If TextBox_Description.Text.Length = 0 Then
                     ErrorProvider1.SetError(TextBox_Description, "Required")
                 End If
 
@@ -121,11 +124,11 @@
                 FastColoredTextBox_AssetJson.Text = jsonFile.ToString
             Else
 
-                If Not TextBox_Name.Text.Length > 0 Then
+                If TextBox_Name.Text.Length = 0 Then
                     ErrorProvider1.SetError(TextBox_Name, "Required")
                 End If
 
-                If Not TextBox_Description.Text.Length > 0 Then
+                If TextBox_Description.Text.Length = 0 Then
                     ErrorProvider1.SetError(TextBox_Description, "Required")
                 End If
 
@@ -153,11 +156,11 @@
                 FastColoredTextBox_AssetJson.Text = jsonFile.ToString
             Else
 
-                If Not TextBox_Name.Text.Length > 0 Then
+                If TextBox_Name.Text.Length = 0 Then
                     ErrorProvider1.SetError(TextBox_Name, "Required")
                 End If
 
-                If Not TextBox_Description.Text.Length > 0 Then
+                If TextBox_Description.Text.Length = 0 Then
                     ErrorProvider1.SetError(TextBox_Description, "Required")
                 End If
 
@@ -202,10 +205,41 @@
                     PixelBox_PreviewImage.Image.Save(Path.GetDirectoryName(SaveFileDialog1.FileName) & "\" & tempImageName & ".preview.png", Imaging.ImageFormat.Png)
                 End If
 
-
+                'Write Asset Json
                 My.Computer.FileSystem.WriteAllText(SaveFileDialog1.FileName, FastColoredTextBox_AssetJson.Text, False)
+
+                'Clear all
+                TextBox_Name.Clear()
+                TextBox_Description.Clear()
+                FastColoredTextBox_AssetJson.Clear()
+                PixelBox_PreviewImage.Image = Nothing
+
+                'Panel Sprite
+                TextBox_PanelSpriteIamge.Clear()
+
+                'Bitmap Text
+                TextBox_BitmapFont.Clear()
+                TextBox_BitmapAtlasImage.Clear()
+
+                'Tilemap
+                TextBox_TilemapAtlasImage.Clear()
+                TextBox_TilemapJSONFile.Clear()
+                TextBox_TilesetJSONFile.Clear()
+
+                'Light
+                TextBox_LightTexture.Clear()
+
             End If
         Else
+
+            If PixelBox_PreviewImage.Image Is Nothing Then
+                ErrorProvider1.SetError(PixelBox_PreviewImage, "Required")
+            End If
+
+            If FastColoredTextBox_AssetJson.Text.Length = 0 Then
+                ErrorProvider1.SetError(FastColoredTextBox_AssetJson, "Required")
+            End If
+
             MsgBox("Please fill out all fields.", MsgBoxStyle.Information)
         End If
     End Sub
@@ -218,6 +252,7 @@
 
 
                 PixelBox_PreviewImage.Image = Image.FromFile(files(0))
+                ErrorProvider1.SetError(PixelBox_PreviewImage, Nothing)
 
                 Dim aspectRatio As Decimal = CDec(PixelBox_PreviewImage.Image.Width / PixelBox_PreviewImage.Image.Height)
                 Dim Ratio_16_9 As Decimal = CDec(1.77777777777778)
@@ -435,25 +470,29 @@
     Private Sub TabControl1_Selected(sender As Object, e As TabControlEventArgs) Handles TabControl1.Selected
         ErrorProvider1.Clear()
     End Sub
-    '
-    'TextChanged
-    '
-    'TextBox_Name - TextChanged
-    Private Sub TextBox_Name_TextChanged(sender As Object, e As EventArgs) Handles TextBox_Name.TextChanged
-        If TextBox_Name.Text.Length > 0 Then
-            ErrorProvider1.SetError(TextBox_Name, Nothing)
-        Else
+    'TextBox_Name - GotFocus
+    Private Sub TextBox_Name_GotFocus(sender As Object, e As EventArgs) Handles TextBox_Name.GotFocus
+        ErrorProvider1.SetError(TextBox_Name, Nothing)
+    End Sub
+    'TextBox_Name - LostFocus
+    Private Sub TextBox_Name_LostFocus(sender As Object, e As EventArgs) Handles TextBox_Name.LostFocus
+        If TextBox_Name.Text.Length = 0 Then
             ErrorProvider1.SetError(TextBox_Name, "Required")
         End If
     End Sub
-    'TextBox_Description - TextChanged
-    Private Sub TextBox_Description_TextChanged(sender As Object, e As EventArgs) Handles TextBox_Description.TextChanged
-        If TextBox_Description.Text.Length > 0 Then
-            ErrorProvider1.SetError(TextBox_Description, Nothing)
-        Else
+    'TextBox_Description  - GotFocus
+    Private Sub TextBox_Description_GotFocus(sender As Object, e As EventArgs) Handles TextBox_Description.GotFocus
+        ErrorProvider1.SetError(TextBox_Description, Nothing)
+    End Sub
+    'TextBox_Description - LostFocus
+    Private Sub TextBox_Description_LostFocus(sender As Object, e As EventArgs) Handles TextBox_Description.LostFocus
+        If TextBox_Description.Text.Length = 0 Then
             ErrorProvider1.SetError(TextBox_Description, "Required")
         End If
     End Sub
+    '
+    'TextChanged
+    '
     'TextBox_LightTexture - TextChanged
     Private Sub TextBox_LightTexture_TextChanged(sender As Object, e As EventArgs) Handles TextBox_LightTexture.TextChanged
         If TextBox_LightTexture.Text.EndsWith(".png") Then
@@ -500,6 +539,14 @@
             ErrorProvider1.SetError(TextBox_PanelSpriteIamge, Nothing)
         Else
             ErrorProvider1.SetError(TextBox_PanelSpriteIamge, "Blank or does not end with .png")
+        End If
+    End Sub
+    'FastColoredTextBox_AssetJson - TextChanging
+    Private Sub FastColoredTextBox_AssetJson_TextChanging(sender As Object, e As TextChangingEventArgs) Handles FastColoredTextBox_AssetJson.TextChanging
+        If FastColoredTextBox_AssetJson.Text.Length = 0 Then
+            ErrorProvider1.SetError(FastColoredTextBox_AssetJson, "Required")
+        Else
+            ErrorProvider1.SetError(FastColoredTextBox_AssetJson, Nothing)
         End If
     End Sub
     '

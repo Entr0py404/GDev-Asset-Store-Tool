@@ -287,6 +287,10 @@ Partial Class TemplateAsset
         Me.PictureBox_AppIcon.TabIndex = 3
         Me.PictureBox_AppIcon.TabStop = False
         '
+        'SaveFileDialog1
+        '
+        Me.SaveFileDialog1.Filter = "Asset Json file (*.asset.json)|*.asset.json"
+        '
         'Button_Save
         '
         Me.Button_Save.BackColor = System.Drawing.Color.MediumSeaGreen

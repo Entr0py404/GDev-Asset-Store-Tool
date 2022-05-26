@@ -1,4 +1,6 @@
-﻿Public Class ClipboardAsset
+﻿Imports FastColoredTextBoxNS
+
+Public Class ClipboardAsset
     ReadOnly SupportedIamgeFormats() As String = {".png", ".bmp", ".jpeg", ".jpg", ".tiff", ".tif"}
     Dim ForceImageAspectRatio_16_9_Size As Size
     Dim aspectRatio_IsAlready_16_9 As Boolean = False
@@ -15,7 +17,9 @@
                 Dim jsonFromClipboard As JObject = JObject.Parse(CB_Text)
                 ListBox_Objects.Items.Add(jsonFromClipboard.Item("content")("name"))
                 ObjectsJson.Add(jsonFromClipboard.SelectToken("content")("object"))
-                Console.WriteLine(jsonFromClipboard.SelectToken("content")("object"))
+                'Console.WriteLine(jsonFromClipboard.SelectToken("content")("object"))
+
+                ErrorProvider1.SetError(ListBox_Objects, Nothing)
             End If
         End If
     End Sub
@@ -24,6 +28,10 @@
         If Not ListBox_Objects.SelectedIndex = -1 Then
             ObjectsJson.RemoveAt(ListBox_Objects.SelectedIndex)
             ListBox_Objects.Items.RemoveAt(ListBox_Objects.SelectedIndex)
+
+            If ListBox_Objects.Items.Count = 0 Then
+                ErrorProvider1.SetError(ListBox_Objects, "Required")
+            End If
         End If
     End Sub
     'Button_GenerateAsset - Click
@@ -42,9 +50,19 @@
             jsonFile.Item("objectAssets") = objectAssets
 
             FastColoredTextBox_AssetJson.Text = jsonFile.ToString
+            ErrorProvider1.SetError(FastColoredTextBox_AssetJson, Nothing)
 
             objectAssets.Clear()
         Else
+
+            If TextBox_Description.Text.Length = 0 Then
+                ErrorProvider1.SetError(TextBox_Description, "Required")
+            End If
+
+            If ListBox_Objects.Items.Count = 0 Then
+                ErrorProvider1.SetError(ListBox_Objects, "Required")
+            End If
+
             MsgBox("Please fill out all fields.", MsgBoxStyle.Information)
         End If
     End Sub
@@ -76,17 +94,38 @@
                         'draw the original at the new size on memory bitmap
                         g.DrawImage(PixelBox_PreviewImage.Image, 0, 0, bmp.Width, bmp.Height)
                         'save the temp resized bitmamp
-                        Console.WriteLine(Path.GetDirectoryName(SaveFileDialog1.FileName) & "\" & tempImageName & ".preview.png")
+                        'Console.WriteLine(Path.GetDirectoryName(SaveFileDialog1.FileName) & "\" & tempImageName & ".preview.png")
                         bmp.Save(Path.GetDirectoryName(SaveFileDialog1.FileName) & "\" & tempImageName & ".preview.png", Imaging.ImageFormat.Png)
                     End Using
                 Else
                     PixelBox_PreviewImage.Image.Save(Path.GetDirectoryName(SaveFileDialog1.FileName) & "\" & tempImageName & ".preview.png", Imaging.ImageFormat.Png)
                 End If
 
-
+                'Write Asset Json
                 My.Computer.FileSystem.WriteAllText(SaveFileDialog1.FileName, FastColoredTextBox_AssetJson.Text, False)
+
+                'Clear all
+                TextBox_Description.Clear()
+                ListBox_Objects.Items.Clear()
+                FastColoredTextBox_AssetJson.Clear()
+                PixelBox_PreviewImage.Image = Nothing
+
             End If
         Else
+
+
+            'If TextBox_Description.Text.Length = 0 Then
+            'ErrorProvider1.SetError(TextBox_Description, "Required")
+            'End If
+
+            If PixelBox_PreviewImage.Image Is Nothing Then
+                ErrorProvider1.SetError(PixelBox_PreviewImage, "Required")
+            End If
+
+            If FastColoredTextBox_AssetJson.Text.Length = 0 Then
+                ErrorProvider1.SetError(FastColoredTextBox_AssetJson, "Required")
+            End If
+
             MsgBox("Please fill out all fields.", MsgBoxStyle.Information)
         End If
     End Sub
@@ -99,6 +138,7 @@
 
 
                 PixelBox_PreviewImage.Image = Image.FromFile(files(0))
+                ErrorProvider1.SetError(PixelBox_PreviewImage, Nothing)
 
                 Dim aspectRatio As Decimal = CDec(PixelBox_PreviewImage.Image.Width / PixelBox_PreviewImage.Image.Height)
                 Dim Ratio_16_9 As Decimal = CDec(1.77777777777778)
@@ -154,6 +194,24 @@
             Else
                 PixelBox_PreviewImage.Image.Save(SaveFileDialog_PreviewImage.FileName, Imaging.ImageFormat.Png)
             End If
+        End If
+    End Sub
+    'TextBox_Description  - GotFocus
+    Private Sub TextBox_Description_GotFocus(sender As Object, e As EventArgs) Handles TextBox_Description.GotFocus
+        ErrorProvider1.SetError(TextBox_Description, Nothing)
+    End Sub
+    'TextBox_Description - LostFocus
+    Private Sub TextBox_Description_LostFocus(sender As Object, e As EventArgs) Handles TextBox_Description.LostFocus
+        If TextBox_Description.Text.Length = 0 Then
+            ErrorProvider1.SetError(TextBox_Description, "Required")
+        End If
+    End Sub
+    'FastColoredTextBox_AssetJson - TextChanging
+    Private Sub FastColoredTextBox_AssetJson_TextChanging(sender As Object, e As TextChangingEventArgs) Handles FastColoredTextBox_AssetJson.TextChanging
+        If FastColoredTextBox_AssetJson.Text.Length = 0 Then
+            ErrorProvider1.SetError(FastColoredTextBox_AssetJson, "Required")
+        Else
+            ErrorProvider1.SetError(FastColoredTextBox_AssetJson, Nothing)
         End If
     End Sub
     '

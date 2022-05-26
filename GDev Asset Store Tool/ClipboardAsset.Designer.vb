@@ -60,6 +60,7 @@ Partial Class ClipboardAsset
         Me.RectangleShape_Image = New Microsoft.VisualBasic.PowerPacks.RectangleShape()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
         Me.SaveFileDialog_PreviewImage = New System.Windows.Forms.SaveFileDialog()
+        Me.ErrorProvider1 = New System.Windows.Forms.ErrorProvider(Me.components)
         Me.Panel_Main.SuspendLayout()
         Me.Panel_ControlBox.SuspendLayout()
         CType(Me.PictureBox_Close, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -72,6 +73,7 @@ Partial Class ClipboardAsset
         Me.Panel_PreviewImage.SuspendLayout()
         CType(Me.PixelBox_PreviewImage, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ContextMenuStrip_PreviewImage.SuspendLayout()
+        CType(Me.ErrorProvider1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Panel_Main
@@ -460,6 +462,10 @@ Partial Class ClipboardAsset
         '
         Me.SaveFileDialog_PreviewImage.Filter = "Png Image (*.preview.png)|*.preview.png"
         '
+        'ErrorProvider1
+        '
+        Me.ErrorProvider1.ContainerControl = Me
+        '
         'ClipboardAsset
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -496,6 +502,7 @@ Partial Class ClipboardAsset
         Me.Panel_PreviewImage.PerformLayout()
         CType(Me.PixelBox_PreviewImage, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ContextMenuStrip_PreviewImage.ResumeLayout(False)
+        CType(Me.ErrorProvider1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -536,4 +543,5 @@ Partial Class ClipboardAsset
     Friend WithEvents ContextMenuStrip_PreviewImage As ContextMenuStrip
     Friend WithEvents SaveToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents SaveFileDialog_PreviewImage As SaveFileDialog
+    Friend WithEvents ErrorProvider1 As ErrorProvider
 End Class
