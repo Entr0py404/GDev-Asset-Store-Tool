@@ -58,6 +58,8 @@ Partial Class TemplateAsset
         Me.TextBox_TilesetJSONFile = New System.Windows.Forms.TextBox()
         Me.TextBox_LightTexture = New System.Windows.Forms.TextBox()
         Me.PixelBox_PreviewImage = New GDev_Asset_Store_Tool.PixelBox()
+        Me.ContextMenuStrip_PreviewImage = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.SaveToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage_PanelSprite = New System.Windows.Forms.TabPage()
         Me.Panel19 = New System.Windows.Forms.Panel()
@@ -163,8 +165,6 @@ Partial Class TemplateAsset
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Button_GenerateAsset = New System.Windows.Forms.Button()
         Me.SaveFileDialog_PreviewImage = New System.Windows.Forms.SaveFileDialog()
-        Me.ContextMenuStrip_PreviewImage = New System.Windows.Forms.ContextMenuStrip(Me.components)
-        Me.SaveToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.TextBox_Name = New System.Windows.Forms.TextBox()
@@ -181,6 +181,7 @@ Partial Class TemplateAsset
         Me.Panel_BitmapFont.SuspendLayout()
         Me.Panel_BitmapAtlasImage.SuspendLayout()
         CType(Me.PixelBox_PreviewImage, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.ContextMenuStrip_PreviewImage.SuspendLayout()
         Me.TabControl1.SuspendLayout()
         Me.TabPage_PanelSprite.SuspendLayout()
         Me.Panel19.SuspendLayout()
@@ -219,7 +220,6 @@ Partial Class TemplateAsset
         Me.MenuStrip1.SuspendLayout()
         Me.Panel_PreviewImage.SuspendLayout()
         Me.Panel1.SuspendLayout()
-        Me.ContextMenuStrip_PreviewImage.SuspendLayout()
         Me.Panel3.SuspendLayout()
         CType(Me.ErrorProvider1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -235,7 +235,7 @@ Partial Class TemplateAsset
         Me.Panel_Main.ForeColor = System.Drawing.Color.White
         Me.Panel_Main.Location = New System.Drawing.Point(0, 0)
         Me.Panel_Main.Name = "Panel_Main"
-        Me.Panel_Main.Size = New System.Drawing.Size(834, 26)
+        Me.Panel_Main.Size = New System.Drawing.Size(839, 26)
         Me.Panel_Main.TabIndex = 97
         '
         'Panel_ControlBox
@@ -243,7 +243,7 @@ Partial Class TemplateAsset
         Me.Panel_ControlBox.Controls.Add(Me.PictureBox_Close)
         Me.Panel_ControlBox.Controls.Add(Me.PictureBox_Minimize)
         Me.Panel_ControlBox.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Panel_ControlBox.Location = New System.Drawing.Point(782, 0)
+        Me.Panel_ControlBox.Location = New System.Drawing.Point(787, 0)
         Me.Panel_ControlBox.Name = "Panel_ControlBox"
         Me.Panel_ControlBox.Size = New System.Drawing.Size(52, 26)
         Me.Panel_ControlBox.TabIndex = 4
@@ -299,7 +299,7 @@ Partial Class TemplateAsset
         Me.Button_Save.FlatAppearance.BorderSize = 0
         Me.Button_Save.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button_Save.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button_Save.Location = New System.Drawing.Point(728, 520)
+        Me.Button_Save.Location = New System.Drawing.Point(360, 584)
         Me.Button_Save.Name = "Button_Save"
         Me.Button_Save.Size = New System.Drawing.Size(96, 24)
         Me.Button_Save.TabIndex = 105
@@ -349,9 +349,9 @@ Partial Class TemplateAsset
         Me.Panel2.Controls.Add(Me.FastColoredTextBox_AssetJson)
         Me.Panel2.Controls.Add(Me.Label_assetjson)
         Me.Panel2.Controls.Add(Me.ShapeContainer5)
-        Me.Panel2.Location = New System.Drawing.Point(368, 216)
+        Me.Panel2.Location = New System.Drawing.Point(0, 232)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(464, 296)
+        Me.Panel2.Size = New System.Drawing.Size(464, 344)
         Me.Panel2.TabIndex = 110
         '
         'FastColoredTextBox_AssetJson
@@ -379,7 +379,7 @@ Partial Class TemplateAsset
         Me.FastColoredTextBox_AssetJson.SelectionColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.FastColoredTextBox_AssetJson.ServiceColors = CType(resources.GetObject("FastColoredTextBox_AssetJson.ServiceColors"), FastColoredTextBoxNS.ServiceColors)
         Me.FastColoredTextBox_AssetJson.ShowLineNumbers = False
-        Me.FastColoredTextBox_AssetJson.Size = New System.Drawing.Size(432, 256)
+        Me.FastColoredTextBox_AssetJson.Size = New System.Drawing.Size(432, 304)
         Me.FastColoredTextBox_AssetJson.TabIndex = 91
         Me.FastColoredTextBox_AssetJson.Zoom = 100
         '
@@ -401,7 +401,7 @@ Partial Class TemplateAsset
         Me.ShapeContainer5.Margin = New System.Windows.Forms.Padding(0)
         Me.ShapeContainer5.Name = "ShapeContainer5"
         Me.ShapeContainer5.Shapes.AddRange(New Microsoft.VisualBasic.PowerPacks.Shape() {Me.RectangleShape_Selected_File})
-        Me.ShapeContainer5.Size = New System.Drawing.Size(464, 296)
+        Me.ShapeContainer5.Size = New System.Drawing.Size(464, 344)
         Me.ShapeContainer5.TabIndex = 82
         Me.ShapeContainer5.TabStop = False
         '
@@ -416,7 +416,7 @@ Partial Class TemplateAsset
         Me.RectangleShape_Selected_File.Location = New System.Drawing.Point(8, 16)
         Me.RectangleShape_Selected_File.Name = "RectangleShape_Selected_File"
         Me.RectangleShape_Selected_File.SelectionColor = System.Drawing.Color.Transparent
-        Me.RectangleShape_Selected_File.Size = New System.Drawing.Size(448, 272)
+        Me.RectangleShape_Selected_File.Size = New System.Drawing.Size(448, 320)
         '
         'Panel_BitmapFont
         '
@@ -596,15 +596,32 @@ Partial Class TemplateAsset
         '
         Me.PixelBox_PreviewImage.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(49, Byte), Integer), CType(CType(54, Byte), Integer))
         Me.PixelBox_PreviewImage.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality
+        Me.PixelBox_PreviewImage.ContextMenuStrip = Me.ContextMenuStrip_PreviewImage
         Me.PixelBox_PreviewImage.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.[Default]
         Me.PixelBox_PreviewImage.Location = New System.Drawing.Point(16, 24)
         Me.PixelBox_PreviewImage.Name = "PixelBox_PreviewImage"
-        Me.PixelBox_PreviewImage.Size = New System.Drawing.Size(192, 108)
+        Me.PixelBox_PreviewImage.Size = New System.Drawing.Size(128, 128)
         Me.PixelBox_PreviewImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
         Me.PixelBox_PreviewImage.TabIndex = 103
         Me.PixelBox_PreviewImage.TabStop = False
         Me.ToolTip1.SetToolTip(Me.PixelBox_PreviewImage, "Right-click for options." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "You can drag & drop a image here." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Saved image will be " &
-        "scaled to a 16:9 aspect ratio.")
+        "scaled to a 1:1 aspect ratio.")
+        '
+        'ContextMenuStrip_PreviewImage
+        '
+        Me.ContextMenuStrip_PreviewImage.BackColor = System.Drawing.Color.FromArgb(CType(CType(54, Byte), Integer), CType(CType(57, Byte), Integer), CType(CType(62, Byte), Integer))
+        Me.ContextMenuStrip_PreviewImage.Font = New System.Drawing.Font("Segoe UI", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ContextMenuStrip_PreviewImage.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SaveToolStripMenuItem})
+        Me.ContextMenuStrip_PreviewImage.Name = "ContextMenuStrip_PackageThumbnail"
+        Me.ContextMenuStrip_PreviewImage.ShowImageMargin = False
+        Me.ContextMenuStrip_PreviewImage.Size = New System.Drawing.Size(85, 28)
+        '
+        'SaveToolStripMenuItem
+        '
+        Me.SaveToolStripMenuItem.ForeColor = System.Drawing.Color.WhiteSmoke
+        Me.SaveToolStripMenuItem.Name = "SaveToolStripMenuItem"
+        Me.SaveToolStripMenuItem.Size = New System.Drawing.Size(84, 24)
+        Me.SaveToolStripMenuItem.Text = "Save"
         '
         'TabControl1
         '
@@ -612,7 +629,7 @@ Partial Class TemplateAsset
         Me.TabControl1.Controls.Add(Me.TabPage_BitmapText)
         Me.TabControl1.Controls.Add(Me.TabPage_Tilemap)
         Me.TabControl1.Controls.Add(Me.TabPage_Light)
-        Me.TabControl1.Location = New System.Drawing.Point(0, 136)
+        Me.TabControl1.Location = New System.Drawing.Point(464, 208)
         Me.TabControl1.Name = "TabControl1"
         Me.TabControl1.SelectedIndex = 0
         Me.TabControl1.Size = New System.Drawing.Size(376, 416)
@@ -1619,7 +1636,7 @@ Partial Class TemplateAsset
         Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.PanelSpriteToolStripMenuItem, Me.BitmapTextToolStripMenuItem, Me.TilemapToolStripMenuItem, Me.LightToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 26)
         Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Size = New System.Drawing.Size(834, 29)
+        Me.MenuStrip1.Size = New System.Drawing.Size(839, 29)
         Me.MenuStrip1.TabIndex = 117
         '
         'PanelSpriteToolStripMenuItem
@@ -1657,10 +1674,10 @@ Partial Class TemplateAsset
         Me.Panel_PreviewImage.Controls.Add(Me.Label_Image)
         Me.Panel_PreviewImage.Controls.Add(Me.PixelBox_PreviewImage)
         Me.Panel_PreviewImage.Controls.Add(Me.ShapeContainer3)
-        Me.Panel_PreviewImage.Location = New System.Drawing.Point(608, 64)
+        Me.Panel_PreviewImage.Location = New System.Drawing.Point(0, 64)
         Me.Panel_PreviewImage.Name = "Panel_PreviewImage"
         Me.Panel_PreviewImage.Padding = New System.Windows.Forms.Padding(0, 8, 0, 0)
-        Me.Panel_PreviewImage.Size = New System.Drawing.Size(224, 152)
+        Me.Panel_PreviewImage.Size = New System.Drawing.Size(160, 168)
         Me.Panel_PreviewImage.TabIndex = 118
         '
         'Label_Image
@@ -1680,7 +1697,7 @@ Partial Class TemplateAsset
         Me.ShapeContainer3.Margin = New System.Windows.Forms.Padding(0)
         Me.ShapeContainer3.Name = "ShapeContainer3"
         Me.ShapeContainer3.Shapes.AddRange(New Microsoft.VisualBasic.PowerPacks.Shape() {Me.RectangleShape_Image})
-        Me.ShapeContainer3.Size = New System.Drawing.Size(224, 144)
+        Me.ShapeContainer3.Size = New System.Drawing.Size(160, 160)
         Me.ShapeContainer3.TabIndex = 104
         Me.ShapeContainer3.TabStop = False
         '
@@ -1695,7 +1712,7 @@ Partial Class TemplateAsset
         Me.RectangleShape_Image.Location = New System.Drawing.Point(8, 8)
         Me.RectangleShape_Image.Name = "RectangleShape_Image"
         Me.RectangleShape_Image.SelectionColor = System.Drawing.Color.Transparent
-        Me.RectangleShape_Image.Size = New System.Drawing.Size(208, 128)
+        Me.RectangleShape_Image.Size = New System.Drawing.Size(144, 144)
         '
         'ColorDialog1
         '
@@ -1713,7 +1730,7 @@ Partial Class TemplateAsset
         Me.RectangleShape3.Location = New System.Drawing.Point(8, 16)
         Me.RectangleShape3.Name = "RectangleShape2"
         Me.RectangleShape3.SelectionColor = System.Drawing.Color.Transparent
-        Me.RectangleShape3.Size = New System.Drawing.Size(592, 24)
+        Me.RectangleShape3.Size = New System.Drawing.Size(656, 24)
         '
         'ShapeContainer4
         '
@@ -1721,7 +1738,7 @@ Partial Class TemplateAsset
         Me.ShapeContainer4.Margin = New System.Windows.Forms.Padding(0)
         Me.ShapeContainer4.Name = "ShapeContainer4"
         Me.ShapeContainer4.Shapes.AddRange(New Microsoft.VisualBasic.PowerPacks.Shape() {Me.RectangleShape3})
-        Me.ShapeContainer4.Size = New System.Drawing.Size(608, 48)
+        Me.ShapeContainer4.Size = New System.Drawing.Size(672, 48)
         Me.ShapeContainer4.TabIndex = 107
         Me.ShapeContainer4.TabStop = False
         '
@@ -1732,7 +1749,7 @@ Partial Class TemplateAsset
         Me.TextBox_Description.ForeColor = System.Drawing.Color.WhiteSmoke
         Me.TextBox_Description.Location = New System.Drawing.Point(16, 24)
         Me.TextBox_Description.Name = "TextBox_Description"
-        Me.TextBox_Description.Size = New System.Drawing.Size(576, 13)
+        Me.TextBox_Description.Size = New System.Drawing.Size(640, 13)
         Me.TextBox_Description.TabIndex = 106
         '
         'Label_Description
@@ -1752,9 +1769,9 @@ Partial Class TemplateAsset
         Me.Panel1.Controls.Add(Me.Label_Description)
         Me.Panel1.Controls.Add(Me.TextBox_Description)
         Me.Panel1.Controls.Add(Me.ShapeContainer4)
-        Me.Panel1.Location = New System.Drawing.Point(0, 112)
+        Me.Panel1.Location = New System.Drawing.Point(160, 136)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(608, 48)
+        Me.Panel1.Size = New System.Drawing.Size(672, 48)
         Me.Panel1.TabIndex = 119
         '
         'Button_GenerateAsset
@@ -1764,7 +1781,7 @@ Partial Class TemplateAsset
         Me.Button_GenerateAsset.FlatAppearance.BorderSize = 0
         Me.Button_GenerateAsset.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button_GenerateAsset.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button_GenerateAsset.Location = New System.Drawing.Point(384, 520)
+        Me.Button_GenerateAsset.Location = New System.Drawing.Point(8, 584)
         Me.Button_GenerateAsset.Name = "Button_GenerateAsset"
         Me.Button_GenerateAsset.Size = New System.Drawing.Size(144, 24)
         Me.Button_GenerateAsset.TabIndex = 120
@@ -1775,30 +1792,14 @@ Partial Class TemplateAsset
         '
         Me.SaveFileDialog_PreviewImage.Filter = "Png Image (*.preview.png)|*.preview.png"
         '
-        'ContextMenuStrip_PreviewImage
-        '
-        Me.ContextMenuStrip_PreviewImage.BackColor = System.Drawing.Color.FromArgb(CType(CType(54, Byte), Integer), CType(CType(57, Byte), Integer), CType(CType(62, Byte), Integer))
-        Me.ContextMenuStrip_PreviewImage.Font = New System.Drawing.Font("Segoe UI", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ContextMenuStrip_PreviewImage.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SaveToolStripMenuItem})
-        Me.ContextMenuStrip_PreviewImage.Name = "ContextMenuStrip_PackageThumbnail"
-        Me.ContextMenuStrip_PreviewImage.ShowImageMargin = False
-        Me.ContextMenuStrip_PreviewImage.Size = New System.Drawing.Size(85, 28)
-        '
-        'SaveToolStripMenuItem
-        '
-        Me.SaveToolStripMenuItem.ForeColor = System.Drawing.Color.WhiteSmoke
-        Me.SaveToolStripMenuItem.Name = "SaveToolStripMenuItem"
-        Me.SaveToolStripMenuItem.Size = New System.Drawing.Size(84, 24)
-        Me.SaveToolStripMenuItem.Text = "Save"
-        '
         'Panel3
         '
         Me.Panel3.Controls.Add(Me.Label2)
         Me.Panel3.Controls.Add(Me.TextBox_Name)
         Me.Panel3.Controls.Add(Me.ShapeContainer15)
-        Me.Panel3.Location = New System.Drawing.Point(0, 64)
+        Me.Panel3.Location = New System.Drawing.Point(160, 80)
         Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(360, 48)
+        Me.Panel3.Size = New System.Drawing.Size(304, 48)
         Me.Panel3.TabIndex = 121
         '
         'Label2
@@ -1820,7 +1821,7 @@ Partial Class TemplateAsset
         Me.TextBox_Name.ForeColor = System.Drawing.Color.WhiteSmoke
         Me.TextBox_Name.Location = New System.Drawing.Point(16, 24)
         Me.TextBox_Name.Name = "TextBox_Name"
-        Me.TextBox_Name.Size = New System.Drawing.Size(328, 13)
+        Me.TextBox_Name.Size = New System.Drawing.Size(272, 13)
         Me.TextBox_Name.TabIndex = 106
         '
         'ShapeContainer15
@@ -1829,7 +1830,7 @@ Partial Class TemplateAsset
         Me.ShapeContainer15.Margin = New System.Windows.Forms.Padding(0)
         Me.ShapeContainer15.Name = "ShapeContainer15"
         Me.ShapeContainer15.Shapes.AddRange(New Microsoft.VisualBasic.PowerPacks.Shape() {Me.RectangleShape20})
-        Me.ShapeContainer15.Size = New System.Drawing.Size(360, 48)
+        Me.ShapeContainer15.Size = New System.Drawing.Size(304, 48)
         Me.ShapeContainer15.TabIndex = 107
         Me.ShapeContainer15.TabStop = False
         '
@@ -1844,7 +1845,7 @@ Partial Class TemplateAsset
         Me.RectangleShape20.Location = New System.Drawing.Point(8, 16)
         Me.RectangleShape20.Name = "RectangleShape2"
         Me.RectangleShape20.SelectionColor = System.Drawing.Color.Transparent
-        Me.RectangleShape20.Size = New System.Drawing.Size(344, 24)
+        Me.RectangleShape20.Size = New System.Drawing.Size(288, 24)
         '
         'ErrorProvider1
         '
@@ -1855,13 +1856,13 @@ Partial Class TemplateAsset
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(54, Byte), Integer), CType(CType(57, Byte), Integer), CType(CType(62, Byte), Integer))
-        Me.ClientSize = New System.Drawing.Size(834, 553)
+        Me.ClientSize = New System.Drawing.Size(839, 622)
+        Me.Controls.Add(Me.Panel1)
+        Me.Controls.Add(Me.TabControl1)
         Me.Controls.Add(Me.Panel3)
         Me.Controls.Add(Me.Button_GenerateAsset)
         Me.Controls.Add(Me.Panel_PreviewImage)
-        Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.MenuStrip1)
-        Me.Controls.Add(Me.TabControl1)
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.Button_Save)
         Me.Controls.Add(Me.Panel_Main)
@@ -1885,6 +1886,7 @@ Partial Class TemplateAsset
         Me.Panel_BitmapAtlasImage.ResumeLayout(False)
         Me.Panel_BitmapAtlasImage.PerformLayout()
         CType(Me.PixelBox_PreviewImage, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.ContextMenuStrip_PreviewImage.ResumeLayout(False)
         Me.TabControl1.ResumeLayout(False)
         Me.TabPage_PanelSprite.ResumeLayout(False)
         Me.TabPage_PanelSprite.PerformLayout()
@@ -1938,7 +1940,6 @@ Partial Class TemplateAsset
         Me.Panel_PreviewImage.PerformLayout()
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
-        Me.ContextMenuStrip_PreviewImage.ResumeLayout(False)
         Me.Panel3.ResumeLayout(False)
         Me.Panel3.PerformLayout()
         CType(Me.ErrorProvider1, System.ComponentModel.ISupportInitialize).EndInit()

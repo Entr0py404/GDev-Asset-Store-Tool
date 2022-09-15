@@ -27,7 +27,7 @@
                 writer.WritePropertyName("name")
                 writer.WriteValue(TextBox_PackageName.Text)
                 writer.WritePropertyName("tag")
-                writer.WriteValue(TextBox_Tag.Text)
+                writer.WriteValue(TextBox_Tag.Text.ToLower)
                 writer.WriteEndObject()
 
 

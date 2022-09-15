@@ -14,13 +14,12 @@
         ImageList1.Images.Add("SelectionArrow", My.Resources.SelectionArrow) '2: 
         TreeView1.SelectedImageIndex = 2
 
-        PixelBox_Animation.Location = New Point(CInt((Panel_Animation.Width / 2 - PixelBox_Animation.Width / 2)), CInt((Panel_Animation.Height / 2 - PixelBox_Animation.Height / 2) + 4))
+        'PixelBox_Animation.Location = New Point(CInt((Panel_Animation.Width / 2 - PixelBox_Animation.Width / 2)), CInt((Panel_Animation.Height / 2 - PixelBox_Animation.Height / 2) - 4))
         Dim tBF_Str As String = CStr(Math.Round(NumericUpDown_TimeBetweenFrames.Value, 4))
         tBF_Str = tBF_Str.TrimEnd(CChar("0"))
         tBF_Str = tBF_Str.TrimEnd(CChar("."))
         TextBox_TimeBetweenFrames.Text = tBF_Str 'Math.Round(NumericUpDown_TimeBetweenFrames.Value, 4)
         Label_MetadataFileToGen.Text = ""
-        Panel_Selected_Directory_Controls.AllowDrop = True
         If File.Exists(Application.StartupPath & "\Looped Animation Keywords.txt") Then
             LoopedAnimationKeywords = File.ReadAllLines(Application.StartupPath & "\Looped Animation Keywords.txt").ToArray
         Else
@@ -218,13 +217,13 @@
         If e.Delta < 0 And ZoomCounter < 100 Then 'Zoom in
             ZoomCounter += 5
             Label_ZoomLvl.Text = "Zoom: " & ZoomCounter & "%"
-            PixelBox_Animation.Size = ObjectScale(New Size(232, 232), ZoomCounter)
-            PixelBox_Animation.Location = New Point(CInt((Panel_Animation.Width / 2 - PixelBox_Animation.Width / 2)), CInt((Panel_Animation.Height / 2 - PixelBox_Animation.Height / 2) + 4))
+            PixelBox_Animation.Size = ObjectScale(New Size(320, 304), ZoomCounter)
+            PixelBox_Animation.Location = New Point(CInt((Panel_Animation.Width / 2 - PixelBox_Animation.Width / 2)), CInt((Panel_Animation.Height / 2 - PixelBox_Animation.Height / 2) - 4))
         ElseIf e.Delta > 0 And ZoomCounter > 10 Then 'Zoom out
             ZoomCounter -= 5
             Label_ZoomLvl.Text = "Zoom: " & ZoomCounter & "%"
-            PixelBox_Animation.Size = ObjectScale(New Size(232, 232), ZoomCounter)
-            PixelBox_Animation.Location = New Point(CInt((Panel_Animation.Width / 2 - PixelBox_Animation.Width / 2)), CInt((Panel_Animation.Height / 2 - PixelBox_Animation.Height / 2) + 4))
+            PixelBox_Animation.Size = ObjectScale(New Size(320, 304), ZoomCounter)
+            PixelBox_Animation.Location = New Point(CInt((Panel_Animation.Width / 2 - PixelBox_Animation.Width / 2)), CInt((Panel_Animation.Height / 2 - PixelBox_Animation.Height / 2) - 4))
         End If
     End Sub
     'Timer_Animation - Tick
@@ -494,12 +493,15 @@
                     Load_Directory()
                     AppendToLog("Directory reloaded", Color.MediumSpringGreen, True)
                 End If
-            Else
-                CalcMetadata() 'HERE
-            End If
 
-            AnimationFiles = AnimationFiles.OrderBy(Function(x) Integer.Parse("0" & x.Substring(x.LastIndexOf("_") + 1, x.Length - x.LastIndexOf("_") - 5))).ToList
-            Timer_Animation.Enabled = True
+                AnimationFiles = AnimationFiles.OrderBy(Function(x) Integer.Parse("0" & x.Substring(x.LastIndexOf("_") + 1, x.Length - x.LastIndexOf("_") - 5))).ToList
+                Timer_Animation.Enabled = True
+            Else
+                If Not e.Node.Text.EndsWith(".asset.json") And Not e.Node.Text = "PACK.json" Then
+                    CalcMetadata() 'HERE
+                    Console.WriteLine("CalcMetadata")
+                End If
+            End If
 
         Catch ex As Exception
             MsgBox(ex.Message, MsgBoxStyle.Critical)
@@ -514,23 +516,27 @@
             If Directory.Exists(FolderBrowserDialog_Selected_Directory.SelectedPath) Then
                 GenerateMetadataFilesToolStripMenuItem.Enabled = True
                 RegenerateMetadataFilesToolStripMenuItem.Enabled = True
+                AssetStorePreviewToolStripMenuItem1.Enabled = True
                 OpenDirectoryToolStripMenuItem.Enabled = True
                 If Not TreeView1.SelectedNode.Index = -1 And TreeView1.SelectedNode.Text.EndsWith(".json") Then 'Changed
-                    AddAnimationNameToFileToolStripMenuItem.Enabled = True
+                    LoopedAnimationKeywordsToolStripMenuItem1.Enabled = True
                     OpenFileToolStripMenuItem.Enabled = True
                     RegenerateSelectedFileToolStripMenuItem.Enabled = True
                     GenerateMetadataFilesToolStripMenuItem.Enabled = False
                     RegenerateMetadataFilesToolStripMenuItem.Enabled = False
+                    AssetStorePreviewToolStripMenuItem1.Enabled = False
                 Else
-                    AddAnimationNameToFileToolStripMenuItem.Enabled = False
+                    LoopedAnimationKeywordsToolStripMenuItem1.Enabled = False
                     OpenFileToolStripMenuItem.Enabled = False
                     RegenerateSelectedFileToolStripMenuItem.Enabled = False
                     GenerateMetadataFilesToolStripMenuItem.Enabled = True
                     RegenerateMetadataFilesToolStripMenuItem.Enabled = True
+                    AssetStorePreviewToolStripMenuItem1.Enabled = True
                 End If
             Else
                 GenerateMetadataFilesToolStripMenuItem.Enabled = False
                 RegenerateMetadataFilesToolStripMenuItem.Enabled = False
+                AssetStorePreviewToolStripMenuItem1.Enabled = False
                 OpenDirectoryToolStripMenuItem.Enabled = False
             End If
         End If
@@ -716,7 +722,7 @@
         End If
     End Sub
     'AddAnimationNameToFile - (ToolStripMenuItem) - Click
-    Private Sub AddAnimationNameToFileToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AddAnimationNameToFileToolStripMenuItem.Click
+    Private Sub AddAnimationNameToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles AddAnimationNameToolStripMenuItem1.Click
         If File.Exists(Application.StartupPath & "\Looped Animation Keywords.txt") Then
             LoopedAnimationKeywords = File.ReadAllLines(Application.StartupPath & "\Looped Animation Keywords.txt").ToArray
             Dim tempString As String = ""
@@ -998,6 +1004,11 @@
         TemplateAsset.Show()
         TemplateAsset.BringToFront()
     End Sub
+    'AssetStorePreview (ToolStripMenuItem) - Click
+    Private Sub AssetStorePreviewToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AssetStorePreviewToolStripMenuItem.Click
+        AssetStorePreview.Show()
+        AssetStorePreview.BringToFront()
+    End Sub
     'FileNameValidator (ToolStripMenuItem) - Click
     Private Sub FileNameValidatorToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles FileNameValidatorToolStripMenuItem.Click
         FileNameValidator.Show()
@@ -1089,5 +1100,13 @@
     Private Sub Main_Activated(sender As Object, e As EventArgs) Handles Me.Activated
         PictureBox_Close.Image = My.Resources.Close_Red
         Panel_Main.BackColor = Color.Black
+    End Sub
+    'AssetStorePreviewToolStripMenuItem1_Click
+    Private Sub AssetStorePreviewToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles AssetStorePreviewToolStripMenuItem1.Click
+        If Directory.Exists(FolderBrowserDialog_Selected_Directory.SelectedPath & "\" & TreeView1.SelectedNode.FullPath) Then
+            AssetStorePreview.Show()
+            AssetStorePreview.BringToFront()
+            AssetStorePreview.LoadAssetsFromSelectedDirectory(FolderBrowserDialog_Selected_Directory.SelectedPath & "\" & TreeView1.SelectedNode.FullPath)
+        End If
     End Sub
 End Class

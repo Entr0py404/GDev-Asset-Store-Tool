@@ -2,8 +2,8 @@
 
 Public Class TemplateAsset
     ReadOnly SupportedIamgeFormats() As String = {".png", ".bmp", ".jpeg", ".jpg", ".tiff", ".tif"}
-    Dim ForceImageAspectRatio_16_9_Size As Size
-    Dim aspectRatio_IsAlready_16_9 As Boolean = False
+    Dim ForceImageAspectRatio_1_1_Size As Size
+    Dim aspectRatio_IsAlready_1_1 As Boolean = False
     'TemplateAsset - Load
     Private Sub TemplateAsset_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         TabControl1.DrawMode = TabDrawMode.OwnerDrawFixed
@@ -192,8 +192,8 @@ Public Class TemplateAsset
                 Dim tempImageName As String = Path.GetFileNameWithoutExtension(SaveFileDialog1.FileName)
                 tempImageName = Path.GetFileNameWithoutExtension(tempImageName)
 
-                If aspectRatio_IsAlready_16_9 = False Then
-                    Dim bmp = New Bitmap(ForceImageAspectRatio_16_9_Size.Width, ForceImageAspectRatio_16_9_Size.Height)
+                If aspectRatio_IsAlready_1_1 = False Then
+                    Dim bmp = New Bitmap(ForceImageAspectRatio_1_1_Size.Width, ForceImageAspectRatio_1_1_Size.Height)
                     Using g As Graphics = Graphics.FromImage(bmp)
                         'draw the original at the new size on memory bitmap
                         g.DrawImage(PixelBox_PreviewImage.Image, 0, 0, bmp.Width, bmp.Height)
@@ -249,28 +249,25 @@ Public Class TemplateAsset
         If files.Length <> 0 Then
             Try
                 'ClearPicturebox
-
-
                 PixelBox_PreviewImage.Image = Image.FromFile(files(0))
                 ErrorProvider1.SetError(PixelBox_PreviewImage, Nothing)
 
                 Dim aspectRatio As Decimal = CDec(PixelBox_PreviewImage.Image.Width / PixelBox_PreviewImage.Image.Height)
-                Dim Ratio_16_9 As Decimal = CDec(1.77777777777778)
-                aspectRatio_IsAlready_16_9 = Decimal.Equals(aspectRatio, Ratio_16_9)
-                'Console.WriteLine(aspectRatio_IsAlready_16_9)
+                Dim Ratio_1_1 As Decimal = 1
+                aspectRatio_IsAlready_1_1 = Decimal.Equals(aspectRatio, Ratio_1_1)
+                'Console.WriteLine(aspectRatio_IsAlready_1_1)
+                'Console.WriteLine(aspectRatio)
 
-                If aspectRatio_IsAlready_16_9 = False Then
-                    Dim aspectRatio_16_9 As Double = 16.0 / 9.0
+                If aspectRatio_IsAlready_1_1 = False Then
                     Dim n1 As Double = PixelBox_PreviewImage.Image.Width
-                    n1 = Math.Round(n1 / 16) * 16 - 16
                     'Console.WriteLine(n1)
 
                     Dim n2 As Double = PixelBox_PreviewImage.Image.Height
-                    n2 = n1 / aspectRatio_16_9
+                    n2 = n1
                     'Console.WriteLine(n2)
 
-                    ForceImageAspectRatio_16_9_Size.Width = Convert.ToInt32(n1)
-                    ForceImageAspectRatio_16_9_Size.Height = Convert.ToInt32(n2)
+                    ForceImageAspectRatio_1_1_Size.Width = Convert.ToInt32(n1)
+                    ForceImageAspectRatio_1_1_Size.Height = Convert.ToInt32(n2)
                 End If
             Catch ex As Exception
                 MsgBox("Problem opening file.", MsgBoxStyle.Critical)
@@ -297,8 +294,8 @@ Public Class TemplateAsset
     'Save (ToolStripMenuItem) - Click
     Private Sub SaveToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SaveToolStripMenuItem.Click
         If SaveFileDialog_PreviewImage.ShowDialog = DialogResult.OK Then
-            If aspectRatio_IsAlready_16_9 = False Then
-                Dim bmp = New Bitmap(ForceImageAspectRatio_16_9_Size.Width, ForceImageAspectRatio_16_9_Size.Height)
+            If aspectRatio_IsAlready_1_1 = False Then
+                Dim bmp = New Bitmap(ForceImageAspectRatio_1_1_Size.Width, ForceImageAspectRatio_1_1_Size.Height)
                 Using g As Graphics = Graphics.FromImage(bmp)
                     'draw the original at the new size on memory bitmap
                     g.DrawImage(PixelBox_PreviewImage.Image, 0, 0, bmp.Width, bmp.Height)

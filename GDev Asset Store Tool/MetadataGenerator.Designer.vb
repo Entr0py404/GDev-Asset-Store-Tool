@@ -35,8 +35,10 @@ Partial Class MetadataGenerator
         Me.ToolStripSeparator4 = New System.Windows.Forms.ToolStripSeparator()
         Me.OpenFileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.OpenDirectoryToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.AssetStorePreviewToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator6 = New System.Windows.Forms.ToolStripSeparator()
-        Me.AddAnimationNameToFileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.LoopedAnimationKeywordsToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.AddAnimationNameToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ContextMenuStrip_Log = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.ClearToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.FolderBrowserDialog_Selected_Directory = New System.Windows.Forms.FolderBrowserDialog()
@@ -85,7 +87,6 @@ Partial Class MetadataGenerator
         Me.Panel_Controls = New System.Windows.Forms.Panel()
         Me.TextBox_TimeBetweenFrames = New System.Windows.Forms.TextBox()
         Me.CheckBox_Loop = New System.Windows.Forms.CheckBox()
-        Me.Button_Save = New System.Windows.Forms.Button()
         Me.Button_PausePlay = New System.Windows.Forms.Button()
         Me.Label_FPS = New System.Windows.Forms.Label()
         Me.Button_Replay = New System.Windows.Forms.Button()
@@ -94,6 +95,7 @@ Partial Class MetadataGenerator
         Me.NumericUpDown_FPS = New System.Windows.Forms.NumericUpDown()
         Me.ShapeContainer1 = New Microsoft.VisualBasic.PowerPacks.ShapeContainer()
         Me.RectangleShape3 = New Microsoft.VisualBasic.PowerPacks.RectangleShape()
+        Me.Button_Save = New System.Windows.Forms.Button()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
@@ -104,6 +106,7 @@ Partial Class MetadataGenerator
         Me.TemplateAssetToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ClipboardAssetToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.FileNameValidatorToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.AssetStorePreviewToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.LoopedAnimationKeywordsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ReloadToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ImportToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -137,7 +140,7 @@ Partial Class MetadataGenerator
         Me.TextBox_Selected_Directory.ForeColor = System.Drawing.Color.WhiteSmoke
         Me.TextBox_Selected_Directory.Location = New System.Drawing.Point(13, 22)
         Me.TextBox_Selected_Directory.Name = "TextBox_Selected_Directory"
-        Me.TextBox_Selected_Directory.Size = New System.Drawing.Size(467, 13)
+        Me.TextBox_Selected_Directory.Size = New System.Drawing.Size(675, 13)
         Me.TextBox_Selected_Directory.TabIndex = 1
         Me.ToolTip1.SetToolTip(Me.TextBox_Selected_Directory, "You can drag & drop a directory here.")
         '
@@ -145,31 +148,31 @@ Partial Class MetadataGenerator
         '
         Me.ContextMenuStrip_TreeView.BackColor = System.Drawing.Color.FromArgb(CType(CType(54, Byte), Integer), CType(CType(57, Byte), Integer), CType(CType(62, Byte), Integer))
         Me.ContextMenuStrip_TreeView.Font = New System.Drawing.Font("Segoe UI", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ContextMenuStrip_TreeView.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.RegenerateSelectedFileToolStripMenuItem, Me.ToolStripSeparator1, Me.GenerateMetadataFilesToolStripMenuItem, Me.RegenerateMetadataFilesToolStripMenuItem, Me.ToolStripSeparator3, Me.XFramesToolStripMenuItem, Me.ToolStripSeparator4, Me.OpenFileToolStripMenuItem, Me.OpenDirectoryToolStripMenuItem, Me.ToolStripSeparator6, Me.AddAnimationNameToFileToolStripMenuItem})
+        Me.ContextMenuStrip_TreeView.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.RegenerateSelectedFileToolStripMenuItem, Me.ToolStripSeparator1, Me.GenerateMetadataFilesToolStripMenuItem, Me.RegenerateMetadataFilesToolStripMenuItem, Me.ToolStripSeparator3, Me.XFramesToolStripMenuItem, Me.ToolStripSeparator4, Me.OpenFileToolStripMenuItem, Me.OpenDirectoryToolStripMenuItem, Me.AssetStorePreviewToolStripMenuItem1, Me.ToolStripSeparator6, Me.LoopedAnimationKeywordsToolStripMenuItem1})
         Me.ContextMenuStrip_TreeView.Name = "ContextMenuStrip_Listbox"
         Me.ContextMenuStrip_TreeView.ShowCheckMargin = True
         Me.ContextMenuStrip_TreeView.ShowImageMargin = False
-        Me.ContextMenuStrip_TreeView.Size = New System.Drawing.Size(262, 196)
+        Me.ContextMenuStrip_TreeView.Size = New System.Drawing.Size(271, 220)
         '
         'RegenerateSelectedFileToolStripMenuItem
         '
         Me.RegenerateSelectedFileToolStripMenuItem.Enabled = False
         Me.RegenerateSelectedFileToolStripMenuItem.ForeColor = System.Drawing.Color.WhiteSmoke
         Me.RegenerateSelectedFileToolStripMenuItem.Name = "RegenerateSelectedFileToolStripMenuItem"
-        Me.RegenerateSelectedFileToolStripMenuItem.Size = New System.Drawing.Size(261, 24)
+        Me.RegenerateSelectedFileToolStripMenuItem.Size = New System.Drawing.Size(270, 24)
         Me.RegenerateSelectedFileToolStripMenuItem.Text = "Regenerate selected file"
         '
         'ToolStripSeparator1
         '
         Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(258, 6)
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(267, 6)
         '
         'GenerateMetadataFilesToolStripMenuItem
         '
         Me.GenerateMetadataFilesToolStripMenuItem.Enabled = False
         Me.GenerateMetadataFilesToolStripMenuItem.ForeColor = System.Drawing.Color.WhiteSmoke
         Me.GenerateMetadataFilesToolStripMenuItem.Name = "GenerateMetadataFilesToolStripMenuItem"
-        Me.GenerateMetadataFilesToolStripMenuItem.Size = New System.Drawing.Size(261, 24)
+        Me.GenerateMetadataFilesToolStripMenuItem.Size = New System.Drawing.Size(270, 24)
         Me.GenerateMetadataFilesToolStripMenuItem.Text = "Generate metadata files"
         '
         'RegenerateMetadataFilesToolStripMenuItem
@@ -177,32 +180,32 @@ Partial Class MetadataGenerator
         Me.RegenerateMetadataFilesToolStripMenuItem.Enabled = False
         Me.RegenerateMetadataFilesToolStripMenuItem.ForeColor = System.Drawing.Color.WhiteSmoke
         Me.RegenerateMetadataFilesToolStripMenuItem.Name = "RegenerateMetadataFilesToolStripMenuItem"
-        Me.RegenerateMetadataFilesToolStripMenuItem.Size = New System.Drawing.Size(261, 24)
+        Me.RegenerateMetadataFilesToolStripMenuItem.Size = New System.Drawing.Size(270, 24)
         Me.RegenerateMetadataFilesToolStripMenuItem.Text = "Regenerate metadata files"
         '
         'ToolStripSeparator3
         '
         Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
-        Me.ToolStripSeparator3.Size = New System.Drawing.Size(258, 6)
+        Me.ToolStripSeparator3.Size = New System.Drawing.Size(267, 6)
         '
         'XFramesToolStripMenuItem
         '
         Me.XFramesToolStripMenuItem.ForeColor = System.Drawing.Color.WhiteSmoke
         Me.XFramesToolStripMenuItem.Name = "XFramesToolStripMenuItem"
-        Me.XFramesToolStripMenuItem.Size = New System.Drawing.Size(261, 24)
+        Me.XFramesToolStripMenuItem.Size = New System.Drawing.Size(270, 24)
         Me.XFramesToolStripMenuItem.Text = "2X frames"
         '
         'ToolStripSeparator4
         '
         Me.ToolStripSeparator4.Name = "ToolStripSeparator4"
-        Me.ToolStripSeparator4.Size = New System.Drawing.Size(258, 6)
+        Me.ToolStripSeparator4.Size = New System.Drawing.Size(267, 6)
         '
         'OpenFileToolStripMenuItem
         '
         Me.OpenFileToolStripMenuItem.Enabled = False
         Me.OpenFileToolStripMenuItem.ForeColor = System.Drawing.Color.WhiteSmoke
         Me.OpenFileToolStripMenuItem.Name = "OpenFileToolStripMenuItem"
-        Me.OpenFileToolStripMenuItem.Size = New System.Drawing.Size(261, 24)
+        Me.OpenFileToolStripMenuItem.Size = New System.Drawing.Size(270, 24)
         Me.OpenFileToolStripMenuItem.Text = "Open file"
         '
         'OpenDirectoryToolStripMenuItem
@@ -210,21 +213,38 @@ Partial Class MetadataGenerator
         Me.OpenDirectoryToolStripMenuItem.Enabled = False
         Me.OpenDirectoryToolStripMenuItem.ForeColor = System.Drawing.Color.WhiteSmoke
         Me.OpenDirectoryToolStripMenuItem.Name = "OpenDirectoryToolStripMenuItem"
-        Me.OpenDirectoryToolStripMenuItem.Size = New System.Drawing.Size(261, 24)
+        Me.OpenDirectoryToolStripMenuItem.Size = New System.Drawing.Size(270, 24)
         Me.OpenDirectoryToolStripMenuItem.Text = "Open directory"
+        '
+        'AssetStorePreviewToolStripMenuItem1
+        '
+        Me.AssetStorePreviewToolStripMenuItem1.Enabled = False
+        Me.AssetStorePreviewToolStripMenuItem1.ForeColor = System.Drawing.Color.WhiteSmoke
+        Me.AssetStorePreviewToolStripMenuItem1.Name = "AssetStorePreviewToolStripMenuItem1"
+        Me.AssetStorePreviewToolStripMenuItem1.Size = New System.Drawing.Size(270, 24)
+        Me.AssetStorePreviewToolStripMenuItem1.Text = "Asset store preview"
         '
         'ToolStripSeparator6
         '
         Me.ToolStripSeparator6.Name = "ToolStripSeparator6"
-        Me.ToolStripSeparator6.Size = New System.Drawing.Size(258, 6)
+        Me.ToolStripSeparator6.Size = New System.Drawing.Size(267, 6)
         '
-        'AddAnimationNameToFileToolStripMenuItem
+        'LoopedAnimationKeywordsToolStripMenuItem1
         '
-        Me.AddAnimationNameToFileToolStripMenuItem.Enabled = False
-        Me.AddAnimationNameToFileToolStripMenuItem.ForeColor = System.Drawing.Color.WhiteSmoke
-        Me.AddAnimationNameToFileToolStripMenuItem.Name = "AddAnimationNameToFileToolStripMenuItem"
-        Me.AddAnimationNameToFileToolStripMenuItem.Size = New System.Drawing.Size(261, 24)
-        Me.AddAnimationNameToFileToolStripMenuItem.Text = "Add animation name to file"
+        Me.LoopedAnimationKeywordsToolStripMenuItem1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AddAnimationNameToolStripMenuItem1})
+        Me.LoopedAnimationKeywordsToolStripMenuItem1.Enabled = False
+        Me.LoopedAnimationKeywordsToolStripMenuItem1.ForeColor = System.Drawing.Color.WhiteSmoke
+        Me.LoopedAnimationKeywordsToolStripMenuItem1.Name = "LoopedAnimationKeywordsToolStripMenuItem1"
+        Me.LoopedAnimationKeywordsToolStripMenuItem1.Size = New System.Drawing.Size(270, 24)
+        Me.LoopedAnimationKeywordsToolStripMenuItem1.Text = "Looped Animation Keywords"
+        '
+        'AddAnimationNameToolStripMenuItem1
+        '
+        Me.AddAnimationNameToolStripMenuItem1.BackColor = System.Drawing.Color.FromArgb(CType(CType(54, Byte), Integer), CType(CType(57, Byte), Integer), CType(CType(62, Byte), Integer))
+        Me.AddAnimationNameToolStripMenuItem1.ForeColor = System.Drawing.Color.WhiteSmoke
+        Me.AddAnimationNameToolStripMenuItem1.Name = "AddAnimationNameToolStripMenuItem1"
+        Me.AddAnimationNameToolStripMenuItem1.Size = New System.Drawing.Size(218, 24)
+        Me.AddAnimationNameToolStripMenuItem1.Text = "Add animation name"
         '
         'ContextMenuStrip_Log
         '
@@ -259,7 +279,7 @@ Partial Class MetadataGenerator
         Me.TreeView1.Location = New System.Drawing.Point(16, 24)
         Me.TreeView1.Name = "TreeView1"
         Me.TreeView1.SelectedImageIndex = 0
-        Me.TreeView1.Size = New System.Drawing.Size(328, 328)
+        Me.TreeView1.Size = New System.Drawing.Size(448, 408)
         Me.TreeView1.TabIndex = 17
         Me.ToolTip1.SetToolTip(Me.TreeView1, "Right-click for options." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "You can drag & drop a directory here.")
         '
@@ -280,7 +300,7 @@ Partial Class MetadataGenerator
         Me.Panel_Main.ForeColor = System.Drawing.Color.White
         Me.Panel_Main.Location = New System.Drawing.Point(0, 0)
         Me.Panel_Main.Name = "Panel_Main"
-        Me.Panel_Main.Size = New System.Drawing.Size(753, 26)
+        Me.Panel_Main.Size = New System.Drawing.Size(960, 26)
         Me.Panel_Main.TabIndex = 78
         '
         'Panel_ControlBox
@@ -288,7 +308,7 @@ Partial Class MetadataGenerator
         Me.Panel_ControlBox.Controls.Add(Me.PictureBox_Close)
         Me.Panel_ControlBox.Controls.Add(Me.PictureBox_Minimize)
         Me.Panel_ControlBox.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Panel_ControlBox.Location = New System.Drawing.Point(701, 0)
+        Me.Panel_ControlBox.Location = New System.Drawing.Point(908, 0)
         Me.Panel_ControlBox.Name = "Panel_ControlBox"
         Me.Panel_ControlBox.Size = New System.Drawing.Size(52, 26)
         Me.Panel_ControlBox.TabIndex = 4
@@ -343,7 +363,7 @@ Partial Class MetadataGenerator
         Me.RectangleShape_Log.Location = New System.Drawing.Point(8, 16)
         Me.RectangleShape_Log.Name = "RectangleShape_Log"
         Me.RectangleShape_Log.SelectionColor = System.Drawing.Color.Transparent
-        Me.RectangleShape_Log.Size = New System.Drawing.Size(736, 112)
+        Me.RectangleShape_Log.Size = New System.Drawing.Size(944, 112)
         '
         'RectangleShape_Metadata_Files
         '
@@ -356,7 +376,7 @@ Partial Class MetadataGenerator
         Me.RectangleShape_Metadata_Files.Location = New System.Drawing.Point(8, 16)
         Me.RectangleShape_Metadata_Files.Name = "RectangleShape_Metadata_Files"
         Me.RectangleShape_Metadata_Files.SelectionColor = System.Drawing.Color.Transparent
-        Me.RectangleShape_Metadata_Files.Size = New System.Drawing.Size(344, 360)
+        Me.RectangleShape_Metadata_Files.Size = New System.Drawing.Size(464, 448)
         '
         'RectangleShape_Selected_File
         '
@@ -369,7 +389,7 @@ Partial Class MetadataGenerator
         Me.RectangleShape_Selected_File.Location = New System.Drawing.Point(8, 16)
         Me.RectangleShape_Selected_File.Name = "RectangleShape_Selected_File"
         Me.RectangleShape_Selected_File.SelectionColor = System.Drawing.Color.Transparent
-        Me.RectangleShape_Selected_File.Size = New System.Drawing.Size(376, 88)
+        Me.RectangleShape_Selected_File.Size = New System.Drawing.Size(464, 88)
         '
         'RectangleShape_Animation
         '
@@ -382,7 +402,7 @@ Partial Class MetadataGenerator
         Me.RectangleShape_Animation.Location = New System.Drawing.Point(8, 16)
         Me.RectangleShape_Animation.Name = "RectangleShape_Animation"
         Me.RectangleShape_Animation.SelectionColor = System.Drawing.Color.Transparent
-        Me.RectangleShape_Animation.Size = New System.Drawing.Size(248, 248)
+        Me.RectangleShape_Animation.Size = New System.Drawing.Size(336, 336)
         '
         'RectangleShape_Selected_Directory
         '
@@ -395,7 +415,7 @@ Partial Class MetadataGenerator
         Me.RectangleShape_Selected_Directory.Location = New System.Drawing.Point(8, 16)
         Me.RectangleShape_Selected_Directory.Name = "RectangleShape_Selected_Directory"
         Me.RectangleShape_Selected_Directory.SelectionColor = System.Drawing.Color.Transparent
-        Me.RectangleShape_Selected_Directory.Size = New System.Drawing.Size(480, 24)
+        Me.RectangleShape_Selected_Directory.Size = New System.Drawing.Size(688, 24)
         '
         'Label_Log
         '
@@ -459,6 +479,7 @@ Partial Class MetadataGenerator
         '
         'Panel_Selected_Directory_Controls
         '
+        Me.Panel_Selected_Directory_Controls.AllowDrop = True
         Me.Panel_Selected_Directory_Controls.Controls.Add(Me.LinkLabel_Trello)
         Me.Panel_Selected_Directory_Controls.Controls.Add(Me.Button_Reload)
         Me.Panel_Selected_Directory_Controls.Controls.Add(Me.Button_Select_Directory)
@@ -467,7 +488,7 @@ Partial Class MetadataGenerator
         Me.Panel_Selected_Directory_Controls.Controls.Add(Me.ShapeContainer2)
         Me.Panel_Selected_Directory_Controls.Location = New System.Drawing.Point(0, 64)
         Me.Panel_Selected_Directory_Controls.Name = "Panel_Selected_Directory_Controls"
-        Me.Panel_Selected_Directory_Controls.Size = New System.Drawing.Size(752, 48)
+        Me.Panel_Selected_Directory_Controls.Size = New System.Drawing.Size(960, 48)
         Me.Panel_Selected_Directory_Controls.TabIndex = 85
         '
         'LinkLabel_Trello
@@ -475,7 +496,7 @@ Partial Class MetadataGenerator
         Me.LinkLabel_Trello.BackColor = System.Drawing.Color.FromArgb(CType(CType(54, Byte), Integer), CType(CType(57, Byte), Integer), CType(CType(62, Byte), Integer))
         Me.LinkLabel_Trello.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LinkLabel_Trello.LinkColor = System.Drawing.Color.DodgerBlue
-        Me.LinkLabel_Trello.Location = New System.Drawing.Point(696, 16)
+        Me.LinkLabel_Trello.Location = New System.Drawing.Point(904, 16)
         Me.LinkLabel_Trello.Name = "LinkLabel_Trello"
         Me.LinkLabel_Trello.Size = New System.Drawing.Size(50, 24)
         Me.LinkLabel_Trello.TabIndex = 96
@@ -492,7 +513,7 @@ Partial Class MetadataGenerator
         Me.Button_Reload.FlatAppearance.BorderSize = 0
         Me.Button_Reload.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button_Reload.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button_Reload.Location = New System.Drawing.Point(600, 16)
+        Me.Button_Reload.Location = New System.Drawing.Point(808, 16)
         Me.Button_Reload.Name = "Button_Reload"
         Me.Button_Reload.Size = New System.Drawing.Size(80, 24)
         Me.Button_Reload.TabIndex = 95
@@ -507,7 +528,7 @@ Partial Class MetadataGenerator
         Me.Button_Select_Directory.FlatAppearance.BorderSize = 0
         Me.Button_Select_Directory.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button_Select_Directory.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button_Select_Directory.Location = New System.Drawing.Point(504, 16)
+        Me.Button_Select_Directory.Location = New System.Drawing.Point(712, 16)
         Me.Button_Select_Directory.Name = "Button_Select_Directory"
         Me.Button_Select_Directory.Size = New System.Drawing.Size(80, 24)
         Me.Button_Select_Directory.TabIndex = 3
@@ -521,7 +542,7 @@ Partial Class MetadataGenerator
         Me.ShapeContainer2.Margin = New System.Windows.Forms.Padding(0)
         Me.ShapeContainer2.Name = "ShapeContainer2"
         Me.ShapeContainer2.Shapes.AddRange(New Microsoft.VisualBasic.PowerPacks.Shape() {Me.RectangleShape_Selected_Directory})
-        Me.ShapeContainer2.Size = New System.Drawing.Size(752, 48)
+        Me.ShapeContainer2.Size = New System.Drawing.Size(960, 48)
         Me.ShapeContainer2.TabIndex = 2
         Me.ShapeContainer2.TabStop = False
         '
@@ -530,9 +551,9 @@ Partial Class MetadataGenerator
         Me.Panel_Log.Controls.Add(Me.RichTextBox_Log)
         Me.Panel_Log.Controls.Add(Me.Label_Log)
         Me.Panel_Log.Controls.Add(Me.ShapeContainer3)
-        Me.Panel_Log.Location = New System.Drawing.Point(0, 496)
+        Me.Panel_Log.Location = New System.Drawing.Point(0, 584)
         Me.Panel_Log.Name = "Panel_Log"
-        Me.Panel_Log.Size = New System.Drawing.Size(752, 136)
+        Me.Panel_Log.Size = New System.Drawing.Size(960, 136)
         Me.Panel_Log.TabIndex = 86
         '
         'RichTextBox_Log
@@ -545,7 +566,7 @@ Partial Class MetadataGenerator
         Me.RichTextBox_Log.Location = New System.Drawing.Point(16, 24)
         Me.RichTextBox_Log.Name = "RichTextBox_Log"
         Me.RichTextBox_Log.ReadOnly = True
-        Me.RichTextBox_Log.Size = New System.Drawing.Size(720, 96)
+        Me.RichTextBox_Log.Size = New System.Drawing.Size(928, 96)
         Me.RichTextBox_Log.TabIndex = 92
         Me.RichTextBox_Log.Text = ""
         Me.ToolTip1.SetToolTip(Me.RichTextBox_Log, "Right-click for options.")
@@ -557,7 +578,7 @@ Partial Class MetadataGenerator
         Me.ShapeContainer3.Margin = New System.Windows.Forms.Padding(0)
         Me.ShapeContainer3.Name = "ShapeContainer3"
         Me.ShapeContainer3.Shapes.AddRange(New Microsoft.VisualBasic.PowerPacks.Shape() {Me.RectangleShape_Log})
-        Me.ShapeContainer3.Size = New System.Drawing.Size(752, 136)
+        Me.ShapeContainer3.Size = New System.Drawing.Size(960, 136)
         Me.ShapeContainer3.TabIndex = 0
         Me.ShapeContainer3.TabStop = False
         '
@@ -569,7 +590,7 @@ Partial Class MetadataGenerator
         Me.Panel_Metadata_Files.Controls.Add(Me.ShapeContainer4)
         Me.Panel_Metadata_Files.Location = New System.Drawing.Point(0, 112)
         Me.Panel_Metadata_Files.Name = "Panel_Metadata_Files"
-        Me.Panel_Metadata_Files.Size = New System.Drawing.Size(360, 384)
+        Me.Panel_Metadata_Files.Size = New System.Drawing.Size(480, 472)
         Me.Panel_Metadata_Files.TabIndex = 87
         '
         'Label_MetadataFileToGen
@@ -577,9 +598,9 @@ Partial Class MetadataGenerator
         Me.Label_MetadataFileToGen.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(49, Byte), Integer), CType(CType(54, Byte), Integer))
         Me.Label_MetadataFileToGen.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label_MetadataFileToGen.ForeColor = System.Drawing.Color.Gainsboro
-        Me.Label_MetadataFileToGen.Location = New System.Drawing.Point(16, 360)
+        Me.Label_MetadataFileToGen.Location = New System.Drawing.Point(16, 440)
         Me.Label_MetadataFileToGen.Name = "Label_MetadataFileToGen"
-        Me.Label_MetadataFileToGen.Size = New System.Drawing.Size(328, 16)
+        Me.Label_MetadataFileToGen.Size = New System.Drawing.Size(440, 16)
         Me.Label_MetadataFileToGen.TabIndex = 84
         Me.Label_MetadataFileToGen.Text = "0 Metadata files can be generated."
         Me.Label_MetadataFileToGen.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -590,7 +611,7 @@ Partial Class MetadataGenerator
         Me.ShapeContainer4.Margin = New System.Windows.Forms.Padding(0)
         Me.ShapeContainer4.Name = "ShapeContainer4"
         Me.ShapeContainer4.Shapes.AddRange(New Microsoft.VisualBasic.PowerPacks.Shape() {Me.RectangleShape_Metadata_Files})
-        Me.ShapeContainer4.Size = New System.Drawing.Size(360, 384)
+        Me.ShapeContainer4.Size = New System.Drawing.Size(480, 472)
         Me.ShapeContainer4.TabIndex = 18
         Me.ShapeContainer4.TabStop = False
         '
@@ -599,9 +620,9 @@ Partial Class MetadataGenerator
         Me.Panel_Selected_File.Controls.Add(Me.FastColoredTextBox_Selected_File)
         Me.Panel_Selected_File.Controls.Add(Me.Label_Selected_File)
         Me.Panel_Selected_File.Controls.Add(Me.ShapeContainer5)
-        Me.Panel_Selected_File.Location = New System.Drawing.Point(360, 384)
+        Me.Panel_Selected_File.Location = New System.Drawing.Point(480, 472)
         Me.Panel_Selected_File.Name = "Panel_Selected_File"
-        Me.Panel_Selected_File.Size = New System.Drawing.Size(392, 112)
+        Me.Panel_Selected_File.Size = New System.Drawing.Size(480, 112)
         Me.Panel_Selected_File.TabIndex = 88
         '
         'FastColoredTextBox_Selected_File
@@ -629,7 +650,7 @@ Partial Class MetadataGenerator
         Me.FastColoredTextBox_Selected_File.SelectionColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.FastColoredTextBox_Selected_File.ServiceColors = CType(resources.GetObject("FastColoredTextBox_Selected_File.ServiceColors"), FastColoredTextBoxNS.ServiceColors)
         Me.FastColoredTextBox_Selected_File.ShowLineNumbers = False
-        Me.FastColoredTextBox_Selected_File.Size = New System.Drawing.Size(360, 72)
+        Me.FastColoredTextBox_Selected_File.Size = New System.Drawing.Size(448, 72)
         Me.FastColoredTextBox_Selected_File.TabIndex = 91
         Me.ToolTip1.SetToolTip(Me.FastColoredTextBox_Selected_File, "Right-click for options.")
         Me.FastColoredTextBox_Selected_File.Zoom = 100
@@ -668,7 +689,7 @@ Partial Class MetadataGenerator
         Me.ShapeContainer5.Margin = New System.Windows.Forms.Padding(0)
         Me.ShapeContainer5.Name = "ShapeContainer5"
         Me.ShapeContainer5.Shapes.AddRange(New Microsoft.VisualBasic.PowerPacks.Shape() {Me.RectangleShape_Selected_File})
-        Me.ShapeContainer5.Size = New System.Drawing.Size(392, 112)
+        Me.ShapeContainer5.Size = New System.Drawing.Size(480, 112)
         Me.ShapeContainer5.TabIndex = 82
         Me.ShapeContainer5.TabStop = False
         '
@@ -679,9 +700,9 @@ Partial Class MetadataGenerator
         Me.Panel_Animation.Controls.Add(Me.PixelBox_Animation)
         Me.Panel_Animation.Controls.Add(Me.Label_Animation)
         Me.Panel_Animation.Controls.Add(Me.ShapeContainer6)
-        Me.Panel_Animation.Location = New System.Drawing.Point(360, 112)
+        Me.Panel_Animation.Location = New System.Drawing.Point(480, 112)
         Me.Panel_Animation.Name = "Panel_Animation"
-        Me.Panel_Animation.Size = New System.Drawing.Size(264, 272)
+        Me.Panel_Animation.Size = New System.Drawing.Size(352, 360)
         Me.Panel_Animation.TabIndex = 89
         '
         'Label_ZoomLvl
@@ -690,7 +711,7 @@ Partial Class MetadataGenerator
         Me.Label_ZoomLvl.AutoSize = True
         Me.Label_ZoomLvl.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(49, Byte), Integer), CType(CType(54, Byte), Integer))
         Me.Label_ZoomLvl.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Label_ZoomLvl.Location = New System.Drawing.Point(184, 248)
+        Me.Label_ZoomLvl.Location = New System.Drawing.Point(272, 336)
         Me.Label_ZoomLvl.Name = "Label_ZoomLvl"
         Me.Label_ZoomLvl.Size = New System.Drawing.Size(66, 13)
         Me.Label_ZoomLvl.TabIndex = 84
@@ -702,7 +723,7 @@ Partial Class MetadataGenerator
         Me.Label_Frames.AutoSize = True
         Me.Label_Frames.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(49, Byte), Integer), CType(CType(54, Byte), Integer))
         Me.Label_Frames.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Label_Frames.Location = New System.Drawing.Point(16, 248)
+        Me.Label_Frames.Location = New System.Drawing.Point(16, 336)
         Me.Label_Frames.Name = "Label_Frames"
         Me.Label_Frames.Size = New System.Drawing.Size(53, 13)
         Me.Label_Frames.TabIndex = 85
@@ -714,7 +735,7 @@ Partial Class MetadataGenerator
         Me.PixelBox_Animation.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality
         Me.PixelBox_Animation.Location = New System.Drawing.Point(16, 24)
         Me.PixelBox_Animation.Name = "PixelBox_Animation"
-        Me.PixelBox_Animation.Size = New System.Drawing.Size(232, 232)
+        Me.PixelBox_Animation.Size = New System.Drawing.Size(320, 304)
         Me.PixelBox_Animation.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
         Me.PixelBox_Animation.TabIndex = 86
         Me.PixelBox_Animation.TabStop = False
@@ -725,7 +746,7 @@ Partial Class MetadataGenerator
         Me.ShapeContainer6.Margin = New System.Windows.Forms.Padding(0)
         Me.ShapeContainer6.Name = "ShapeContainer6"
         Me.ShapeContainer6.Shapes.AddRange(New Microsoft.VisualBasic.PowerPacks.Shape() {Me.RectangleShape_Animation})
-        Me.ShapeContainer6.Size = New System.Drawing.Size(264, 272)
+        Me.ShapeContainer6.Size = New System.Drawing.Size(352, 360)
         Me.ShapeContainer6.TabIndex = 83
         Me.ShapeContainer6.TabStop = False
         '
@@ -733,7 +754,6 @@ Partial Class MetadataGenerator
         '
         Me.Panel_Controls.Controls.Add(Me.TextBox_TimeBetweenFrames)
         Me.Panel_Controls.Controls.Add(Me.CheckBox_Loop)
-        Me.Panel_Controls.Controls.Add(Me.Button_Save)
         Me.Panel_Controls.Controls.Add(Me.Button_PausePlay)
         Me.Panel_Controls.Controls.Add(Me.Label_FPS)
         Me.Panel_Controls.Controls.Add(Me.Button_Replay)
@@ -741,9 +761,9 @@ Partial Class MetadataGenerator
         Me.Panel_Controls.Controls.Add(Me.PictureBox_Clock)
         Me.Panel_Controls.Controls.Add(Me.NumericUpDown_FPS)
         Me.Panel_Controls.Controls.Add(Me.ShapeContainer1)
-        Me.Panel_Controls.Location = New System.Drawing.Point(624, 112)
+        Me.Panel_Controls.Location = New System.Drawing.Point(832, 112)
         Me.Panel_Controls.Name = "Panel_Controls"
-        Me.Panel_Controls.Size = New System.Drawing.Size(128, 272)
+        Me.Panel_Controls.Size = New System.Drawing.Size(128, 360)
         Me.Panel_Controls.TabIndex = 93
         '
         'TextBox_TimeBetweenFrames
@@ -752,7 +772,7 @@ Partial Class MetadataGenerator
         Me.TextBox_TimeBetweenFrames.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.TextBox_TimeBetweenFrames.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TextBox_TimeBetweenFrames.ForeColor = System.Drawing.Color.WhiteSmoke
-        Me.TextBox_TimeBetweenFrames.Location = New System.Drawing.Point(48, 104)
+        Me.TextBox_TimeBetweenFrames.Location = New System.Drawing.Point(48, 128)
         Me.TextBox_TimeBetweenFrames.Name = "TextBox_TimeBetweenFrames"
         Me.TextBox_TimeBetweenFrames.ReadOnly = True
         Me.TextBox_TimeBetweenFrames.Size = New System.Drawing.Size(64, 13)
@@ -776,30 +796,15 @@ Partial Class MetadataGenerator
         " of looped animations when generating metadata.")
         Me.CheckBox_Loop.UseVisualStyleBackColor = False
         '
-        'Button_Save
-        '
-        Me.Button_Save.BackColor = System.Drawing.Color.MediumSeaGreen
-        Me.Button_Save.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.Button_Save.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer))
-        Me.Button_Save.FlatAppearance.BorderSize = 0
-        Me.Button_Save.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button_Save.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button_Save.Location = New System.Drawing.Point(16, 232)
-        Me.Button_Save.Name = "Button_Save"
-        Me.Button_Save.Size = New System.Drawing.Size(96, 24)
-        Me.Button_Save.TabIndex = 4
-        Me.Button_Save.Text = "Save"
-        Me.Button_Save.UseVisualStyleBackColor = False
-        '
         'Button_PausePlay
         '
-        Me.Button_PausePlay.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(49, Byte), Integer), CType(CType(54, Byte), Integer))
+        Me.Button_PausePlay.BackColor = System.Drawing.Color.DodgerBlue
         Me.Button_PausePlay.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.Button_PausePlay.FlatAppearance.BorderSize = 0
         Me.Button_PausePlay.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button_PausePlay.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button_PausePlay.Image = Global.GDev_Asset_Store_Tool.My.Resources.Resources.Pause
-        Me.Button_PausePlay.Location = New System.Drawing.Point(16, 184)
+        Me.Button_PausePlay.Location = New System.Drawing.Point(16, 224)
         Me.Button_PausePlay.Name = "Button_PausePlay"
         Me.Button_PausePlay.Size = New System.Drawing.Size(96, 32)
         Me.Button_PausePlay.TabIndex = 81
@@ -813,7 +818,7 @@ Partial Class MetadataGenerator
         Me.Label_FPS.AutoSize = True
         Me.Label_FPS.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(49, Byte), Integer), CType(CType(54, Byte), Integer))
         Me.Label_FPS.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label_FPS.Location = New System.Drawing.Point(16, 64)
+        Me.Label_FPS.Location = New System.Drawing.Point(16, 80)
         Me.Label_FPS.Name = "Label_FPS"
         Me.Label_FPS.Size = New System.Drawing.Size(34, 13)
         Me.Label_FPS.TabIndex = 7
@@ -821,13 +826,13 @@ Partial Class MetadataGenerator
         '
         'Button_Replay
         '
-        Me.Button_Replay.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(49, Byte), Integer), CType(CType(54, Byte), Integer))
+        Me.Button_Replay.BackColor = System.Drawing.Color.DodgerBlue
         Me.Button_Replay.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.Button_Replay.FlatAppearance.BorderSize = 0
         Me.Button_Replay.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button_Replay.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button_Replay.Image = Global.GDev_Asset_Store_Tool.My.Resources.Resources.Replay
-        Me.Button_Replay.Location = New System.Drawing.Point(16, 136)
+        Me.Button_Replay.Location = New System.Drawing.Point(16, 168)
         Me.Button_Replay.Name = "Button_Replay"
         Me.Button_Replay.Size = New System.Drawing.Size(96, 32)
         Me.Button_Replay.TabIndex = 80
@@ -843,7 +848,7 @@ Partial Class MetadataGenerator
         Me.NumericUpDown_TimeBetweenFrames.DecimalPlaces = 4
         Me.NumericUpDown_TimeBetweenFrames.ForeColor = System.Drawing.Color.WhiteSmoke
         Me.NumericUpDown_TimeBetweenFrames.Increment = New Decimal(New Integer() {5, 0, 0, 196608})
-        Me.NumericUpDown_TimeBetweenFrames.Location = New System.Drawing.Point(48, 104)
+        Me.NumericUpDown_TimeBetweenFrames.Location = New System.Drawing.Point(48, 128)
         Me.NumericUpDown_TimeBetweenFrames.Maximum = New Decimal(New Integer() {1, 0, 0, 0})
         Me.NumericUpDown_TimeBetweenFrames.Minimum = New Decimal(New Integer() {1, 0, 0, 131072})
         Me.NumericUpDown_TimeBetweenFrames.Name = "NumericUpDown_TimeBetweenFrames"
@@ -857,7 +862,7 @@ Partial Class MetadataGenerator
         '
         Me.PictureBox_Clock.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(49, Byte), Integer), CType(CType(54, Byte), Integer))
         Me.PictureBox_Clock.Image = Global.GDev_Asset_Store_Tool.My.Resources.Resources.Stopwatch
-        Me.PictureBox_Clock.Location = New System.Drawing.Point(16, 96)
+        Me.PictureBox_Clock.Location = New System.Drawing.Point(16, 120)
         Me.PictureBox_Clock.Name = "PictureBox_Clock"
         Me.PictureBox_Clock.Size = New System.Drawing.Size(24, 24)
         Me.PictureBox_Clock.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage
@@ -869,7 +874,7 @@ Partial Class MetadataGenerator
         Me.NumericUpDown_FPS.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(49, Byte), Integer), CType(CType(54, Byte), Integer))
         Me.NumericUpDown_FPS.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.NumericUpDown_FPS.ForeColor = System.Drawing.Color.WhiteSmoke
-        Me.NumericUpDown_FPS.Location = New System.Drawing.Point(56, 64)
+        Me.NumericUpDown_FPS.Location = New System.Drawing.Point(56, 80)
         Me.NumericUpDown_FPS.Maximum = New Decimal(New Integer() {99, 0, 0, 0})
         Me.NumericUpDown_FPS.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
         Me.NumericUpDown_FPS.Name = "NumericUpDown_FPS"
@@ -883,7 +888,7 @@ Partial Class MetadataGenerator
         Me.ShapeContainer1.Margin = New System.Windows.Forms.Padding(0)
         Me.ShapeContainer1.Name = "ShapeContainer1"
         Me.ShapeContainer1.Shapes.AddRange(New Microsoft.VisualBasic.PowerPacks.Shape() {Me.RectangleShape3})
-        Me.ShapeContainer1.Size = New System.Drawing.Size(128, 272)
+        Me.ShapeContainer1.Size = New System.Drawing.Size(128, 360)
         Me.ShapeContainer1.TabIndex = 82
         Me.ShapeContainer1.TabStop = False
         '
@@ -898,7 +903,22 @@ Partial Class MetadataGenerator
         Me.RectangleShape3.Location = New System.Drawing.Point(8, 16)
         Me.RectangleShape3.Name = "RectangleShape3"
         Me.RectangleShape3.SelectionColor = System.Drawing.Color.Transparent
-        Me.RectangleShape3.Size = New System.Drawing.Size(112, 248)
+        Me.RectangleShape3.Size = New System.Drawing.Size(112, 336)
+        '
+        'Button_Save
+        '
+        Me.Button_Save.BackColor = System.Drawing.Color.MediumSeaGreen
+        Me.Button_Save.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Button_Save.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer))
+        Me.Button_Save.FlatAppearance.BorderSize = 0
+        Me.Button_Save.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button_Save.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button_Save.Location = New System.Drawing.Point(848, 424)
+        Me.Button_Save.Name = "Button_Save"
+        Me.Button_Save.Size = New System.Drawing.Size(96, 32)
+        Me.Button_Save.TabIndex = 4
+        Me.Button_Save.Text = "Save"
+        Me.Button_Save.UseVisualStyleBackColor = False
         '
         'ToolTip1
         '
@@ -917,12 +937,12 @@ Partial Class MetadataGenerator
         Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolsToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 26)
         Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Size = New System.Drawing.Size(753, 32)
+        Me.MenuStrip1.Size = New System.Drawing.Size(960, 32)
         Me.MenuStrip1.TabIndex = 99
         '
         'ToolsToolStripMenuItem
         '
-        Me.ToolsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.TagsToolStripMenuItem, Me.LicenseToolStripMenuItem, Me.PackageToolStripMenuItem, Me.TemplateAssetToolStripMenuItem, Me.ClipboardAssetToolStripMenuItem, Me.FileNameValidatorToolStripMenuItem, Me.LoopedAnimationKeywordsToolStripMenuItem})
+        Me.ToolsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.TagsToolStripMenuItem, Me.LicenseToolStripMenuItem, Me.PackageToolStripMenuItem, Me.TemplateAssetToolStripMenuItem, Me.ClipboardAssetToolStripMenuItem, Me.FileNameValidatorToolStripMenuItem, Me.AssetStorePreviewToolStripMenuItem, Me.LoopedAnimationKeywordsToolStripMenuItem})
         Me.ToolsToolStripMenuItem.ForeColor = System.Drawing.Color.WhiteSmoke
         Me.ToolsToolStripMenuItem.Image = Global.GDev_Asset_Store_Tool.My.Resources.Resources.Tools
         Me.ToolsToolStripMenuItem.Name = "ToolsToolStripMenuItem"
@@ -977,6 +997,14 @@ Partial Class MetadataGenerator
         Me.FileNameValidatorToolStripMenuItem.Size = New System.Drawing.Size(280, 26)
         Me.FileNameValidatorToolStripMenuItem.Text = "File Name Validator"
         '
+        'AssetStorePreviewToolStripMenuItem
+        '
+        Me.AssetStorePreviewToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(CType(CType(54, Byte), Integer), CType(CType(57, Byte), Integer), CType(CType(62, Byte), Integer))
+        Me.AssetStorePreviewToolStripMenuItem.ForeColor = System.Drawing.Color.WhiteSmoke
+        Me.AssetStorePreviewToolStripMenuItem.Name = "AssetStorePreviewToolStripMenuItem"
+        Me.AssetStorePreviewToolStripMenuItem.Size = New System.Drawing.Size(280, 26)
+        Me.AssetStorePreviewToolStripMenuItem.Text = "Asset Store Preview"
+        '
         'LoopedAnimationKeywordsToolStripMenuItem
         '
         Me.LoopedAnimationKeywordsToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(CType(CType(54, Byte), Integer), CType(CType(57, Byte), Integer), CType(CType(62, Byte), Integer))
@@ -1007,7 +1035,8 @@ Partial Class MetadataGenerator
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(54, Byte), Integer), CType(CType(57, Byte), Integer), CType(CType(62, Byte), Integer))
-        Me.ClientSize = New System.Drawing.Size(753, 632)
+        Me.ClientSize = New System.Drawing.Size(960, 720)
+        Me.Controls.Add(Me.Button_Save)
         Me.Controls.Add(Me.MenuStrip1)
         Me.Controls.Add(Me.Panel_Selected_File)
         Me.Controls.Add(Me.Panel_Controls)
@@ -1122,7 +1151,7 @@ Partial Class MetadataGenerator
     Friend WithEvents LinkLabel_Trello As LinkLabel
     Friend WithEvents PixelBox_Animation As PixelBox
     Friend WithEvents ToolTip1 As ToolTip
-    Friend WithEvents AddAnimationNameToFileToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents LoopedAnimationKeywordsToolStripMenuItem1 As ToolStripMenuItem
     Friend WithEvents ToolStripSeparator6 As ToolStripSeparator
     Friend WithEvents Button_Reload As Button
     Friend WithEvents OpenFileDialog1 As OpenFileDialog
@@ -1137,4 +1166,7 @@ Partial Class MetadataGenerator
     Friend WithEvents ImportToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ClipboardAssetToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents TemplateAssetToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents AssetStorePreviewToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents AssetStorePreviewToolStripMenuItem1 As ToolStripMenuItem
+    Friend WithEvents AddAnimationNameToolStripMenuItem1 As ToolStripMenuItem
 End Class

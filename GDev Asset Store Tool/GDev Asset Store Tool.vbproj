@@ -119,6 +119,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationEvents.vb" />
+    <Compile Include="AssetInfo.Designer.vb">
+      <DependentUpon>AssetInfo.vb</DependentUpon>
+    </Compile>
+    <Compile Include="AssetInfo.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AssetStorePreview.Designer.vb">
+      <DependentUpon>AssetStorePreview.vb</DependentUpon>
+    </Compile>
+    <Compile Include="AssetStorePreview.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="MenuStripColors.vb" />
     <Compile Include="PixelBox.vb">
       <SubType>Component</SubType>
@@ -184,6 +196,12 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="AssetInfo.resx">
+      <DependentUpon>AssetInfo.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AssetStorePreview.resx">
+      <DependentUpon>AssetStorePreview.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ClipboardAsset.resx">
       <DependentUpon>ClipboardAsset.vb</DependentUpon>
     </EmbeddedResource>

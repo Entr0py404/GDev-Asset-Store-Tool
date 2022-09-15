@@ -63,7 +63,7 @@ Partial Class LicenseMaker
         Me.Panel_Main.ForeColor = System.Drawing.Color.White
         Me.Panel_Main.Location = New System.Drawing.Point(0, 0)
         Me.Panel_Main.Name = "Panel_Main"
-        Me.Panel_Main.Size = New System.Drawing.Size(242, 26)
+        Me.Panel_Main.Size = New System.Drawing.Size(346, 26)
         Me.Panel_Main.TabIndex = 96
         '
         'Panel_ControlBox
@@ -71,7 +71,7 @@ Partial Class LicenseMaker
         Me.Panel_ControlBox.Controls.Add(Me.PictureBox_Close)
         Me.Panel_ControlBox.Controls.Add(Me.PictureBox_Minimize)
         Me.Panel_ControlBox.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Panel_ControlBox.Location = New System.Drawing.Point(190, 0)
+        Me.Panel_ControlBox.Location = New System.Drawing.Point(294, 0)
         Me.Panel_ControlBox.Name = "Panel_ControlBox"
         Me.Panel_ControlBox.Size = New System.Drawing.Size(52, 26)
         Me.Panel_ControlBox.TabIndex = 4
@@ -126,7 +126,7 @@ Partial Class LicenseMaker
         Me.RectangleShape2.Location = New System.Drawing.Point(8, 112)
         Me.RectangleShape2.Name = "RectangleShape2"
         Me.RectangleShape2.SelectionColor = System.Drawing.Color.Transparent
-        Me.RectangleShape2.Size = New System.Drawing.Size(224, 24)
+        Me.RectangleShape2.Size = New System.Drawing.Size(328, 24)
         '
         'ShapeContainer1
         '
@@ -134,7 +134,7 @@ Partial Class LicenseMaker
         Me.ShapeContainer1.Margin = New System.Windows.Forms.Padding(0)
         Me.ShapeContainer1.Name = "ShapeContainer1"
         Me.ShapeContainer1.Shapes.AddRange(New Microsoft.VisualBasic.PowerPacks.Shape() {Me.RectangleShape1, Me.RectangleShape2})
-        Me.ShapeContainer1.Size = New System.Drawing.Size(242, 242)
+        Me.ShapeContainer1.Size = New System.Drawing.Size(346, 242)
         Me.ShapeContainer1.TabIndex = 97
         Me.ShapeContainer1.TabStop = False
         '
@@ -149,7 +149,7 @@ Partial Class LicenseMaker
         Me.RectangleShape1.Location = New System.Drawing.Point(8, 168)
         Me.RectangleShape1.Name = "RectangleShape1"
         Me.RectangleShape1.SelectionColor = System.Drawing.Color.Transparent
-        Me.RectangleShape1.Size = New System.Drawing.Size(224, 24)
+        Me.RectangleShape1.Size = New System.Drawing.Size(328, 24)
         '
         'TextBox_Artist
         '
@@ -158,7 +158,7 @@ Partial Class LicenseMaker
         Me.TextBox_Artist.ForeColor = System.Drawing.Color.WhiteSmoke
         Me.TextBox_Artist.Location = New System.Drawing.Point(16, 120)
         Me.TextBox_Artist.Name = "TextBox_Artist"
-        Me.TextBox_Artist.Size = New System.Drawing.Size(208, 13)
+        Me.TextBox_Artist.Size = New System.Drawing.Size(312, 13)
         Me.TextBox_Artist.TabIndex = 98
         '
         'TextBox_ArtistLink
@@ -168,19 +168,20 @@ Partial Class LicenseMaker
         Me.TextBox_ArtistLink.ForeColor = System.Drawing.Color.WhiteSmoke
         Me.TextBox_ArtistLink.Location = New System.Drawing.Point(16, 176)
         Me.TextBox_ArtistLink.Name = "TextBox_ArtistLink"
-        Me.TextBox_ArtistLink.Size = New System.Drawing.Size(208, 13)
+        Me.TextBox_ArtistLink.Size = New System.Drawing.Size(312, 13)
         Me.TextBox_ArtistLink.TabIndex = 99
         '
         'ComboBox_License
         '
         Me.ComboBox_License.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(49, Byte), Integer), CType(CType(54, Byte), Integer))
         Me.ComboBox_License.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.ComboBox_License.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ComboBox_License.ForeColor = System.Drawing.Color.WhiteSmoke
         Me.ComboBox_License.FormattingEnabled = True
-        Me.ComboBox_License.Items.AddRange(New Object() {"CC0", "CC BY 3.0", "CC BY 4.0", "CC BY-SA 3.0", "CC BY-SA 4.0"})
+        Me.ComboBox_License.Items.AddRange(New Object() {"CC0", "CC-BY 3.0", "CC-BY 4.0", "CC BY-SA 3.0", "CC BY-SA 4.0", "Apache 2.0", "Open Font License", "Trademark of GDevelop Ltd"})
         Me.ComboBox_License.Location = New System.Drawing.Point(8, 56)
         Me.ComboBox_License.Name = "ComboBox_License"
-        Me.ComboBox_License.Size = New System.Drawing.Size(120, 21)
+        Me.ComboBox_License.Size = New System.Drawing.Size(248, 24)
         Me.ComboBox_License.TabIndex = 100
         '
         'Label_License
@@ -226,7 +227,7 @@ Partial Class LicenseMaker
         Me.Button_Save.FlatAppearance.BorderSize = 0
         Me.Button_Save.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button_Save.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button_Save.Location = New System.Drawing.Point(136, 208)
+        Me.Button_Save.Location = New System.Drawing.Point(240, 208)
         Me.Button_Save.Name = "Button_Save"
         Me.Button_Save.Size = New System.Drawing.Size(96, 24)
         Me.Button_Save.TabIndex = 104
@@ -262,7 +263,7 @@ Partial Class LicenseMaker
         Me.LinkLabel_Wiki_Info.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.LinkLabel_Wiki_Info.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LinkLabel_Wiki_Info.LinkColor = System.Drawing.Color.DodgerBlue
-        Me.LinkLabel_Wiki_Info.Location = New System.Drawing.Point(160, 56)
+        Me.LinkLabel_Wiki_Info.Location = New System.Drawing.Point(272, 56)
         Me.LinkLabel_Wiki_Info.Name = "LinkLabel_Wiki_Info"
         Me.LinkLabel_Wiki_Info.Size = New System.Drawing.Size(65, 24)
         Me.LinkLabel_Wiki_Info.TabIndex = 107
@@ -277,14 +278,14 @@ Partial Class LicenseMaker
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(54, Byte), Integer), CType(CType(57, Byte), Integer), CType(CType(62, Byte), Integer))
-        Me.ClientSize = New System.Drawing.Size(242, 242)
+        Me.ClientSize = New System.Drawing.Size(346, 242)
+        Me.Controls.Add(Me.ComboBox_License)
         Me.Controls.Add(Me.LinkLabel_Wiki_Info)
         Me.Controls.Add(Me.Button_Open)
         Me.Controls.Add(Me.Button_Save)
         Me.Controls.Add(Me.Label_ArtistLink)
         Me.Controls.Add(Me.Label_Artist)
         Me.Controls.Add(Me.Label_License)
-        Me.Controls.Add(Me.ComboBox_License)
         Me.Controls.Add(Me.TextBox_ArtistLink)
         Me.Controls.Add(Me.TextBox_Artist)
         Me.Controls.Add(Me.Panel_Main)

@@ -87,7 +87,7 @@ Partial Class ClipboardAsset
         Me.Panel_Main.ForeColor = System.Drawing.Color.White
         Me.Panel_Main.Location = New System.Drawing.Point(0, 0)
         Me.Panel_Main.Name = "Panel_Main"
-        Me.Panel_Main.Size = New System.Drawing.Size(465, 26)
+        Me.Panel_Main.Size = New System.Drawing.Size(466, 26)
         Me.Panel_Main.TabIndex = 97
         '
         'Panel_ControlBox
@@ -95,7 +95,7 @@ Partial Class ClipboardAsset
         Me.Panel_ControlBox.Controls.Add(Me.PictureBox_Close)
         Me.Panel_ControlBox.Controls.Add(Me.PictureBox_Minimize)
         Me.Panel_ControlBox.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Panel_ControlBox.Location = New System.Drawing.Point(413, 0)
+        Me.Panel_ControlBox.Location = New System.Drawing.Point(414, 0)
         Me.Panel_ControlBox.Name = "Panel_ControlBox"
         Me.Panel_ControlBox.Size = New System.Drawing.Size(52, 26)
         Me.Panel_ControlBox.TabIndex = 4
@@ -151,7 +151,7 @@ Partial Class ClipboardAsset
         Me.Button_Save.FlatAppearance.BorderSize = 0
         Me.Button_Save.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button_Save.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button_Save.Location = New System.Drawing.Point(352, 496)
+        Me.Button_Save.Location = New System.Drawing.Point(352, 608)
         Me.Button_Save.Name = "Button_Save"
         Me.Button_Save.Size = New System.Drawing.Size(104, 24)
         Me.Button_Save.TabIndex = 105
@@ -188,7 +188,7 @@ Partial Class ClipboardAsset
         Me.Button_PasteObject.FlatAppearance.BorderSize = 0
         Me.Button_PasteObject.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button_PasteObject.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button_PasteObject.Location = New System.Drawing.Point(8, 120)
+        Me.Button_PasteObject.Location = New System.Drawing.Point(40, 144)
         Me.Button_PasteObject.Name = "Button_PasteObject"
         Me.Button_PasteObject.Size = New System.Drawing.Size(224, 24)
         Me.Button_PasteObject.TabIndex = 109
@@ -200,9 +200,9 @@ Partial Class ClipboardAsset
         Me.Panel2.Controls.Add(Me.FastColoredTextBox_AssetJson)
         Me.Panel2.Controls.Add(Me.Label_assetjson)
         Me.Panel2.Controls.Add(Me.ShapeContainer5)
-        Me.Panel2.Location = New System.Drawing.Point(0, 232)
+        Me.Panel2.Location = New System.Drawing.Point(0, 256)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(464, 256)
+        Me.Panel2.Size = New System.Drawing.Size(464, 344)
         Me.Panel2.TabIndex = 110
         '
         'FastColoredTextBox_AssetJson
@@ -230,7 +230,7 @@ Partial Class ClipboardAsset
         Me.FastColoredTextBox_AssetJson.SelectionColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.FastColoredTextBox_AssetJson.ServiceColors = CType(resources.GetObject("FastColoredTextBox_AssetJson.ServiceColors"), FastColoredTextBoxNS.ServiceColors)
         Me.FastColoredTextBox_AssetJson.ShowLineNumbers = False
-        Me.FastColoredTextBox_AssetJson.Size = New System.Drawing.Size(432, 216)
+        Me.FastColoredTextBox_AssetJson.Size = New System.Drawing.Size(432, 304)
         Me.FastColoredTextBox_AssetJson.TabIndex = 91
         Me.FastColoredTextBox_AssetJson.Zoom = 100
         '
@@ -252,7 +252,7 @@ Partial Class ClipboardAsset
         Me.ShapeContainer5.Margin = New System.Windows.Forms.Padding(0)
         Me.ShapeContainer5.Name = "ShapeContainer5"
         Me.ShapeContainer5.Shapes.AddRange(New Microsoft.VisualBasic.PowerPacks.Shape() {Me.RectangleShape_Selected_File})
-        Me.ShapeContainer5.Size = New System.Drawing.Size(464, 256)
+        Me.ShapeContainer5.Size = New System.Drawing.Size(464, 344)
         Me.ShapeContainer5.TabIndex = 82
         Me.ShapeContainer5.TabStop = False
         '
@@ -267,7 +267,7 @@ Partial Class ClipboardAsset
         Me.RectangleShape_Selected_File.Location = New System.Drawing.Point(8, 16)
         Me.RectangleShape_Selected_File.Name = "RectangleShape_Selected_File"
         Me.RectangleShape_Selected_File.SelectionColor = System.Drawing.Color.Transparent
-        Me.RectangleShape_Selected_File.Size = New System.Drawing.Size(448, 232)
+        Me.RectangleShape_Selected_File.Size = New System.Drawing.Size(448, 320)
         '
         'Panel_SelectedFont
         '
@@ -275,7 +275,7 @@ Partial Class ClipboardAsset
         Me.Panel_SelectedFont.Controls.Add(Me.Label_Description)
         Me.Panel_SelectedFont.Controls.Add(Me.TextBox_Description)
         Me.Panel_SelectedFont.Controls.Add(Me.ShapeContainer2)
-        Me.Panel_SelectedFont.Location = New System.Drawing.Point(0, 32)
+        Me.Panel_SelectedFont.Location = New System.Drawing.Point(0, 208)
         Me.Panel_SelectedFont.Name = "Panel_SelectedFont"
         Me.Panel_SelectedFont.Size = New System.Drawing.Size(464, 48)
         Me.Panel_SelectedFont.TabIndex = 113
@@ -318,7 +318,7 @@ Partial Class ClipboardAsset
         Me.ListBox_Objects.FormattingEnabled = True
         Me.ListBox_Objects.Location = New System.Drawing.Point(16, 24)
         Me.ListBox_Objects.Name = "ListBox_Objects"
-        Me.ListBox_Objects.Size = New System.Drawing.Size(208, 78)
+        Me.ListBox_Objects.Size = New System.Drawing.Size(272, 104)
         Me.ListBox_Objects.TabIndex = 114
         '
         'Panel1
@@ -327,9 +327,9 @@ Partial Class ClipboardAsset
         Me.Panel1.Controls.Add(Me.Label1)
         Me.Panel1.Controls.Add(Me.ListBox_Objects)
         Me.Panel1.Controls.Add(Me.ShapeContainer1)
-        Me.Panel1.Location = New System.Drawing.Point(0, 80)
+        Me.Panel1.Location = New System.Drawing.Point(160, 32)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(240, 152)
+        Me.Panel1.Size = New System.Drawing.Size(304, 176)
         Me.Panel1.TabIndex = 115
         '
         'Label1
@@ -350,7 +350,7 @@ Partial Class ClipboardAsset
         Me.ShapeContainer1.Margin = New System.Windows.Forms.Padding(0)
         Me.ShapeContainer1.Name = "ShapeContainer1"
         Me.ShapeContainer1.Shapes.AddRange(New Microsoft.VisualBasic.PowerPacks.Shape() {Me.RectangleShape1})
-        Me.ShapeContainer1.Size = New System.Drawing.Size(240, 152)
+        Me.ShapeContainer1.Size = New System.Drawing.Size(304, 176)
         Me.ShapeContainer1.TabIndex = 116
         Me.ShapeContainer1.TabStop = False
         '
@@ -365,7 +365,7 @@ Partial Class ClipboardAsset
         Me.RectangleShape1.Location = New System.Drawing.Point(8, 16)
         Me.RectangleShape1.Name = "RectangleShape1"
         Me.RectangleShape1.SelectionColor = System.Drawing.Color.Transparent
-        Me.RectangleShape1.Size = New System.Drawing.Size(224, 96)
+        Me.RectangleShape1.Size = New System.Drawing.Size(288, 120)
         '
         'Button_GenerateAsset
         '
@@ -374,7 +374,7 @@ Partial Class ClipboardAsset
         Me.Button_GenerateAsset.FlatAppearance.BorderSize = 0
         Me.Button_GenerateAsset.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button_GenerateAsset.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button_GenerateAsset.Location = New System.Drawing.Point(8, 496)
+        Me.Button_GenerateAsset.Location = New System.Drawing.Point(8, 608)
         Me.Button_GenerateAsset.Name = "Button_GenerateAsset"
         Me.Button_GenerateAsset.Size = New System.Drawing.Size(144, 24)
         Me.Button_GenerateAsset.TabIndex = 116
@@ -387,10 +387,10 @@ Partial Class ClipboardAsset
         Me.Panel_PreviewImage.Controls.Add(Me.Label_Image)
         Me.Panel_PreviewImage.Controls.Add(Me.PixelBox_PreviewImage)
         Me.Panel_PreviewImage.Controls.Add(Me.ShapeContainer3)
-        Me.Panel_PreviewImage.Location = New System.Drawing.Point(240, 80)
+        Me.Panel_PreviewImage.Location = New System.Drawing.Point(0, 32)
         Me.Panel_PreviewImage.Name = "Panel_PreviewImage"
         Me.Panel_PreviewImage.Padding = New System.Windows.Forms.Padding(0, 8, 0, 0)
-        Me.Panel_PreviewImage.Size = New System.Drawing.Size(224, 152)
+        Me.Panel_PreviewImage.Size = New System.Drawing.Size(160, 176)
         Me.Panel_PreviewImage.TabIndex = 117
         '
         'Label_Image
@@ -412,12 +412,12 @@ Partial Class ClipboardAsset
         Me.PixelBox_PreviewImage.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.[Default]
         Me.PixelBox_PreviewImage.Location = New System.Drawing.Point(16, 24)
         Me.PixelBox_PreviewImage.Name = "PixelBox_PreviewImage"
-        Me.PixelBox_PreviewImage.Size = New System.Drawing.Size(192, 108)
+        Me.PixelBox_PreviewImage.Size = New System.Drawing.Size(128, 128)
         Me.PixelBox_PreviewImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
         Me.PixelBox_PreviewImage.TabIndex = 103
         Me.PixelBox_PreviewImage.TabStop = False
         Me.ToolTip1.SetToolTip(Me.PixelBox_PreviewImage, "Right-click for options." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "You can drag & drop a image here." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Saved image will be " &
-        "scaled to a 16:9 aspect ratio.")
+        "scaled to a 1:1 aspect ratio.")
         '
         'ContextMenuStrip_PreviewImage
         '
@@ -441,7 +441,7 @@ Partial Class ClipboardAsset
         Me.ShapeContainer3.Margin = New System.Windows.Forms.Padding(0)
         Me.ShapeContainer3.Name = "ShapeContainer3"
         Me.ShapeContainer3.Shapes.AddRange(New Microsoft.VisualBasic.PowerPacks.Shape() {Me.RectangleShape_Image})
-        Me.ShapeContainer3.Size = New System.Drawing.Size(224, 144)
+        Me.ShapeContainer3.Size = New System.Drawing.Size(160, 168)
         Me.ShapeContainer3.TabIndex = 104
         Me.ShapeContainer3.TabStop = False
         '
@@ -456,7 +456,7 @@ Partial Class ClipboardAsset
         Me.RectangleShape_Image.Location = New System.Drawing.Point(8, 8)
         Me.RectangleShape_Image.Name = "RectangleShape_Image"
         Me.RectangleShape_Image.SelectionColor = System.Drawing.Color.Transparent
-        Me.RectangleShape_Image.Size = New System.Drawing.Size(208, 128)
+        Me.RectangleShape_Image.Size = New System.Drawing.Size(144, 144)
         '
         'SaveFileDialog_PreviewImage
         '
@@ -471,11 +471,11 @@ Partial Class ClipboardAsset
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(54, Byte), Integer), CType(CType(57, Byte), Integer), CType(CType(62, Byte), Integer))
-        Me.ClientSize = New System.Drawing.Size(465, 531)
+        Me.ClientSize = New System.Drawing.Size(466, 643)
+        Me.Controls.Add(Me.Panel_SelectedFont)
         Me.Controls.Add(Me.Panel_PreviewImage)
         Me.Controls.Add(Me.Button_GenerateAsset)
         Me.Controls.Add(Me.Panel1)
-        Me.Controls.Add(Me.Panel_SelectedFont)
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.Button_Save)
         Me.Controls.Add(Me.Panel_Main)

@@ -38,8 +38,9 @@
     End Sub
     'OpenDirectory (ToolStripMenuItem) - Click
     Private Sub OpenDirectoryToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles OpenDirectoryToolStripMenuItem.Click
-        If Directory.Exists(Path.GetDirectoryName(FolderBrowserDialog_Selected_Directory.SelectedPath & "\" & ListBox_Errors.SelectedItem.ToString)) Then
-            Process.Start(Path.GetDirectoryName(FolderBrowserDialog_Selected_Directory.SelectedPath & "\" & ListBox_Errors.SelectedItem.ToString))
+        If File.Exists(FolderBrowserDialog_Selected_Directory.SelectedPath & "\" & ListBox_Errors.SelectedItem.ToString) Then
+            'Process.Start(Path.GetDirectoryName(FolderBrowserDialog_Selected_Directory.SelectedPath & "\" & ListBox_Errors.SelectedItem.ToString))
+            Process.Start("explorer.exe", "/select," & FolderBrowserDialog_Selected_Directory.SelectedPath & "\" & ListBox_Errors.SelectedItem.ToString)
         Else
             MsgBox("Directory does Not exist, Interface will be reloaded", MsgBoxStyle.OkOnly)
             If Directory.Exists(FolderBrowserDialog_Selected_Directory.SelectedPath) Then
@@ -82,22 +83,34 @@
         PixelBox1.Image = Nothing
         ListBox_Errors.Items.Clear()
         RichTextBox_Correct.Clear()
+        ListBox_Errors.Refresh()
+        RichTextBox_Correct.Refresh()
         Dim TempListofFiles As New ArrayList
         TextBox_Selected_Directory.Text = FolderBrowserDialog_Selected_Directory.SelectedPath
         For Each PNG_file As String In Directory.GetFiles(FolderBrowserDialog_Selected_Directory.SelectedPath, "*.png", SearchOption.AllDirectories)
             Dim PNG_filefull As String = PNG_file.Replace(FolderBrowserDialog_Selected_Directory.SelectedPath + "\", "")
             PNG_file = Path.GetFileNameWithoutExtension(PNG_file)
-            If Not regexValidWords.IsMatch(PNG_file) Or regexInvalidWords.IsMatch(PNG_file) Or CountCharacter(PNG_file, CChar("_")) > 2 Then
+            If Not regexValidWords.IsMatch(PNG_file) Or regexInvalidWords.IsMatch(PNG_file) Or CountCharacter(PNG_file, CChar("_")) > 2 Or PNG_filefull.ToLower.EndsWith(".png.png") Or Not Char.IsLetter(PNG_file.First) And Not PNG_file.ToLower.StartsWith("9patch_") Then
                 TempListofFiles.Add(PNG_filefull)
             Else
-                If CountCharacter(PNG_file, CChar("_")) = 0 Then
+                If PNG_file.ToLower.StartsWith("tiled_") Then
+                    RichTextBox_Correct.SelectionColor = Color.MediumTurquoise
+                    RichTextBox_Correct.AppendText("Tiled: ")
+                    RichTextBox_Correct.SelectionColor = Color.WhiteSmoke
+                    RichTextBox_Correct.AppendText(PNG_file & vbNewLine)
+                ElseIf PNG_file.ToLower.StartsWith("9patch_") Then
+                    RichTextBox_Correct.SelectionColor = Color.PaleGoldenrod
+                    RichTextBox_Correct.AppendText("9 Patch: ")
+                    RichTextBox_Correct.SelectionColor = Color.WhiteSmoke
+                    RichTextBox_Correct.AppendText(PNG_file & vbNewLine)
+                ElseIf CountCharacter(PNG_file, CChar("_")) = 0 Then
                     RichTextBox_Correct.SelectionColor = Color.HotPink
-                    RichTextBox_Correct.AppendText("SFA: ")
+                    RichTextBox_Correct.AppendText("Single frame: ")
                     RichTextBox_Correct.SelectionColor = Color.WhiteSmoke
                     RichTextBox_Correct.AppendText(PNG_file & vbNewLine)
                 ElseIf CountCharacter(PNG_file, CChar("_")) <= 2 Then
                     RichTextBox_Correct.SelectionColor = Color.LightSkyBlue
-                    RichTextBox_Correct.AppendText("MFA: ")
+                    RichTextBox_Correct.AppendText("Multi frame: ")
                     RichTextBox_Correct.SelectionColor = Color.WhiteSmoke
                     RichTextBox_Correct.AppendText(PNG_file & vbNewLine)
                 End If
@@ -129,8 +142,8 @@
         RichTextBox_Correct.Clear()
         TextBox_Selected_Directory.Clear()
     End Sub
-    'Panel_Selected_Directory_Controls - DragEnter
-    Private Sub Panel_Selected_Directory_Controls_DragEnter(sender As Object, e As DragEventArgs) Handles Panel_Selected_Directory_Controls.DragEnter
+    'FileNameValidator - DragEnter
+    Private Sub Panel_Selected_Directory_Controls_DragEnter(sender As Object, e As DragEventArgs) Handles Me.DragEnter
         Dim Folders() As String = CType(e.Data.GetData(DataFormats.FileDrop), String())
         If e.Data.GetDataPresent(DataFormats.FileDrop) And Directory.Exists(Folders(0)) Then
             e.Effect = DragDropEffects.Copy
@@ -138,23 +151,8 @@
             e.Effect = DragDropEffects.None
         End If
     End Sub
-    'Panel_Selected_Directory_Controls - DragDrop
-    Private Sub Panel_Selected_Directory_Controls_DragDrop(sender As Object, e As DragEventArgs) Handles Panel_Selected_Directory_Controls.DragDrop
-        Dim Folders() As String = CType(e.Data.GetData(DataFormats.FileDrop), String())
-        FolderBrowserDialog_Selected_Directory.SelectedPath = Folders(0)
-        LoadFiles()
-    End Sub
-    'Button_Select_Directory - DragEnter
-    Private Sub Button_Select_Directory_DragEnter(sender As Object, e As DragEventArgs) Handles Button_Select_Directory.DragEnter
-        Dim Folders() As String = CType(e.Data.GetData(DataFormats.FileDrop), String())
-        If e.Data.GetDataPresent(DataFormats.FileDrop) And Directory.Exists(Folders(0)) Then
-            e.Effect = DragDropEffects.Copy
-        Else
-            e.Effect = DragDropEffects.None
-        End If
-    End Sub
-    'Button_Select_Directory - DragDrop
-    Private Sub Button_Select_Directory_DragDrop(sender As Object, e As DragEventArgs) Handles Button_Select_Directory.DragDrop
+    'FileNameValidator - DragDrop
+    Private Sub Panel_Selected_Directory_Controls_DragDrop(sender As Object, e As DragEventArgs) Handles Me.DragDrop
         Dim Folders() As String = CType(e.Data.GetData(DataFormats.FileDrop), String())
         FolderBrowserDialog_Selected_Directory.SelectedPath = Folders(0)
         LoadFiles()
