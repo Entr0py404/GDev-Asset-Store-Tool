@@ -130,7 +130,6 @@ Partial Class AssetStorePreview
         Me.TextBox_Selected_Directory.ForeColor = System.Drawing.Color.WhiteSmoke
         Me.TextBox_Selected_Directory.Location = New System.Drawing.Point(16, 40)
         Me.TextBox_Selected_Directory.Name = "TextBox_Selected_Directory"
-        Me.TextBox_Selected_Directory.ReadOnly = True
         Me.TextBox_Selected_Directory.Size = New System.Drawing.Size(616, 14)
         Me.TextBox_Selected_Directory.TabIndex = 0
         Me.ToolTip1.SetToolTip(Me.TextBox_Selected_Directory, "You can drag & drop a directory here.")

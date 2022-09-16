@@ -175,4 +175,16 @@
             Return img
         End Using
     End Function
+    'TextBox_Selected_Directory - KeyPress
+    Private Sub TextBox_Selected_Directory_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TextBox_Selected_Directory.KeyPress
+        If e.KeyChar = Chr(13) And TextBox_Selected_Directory.Text.Length > 0 Then
+            e.Handled = True
+            If Directory.Exists(TextBox_Selected_Directory.Text) Then
+                FolderBrowserDialog_Selected_Directory.SelectedPath = TextBox_Selected_Directory.Text
+                LoadAssetsFromSelectedDirectory(FolderBrowserDialog_Selected_Directory.SelectedPath)
+            Else
+                MsgBox("Directory does Not exists.", MsgBoxStyle.Information)
+            End If
+        End If
+    End Sub
 End Class
