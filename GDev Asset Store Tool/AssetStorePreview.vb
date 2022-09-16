@@ -22,7 +22,7 @@
         Dim AssetCount As Integer = 0
         Dim TempColor As Color = Color.WhiteSmoke
         For Each PNG_file As String In Directory.GetFiles(AssetDirectory, "*.png", SearchOption.AllDirectories)
-            If Not Path.GetFileName(Path.GetDirectoryName(PNG_file)).StartsWith("!") Then
+            If Not PNG_file.ToLower.Contains("!zip") And Not PNG_file.ToLower.Contains("!remove") And Not PNG_file.ToLower.Contains("!notused") And Not PNG_file.ToLower.Contains("!not used") Then
 
                 Dim TempFileName As String = Path.GetFileNameWithoutExtension(PNG_file)
                 TempColor = Color.WhiteSmoke

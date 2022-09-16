@@ -91,7 +91,7 @@
         Dim TempListofFiles As New ArrayList
         TextBox_Selected_Directory.Text = FolderBrowserDialog_Selected_Directory.SelectedPath
         For Each PNG_file As String In Directory.GetFiles(FolderBrowserDialog_Selected_Directory.SelectedPath, "*.png", SearchOption.AllDirectories)
-            If Not Path.GetFileName(Path.GetDirectoryName(PNG_file)).StartsWith("!") Then
+            If Not PNG_file.ToLower.Contains("!zip") And Not PNG_file.ToLower.Contains("!remove") And Not PNG_file.ToLower.Contains("!notused") And Not PNG_file.ToLower.Contains("!not used") Then
                 Dim PNG_filefull As String = PNG_file.Replace(FolderBrowserDialog_Selected_Directory.SelectedPath + "\", "")
                 PNG_file = Path.GetFileNameWithoutExtension(PNG_file)
                 If Not regexValidWords.IsMatch(PNG_file) Or regexInvalidWords.IsMatch(PNG_file) Or CountCharacter(PNG_file, CChar("_")) > 2 Or PNG_filefull.ToLower.EndsWith(".png.png") Or Not Char.IsLetter(PNG_file.First) And Not PNG_file.ToLower.StartsWith("9patch_") Then
