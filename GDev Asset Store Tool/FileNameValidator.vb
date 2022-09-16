@@ -122,7 +122,7 @@
     Private Sub ListBox_Errors_SelectedValueChanged(sender As Object, e As EventArgs) Handles ListBox_Errors.SelectedValueChanged
         If Not ListBox_Errors.SelectedIndex = -1 Then
             If File.Exists(FolderBrowserDialog_Selected_Directory.SelectedPath & "\" & ListBox_Errors.SelectedItem.ToString) Then
-                PixelBox1.Image = Image.FromFile(FolderBrowserDialog_Selected_Directory.SelectedPath & "\" & ListBox_Errors.SelectedItem.ToString)
+                PixelBox1.Image = SafeImageFromFile(FolderBrowserDialog_Selected_Directory.SelectedPath & "\" & ListBox_Errors.SelectedItem.ToString)
             Else
                 ClearForNext()
                 MsgBox("Selected file doesn't exist directory will now be reloaded.", MsgBoxStyle.Information)
@@ -162,6 +162,14 @@
         LinkLabel_Wiki_Info.LinkVisited = True
         Process.Start("https://wiki.gdevelop.io/gdevelop5/community/contribute-to-the-assets-store#for_images_to_make_sprite_tiled_sprite_or_panel_sprite_objects")
     End Sub
+    'SafeImageFromFile()
+    Public Shared Function SafeImageFromFile(path As String) As Image
+        Dim bytes = File.ReadAllBytes(path)
+        Using ms As New MemoryStream(bytes)
+            Dim img = Image.FromStream(ms)
+            Return img
+        End Using
+    End Function
     '
     'Window Handle Code
     '

@@ -231,13 +231,13 @@
         If AnimationFiles.Count > 0 Then
             If AnimLoopCounter < AnimationFiles.Count - 1 Then
                 AnimLoopCounter += 1
-                PixelBox_Animation.Image = Image.FromFile(AnimationFiles.Item(AnimLoopCounter).ToString)
+                PixelBox_Animation.Image = SafeImageFromFile(AnimationFiles.Item(AnimLoopCounter).ToString)
             Else
                 If CheckBox_Loop.Checked = False Then
                     Timer_Animation.Enabled = False
                 Else
                     AnimLoopCounter = 0 'Set to first frame on animation play completed
-                    PixelBox_Animation.Image = Image.FromFile(AnimationFiles.Item(AnimLoopCounter).ToString)
+                    PixelBox_Animation.Image = SafeImageFromFile(AnimationFiles.Item(AnimLoopCounter).ToString)
                 End If
             End If
         End If
@@ -1052,6 +1052,14 @@
         LinkLabel_Trello.LinkVisited = True
         Process.Start("https://trello.com/b/xoOCKFOf/gdevelop-assets")
     End Sub
+    'SafeImageFromFile()
+    Public Shared Function SafeImageFromFile(path As String) As Image
+        Dim bytes = File.ReadAllBytes(path)
+        Using ms As New MemoryStream(bytes)
+            Dim img = Image.FromStream(ms)
+            Return img
+        End Using
+    End Function
     '
     'Window Handle Code
     '

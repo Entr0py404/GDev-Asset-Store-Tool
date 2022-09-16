@@ -366,7 +366,6 @@ Partial Class TemplateAsset
         Me.FastColoredTextBox_AssetJson.CommentPrefix = "'"
         Me.FastColoredTextBox_AssetJson.Cursor = System.Windows.Forms.Cursors.IBeam
         Me.FastColoredTextBox_AssetJson.DisabledColor = System.Drawing.Color.FromArgb(CType(CType(100, Byte), Integer), CType(CType(180, Byte), Integer), CType(CType(180, Byte), Integer), CType(CType(180, Byte), Integer))
-        Me.FastColoredTextBox_AssetJson.Font = New System.Drawing.Font("Courier New", 9.75!)
         Me.FastColoredTextBox_AssetJson.ForeColor = System.Drawing.Color.Black
         Me.FastColoredTextBox_AssetJson.IndentBackColor = System.Drawing.Color.Black
         Me.FastColoredTextBox_AssetJson.IsReplaceMode = False

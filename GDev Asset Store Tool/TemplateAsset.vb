@@ -249,7 +249,7 @@ Public Class TemplateAsset
         If files.Length <> 0 Then
             Try
                 'ClearPicturebox
-                PixelBox_PreviewImage.Image = Image.FromFile(files(0))
+                PixelBox_PreviewImage.Image = SafeImageFromFile(files(0))
                 ErrorProvider1.SetError(PixelBox_PreviewImage, Nothing)
 
                 Dim aspectRatio As Decimal = CDec(PixelBox_PreviewImage.Image.Width / PixelBox_PreviewImage.Image.Height)
@@ -321,7 +321,7 @@ Public Class TemplateAsset
         Dim files() As String = CType(e.Data.GetData(DataFormats.FileDrop), String())
         If files.Length <> 0 Then
             Try
-                Dim tempImage As Image = Image.FromFile(files(0))
+                Dim tempImage As Image = SafeImageFromFile(files(0))
                 TextBox_PanelSpriteIamge.Text = Path.GetFileName(files(0))
                 NumericUpDown_PSTopMargin.Value = CDec(tempImage.Height / 3)
                 NumericUpDown_PSBottomMargin.Value = CDec(tempImage.Height / 3)
@@ -546,6 +546,14 @@ Public Class TemplateAsset
             ErrorProvider1.SetError(FastColoredTextBox_AssetJson, Nothing)
         End If
     End Sub
+    'SafeImageFromFile()
+    Public Shared Function SafeImageFromFile(path As String) As Image
+        Dim bytes = File.ReadAllBytes(path)
+        Using ms As New MemoryStream(bytes)
+            Dim img = Image.FromStream(ms)
+            Return img
+        End Using
+    End Function
     '
     'Window Handle Code
     '

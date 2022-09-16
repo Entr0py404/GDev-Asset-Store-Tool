@@ -80,7 +80,7 @@
                 'ClearPicturebox
 
 
-                PixelBox_PackageThumbnail.Image = Image.FromFile(files(0))
+                PixelBox_PackageThumbnail.Image = SafeImageFromFile(files(0))
 
                 Dim aspectRatio As Decimal = CDec(PixelBox_PackageThumbnail.Image.Width / PixelBox_PackageThumbnail.Image.Height)
                 Dim Ratio_16_9 As Decimal = CDec(1.77777777777778)
@@ -138,6 +138,14 @@
             SaveToolStripMenuItem.Enabled = False
         End If
     End Sub
+    'SafeImageFromFile()
+    Public Shared Function SafeImageFromFile(path As String) As Image
+        Dim bytes = File.ReadAllBytes(path)
+        Using ms As New MemoryStream(bytes)
+            Dim img = Image.FromStream(ms)
+            Return img
+        End Using
+    End Function
     '
     'Window Handle Code
     '

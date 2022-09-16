@@ -135,7 +135,7 @@ Public Class ClipboardAsset
         If files.Length <> 0 Then
             Try
                 'ClearPicturebox
-                PixelBox_PreviewImage.Image = Image.FromFile(files(0))
+                PixelBox_PreviewImage.Image = SafeImageFromFile(files(0))
                 ErrorProvider1.SetError(PixelBox_PreviewImage, Nothing)
 
                 Dim aspectRatio As Decimal = CDec(PixelBox_PreviewImage.Image.Width / PixelBox_PreviewImage.Image.Height)
@@ -211,6 +211,14 @@ Public Class ClipboardAsset
             ErrorProvider1.SetError(FastColoredTextBox_AssetJson, Nothing)
         End If
     End Sub
+    'SafeImageFromFile()
+    Public Shared Function SafeImageFromFile(path As String) As Image
+        Dim bytes = File.ReadAllBytes(path)
+        Using ms As New MemoryStream(bytes)
+            Dim img = Image.FromStream(ms)
+            Return img
+        End Using
+    End Function
     '
     'Window Handle Code
     '

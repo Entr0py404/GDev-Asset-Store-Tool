@@ -82,7 +82,7 @@
         'PixelBox
         Dim AssetPixelBox = New PixelBox
         AssetPixelBox.Dock = DockStyle.Fill
-        AssetPixelBox.Image = Image.FromFile(imagePath)
+        AssetPixelBox.Image = SafeImageFromFile(imagePath)
         AssetPixelBox.SizeMode = PictureBoxSizeMode.Zoom
         AssetPixelBox.Name = "PixelBox1"
         'AssetPixelBox.Cursor = Cursors.Hand
@@ -158,4 +158,12 @@
             Process.Start(ContextMenuStrip1.SourceControl.Text)
         End If
     End Sub
+    'SafeImageFromFile()
+    Public Shared Function SafeImageFromFile(path As String) As Image
+        Dim bytes = File.ReadAllBytes(path)
+        Using ms As New MemoryStream(bytes)
+            Dim img = Image.FromStream(ms)
+            Return img
+        End Using
+    End Function
 End Class
