@@ -85,37 +85,52 @@
         RichTextBox_Correct.Clear()
         ListBox_Errors.Refresh()
         RichTextBox_Correct.Refresh()
+        Label_Status.Text = "Scaning Files..."
+        Label_Status.Refresh()
+        Dim ContainsIgnoredDirectories As Boolean = False
         Dim TempListofFiles As New ArrayList
         TextBox_Selected_Directory.Text = FolderBrowserDialog_Selected_Directory.SelectedPath
         For Each PNG_file As String In Directory.GetFiles(FolderBrowserDialog_Selected_Directory.SelectedPath, "*.png", SearchOption.AllDirectories)
-            Dim PNG_filefull As String = PNG_file.Replace(FolderBrowserDialog_Selected_Directory.SelectedPath + "\", "")
-            PNG_file = Path.GetFileNameWithoutExtension(PNG_file)
-            If Not regexValidWords.IsMatch(PNG_file) Or regexInvalidWords.IsMatch(PNG_file) Or CountCharacter(PNG_file, CChar("_")) > 2 Or PNG_filefull.ToLower.EndsWith(".png.png") Or Not Char.IsLetter(PNG_file.First) And Not PNG_file.ToLower.StartsWith("9patch_") Then
-                TempListofFiles.Add(PNG_filefull)
-            Else
-                If PNG_file.ToLower.StartsWith("tiled_") Then
-                    RichTextBox_Correct.SelectionColor = Color.MediumTurquoise
-                    RichTextBox_Correct.AppendText("Tiled: ")
-                    RichTextBox_Correct.SelectionColor = Color.WhiteSmoke
-                    RichTextBox_Correct.AppendText(PNG_file & vbNewLine)
-                ElseIf PNG_file.ToLower.StartsWith("9patch_") Then
-                    RichTextBox_Correct.SelectionColor = Color.PaleGoldenrod
-                    RichTextBox_Correct.AppendText("9 Patch: ")
-                    RichTextBox_Correct.SelectionColor = Color.WhiteSmoke
-                    RichTextBox_Correct.AppendText(PNG_file & vbNewLine)
-                ElseIf CountCharacter(PNG_file, CChar("_")) = 0 Then
-                    RichTextBox_Correct.SelectionColor = Color.HotPink
-                    RichTextBox_Correct.AppendText("Single frame: ")
-                    RichTextBox_Correct.SelectionColor = Color.WhiteSmoke
-                    RichTextBox_Correct.AppendText(PNG_file & vbNewLine)
-                ElseIf CountCharacter(PNG_file, CChar("_")) <= 2 Then
-                    RichTextBox_Correct.SelectionColor = Color.LightSkyBlue
-                    RichTextBox_Correct.AppendText("Multi frame: ")
-                    RichTextBox_Correct.SelectionColor = Color.WhiteSmoke
-                    RichTextBox_Correct.AppendText(PNG_file & vbNewLine)
+            If Not Path.GetFileName(Path.GetDirectoryName(PNG_file)).StartsWith("!") Then
+                Dim PNG_filefull As String = PNG_file.Replace(FolderBrowserDialog_Selected_Directory.SelectedPath + "\", "")
+                PNG_file = Path.GetFileNameWithoutExtension(PNG_file)
+                If Not regexValidWords.IsMatch(PNG_file) Or regexInvalidWords.IsMatch(PNG_file) Or CountCharacter(PNG_file, CChar("_")) > 2 Or PNG_filefull.ToLower.EndsWith(".png.png") Or Not Char.IsLetter(PNG_file.First) And Not PNG_file.ToLower.StartsWith("9patch_") Then
+                    TempListofFiles.Add(PNG_filefull)
+                Else
+                    If PNG_file.ToLower.StartsWith("tiled_") Then
+                        RichTextBox_Correct.SelectionColor = Color.MediumTurquoise
+                        RichTextBox_Correct.AppendText("Tiled: ")
+                        RichTextBox_Correct.SelectionColor = Color.WhiteSmoke
+                        RichTextBox_Correct.AppendText(PNG_file & vbNewLine)
+                    ElseIf PNG_file.ToLower.StartsWith("9patch_") Then
+                        RichTextBox_Correct.SelectionColor = Color.PaleGoldenrod
+                        RichTextBox_Correct.AppendText("9 Patch: ")
+                        RichTextBox_Correct.SelectionColor = Color.WhiteSmoke
+                        RichTextBox_Correct.AppendText(PNG_file & vbNewLine)
+                    ElseIf CountCharacter(PNG_file, CChar("_")) = 0 Then
+                        RichTextBox_Correct.SelectionColor = Color.HotPink
+                        RichTextBox_Correct.AppendText("Single frame: ")
+                        RichTextBox_Correct.SelectionColor = Color.WhiteSmoke
+                        RichTextBox_Correct.AppendText(PNG_file & vbNewLine)
+                    ElseIf CountCharacter(PNG_file, CChar("_")) <= 2 Then
+                        RichTextBox_Correct.SelectionColor = Color.LightSkyBlue
+                        RichTextBox_Correct.AppendText("Multi frame: ")
+                        RichTextBox_Correct.SelectionColor = Color.WhiteSmoke
+                        RichTextBox_Correct.AppendText(PNG_file & vbNewLine)
+                    End If
                 End If
+            Else
+                ContainsIgnoredDirectories = True
             End If
         Next
+
+        If ContainsIgnoredDirectories = True Then
+            Label_Status.Text = "Scan Completed, Contains Ignored Directories!"
+        Else
+            Label_Status.Text = "Scan Completed."
+        End If
+        Label_Status.Refresh()
+
         ListBox_Errors.Items.AddRange(TempListofFiles.ToArray)
     End Sub
     'ListBox_Errors - SelectedValueChanged

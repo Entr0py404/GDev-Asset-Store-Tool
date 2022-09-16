@@ -2,7 +2,6 @@
     Dim RectangleShape_SelectedDirectory_Padding As Integer = 0
     Dim TextBox_Selected_Directory_Padding As Integer = 0
     Dim resizeLoadlock As Boolean = True
-    ReadOnly IngoredPathNames() As String = {"!zip", "!remove", "!notused", "!not used"}
     Private Sub AssetStorePreview_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         RectangleShape_SelectedDirectory_Padding = Panel_Selected_Directory.Width - RectangleShape_Selected_Directory.Width
         TextBox_Selected_Directory_Padding = RectangleShape_Selected_Directory.Width - TextBox_Selected_Directory.Width
@@ -15,12 +14,15 @@
         Label_AssetCount.Text = "Assets"
         Label_AssetCount.Update()
         FlowLayoutPanel1.Hide()
+        Label_Status.Text = "Loading Files..."
+        Label_Status.Refresh()
+        Dim ContainsIgnoredDirectories As Boolean = False
         Dim PreviousAssetName As String = ""
         Dim PreviousAssetPath As String = ""
         Dim AssetCount As Integer = 0
         Dim TempColor As Color = Color.WhiteSmoke
         For Each PNG_file As String In Directory.GetFiles(AssetDirectory, "*.png", SearchOption.AllDirectories)
-            If Not PNG_file.ToLower.Contains("!zip") And Not PNG_file.ToLower.Contains("!remove") And Not PNG_file.ToLower.Contains("!notused") And Not PNG_file.ToLower.Contains("!not used") Then
+            If Not Path.GetFileName(Path.GetDirectoryName(PNG_file)).StartsWith("!") Then
 
                 Dim TempFileName As String = Path.GetFileNameWithoutExtension(PNG_file)
                 TempColor = Color.WhiteSmoke
@@ -53,9 +55,16 @@
                     PreviousAssetPath = PNG_file
                     AssetCount += 1
                 End If
-
+            Else
+                ContainsIgnoredDirectories = True
             End If
         Next
+
+        If ContainsIgnoredDirectories = True Then
+            Label_Status.Text = "Load Completed, Contains Ignored Directories!"
+        Else
+            Label_Status.Text = "Load Completed."
+        End If
 
         Label_AssetCount.Text = AssetCount & " Assets"
         FlowLayoutPanel1.Show()

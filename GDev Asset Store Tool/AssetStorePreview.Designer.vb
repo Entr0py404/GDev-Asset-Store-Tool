@@ -41,11 +41,14 @@ Partial Class AssetStorePreview
         Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.OpenDirectoryToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.OpenFileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.Panel3 = New System.Windows.Forms.Panel()
+        Me.Label_Status = New System.Windows.Forms.Label()
         Me.Panel_Selected_Directory_Controls.SuspendLayout()
         Me.Panel_Selected_Directory.SuspendLayout()
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
         Me.ContextMenuStrip1.SuspendLayout()
+        Me.Panel3.SuspendLayout()
         Me.SuspendLayout()
         '
         'FlowLayoutPanel1
@@ -54,7 +57,7 @@ Partial Class AssetStorePreview
         Me.FlowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.FlowLayoutPanel1.Location = New System.Drawing.Point(0, 96)
         Me.FlowLayoutPanel1.Name = "FlowLayoutPanel1"
-        Me.FlowLayoutPanel1.Size = New System.Drawing.Size(826, 465)
+        Me.FlowLayoutPanel1.Size = New System.Drawing.Size(826, 441)
         Me.FlowLayoutPanel1.TabIndex = 0
         '
         'Button_Reload
@@ -199,21 +202,41 @@ Partial Class AssetStorePreview
         Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.OpenDirectoryToolStripMenuItem, Me.OpenFileToolStripMenuItem})
         Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
         Me.ContextMenuStrip1.ShowImageMargin = False
-        Me.ContextMenuStrip1.Size = New System.Drawing.Size(156, 74)
+        Me.ContextMenuStrip1.Size = New System.Drawing.Size(155, 52)
         '
         'OpenDirectoryToolStripMenuItem
         '
         Me.OpenDirectoryToolStripMenuItem.ForeColor = System.Drawing.Color.WhiteSmoke
         Me.OpenDirectoryToolStripMenuItem.Name = "OpenDirectoryToolStripMenuItem"
-        Me.OpenDirectoryToolStripMenuItem.Size = New System.Drawing.Size(155, 24)
+        Me.OpenDirectoryToolStripMenuItem.Size = New System.Drawing.Size(154, 24)
         Me.OpenDirectoryToolStripMenuItem.Text = "Open Directory"
         '
         'OpenFileToolStripMenuItem
         '
         Me.OpenFileToolStripMenuItem.ForeColor = System.Drawing.Color.WhiteSmoke
         Me.OpenFileToolStripMenuItem.Name = "OpenFileToolStripMenuItem"
-        Me.OpenFileToolStripMenuItem.Size = New System.Drawing.Size(155, 24)
+        Me.OpenFileToolStripMenuItem.Size = New System.Drawing.Size(154, 24)
         Me.OpenFileToolStripMenuItem.Text = "Open File"
+        '
+        'Panel3
+        '
+        Me.Panel3.BackColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer))
+        Me.Panel3.Controls.Add(Me.Label_Status)
+        Me.Panel3.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.Panel3.Location = New System.Drawing.Point(0, 537)
+        Me.Panel3.Name = "Panel3"
+        Me.Panel3.Size = New System.Drawing.Size(826, 24)
+        Me.Panel3.TabIndex = 102
+        '
+        'Label_Status
+        '
+        Me.Label_Status.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Label_Status.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label_Status.Location = New System.Drawing.Point(0, 0)
+        Me.Label_Status.Name = "Label_Status"
+        Me.Label_Status.Size = New System.Drawing.Size(826, 24)
+        Me.Label_Status.TabIndex = 0
+        Me.Label_Status.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'AssetStorePreview
         '
@@ -223,6 +246,7 @@ Partial Class AssetStorePreview
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(54, Byte), Integer), CType(CType(57, Byte), Integer), CType(CType(62, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(826, 561)
         Me.Controls.Add(Me.FlowLayoutPanel1)
+        Me.Controls.Add(Me.Panel3)
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.Panel_Selected_Directory_Controls)
         Me.ForeColor = System.Drawing.Color.WhiteSmoke
@@ -236,6 +260,7 @@ Partial Class AssetStorePreview
         Me.Panel1.ResumeLayout(False)
         Me.Panel2.ResumeLayout(False)
         Me.ContextMenuStrip1.ResumeLayout(False)
+        Me.Panel3.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
@@ -257,4 +282,6 @@ Partial Class AssetStorePreview
     Friend WithEvents ContextMenuStrip1 As ContextMenuStrip
     Friend WithEvents OpenDirectoryToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents OpenFileToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents Panel3 As Panel
+    Friend WithEvents Label_Status As Label
 End Class

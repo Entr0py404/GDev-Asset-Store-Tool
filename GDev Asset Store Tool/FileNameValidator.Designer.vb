@@ -46,7 +46,6 @@ Partial Class FileNameValidator
         Me.PictureBox_AppIcon = New System.Windows.Forms.PictureBox()
         Me.Panel_Image = New System.Windows.Forms.Panel()
         Me.Label_Image = New System.Windows.Forms.Label()
-        Me.PixelBox1 = New GDev_Asset_Store_Tool.PixelBox()
         Me.ShapeContainer3 = New Microsoft.VisualBasic.PowerPacks.ShapeContainer()
         Me.FolderBrowserDialog_Selected_Directory = New System.Windows.Forms.FolderBrowserDialog()
         Me.Panel_Selected_Directory_Controls = New System.Windows.Forms.Panel()
@@ -58,6 +57,9 @@ Partial Class FileNameValidator
         Me.ShapeContainer1 = New Microsoft.VisualBasic.PowerPacks.ShapeContainer()
         Me.RectangleShape_Selected_Directory = New Microsoft.VisualBasic.PowerPacks.RectangleShape()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
+        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.Label_Status = New System.Windows.Forms.Label()
+        Me.PixelBox1 = New GDev_Asset_Store_Tool.PixelBox()
         Me.Panel_Errors.SuspendLayout()
         Me.ContextMenuStrip_ListBox_Errors.SuspendLayout()
         Me.Panel_Correct.SuspendLayout()
@@ -67,8 +69,9 @@ Partial Class FileNameValidator
         CType(Me.PictureBox_Minimize, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox_AppIcon, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel_Image.SuspendLayout()
-        CType(Me.PixelBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel_Selected_Directory_Controls.SuspendLayout()
+        Me.Panel1.SuspendLayout()
+        CType(Me.PixelBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Panel_Errors
@@ -313,18 +316,6 @@ Partial Class FileNameValidator
         Me.Label_Image.TabIndex = 103
         Me.Label_Image.Text = "Image"
         '
-        'PixelBox1
-        '
-        Me.PixelBox1.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(49, Byte), Integer), CType(CType(54, Byte), Integer))
-        Me.PixelBox1.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality
-        Me.PixelBox1.ContextMenuStrip = Me.ContextMenuStrip_ListBox_Errors
-        Me.PixelBox1.Location = New System.Drawing.Point(328, 24)
-        Me.PixelBox1.Name = "PixelBox1"
-        Me.PixelBox1.Size = New System.Drawing.Size(128, 128)
-        Me.PixelBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
-        Me.PixelBox1.TabIndex = 103
-        Me.PixelBox1.TabStop = False
-        '
         'ShapeContainer3
         '
         Me.ShapeContainer3.Location = New System.Drawing.Point(0, 8)
@@ -445,13 +436,46 @@ Partial Class FileNameValidator
         Me.ToolTip1.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info
         Me.ToolTip1.ToolTipTitle = "Hint"
         '
+        'Panel1
+        '
+        Me.Panel1.BackColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer))
+        Me.Panel1.Controls.Add(Me.Label_Status)
+        Me.Panel1.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.Panel1.Location = New System.Drawing.Point(0, 631)
+        Me.Panel1.Name = "Panel1"
+        Me.Panel1.Size = New System.Drawing.Size(778, 24)
+        Me.Panel1.TabIndex = 101
+        '
+        'Label_Status
+        '
+        Me.Label_Status.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Label_Status.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label_Status.Location = New System.Drawing.Point(0, 0)
+        Me.Label_Status.Name = "Label_Status"
+        Me.Label_Status.Size = New System.Drawing.Size(778, 24)
+        Me.Label_Status.TabIndex = 0
+        Me.Label_Status.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'PixelBox1
+        '
+        Me.PixelBox1.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(49, Byte), Integer), CType(CType(54, Byte), Integer))
+        Me.PixelBox1.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality
+        Me.PixelBox1.ContextMenuStrip = Me.ContextMenuStrip_ListBox_Errors
+        Me.PixelBox1.Location = New System.Drawing.Point(328, 24)
+        Me.PixelBox1.Name = "PixelBox1"
+        Me.PixelBox1.Size = New System.Drawing.Size(128, 128)
+        Me.PixelBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.PixelBox1.TabIndex = 103
+        Me.PixelBox1.TabStop = False
+        '
         'FileNameValidator
         '
         Me.AllowDrop = True
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(54, Byte), Integer), CType(CType(57, Byte), Integer), CType(CType(62, Byte), Integer))
-        Me.ClientSize = New System.Drawing.Size(778, 632)
+        Me.ClientSize = New System.Drawing.Size(778, 655)
+        Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.Panel_Errors)
         Me.Controls.Add(Me.Panel_Correct)
         Me.Controls.Add(Me.Panel_Image)
@@ -476,9 +500,10 @@ Partial Class FileNameValidator
         CType(Me.PictureBox_AppIcon, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel_Image.ResumeLayout(False)
         Me.Panel_Image.PerformLayout()
-        CType(Me.PixelBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel_Selected_Directory_Controls.ResumeLayout(False)
         Me.Panel_Selected_Directory_Controls.PerformLayout()
+        Me.Panel1.ResumeLayout(False)
+        CType(Me.PixelBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -516,4 +541,6 @@ Partial Class FileNameValidator
     Friend WithEvents ShapeContainer4 As ShapeContainer
     Friend WithEvents ShapeContainer5 As ShapeContainer
     Friend WithEvents ToolTip1 As ToolTip
+    Friend WithEvents Panel1 As Panel
+    Friend WithEvents Label_Status As Label
 End Class
