@@ -74,7 +74,6 @@
         'Panel
         Dim AssetPanel = New Panel
         AssetPanel.Size = New Size(128, 128)
-        'AssetPanel.BorderStyle = BorderStyle.FixedSingle
         AssetPanel.BackColor = Color.FromArgb(46, 49, 54)
         AssetPanel.Name = "AssetPanel1"
 

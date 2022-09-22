@@ -30,7 +30,6 @@
                 writer.WriteValue(TextBox_Tag.Text.ToLower)
                 writer.WriteEndObject()
 
-
                 If aspectRatio_IsAlready_16_9 = False Then
                     Dim bmp = New Bitmap(ForceImageAspectRatio_16_9_Size.Width, ForceImageAspectRatio_16_9_Size.Height)
                     Using g As Graphics = Graphics.FromImage(bmp)
@@ -44,8 +43,6 @@
                 End If
 
                 My.Computer.FileSystem.WriteAllText(SaveFileDialog_PackJson.FileName, sb.ToString, False)
-
-                Console.WriteLine(Path.GetDirectoryName(SaveFileDialog_PackJson.FileName) & "\thumbnail.png")
 
                 'Clear all for next
                 SaveFileDialog_PackJson.InitialDirectory = ""
@@ -78,24 +75,20 @@
         If files.Length <> 0 Then
             Try
                 'ClearPicturebox
-
-
+                '???
                 PixelBox_PackageThumbnail.Image = SafeImageFromFile(files(0))
 
                 Dim aspectRatio As Decimal = CDec(PixelBox_PackageThumbnail.Image.Width / PixelBox_PackageThumbnail.Image.Height)
                 Dim Ratio_16_9 As Decimal = CDec(1.77777777777778)
                 aspectRatio_IsAlready_16_9 = Decimal.Equals(aspectRatio, Ratio_16_9)
-                'Console.WriteLine(aspectRatio_IsAlready_16_9)
 
                 If aspectRatio_IsAlready_16_9 = False Then
                     Dim aspectRatio_16_9 As Double = 16.0 / 9.0
                     Dim n1 As Double = PixelBox_PackageThumbnail.Image.Width
                     n1 = Math.Round(n1 / 16) * 16 - 16
-                    'Console.WriteLine(n1)
 
                     Dim n2 As Double = PixelBox_PackageThumbnail.Image.Height
                     n2 = n1 / aspectRatio_16_9
-                    'Console.WriteLine(n2)
 
                     ForceImageAspectRatio_16_9_Size.Width = Convert.ToInt32(n1)
                     ForceImageAspectRatio_16_9_Size.Height = Convert.ToInt32(n2)

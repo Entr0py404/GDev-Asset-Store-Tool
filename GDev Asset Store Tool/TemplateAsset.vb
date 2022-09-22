@@ -255,16 +255,12 @@ Public Class TemplateAsset
                 Dim aspectRatio As Decimal = CDec(PixelBox_PreviewImage.Image.Width / PixelBox_PreviewImage.Image.Height)
                 Dim Ratio_1_1 As Decimal = 1
                 aspectRatio_IsAlready_1_1 = Decimal.Equals(aspectRatio, Ratio_1_1)
-                'Console.WriteLine(aspectRatio_IsAlready_1_1)
-                'Console.WriteLine(aspectRatio)
 
                 If aspectRatio_IsAlready_1_1 = False Then
                     Dim n1 As Double = PixelBox_PreviewImage.Image.Width
-                    'Console.WriteLine(n1)
 
                     Dim n2 As Double = PixelBox_PreviewImage.Image.Height
                     n2 = n1
-                    'Console.WriteLine(n2)
 
                     ForceImageAspectRatio_1_1_Size.Width = Convert.ToInt32(n1)
                     ForceImageAspectRatio_1_1_Size.Height = Convert.ToInt32(n2)

@@ -1,6 +1,6 @@
 ﻿Public Class FileNameValidator
     ReadOnly regexValidWords As New Regex("^[a-zA-Z0-9 ()_&.-]*$") '("\|!#$%&/()=?»«@£§€{}.-;'<>,")
-    Dim regexInvalidWords As Regex = New Regex("\s{2,}|_\s|\s_|__") '(  )(_ ) (_ ) (__)
+    ReadOnly regexInvalidWords As New Regex("\s{2,}|_\s|\s_|__") '(  )(_ ) (_ ) (__)
     'FileNameValidator - Load
     Private Sub FileNameValidator_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ContextMenuStrip_ListBox_Errors.Renderer = New ToolStripProfessionalRenderer(New ColorTable())
