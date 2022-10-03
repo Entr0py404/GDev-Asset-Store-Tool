@@ -1,6 +1,3 @@
-##  This Project has been abandoned!
-
-
 <!-- ABOUT THE PROJECT -->
 ## About GDev Asset Store Tool
 
