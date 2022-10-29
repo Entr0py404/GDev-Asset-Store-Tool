@@ -33,6 +33,8 @@
                 End If
 
                 If TempFileName.StartsWith("9patch_") Or TempFileName.StartsWith("9Patch_") Then
+                    TempFileName = TempFileName.Substring(7)
+                    TempFileName = TempFileName.Substring(0, TempFileName.LastIndexOf("_") + 1)
                     TempColor = Color.PaleGoldenrod
                 End If
 
@@ -86,6 +88,7 @@
         AssetLabel.ForeColor = textColor
         AssetLabel.Font = New Font("Microsoft Sans Serif", 8.25!, FontStyle.Bold, GraphicsUnit.Point, CType(0, Byte))
         AssetLabel.BackColor = Color.FromArgb(28, 30, 34)
+        ToolTip1.SetToolTip(AssetLabel, imagePath)
 
         'PixelBox
         Dim AssetPixelBox = New PixelBox
@@ -93,7 +96,7 @@
         AssetPixelBox.Image = SafeImageFromFile(imagePath)
         AssetPixelBox.SizeMode = PictureBoxSizeMode.Zoom
         AssetPixelBox.Name = "PixelBox1"
-        'AssetPixelBox.Cursor = Cursors.Hand
+        AssetPixelBox.Cursor = Cursors.Hand
         AssetPixelBox.Text = imagePath
         AssetPixelBox.ContextMenuStrip = ContextMenuStrip1
 
@@ -104,7 +107,7 @@
         'Add AssetPanel to FlowLayoutPanel1
         FlowLayoutPanel1.Controls.Add(AssetPanel)
 
-        'AddHandler AssetPixelBox.MouseClick, AddressOf PixelBox1_MouseClick
+        AddHandler AssetPixelBox.MouseClick, AddressOf PixelBox1_MouseClick
     End Sub
     'AssetStorePreview - Resize
     Private Sub AssetStorePreview_Resize(sender As Object, e As EventArgs) Handles Me.Resize

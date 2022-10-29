@@ -596,7 +596,6 @@ Partial Class TemplateAsset
         Me.PixelBox_PreviewImage.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(49, Byte), Integer), CType(CType(54, Byte), Integer))
         Me.PixelBox_PreviewImage.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality
         Me.PixelBox_PreviewImage.ContextMenuStrip = Me.ContextMenuStrip_PreviewImage
-        Me.PixelBox_PreviewImage.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.[Default]
         Me.PixelBox_PreviewImage.Location = New System.Drawing.Point(16, 24)
         Me.PixelBox_PreviewImage.Name = "PixelBox_PreviewImage"
         Me.PixelBox_PreviewImage.Size = New System.Drawing.Size(128, 128)

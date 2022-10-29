@@ -239,6 +239,8 @@
                     PixelBox_Animation.Image = SafeImageFromFile(AnimationFiles.Item(AnimLoopCounter).ToString)
                 End If
             End If
+            'Console.WriteLine(AnimLoopCounter)
+            'Console.WriteLine(AnimationFiles.Item(AnimLoopCounter).ToString)
         End If
     End Sub
     '
@@ -498,7 +500,7 @@
             Else
                 If Not e.Node.Text.EndsWith(".asset.json") And Not e.Node.Text = "PACK.json" Then
                     CalcMetadata() 'HERE
-                    Console.WriteLine("CalcMetadata")
+                    'Console.WriteLine("CalcMetadata")
                 End If
             End If
 
@@ -796,8 +798,8 @@
         End Try
     End Sub
     'CountCharacter
-    Public Function CountCharacter(ByVal value As String, ByVal ch As Char) As Integer
-        Return value.Count(Function(c As Char) c = ch)
+    Public Function CountCharacter(ByVal inputString As String, ByVal charToCount As Char) As Integer
+        Return inputString.Count(Function(c As Char) c = charToCount)
     End Function
     'GenerateMetadata
     Private Sub GenerateMetadata(overwrite As Boolean)

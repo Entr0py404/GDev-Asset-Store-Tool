@@ -73,7 +73,6 @@ Partial Class PackageMaker
         Me.PixelBox_PackageThumbnail.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(49, Byte), Integer), CType(CType(54, Byte), Integer))
         Me.PixelBox_PackageThumbnail.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality
         Me.PixelBox_PackageThumbnail.ContextMenuStrip = Me.ContextMenuStrip_PackageThumbnail
-        Me.PixelBox_PackageThumbnail.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.[Default]
         Me.PixelBox_PackageThumbnail.Location = New System.Drawing.Point(16, 24)
         Me.PixelBox_PackageThumbnail.Name = "PixelBox_PackageThumbnail"
         Me.PixelBox_PackageThumbnail.Size = New System.Drawing.Size(320, 180)
