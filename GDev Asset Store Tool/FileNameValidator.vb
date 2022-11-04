@@ -96,7 +96,7 @@
         TextBox_Selected_Directory.Text = FolderBrowserDialog_Selected_Directory.SelectedPath
 
         For Each Dir As String In Directory.GetDirectories(FolderBrowserDialog_Selected_Directory.SelectedPath)
-            Console.WriteLine(Dir)
+            'Console.WriteLine(Dir)
             'Console.WriteLine(FolderBrowserDialog_Selected_Directory.SelectedPath)
 
             If Not Dir.ToLower.Contains("!zip") And Not Dir.ToLower.Contains("!remove") And Not Dir.ToLower.Contains("!notused") And Not Dir.ToLower.Contains("!not used") Then

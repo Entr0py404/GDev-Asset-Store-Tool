@@ -126,12 +126,12 @@ Public Class AssetInfo
                             Temp_AnimationName = Path.GetFileNameWithoutExtension(AnimationName)
                             Temp_AnimationName = Temp_AnimationName.Substring(0, Temp_AnimationName.IndexOf("_"))
                             AnimationName = "NA"
-                            Console.WriteLine("IsNumeric")
+                            'Console.WriteLine("IsNumeric")
                         Else
                             Temp_AnimationName = Path.GetFileNameWithoutExtension(AnimationName)
                             Temp_AnimationName = Temp_AnimationName.Substring(Temp_AnimationName.IndexOf("_") + 1)
                             AnimationName = Temp_AnimationName
-                            Console.WriteLine("Not IsNumeric")
+                            'Console.WriteLine("Not IsNumeric")
                         End If
 
                     Else
@@ -140,10 +140,10 @@ Public Class AssetInfo
                         AnimationName = AnimationName.Substring(0, AnimationName.IndexOf("_"))
                     End If
 
-                    Console.WriteLine("ObjectName: " & ObjectName)
-                    Console.WriteLine("AnimationName: " & AnimationName)
-                    Console.WriteLine("Temp_ObjectName: " & Temp_ObjectName)
-                    Console.WriteLine("Temp_AnimationName: " & Temp_AnimationName)
+                    'Console.WriteLine("ObjectName: " & ObjectName)
+                    'Console.WriteLine("AnimationName: " & AnimationName)
+                    'Console.WriteLine("Temp_ObjectName: " & Temp_ObjectName)
+                    'Console.WriteLine("Temp_AnimationName: " & Temp_AnimationName)
 
                     If Not AnimationName = LastAnimationName And ObjectName = Temp_ObjectName Then
 
@@ -226,7 +226,7 @@ Public Class AssetInfo
             Label_Loop.Text = "Loop: " & jsonFile.SelectToken("loop").ToString
         Else
             Timer_Animation.Enabled = False
-            Console.WriteLine(assetPath & "\" & ObjectName & ComboBox_SelectedItem & ".png")
+            'Console.WriteLine(assetPath & "\" & ObjectName & ComboBox_SelectedItem & ".png")
             PixelBox_PreviewImage.Image = SafeImageFromFile(assetPath & "\" & ObjectName & ComboBox_SelectedItem & ".png")
             Label_TimeBetweenFrames.Text = "Time Between Frames: NA"
             Label_Loop.Text = "Loop: NA"
