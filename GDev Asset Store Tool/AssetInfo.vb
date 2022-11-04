@@ -65,90 +65,97 @@ Public Class AssetInfo
         AnimLoopCounter = 0
         PixelBox_PreviewImage.Image = Nothing
 
+        Dim LastAnimationName As String = ""
+        Dim Temp_ObjectName As String = ""
+        Dim Temp_AnimationName As String = ""
+
         Dim TempFileNameNoExt As String = Path.GetFileNameWithoutExtension(assetFilePath)
         assetPath = Path.GetDirectoryName(assetFilePath)
 
         If TempFileNameNoExt.ToLower.StartsWith("tiled_") Then
+
             PixelBox_PreviewImage.Image = SafeImageFromFile(assetFilePath)
             Label_ObjectName.Text = "Object Name: " & TempFileNameNoExt.Replace("tiled_", "")
-
             Label_AnimationsList.Hide()
             Label_TimeBetweenFrames.Hide()
             Label_FrameCount.Hide()
             Label_Loop.Hide()
-        ElseIf TempFileNameNoExt.ToLower.StartsWith("9patch_") Then  'If starts with tiled_ or 9patch_
-            PixelBox_PreviewImage.Image = SafeImageFromFile(assetFilePath)
 
+        ElseIf TempFileNameNoExt.ToLower.StartsWith("9patch_") Then  'If starts with tiled_ or 9patch_
+
+            PixelBox_PreviewImage.Image = SafeImageFromFile(assetFilePath)
             TempFileNameNoExt = TempFileNameNoExt.Replace("9patch_", "")
             TempFileNameNoExt = Microsoft.VisualBasic.Left(TempFileNameNoExt, TempFileNameNoExt.IndexOf("_"))
             Label_ObjectName.Text = "Object Name: " & TempFileNameNoExt
-
             Label_AnimationsList.Hide()
             Label_TimeBetweenFrames.Hide()
             Label_FrameCount.Hide()
             Label_Loop.Hide()
+
         ElseIf CountCharacter(TempFileNameNoExt, CChar("_")) = 0 Then
+
             PixelBox_PreviewImage.Image = SafeImageFromFile(assetFilePath)
             Label_ObjectName.Text = "Object Name: " & TempFileNameNoExt
-
             Label_AnimationsList.Hide()
             Label_TimeBetweenFrames.Hide()
             Label_FrameCount.Hide()
             Label_Loop.Hide()
+
         ElseIf CountCharacter(TempFileNameNoExt, CChar("_")) <= 2 Then 'CountCharacter "_"
             TempFileNameNoExt = Microsoft.VisualBasic.Left(TempFileNameNoExt, TempFileNameNoExt.IndexOf("_"))
             'Object Name
             Label_ObjectName.Text = "Object Name: " & TempFileNameNoExt
             ObjectName = TempFileNameNoExt
-            Dim LastAnimationName As String = ""
+
             ComboBox_Animations.BeginUpdate()
             AllAnimationFiles.AddRange(Directory.GetFiles(Path.GetDirectoryName(assetFilePath), "*" & TempFileNameNoExt & "*.png", SearchOption.TopDirectoryOnly))
 
             Label_AnimationsList.Text = ""
 
-            Dim Temp_ObjectName As String = ""
-            Dim Temp_AnimationName As String = ""
+
             For Each AnimationName As String In AllAnimationFiles
                 Temp_ObjectName = Path.GetFileName(AnimationName)
-                Temp_ObjectName = Temp_ObjectName.Substring(0, Temp_ObjectName.IndexOf("_"))
+                If Temp_ObjectName.Contains("_") Then
+                    Temp_ObjectName = Temp_ObjectName.Substring(0, Temp_ObjectName.IndexOf("_"))
 
-                If CountCharacter(Path.GetFileName(AnimationName), CChar("_")) = 1 Then
-                    Temp_AnimationName = Path.GetFileNameWithoutExtension(AnimationName)
-                    Temp_AnimationName = Temp_AnimationName.Substring(Temp_AnimationName.IndexOf("_") + 1)
-
-                    If IsNumeric(Temp_AnimationName) Then
-                        Temp_AnimationName = Path.GetFileNameWithoutExtension(AnimationName)
-                        Temp_AnimationName = Temp_AnimationName.Substring(0, Temp_AnimationName.IndexOf("_"))
-                        AnimationName = "NA"
-                        Console.WriteLine("IsNumeric")
-                    Else
+                    If CountCharacter(Path.GetFileName(AnimationName), CChar("_")) = 1 Then
                         Temp_AnimationName = Path.GetFileNameWithoutExtension(AnimationName)
                         Temp_AnimationName = Temp_AnimationName.Substring(Temp_AnimationName.IndexOf("_") + 1)
-                        AnimationName = Temp_AnimationName
-                        Console.WriteLine("Not IsNumeric")
+
+                        If IsNumeric(Temp_AnimationName) Then
+                            Temp_AnimationName = Path.GetFileNameWithoutExtension(AnimationName)
+                            Temp_AnimationName = Temp_AnimationName.Substring(0, Temp_AnimationName.IndexOf("_"))
+                            AnimationName = "NA"
+                            Console.WriteLine("IsNumeric")
+                        Else
+                            Temp_AnimationName = Path.GetFileNameWithoutExtension(AnimationName)
+                            Temp_AnimationName = Temp_AnimationName.Substring(Temp_AnimationName.IndexOf("_") + 1)
+                            AnimationName = Temp_AnimationName
+                            Console.WriteLine("Not IsNumeric")
+                        End If
+
+                    Else
+                        AnimationName = Path.GetFileName(AnimationName)
+                        AnimationName = AnimationName.Substring(AnimationName.IndexOf("_") + 1)
+                        AnimationName = AnimationName.Substring(0, AnimationName.IndexOf("_"))
                     End If
 
-                Else
-                    AnimationName = Path.GetFileName(AnimationName)
-                    AnimationName = AnimationName.Substring(AnimationName.IndexOf("_") + 1)
-                    AnimationName = AnimationName.Substring(0, AnimationName.IndexOf("_"))
-                End If
+                    Console.WriteLine("ObjectName: " & ObjectName)
+                    Console.WriteLine("AnimationName: " & AnimationName)
+                    Console.WriteLine("Temp_ObjectName: " & Temp_ObjectName)
+                    Console.WriteLine("Temp_AnimationName: " & Temp_AnimationName)
 
-                Console.WriteLine("ObjectName: " & ObjectName)
-                Console.WriteLine("AnimationName: " & AnimationName)
-                Console.WriteLine("Temp_ObjectName: " & Temp_ObjectName)
-                Console.WriteLine("Temp_AnimationName: " & Temp_AnimationName)
+                    If Not AnimationName = LastAnimationName And ObjectName = Temp_ObjectName Then
 
-                If Not AnimationName = LastAnimationName And ObjectName = Temp_ObjectName Then
+                        LastAnimationName = AnimationName
+                        'Add animation names to combobox
+                        ComboBox_Animations.Items.Add(LastAnimationName)
 
-                    LastAnimationName = AnimationName
-                    'Add animation names to combobox
-                    ComboBox_Animations.Items.Add(LastAnimationName)
-
-                    If ComboBox_Animations.Items.Count = 1 Then
-                        Label_AnimationsList.Text += LastAnimationName
-                    Else
-                        Label_AnimationsList.Text += ", " & LastAnimationName
+                        If ComboBox_Animations.Items.Count = 1 Then
+                            Label_AnimationsList.Text += LastAnimationName
+                        Else
+                            Label_AnimationsList.Text += ", " & LastAnimationName
+                        End If
                     End If
                 End If
             Next

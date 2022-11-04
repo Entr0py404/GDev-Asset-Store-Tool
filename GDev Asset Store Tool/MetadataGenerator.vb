@@ -611,8 +611,9 @@
     'HasFileNameErrors
     Public Function HasFileNameErrors() As Boolean
         For Each PNG_file As String In Directory.GetFiles(FolderBrowserDialog_Selected_Directory.SelectedPath + "\" + TreeView1.SelectedNode.FullPath, "*.png", SearchOption.TopDirectoryOnly)
+            Dim PNG_filefull As String = PNG_file.Replace(FolderBrowserDialog_Selected_Directory.SelectedPath + "\", "")
             PNG_file = Path.GetFileNameWithoutExtension(PNG_file)
-            If Not regexValidWords.IsMatch(PNG_file) Or regexInvalidWords.IsMatch(PNG_file) Or CountCharacter(PNG_file, CChar("_")) > 2 Then
+            If Not regexValidWords.IsMatch(PNG_file) Or regexInvalidWords.IsMatch(PNG_file) Or CountCharacter(PNG_file, CChar("_")) > 2 Or PNG_filefull.ToLower.EndsWith(".png.png") Or Not Char.IsLetter(PNG_file.First) And Not PNG_file.ToLower.StartsWith("9patch_") Then
                 Return True
             End If
         Next

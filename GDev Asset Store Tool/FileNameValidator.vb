@@ -41,6 +41,8 @@
         If File.Exists(FolderBrowserDialog_Selected_Directory.SelectedPath & "\" & ListBox_Errors.SelectedItem.ToString) Then
             'Process.Start(Path.GetDirectoryName(FolderBrowserDialog_Selected_Directory.SelectedPath & "\" & ListBox_Errors.SelectedItem.ToString))
             Process.Start("explorer.exe", "/select," & FolderBrowserDialog_Selected_Directory.SelectedPath & "\" & ListBox_Errors.SelectedItem.ToString)
+        ElseIf Directory.Exists(ListBox_Errors.SelectedItem.ToString.Replace("Possible plural directory name: ", "")) Then
+            Process.Start("explorer.exe", "/select," & ListBox_Errors.SelectedItem.ToString.Replace("Possible plural directory name: ", ""))
         Else
             MsgBox("Directory does Not exist, Interface will be reloaded", MsgBoxStyle.OkOnly)
             If Directory.Exists(FolderBrowserDialog_Selected_Directory.SelectedPath) Then
@@ -71,9 +73,11 @@
     Private Sub ContextMenuStrip_ListBox_Errors_Opening(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles ContextMenuStrip_ListBox_Errors.Opening
         If Not ListBox_Errors.SelectedIndex = -1 Then
             OpenDirectoryToolStripMenuItem.Enabled = True
-            OpenFileToolStripMenuItem.Enabled = True
+            If Not ListBox_Errors.SelectedItem.ToString.StartsWith("Possible plural directory name") Then
+                OpenFileToolStripMenuItem.Enabled = True
+            End If
         Else
-            OpenDirectoryToolStripMenuItem.Enabled = False
+                OpenDirectoryToolStripMenuItem.Enabled = False
             OpenFileToolStripMenuItem.Enabled = False
         End If
     End Sub
@@ -90,10 +94,25 @@
         Dim ContainsIgnoredDirectories As Boolean = False
         Dim TempListofFiles As New ArrayList
         TextBox_Selected_Directory.Text = FolderBrowserDialog_Selected_Directory.SelectedPath
+
+        For Each Dir As String In Directory.GetDirectories(FolderBrowserDialog_Selected_Directory.SelectedPath)
+            Console.WriteLine(Dir)
+            'Console.WriteLine(FolderBrowserDialog_Selected_Directory.SelectedPath)
+
+            If Not Dir.ToLower.Contains("!zip") And Not Dir.ToLower.Contains("!remove") And Not Dir.ToLower.Contains("!notused") And Not Dir.ToLower.Contains("!not used") Then
+                If Dir.ToLower.EndsWith("s") Then 'Check for plural in folder name
+                    TempListofFiles.Add("Possible plural directory name: " & Dir)
+                    'Console.WriteLine(Dir)
+                End If
+            End If
+        Next
+
         For Each PNG_file As String In Directory.GetFiles(FolderBrowserDialog_Selected_Directory.SelectedPath, "*.png", SearchOption.AllDirectories)
+
             If Not PNG_file.ToLower.Contains("!zip") And Not PNG_file.ToLower.Contains("!remove") And Not PNG_file.ToLower.Contains("!notused") And Not PNG_file.ToLower.Contains("!not used") Then
                 Dim PNG_filefull As String = PNG_file.Replace(FolderBrowserDialog_Selected_Directory.SelectedPath + "\", "")
                 PNG_file = Path.GetFileNameWithoutExtension(PNG_file)
+
                 If Not regexValidWords.IsMatch(PNG_file) Or regexInvalidWords.IsMatch(PNG_file) Or CountCharacter(PNG_file, CChar("_")) > 2 Or PNG_filefull.ToLower.EndsWith(".png.png") Or Not Char.IsLetter(PNG_file.First) And Not PNG_file.ToLower.StartsWith("9patch_") Then
                     TempListofFiles.Add(PNG_filefull)
                 Else
@@ -138,7 +157,7 @@
         If Not ListBox_Errors.SelectedIndex = -1 Then
             If File.Exists(FolderBrowserDialog_Selected_Directory.SelectedPath & "\" & ListBox_Errors.SelectedItem.ToString) Then
                 PixelBox1.Image = SafeImageFromFile(FolderBrowserDialog_Selected_Directory.SelectedPath & "\" & ListBox_Errors.SelectedItem.ToString)
-            Else
+            ElseIf Path.HasExtension(ListBox_Errors.SelectedItem.ToString) Then
                 ClearForNext()
                 MsgBox("Selected file doesn't exist directory will now be reloaded.", MsgBoxStyle.Information)
                 If Directory.Exists(FolderBrowserDialog_Selected_Directory.SelectedPath) Then
@@ -158,7 +177,7 @@
         TextBox_Selected_Directory.Clear()
     End Sub
     'FileNameValidator - DragEnter
-    Private Sub Panel_Selected_Directory_Controls_DragEnter(sender As Object, e As DragEventArgs) Handles Me.DragEnter
+    Private Sub FileNameValidator_DragEnter(sender As Object, e As DragEventArgs) Handles Me.DragEnter
         Dim Folders() As String = CType(e.Data.GetData(DataFormats.FileDrop), String())
         If e.Data.GetDataPresent(DataFormats.FileDrop) And Directory.Exists(Folders(0)) Then
             e.Effect = DragDropEffects.Copy
@@ -167,7 +186,7 @@
         End If
     End Sub
     'FileNameValidator - DragDrop
-    Private Sub Panel_Selected_Directory_Controls_DragDrop(sender As Object, e As DragEventArgs) Handles Me.DragDrop
+    Private Sub FileNameValidator_DragDrop(sender As Object, e As DragEventArgs) Handles Me.DragDrop
         Dim Folders() As String = CType(e.Data.GetData(DataFormats.FileDrop), String())
         FolderBrowserDialog_Selected_Directory.SelectedPath = Folders(0)
         LoadFiles()
