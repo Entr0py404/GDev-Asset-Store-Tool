@@ -1,4 +1,6 @@
-﻿Public Class AssetStorePreview
+﻿Imports System.Windows.Forms.VisualStyles.VisualStyleElement
+
+Public Class AssetStorePreview
     Dim RectangleShape_SelectedDirectory_Padding As Integer = 0
     Dim TextBox_Selected_Directory_Padding As Integer = 0
     Dim resizeLoadlock As Boolean = True
@@ -152,9 +154,19 @@
     'AssetPanel1 - Click
     Private Sub PixelBox1_MouseClick(sender As Object, e As MouseEventArgs)
         If e.Button = MouseButtons.Left Then
-            AssetInfo.LoadAsset(DirectCast(sender, PixelBox).Text.ToString)
-            AssetInfo.Show()
-            AssetInfo.BringToFront()
+            Try
+                AssetInfo.LoadAsset(DirectCast(sender, PixelBox).Text.ToString)
+                AssetInfo.Show()
+                AssetInfo.BringToFront()
+            Catch ex As Exception
+                If MessageBox.Show("An error has occurred while reading this asset, Run the file name validator in this directory?", "AssetInfo Error", MessageBoxButtons.YesNo, MessageBoxIcon.Asterisk) = DialogResult.Yes Then
+                    Dim New_FileNameValidator_Window As New FileNameValidator
+                    New_FileNameValidator_Window.Show()
+                    New_FileNameValidator_Window.BringToFront()
+                    New_FileNameValidator_Window.FolderBrowserDialog_Selected_Directory.SelectedPath = FolderBrowserDialog_Selected_Directory.SelectedPath '+ "\" + TreeView1.SelectedNode.FullPath
+                    New_FileNameValidator_Window.LoadFiles()
+                End If
+            End Try
         End If
     End Sub
     'OpenDirectoryToolStripMenuItem - Click
