@@ -1,4 +1,6 @@
-﻿Public Class FileNameValidator
+﻿Imports System.Windows.Forms.VisualStyles.VisualStyleElement
+
+Public Class FileNameValidator
     ReadOnly regexValidWords As New Regex("^[a-zA-Z0-9 ()_&.-]*$") '("\|!#$%&/()=?»«@£§€{}.-;'<>,")
     ReadOnly regexInvalidWords As New Regex("\s{2,}|_\s|\s_|__") '(  )(_ ) (_ ) (__)
     'FileNameValidator - Load
@@ -77,7 +79,7 @@
                 OpenFileToolStripMenuItem.Enabled = True
             End If
         Else
-                OpenDirectoryToolStripMenuItem.Enabled = False
+            OpenDirectoryToolStripMenuItem.Enabled = False
             OpenFileToolStripMenuItem.Enabled = False
         End If
     End Sub
@@ -155,7 +157,12 @@
     'ListBox_Errors - SelectedValueChanged
     Private Sub ListBox_Errors_SelectedValueChanged(sender As Object, e As EventArgs) Handles ListBox_Errors.SelectedValueChanged
         If Not ListBox_Errors.SelectedIndex = -1 Then
+            Label_CurrentName.Text = "Current Name: "
+            PixelBox1.Image = Nothing
+            TextBox_NewName.Clear()
             If File.Exists(FolderBrowserDialog_Selected_Directory.SelectedPath & "\" & ListBox_Errors.SelectedItem.ToString) Then
+                Label_CurrentName.Text = "Current Name: " & Path.GetFileNameWithoutExtension(ListBox_Errors.SelectedItem.ToString)
+                TextBox_NewName.Text = Path.GetFileNameWithoutExtension(ListBox_Errors.SelectedItem.ToString)
                 PixelBox1.Image = SafeImageFromFile(FolderBrowserDialog_Selected_Directory.SelectedPath & "\" & ListBox_Errors.SelectedItem.ToString)
             ElseIf Path.HasExtension(ListBox_Errors.SelectedItem.ToString) Then
                 ClearForNext()
@@ -166,6 +173,34 @@
                     MsgBox("This path no longer exists, Please select a new directory.", MsgBoxStyle.Information)
                 End If
             End If
+        End If
+    End Sub
+    'Button_Rename - Click
+    Private Sub Button_Rename_Click(sender As Object, e As EventArgs) Handles Button_Rename.Click
+        Try
+            Dim PNG_filefull As String = TextBox_NewName.Text
+            Dim PNG_file = Path.GetFileNameWithoutExtension(TextBox_NewName.Text)
+            If Not regexValidWords.IsMatch(PNG_file) Or regexInvalidWords.IsMatch(PNG_file) Or CountCharacter(PNG_file, CChar("_")) > 2 Or PNG_filefull.ToLower.EndsWith(".png.png") Or Not Char.IsLetter(PNG_file.First) And Not PNG_file.ToLower.StartsWith("9patch_") Then
+                MsgBox("Not a vaild file name.", MsgBoxStyle.Exclamation)
+            Else
+                If Not ListBox_Errors.SelectedIndex = -1 And Not Label_CurrentName.Text = "Current Name: " Then
+                    Dim newfilepath As String = Path.GetDirectoryName(ListBox_Errors.SelectedItem.ToString) + "\" + TextBox_NewName.Text & ".png"
+                    My.Computer.FileSystem.RenameFile(FolderBrowserDialog_Selected_Directory.SelectedPath & "\" & ListBox_Errors.SelectedItem.ToString, TextBox_NewName.Text & ".png")
+                    ListBox_Errors.Items.RemoveAt(ListBox_Errors.SelectedIndex)
+                    Label_CurrentName.Text = "Current Name: "
+                    PixelBox1.Image = Nothing
+                    TextBox_NewName.Clear()
+                End If
+            End If
+        Catch ex As Exception
+            MsgBox(ex.Message, MsgBoxStyle.Critical)
+        End Try
+    End Sub
+    'TextBox_NewName - KeyPress
+    Private Sub TextBox_NewName_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TextBox_NewName.KeyPress
+        If e.KeyChar = Chr(13) And TextBox_NewName.Text.Length > 0 Then
+            e.Handled = True
+            Button_Rename.PerformClick()
         End If
     End Sub
     'clear all for next

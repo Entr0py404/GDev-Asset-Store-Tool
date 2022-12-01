@@ -46,7 +46,6 @@ Partial Class FileNameValidator
         Me.PictureBox_AppIcon = New System.Windows.Forms.PictureBox()
         Me.Panel_Image = New System.Windows.Forms.Panel()
         Me.Label_Image = New System.Windows.Forms.Label()
-        Me.PixelBox1 = New GDev_Asset_Store_Tool.PixelBox()
         Me.ShapeContainer3 = New Microsoft.VisualBasic.PowerPacks.ShapeContainer()
         Me.FolderBrowserDialog_Selected_Directory = New System.Windows.Forms.FolderBrowserDialog()
         Me.Panel_Selected_Directory_Controls = New System.Windows.Forms.Panel()
@@ -60,6 +59,14 @@ Partial Class FileNameValidator
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Label_Status = New System.Windows.Forms.Label()
+        Me.TextBox_NewName = New System.Windows.Forms.TextBox()
+        Me.RectangleShape3 = New Microsoft.VisualBasic.PowerPacks.RectangleShape()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.Button_Rename = New System.Windows.Forms.Button()
+        Me.Label_CurrentName = New System.Windows.Forms.Label()
+        Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.ShapeContainer2 = New Microsoft.VisualBasic.PowerPacks.ShapeContainer()
+        Me.PixelBox1 = New GDev_Asset_Store_Tool.PixelBox()
         Me.Panel_Errors.SuspendLayout()
         Me.ContextMenuStrip_ListBox_Errors.SuspendLayout()
         Me.Panel_Correct.SuspendLayout()
@@ -69,20 +76,22 @@ Partial Class FileNameValidator
         CType(Me.PictureBox_Minimize, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox_AppIcon, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel_Image.SuspendLayout()
-        CType(Me.PixelBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel_Selected_Directory_Controls.SuspendLayout()
         Me.Panel1.SuspendLayout()
+        Me.Panel2.SuspendLayout()
+        CType(Me.PixelBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Panel_Errors
         '
+        Me.Panel_Errors.Controls.Add(Me.Panel2)
         Me.Panel_Errors.Controls.Add(Me.Label2)
         Me.Panel_Errors.Controls.Add(Me.ListBox_Errors)
         Me.Panel_Errors.Controls.Add(Me.ShapeContainer4)
         Me.Panel_Errors.Location = New System.Drawing.Point(0, 248)
         Me.Panel_Errors.Name = "Panel_Errors"
         Me.Panel_Errors.Padding = New System.Windows.Forms.Padding(8, 8, 0, 0)
-        Me.Panel_Errors.Size = New System.Drawing.Size(776, 192)
+        Me.Panel_Errors.Size = New System.Drawing.Size(776, 232)
         Me.Panel_Errors.TabIndex = 2
         '
         'Label2
@@ -107,7 +116,7 @@ Partial Class FileNameValidator
         Me.ListBox_Errors.Location = New System.Drawing.Point(16, 24)
         Me.ListBox_Errors.Margin = New System.Windows.Forms.Padding(60, 3, 3, 3)
         Me.ListBox_Errors.Name = "ListBox_Errors"
-        Me.ListBox_Errors.Size = New System.Drawing.Size(744, 156)
+        Me.ListBox_Errors.Size = New System.Drawing.Size(744, 117)
         Me.ListBox_Errors.TabIndex = 4
         Me.ToolTip1.SetToolTip(Me.ListBox_Errors, "Right-click for options.")
         '
@@ -142,7 +151,7 @@ Partial Class FileNameValidator
         Me.ShapeContainer4.Margin = New System.Windows.Forms.Padding(0)
         Me.ShapeContainer4.Name = "ShapeContainer4"
         Me.ShapeContainer4.Shapes.AddRange(New Microsoft.VisualBasic.PowerPacks.Shape() {Me.RectangleShape2})
-        Me.ShapeContainer4.Size = New System.Drawing.Size(768, 184)
+        Me.ShapeContainer4.Size = New System.Drawing.Size(768, 224)
         Me.ShapeContainer4.TabIndex = 5
         Me.ShapeContainer4.TabStop = False
         '
@@ -157,7 +166,7 @@ Partial Class FileNameValidator
         Me.RectangleShape2.Location = New System.Drawing.Point(0, 8)
         Me.RectangleShape2.Name = "RectangleShape2"
         Me.RectangleShape2.SelectionColor = System.Drawing.Color.Transparent
-        Me.RectangleShape2.Size = New System.Drawing.Size(760, 168)
+        Me.RectangleShape2.Size = New System.Drawing.Size(760, 136)
         '
         'RectangleShape_Image
         '
@@ -178,10 +187,10 @@ Partial Class FileNameValidator
         Me.Panel_Correct.Controls.Add(Me.RichTextBox_Correct)
         Me.Panel_Correct.Controls.Add(Me.Label_Correct)
         Me.Panel_Correct.Controls.Add(Me.ShapeContainer5)
-        Me.Panel_Correct.Location = New System.Drawing.Point(0, 440)
+        Me.Panel_Correct.Location = New System.Drawing.Point(0, 480)
         Me.Panel_Correct.Name = "Panel_Correct"
         Me.Panel_Correct.Padding = New System.Windows.Forms.Padding(8, 8, 0, 0)
-        Me.Panel_Correct.Size = New System.Drawing.Size(776, 192)
+        Me.Panel_Correct.Size = New System.Drawing.Size(776, 160)
         Me.Panel_Correct.TabIndex = 3
         '
         'RichTextBox_Correct
@@ -192,7 +201,7 @@ Partial Class FileNameValidator
         Me.RichTextBox_Correct.Location = New System.Drawing.Point(16, 24)
         Me.RichTextBox_Correct.Name = "RichTextBox_Correct"
         Me.RichTextBox_Correct.ReadOnly = True
-        Me.RichTextBox_Correct.Size = New System.Drawing.Size(744, 152)
+        Me.RichTextBox_Correct.Size = New System.Drawing.Size(744, 120)
         Me.RichTextBox_Correct.TabIndex = 4
         Me.RichTextBox_Correct.Text = ""
         Me.ToolTip1.SetToolTip(Me.RichTextBox_Correct, "Shows how assets are being recognized.")
@@ -214,7 +223,7 @@ Partial Class FileNameValidator
         Me.ShapeContainer5.Margin = New System.Windows.Forms.Padding(0)
         Me.ShapeContainer5.Name = "ShapeContainer5"
         Me.ShapeContainer5.Shapes.AddRange(New Microsoft.VisualBasic.PowerPacks.Shape() {Me.RectangleShape1})
-        Me.ShapeContainer5.Size = New System.Drawing.Size(768, 184)
+        Me.ShapeContainer5.Size = New System.Drawing.Size(768, 152)
         Me.ShapeContainer5.TabIndex = 5
         Me.ShapeContainer5.TabStop = False
         '
@@ -229,7 +238,7 @@ Partial Class FileNameValidator
         Me.RectangleShape1.Location = New System.Drawing.Point(0, 8)
         Me.RectangleShape1.Name = "RectangleShape1"
         Me.RectangleShape1.SelectionColor = System.Drawing.Color.Transparent
-        Me.RectangleShape1.Size = New System.Drawing.Size(760, 168)
+        Me.RectangleShape1.Size = New System.Drawing.Size(760, 136)
         '
         'Panel_Main
         '
@@ -315,18 +324,6 @@ Partial Class FileNameValidator
         Me.Label_Image.Size = New System.Drawing.Size(49, 13)
         Me.Label_Image.TabIndex = 103
         Me.Label_Image.Text = "Image"
-        '
-        'PixelBox1
-        '
-        Me.PixelBox1.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(49, Byte), Integer), CType(CType(54, Byte), Integer))
-        Me.PixelBox1.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality
-        Me.PixelBox1.ContextMenuStrip = Me.ContextMenuStrip_ListBox_Errors
-        Me.PixelBox1.Location = New System.Drawing.Point(328, 24)
-        Me.PixelBox1.Name = "PixelBox1"
-        Me.PixelBox1.Size = New System.Drawing.Size(128, 128)
-        Me.PixelBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
-        Me.PixelBox1.TabIndex = 103
-        Me.PixelBox1.TabStop = False
         '
         'ShapeContainer3
         '
@@ -453,7 +450,7 @@ Partial Class FileNameValidator
         Me.Panel1.BackColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer))
         Me.Panel1.Controls.Add(Me.Label_Status)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Panel1.Location = New System.Drawing.Point(0, 631)
+        Me.Panel1.Location = New System.Drawing.Point(0, 640)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(778, 24)
         Me.Panel1.TabIndex = 101
@@ -469,13 +466,108 @@ Partial Class FileNameValidator
         Me.Label_Status.TabIndex = 0
         Me.Label_Status.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
+        'TextBox_NewName
+        '
+        Me.TextBox_NewName.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(49, Byte), Integer), CType(CType(54, Byte), Integer))
+        Me.TextBox_NewName.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.TextBox_NewName.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TextBox_NewName.ForeColor = System.Drawing.Color.WhiteSmoke
+        Me.TextBox_NewName.Location = New System.Drawing.Point(88, 40)
+        Me.TextBox_NewName.Name = "TextBox_NewName"
+        Me.TextBox_NewName.Size = New System.Drawing.Size(368, 13)
+        Me.TextBox_NewName.TabIndex = 6
+        '
+        'RectangleShape3
+        '
+        Me.RectangleShape3.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(49, Byte), Integer), CType(CType(54, Byte), Integer))
+        Me.RectangleShape3.BackStyle = Microsoft.VisualBasic.PowerPacks.BackStyle.Opaque
+        Me.RectangleShape3.BorderColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer))
+        Me.RectangleShape3.CornerRadius = 3
+        Me.RectangleShape3.FillColor = System.Drawing.Color.WhiteSmoke
+        Me.RectangleShape3.FillGradientColor = System.Drawing.Color.WhiteSmoke
+        Me.RectangleShape3.Location = New System.Drawing.Point(80, 32)
+        Me.RectangleShape3.Name = "RectangleShape3"
+        Me.RectangleShape3.SelectionColor = System.Drawing.Color.Transparent
+        Me.RectangleShape3.Size = New System.Drawing.Size(384, 24)
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold)
+        Me.Label1.Location = New System.Drawing.Point(0, 40)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Padding = New System.Windows.Forms.Padding(8, 0, 0, 0)
+        Me.Label1.Size = New System.Drawing.Size(76, 13)
+        Me.Label1.TabIndex = 85
+        Me.Label1.Text = "New Name"
+        '
+        'Button_Rename
+        '
+        Me.Button_Rename.BackColor = System.Drawing.Color.MediumSeaGreen
+        Me.Button_Rename.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Button_Rename.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer))
+        Me.Button_Rename.FlatAppearance.BorderSize = 0
+        Me.Button_Rename.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button_Rename.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button_Rename.Location = New System.Drawing.Point(480, 32)
+        Me.Button_Rename.Name = "Button_Rename"
+        Me.Button_Rename.Size = New System.Drawing.Size(80, 24)
+        Me.Button_Rename.TabIndex = 95
+        Me.Button_Rename.Text = "Rename"
+        Me.Button_Rename.UseVisualStyleBackColor = False
+        '
+        'Label_CurrentName
+        '
+        Me.Label_CurrentName.AutoSize = True
+        Me.Label_CurrentName.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold)
+        Me.Label_CurrentName.Location = New System.Drawing.Point(80, 8)
+        Me.Label_CurrentName.Name = "Label_CurrentName"
+        Me.Label_CurrentName.Padding = New System.Windows.Forms.Padding(8, 0, 0, 0)
+        Me.Label_CurrentName.Size = New System.Drawing.Size(100, 13)
+        Me.Label_CurrentName.TabIndex = 96
+        Me.Label_CurrentName.Text = "Current Name: "
+        '
+        'Panel2
+        '
+        Me.Panel2.Controls.Add(Me.Button_Rename)
+        Me.Panel2.Controls.Add(Me.Label_CurrentName)
+        Me.Panel2.Controls.Add(Me.Label1)
+        Me.Panel2.Controls.Add(Me.TextBox_NewName)
+        Me.Panel2.Controls.Add(Me.ShapeContainer2)
+        Me.Panel2.Location = New System.Drawing.Point(96, 160)
+        Me.Panel2.Name = "Panel2"
+        Me.Panel2.Size = New System.Drawing.Size(568, 64)
+        Me.Panel2.TabIndex = 97
+        '
+        'ShapeContainer2
+        '
+        Me.ShapeContainer2.Location = New System.Drawing.Point(0, 0)
+        Me.ShapeContainer2.Margin = New System.Windows.Forms.Padding(0)
+        Me.ShapeContainer2.Name = "ShapeContainer2"
+        Me.ShapeContainer2.Shapes.AddRange(New Microsoft.VisualBasic.PowerPacks.Shape() {Me.RectangleShape3})
+        Me.ShapeContainer2.Size = New System.Drawing.Size(568, 64)
+        Me.ShapeContainer2.TabIndex = 7
+        Me.ShapeContainer2.TabStop = False
+        '
+        'PixelBox1
+        '
+        Me.PixelBox1.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(49, Byte), Integer), CType(CType(54, Byte), Integer))
+        Me.PixelBox1.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality
+        Me.PixelBox1.ContextMenuStrip = Me.ContextMenuStrip_ListBox_Errors
+        Me.PixelBox1.Location = New System.Drawing.Point(328, 24)
+        Me.PixelBox1.Name = "PixelBox1"
+        Me.PixelBox1.Size = New System.Drawing.Size(128, 128)
+        Me.PixelBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.PixelBox1.TabIndex = 103
+        Me.PixelBox1.TabStop = False
+        '
         'FileNameValidator
         '
         Me.AllowDrop = True
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(54, Byte), Integer), CType(CType(57, Byte), Integer), CType(CType(62, Byte), Integer))
-        Me.ClientSize = New System.Drawing.Size(778, 655)
+        Me.ClientSize = New System.Drawing.Size(778, 664)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.Panel_Errors)
         Me.Controls.Add(Me.Panel_Correct)
@@ -501,10 +593,12 @@ Partial Class FileNameValidator
         CType(Me.PictureBox_AppIcon, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel_Image.ResumeLayout(False)
         Me.Panel_Image.PerformLayout()
-        CType(Me.PixelBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel_Selected_Directory_Controls.ResumeLayout(False)
         Me.Panel_Selected_Directory_Controls.PerformLayout()
         Me.Panel1.ResumeLayout(False)
+        Me.Panel2.ResumeLayout(False)
+        Me.Panel2.PerformLayout()
+        CType(Me.PixelBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -544,4 +638,11 @@ Partial Class FileNameValidator
     Friend WithEvents ToolTip1 As ToolTip
     Friend WithEvents Panel1 As Panel
     Friend WithEvents Label_Status As Label
+    Friend WithEvents Label1 As Label
+    Friend WithEvents TextBox_NewName As TextBox
+    Friend WithEvents RectangleShape3 As RectangleShape
+    Friend WithEvents Label_CurrentName As Label
+    Friend WithEvents Button_Rename As Button
+    Friend WithEvents Panel2 As Panel
+    Friend WithEvents ShapeContainer2 As ShapeContainer
 End Class
