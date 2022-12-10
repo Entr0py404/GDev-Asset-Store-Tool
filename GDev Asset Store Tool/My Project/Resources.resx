@@ -139,7 +139,7 @@
   "objectAssets": [
     {
       "object": {
-        "name": "NewBitmapText",
+        "name": "",
         "tags": "",
         "type": "BitmapText::BitmapTextObject",
         "variables": [],
@@ -157,7 +157,24 @@
           "wordWrap": true
         }
       },
-      "resources": [],
+      "resources": [
+	  {
+        "file": "",
+        "kind": "bitmapFont",
+        "metadata": "",
+        "name": "",
+        "userAdded": false
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "",
+        "kind": "image",
+        "metadata": "",
+        "name": "",
+        "smoothed": true,
+        "userAdded": false
+      }
+	  ],
       "customization": []
     }
   ],
@@ -234,7 +251,7 @@
   "objectAssets": [
     {
       "object": {
-        "name": "NewLight",
+        "name": "",
         "tags": "",
         "type": "Lighting::LightObject",
         "variables": [],
@@ -247,7 +264,17 @@
           "texture": ""
         }
       },
-      "resources": [],
+      "resources": [
+	  {
+        "alwaysLoaded": false,
+        "file": "",
+        "kind": "image",
+        "metadata": "",
+        "name": "",
+        "smoothed": true,
+        "userAdded": true
+      }
+	  ],
       "customization": []
     }
   ],
@@ -285,7 +312,17 @@
         "effects": [],
         "behaviors": []
       },
-      "resources": [],
+      "resources": [
+	  {
+        "alwaysLoaded": false,
+        "file": "",
+        "kind": "image",
+        "metadata": "",
+        "name": "",
+        "smoothed": true,
+        "userAdded": false
+      }
+	  ],
       "customization": []
     }
   ],
@@ -324,7 +361,33 @@
           "animationFps": 4
         }
       },
-      "resources": [],
+      "resources": [
+	  {
+        "alwaysLoaded": false,
+        "file": "",
+        "kind": "image",
+        "metadata": "",
+        "name": "",
+        "smoothed": true,
+        "userAdded": true
+      },
+      {
+        "disablePreload": false,
+        "file": "",
+        "kind": "json",
+        "metadata": "",
+        "name": "",
+        "userAdded": true
+      },
+	  {
+        "disablePreload": false,
+        "file": "",
+        "kind": "json",
+        "metadata": "",
+        "name": "",
+        "userAdded": true
+      }
+	  ],
       "customization": []
     }
   ],

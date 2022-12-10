@@ -152,7 +152,7 @@ Partial Class MetadataGenerator
         Me.ContextMenuStrip_TreeView.Name = "ContextMenuStrip_Listbox"
         Me.ContextMenuStrip_TreeView.ShowCheckMargin = True
         Me.ContextMenuStrip_TreeView.ShowImageMargin = False
-        Me.ContextMenuStrip_TreeView.Size = New System.Drawing.Size(271, 220)
+        Me.ContextMenuStrip_TreeView.Size = New System.Drawing.Size(271, 242)
         '
         'RegenerateSelectedFileToolStripMenuItem
         '
@@ -641,13 +641,12 @@ Partial Class MetadataGenerator
         Me.FastColoredTextBox_Selected_File.Font = New System.Drawing.Font("Courier New", 8.25!)
         Me.FastColoredTextBox_Selected_File.ForeColor = System.Drawing.Color.WhiteSmoke
         Me.FastColoredTextBox_Selected_File.IsReplaceMode = False
-        Me.FastColoredTextBox_Selected_File.Language = FastColoredTextBoxNS.Language.VB
         Me.FastColoredTextBox_Selected_File.LeftBracket = Global.Microsoft.VisualBasic.ChrW(40)
         Me.FastColoredTextBox_Selected_File.Location = New System.Drawing.Point(16, 24)
         Me.FastColoredTextBox_Selected_File.Name = "FastColoredTextBox_Selected_File"
         Me.FastColoredTextBox_Selected_File.Paddings = New System.Windows.Forms.Padding(0)
         Me.FastColoredTextBox_Selected_File.RightBracket = Global.Microsoft.VisualBasic.ChrW(41)
-        Me.FastColoredTextBox_Selected_File.SelectionColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.FastColoredTextBox_Selected_File.SelectionColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(144, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.FastColoredTextBox_Selected_File.ServiceColors = CType(resources.GetObject("FastColoredTextBox_Selected_File.ServiceColors"), FastColoredTextBoxNS.ServiceColors)
         Me.FastColoredTextBox_Selected_File.ShowLineNumbers = False
         Me.FastColoredTextBox_Selected_File.Size = New System.Drawing.Size(448, 72)

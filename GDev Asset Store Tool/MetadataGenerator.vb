@@ -1,4 +1,6 @@
-﻿Public Class MetadataGenerator
+﻿Imports FastColoredTextBoxNS
+
+Public Class MetadataGenerator
     Dim AnimationFiles As New List(Of String)()
     Dim AnimLoopCounter As Integer = -1
     Dim ZoomCounter As Integer = 100
@@ -7,6 +9,13 @@
     Dim LoopedAnimationKeywords As String() = {"idle", "idling", "walk", "walking", "run", "running", "swim", "swimming", "loop", "looping", "movement", "spinning", "rippling", "flowing", "climb", "climbing", "fly", "flying", "up", "down", "left", "right", "walk up", "walk down", "walk left", "walk right", "idle up", "idle down", "idle left", "idle right"} 'These strings will no longer be used unless the file is missing
     ReadOnly regexValidWords As New Regex("^[a-zA-Z0-9 ()_&.-]*$") '("\|!#$%&/()=?»«@£§€{}.-;'<>,")
     ReadOnly regexInvalidWords As New Regex("\s{2,}|_\s|\s_|__") '(  )(_ ) (_ ) (__)
+
+    Private key As New TextStyle(Brushes.MediumAquamarine, Nothing, FontStyle.Regular)
+    Private str As New TextStyle(Brushes.PaleGoldenrod, Nothing, FontStyle.Regular)
+    Private boo As New TextStyle(Brushes.MediumSlateBlue, Nothing, FontStyle.Regular)
+    Private num As New TextStyle(Brushes.DeepPink, Nothing, FontStyle.Regular)
+    Private nul As New TextStyle(Brushes.DarkGray, Nothing, FontStyle.Regular)
+
     'MetadataGenerator - Load
     Private Sub MetadataGenerator_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ImageList1.Images.Add("Folder", My.Resources.Folder) '0: 
@@ -1061,6 +1070,36 @@
             Return img
         End Using
     End Function
+    'FastColoredTextBox_Selected_File - TextChanged
+    Private Sub FastColoredTextBox_Selected_File_TextChanged(sender As Object, e As TextChangedEventArgs) Handles FastColoredTextBox_Selected_File.TextChanged
+        e.ChangedRange.ClearFoldingMarkers()
+        e.ChangedRange.SetFoldingMarkers("{", "}")
+        e.ChangedRange.SetFoldingMarkers("\[", "\]")
+        FastColoredTextBox_Selected_File.Range.ClearStyle(key, str, boo, nul)
+        For Each found As Range In FastColoredTextBox_Selected_File.GetRanges("(¤(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\¤])*¤(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)".Replace("¤"c, """"c))
+            If Regex.IsMatch(found.Text, "^¤".Replace("¤"c, """"c)) Then
+                If Regex.IsMatch(found.Text, ":$") Then
+                    found.SetStyle(key)
+                Else
+                    found.SetStyle(str)
+                End If
+            ElseIf Regex.IsMatch(found.Text, "true|false") Then
+                found.SetStyle(boo)
+            ElseIf Regex.IsMatch(found.Text, "\d") Then
+                found.SetStyle(num)
+            ElseIf Regex.IsMatch(found.Text, "null") Then
+                found.SetStyle(nul)
+            End If
+        Next
+    End Sub
+    'AssetStorePreviewToolStripMenuItem1_Click
+    Private Sub AssetStorePreviewToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles AssetStorePreviewToolStripMenuItem1.Click
+        If Directory.Exists(FolderBrowserDialog_Selected_Directory.SelectedPath & "\" & TreeView1.SelectedNode.FullPath) Then
+            AssetStorePreview.Show()
+            AssetStorePreview.BringToFront()
+            AssetStorePreview.LoadAssetsFromSelectedDirectory(FolderBrowserDialog_Selected_Directory.SelectedPath & "\" & TreeView1.SelectedNode.FullPath)
+        End If
+    End Sub
     '
     'Window Handle Code
     '
@@ -1109,13 +1148,5 @@
     Private Sub Main_Activated(sender As Object, e As EventArgs) Handles Me.Activated
         PictureBox_Close.Image = My.Resources.Close_Red
         Panel_Main.BackColor = Color.Black
-    End Sub
-    'AssetStorePreviewToolStripMenuItem1_Click
-    Private Sub AssetStorePreviewToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles AssetStorePreviewToolStripMenuItem1.Click
-        If Directory.Exists(FolderBrowserDialog_Selected_Directory.SelectedPath & "\" & TreeView1.SelectedNode.FullPath) Then
-            AssetStorePreview.Show()
-            AssetStorePreview.BringToFront()
-            AssetStorePreview.LoadAssetsFromSelectedDirectory(FolderBrowserDialog_Selected_Directory.SelectedPath & "\" & TreeView1.SelectedNode.FullPath)
-        End If
     End Sub
 End Class

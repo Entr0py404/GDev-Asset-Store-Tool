@@ -1,9 +1,16 @@
-﻿Imports FastColoredTextBoxNS
+﻿Imports System.Windows
+Imports FastColoredTextBoxNS
 
 Public Class TemplateAsset
     ReadOnly SupportedIamgeFormats() As String = {".png", ".bmp", ".jpeg", ".jpg", ".tiff", ".tif"}
     Dim ForceImageAspectRatio_1_1_Size As Size
     Dim aspectRatio_IsAlready_1_1 As Boolean = False
+    Private key As New TextStyle(Brushes.MediumAquamarine, Nothing, FontStyle.Regular)
+    Private str As New TextStyle(Brushes.PaleGoldenrod, Nothing, FontStyle.Regular)
+    Private boo As New TextStyle(Brushes.MediumSlateBlue, Nothing, FontStyle.Regular)
+    Private num As New TextStyle(Brushes.DeepPink, Nothing, FontStyle.Regular)
+    Private nul As New TextStyle(Brushes.DarkGray, Nothing, FontStyle.Regular)
+
     'TemplateAsset - Load
     Private Sub TemplateAsset_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         TabControl1.DrawMode = TabDrawMode.OwnerDrawFixed
@@ -11,6 +18,8 @@ Public Class TemplateAsset
         ComboBox_TilemapDisplayMode.SelectedIndex = 0
         MenuStrip1.Renderer = New ToolStripProfessionalRenderer(New ColorTable())
         ContextMenuStrip_PreviewImage.Renderer = New ToolStripProfessionalRenderer(New ColorTable())
+        ContextMenuStrip_AssetJSON.Renderer = New ToolStripProfessionalRenderer(New ColorTable())
+        FastColoredTextBox_AssetJson.AutoIndentCharsPatterns = "^\\s*[\\w\\.]+(\\s\\w+)?\\s*(?<range>=)\\s*(?<range>[^;=]+);\r\n^\\s*(case|default)\\s*[^:]*" + "(?<range>:)\\s*(?<range>[^;]+);"
     End Sub
     'BitmapText (ToolStripMenuItem) - Click
     Private Sub BitmapTextToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles BitmapTextToolStripMenuItem.Click
@@ -49,14 +58,18 @@ Public Class TemplateAsset
 
             If TextBox_Name.Text.Length > 0 And TextBox_Description.Text.Length > 0 And TextBox_BitmapAtlasImage.Text.EndsWith(".png") And (TextBox_BitmapFont.Text.EndsWith(".fnt") Or TextBox_BitmapFont.Text.EndsWith(".xml")) Then
                 FastColoredTextBox_AssetJson.Clear()
+                ErrorProvider1.SetError(FastColoredTextBox_AssetJson, Nothing)
                 Dim jsonFile As JObject = JObject.Parse(My.Resources.bitmaptext_template)
                 jsonFile.Item("description") = TextBox_Description.Text
                 jsonFile.Item("objectAssets")(0)("object")("name") = TextBox_Name.Text
                 jsonFile.Item("objectAssets")(0)("object")("content")("scale") = CInt(NumericUpDown_BitmapTextScale.Value)
                 jsonFile.Item("objectAssets")(0)("object")("content")("bitmapFontResourceName") = TextBox_BitmapFont.Text
                 jsonFile.Item("objectAssets")(0)("object")("content")("textureAtlasResourceName") = TextBox_BitmapAtlasImage.Text
+                jsonFile.Item("objectAssets")(0)("resources")(0)("file") = TextBox_BitmapFont.Text
+                jsonFile.Item("objectAssets")(0)("resources")(0)("name") = TextBox_BitmapFont.Text
+                jsonFile.Item("objectAssets")(0)("resources")(1)("file") = TextBox_BitmapAtlasImage.Text
+                jsonFile.Item("objectAssets")(0)("resources")(1)("name") = TextBox_BitmapAtlasImage.Text
                 FastColoredTextBox_AssetJson.Text = jsonFile.ToString
-                ErrorProvider1.SetError(FastColoredTextBox_AssetJson, Nothing)
             Else
 
                 If TextBox_Name.Text.Length = 0 Then
@@ -82,12 +95,15 @@ Public Class TemplateAsset
 
             If TextBox_Name.Text.Length > 0 And TextBox_Description.Text.Length > 0 And TextBox_LightTexture.Text.EndsWith(".png") Then
                 FastColoredTextBox_AssetJson.Clear()
+                ErrorProvider1.SetError(FastColoredTextBox_AssetJson, Nothing)
                 Dim jsonFile As JObject = JObject.Parse(My.Resources.light_template)
                 jsonFile.Item("description") = TextBox_Description.Text
                 jsonFile.Item("objectAssets")(0)("object")("name") = TextBox_Name.Text
                 jsonFile.Item("objectAssets")(0)("object")("content")("radius") = CInt(NumericUpDown_LightRadius.Value)
                 jsonFile.Item("objectAssets")(0)("object")("content")("color") = Button_LightColor.BackColor.R.ToString & ";" & Button_LightColor.BackColor.G.ToString & ";" & Button_LightColor.BackColor.B.ToString
                 jsonFile.Item("objectAssets")(0)("object")("content")("texture") = TextBox_LightTexture.Text
+                jsonFile.Item("objectAssets")(0)("resources")(0)("file") = TextBox_LightTexture.Text
+                jsonFile.Item("objectAssets")(0)("resources")(0)("name") = TextBox_LightTexture.Text
                 FastColoredTextBox_AssetJson.Text = jsonFile.ToString
             Else
 
@@ -110,6 +126,7 @@ Public Class TemplateAsset
 
             If TextBox_Name.Text.Length > 0 And TextBox_Description.Text.Length > 0 And TextBox_PanelSpriteIamge.Text.EndsWith(".png") Then
                 FastColoredTextBox_AssetJson.Clear()
+                ErrorProvider1.SetError(FastColoredTextBox_AssetJson, Nothing)
                 Dim jsonFile As JObject = JObject.Parse(My.Resources.panelsprite_template)
                 jsonFile.Item("description") = TextBox_Description.Text
                 jsonFile.Item("objectAssets")(0)("object")("name") = TextBox_Name.Text
@@ -121,6 +138,8 @@ Public Class TemplateAsset
                 jsonFile.Item("objectAssets")(0)("object")("tiled") = CheckBox_PSRepeatBoarders.Checked
                 jsonFile.Item("objectAssets")(0)("object")("topMargin") = CInt(NumericUpDown_PSTopMargin.Value)
                 jsonFile.Item("objectAssets")(0)("object")("width") = CInt(NumericUpDown_DefaultWidth.Value)
+                jsonFile.Item("objectAssets")(0)("resources")(0)("file") = TextBox_PanelSpriteIamge.Text
+                jsonFile.Item("objectAssets")(0)("resources")(0)("name") = TextBox_PanelSpriteIamge.Text
                 FastColoredTextBox_AssetJson.Text = jsonFile.ToString
             Else
 
@@ -143,6 +162,7 @@ Public Class TemplateAsset
 
             If TextBox_Name.Text.Length > 0 And TextBox_Description.Text.Length > 0 And TextBox_TilemapJSONFile.Text.EndsWith(".json") And TextBox_TilemapAtlasImage.Text.EndsWith(".png") Then
                 FastColoredTextBox_AssetJson.Clear()
+                ErrorProvider1.SetError(FastColoredTextBox_AssetJson, Nothing)
                 Dim jsonFile As JObject = JObject.Parse(My.Resources.tilemap_template)
                 jsonFile.Item("description") = TextBox_Description.Text
                 jsonFile.Item("objectAssets")(0)("object")("name") = TextBox_Name.Text
@@ -153,10 +173,21 @@ Public Class TemplateAsset
                 jsonFile.Item("objectAssets")(0)("object")("content")("layerIndex") = CInt(NumericUpDown_TilemapLayerDisplayIndex.Value)
                 jsonFile.Item("objectAssets")(0)("object")("content")("animationSpeedScale") = CInt(NumericUpDown_TilemapAnimationSpeedScale.Value)
                 jsonFile.Item("objectAssets")(0)("object")("content")("animationFps") = CInt(NumericUpDown_TilemapAnimationFPS.Value)
-                FastColoredTextBox_AssetJson.Text = jsonFile.ToString
-            Else
+                jsonFile.Item("objectAssets")(0)("resources")(0)("file") = TextBox_TilemapAtlasImage.Text
+                jsonFile.Item("objectAssets")(0)("resources")(0)("name") = TextBox_TilemapAtlasImage.Text
+                jsonFile.Item("objectAssets")(0)("resources")(1)("file") = TextBox_TilemapJSONFile.Text
+                jsonFile.Item("objectAssets")(0)("resources")(1)("name") = TextBox_TilemapJSONFile.Text
+                If Not TextBox_TilesetJSONFile.Text = "" And Not TextBox_TilesetJSONFile.Text = TextBox_TilemapJSONFile.Text Then
+                    jsonFile.Item("objectAssets")(0)("resources")(2)("file") = TextBox_TilesetJSONFile.Text
+                    jsonFile.Item("objectAssets")(0)("resources")(2)("name") = TextBox_TilesetJSONFile.Text
+                Else
+                    jsonFile.Item("objectAssets")(0)("resources")(2).Remove()
+                End If
 
-                If TextBox_Name.Text.Length = 0 Then
+                FastColoredTextBox_AssetJson.Text = jsonFile.ToString
+                Else
+
+                    If TextBox_Name.Text.Length = 0 Then
                     ErrorProvider1.SetError(TextBox_Name, "Required")
                 End If
 
@@ -272,11 +303,13 @@ Public Class TemplateAsset
     End Sub
     'Panel_PreviewImage - DragEnter
     Private Sub Panel_PreviewImage_DragEnter(sender As Object, e As DragEventArgs) Handles Panel_PreviewImage.DragEnter
-        Dim files() As String = CType(e.Data.GetData(DataFormats.FileDrop), String())
-        If e.Data.GetDataPresent(DataFormats.FileDrop) And SupportedIamgeFormats.Contains(Path.GetExtension(files(0)).ToLower) Then
-            e.Effect = DragDropEffects.Copy
-        Else
-            e.Effect = DragDropEffects.None
+        If e.Data.GetDataPresent(DataFormats.FileDrop) Then
+            Dim files() As String = CType(e.Data.GetData(DataFormats.FileDrop), String())
+            If e.Data.GetDataPresent(DataFormats.FileDrop) And SupportedIamgeFormats.Contains(Path.GetExtension(files(0)).ToLower) Then
+                e.Effect = DragDropEffects.Copy
+            Else
+                e.Effect = DragDropEffects.None
+            End If
         End If
     End Sub
     'ContextMenuStrip_PreviewImage - Opening
@@ -536,11 +569,11 @@ Public Class TemplateAsset
     End Sub
     'FastColoredTextBox_AssetJson - TextChanging
     Private Sub FastColoredTextBox_AssetJson_TextChanging(sender As Object, e As TextChangingEventArgs) Handles FastColoredTextBox_AssetJson.TextChanging
-        If FastColoredTextBox_AssetJson.Text.Length = 0 Then
-            ErrorProvider1.SetError(FastColoredTextBox_AssetJson, "Required")
-        Else
-            ErrorProvider1.SetError(FastColoredTextBox_AssetJson, Nothing)
-        End If
+        'If FastColoredTextBox_AssetJson.Text.Length = 0 Then
+        'ErrorProvider1.SetError(FastColoredTextBox_AssetJson, "Required")
+        'Else
+        'ErrorProvider1.SetError(FastColoredTextBox_AssetJson, Nothing)
+        'End If
     End Sub
     'SafeImageFromFile()
     Public Shared Function SafeImageFromFile(path As String) As Image
@@ -550,53 +583,57 @@ Public Class TemplateAsset
             Return img
         End Using
     End Function
-    '
-    'Window Handle Code
-    '
-    'Move Window - Panel
-    Private Sub Panel_Main_MouseDown(sender As Object, e As MouseEventArgs) Handles Panel_Main.MouseDown
-        If e.Button = Windows.Forms.MouseButtons.Left Then
-            Panel_Main.Capture = False
-            Const WM_NCLBUTTONDOWN As Integer = &HA1S
-            Const HTCAPTION As Integer = 2
-            Dim msg As Message = Message.Create(Me.Handle, WM_NCLBUTTONDOWN, New IntPtr(HTCAPTION), IntPtr.Zero)
-            Me.DefWndProc(msg)
+    'FastColoredTextBox_AssetJson - TextChanged
+    Private Sub FastColoredTextBox_AssetJson_TextChanged(sender As Object, e As TextChangedEventArgs) Handles FastColoredTextBox_AssetJson.TextChanged
+        e.ChangedRange.ClearFoldingMarkers()
+        e.ChangedRange.SetFoldingMarkers("{", "}")
+        e.ChangedRange.SetFoldingMarkers("\[", "\]")
+        FastColoredTextBox_AssetJson.Range.ClearStyle(key, str, boo, nul)
+        For Each found As Range In FastColoredTextBox_AssetJson.GetRanges("(¤(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\¤])*¤(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)".Replace("¤"c, """"c))
+            If Regex.IsMatch(found.Text, "^¤".Replace("¤"c, """"c)) Then
+                If Regex.IsMatch(found.Text, ":$") Then
+                    found.SetStyle(key)
+                Else
+                    found.SetStyle(str)
+                End If
+            ElseIf Regex.IsMatch(found.Text, "true|false") Then
+                found.SetStyle(boo)
+            ElseIf Regex.IsMatch(found.Text, "\d") Then
+                found.SetStyle(num)
+            ElseIf Regex.IsMatch(found.Text, "null") Then
+                found.SetStyle(nul)
+            End If
+        Next
+    End Sub
+    'CutToolStripMenuItem - Click
+    Private Sub CutToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles CutToolStripMenuItem.Click
+        FastColoredTextBox_AssetJson.Cut()
+    End Sub
+    'CopyToolStripMenuItem_Click
+    Private Sub CopyToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CopyToolStripMenuItem.Click
+        FastColoredTextBox_AssetJson.Copy()
+    End Sub
+    'PasteToolStripMenuItem - Click
+    Private Sub PasteToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PasteToolStripMenuItem.Click
+        FastColoredTextBox_AssetJson.Paste()
+    End Sub
+    'ClearToolStripMenuItem - Click
+    Private Sub ClearToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ClearToolStripMenuItem.Click
+        FastColoredTextBox_AssetJson.Clear()
+    End Sub
+    'ContextMenuStrip_AssetJSON - Opening
+    Private Sub ContextMenuStrip_AssetJSON_Opening(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles ContextMenuStrip_AssetJSON.Opening
+        If Not FastColoredTextBox_AssetJson.SelectionLength = 0 Then
+            CutToolStripMenuItem.Enabled = True
+            CopyToolStripMenuItem.Enabled = True
+        Else
+            CutToolStripMenuItem.Enabled = False
+            CopyToolStripMenuItem.Enabled = False
         End If
-    End Sub
-    'Move Window - Label_Application_Title
-    Private Sub Label_Application_Title_MouseDown(sender As Object, e As MouseEventArgs) Handles Label_Application_Title.MouseDown
-        If e.Button = Windows.Forms.MouseButtons.Left Then
-            Label_Application_Title.Capture = False
-            Const WM_NCLBUTTONDOWN As Integer = &HA1S
-            Const HTCAPTION As Integer = 2
-            Dim msg As Message = Message.Create(Me.Handle, WM_NCLBUTTONDOWN, New IntPtr(HTCAPTION), IntPtr.Zero)
-            Me.DefWndProc(msg)
+        If Clipboard.ContainsText Then
+            PasteToolStripMenuItem.Enabled = True
+        Else
+            PasteToolStripMenuItem.Enabled = False
         End If
-    End Sub
-    'Minimize
-    Private Sub PictureBox_Minimize_Click(sender As Object, e As EventArgs) Handles PictureBox_Minimize.Click
-        Me.WindowState = FormWindowState.Minimized
-    End Sub
-    'Close
-    Private Sub PictureBox_Close_Click(sender As Object, e As EventArgs) Handles PictureBox_Close.Click
-        Me.Close()
-    End Sub
-    'Minimize Blue
-    Private Sub PictureBox_Minimize_MouseHover(sender As Object, e As EventArgs) Handles PictureBox_Minimize.MouseHover
-        PictureBox_Minimize.Image = My.Resources.Minimize_Blue
-    End Sub
-    'Minimize Grey
-    Private Sub PictureBox_Minimize_MouseLeave(sender As Object, e As EventArgs) Handles PictureBox_Minimize.MouseLeave
-        PictureBox_Minimize.Image = My.Resources.Minimize_Grey
-    End Sub
-    'Form Deactivate Close Grey
-    Private Sub Main_Deactivate(sender As Object, e As EventArgs) Handles MyBase.Deactivate
-        PictureBox_Close.Image = My.Resources.Close_Grey
-        Panel_Main.BackColor = Color.FromArgb(28, 30, 34)
-    End Sub
-    'Form Activated Close Red
-    Private Sub Main_Activated(sender As Object, e As EventArgs) Handles MyBase.Activated
-        PictureBox_Close.Image = My.Resources.Close_Red
-        Panel_Main.BackColor = Color.Black
     End Sub
 End Class

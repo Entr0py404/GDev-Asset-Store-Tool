@@ -112,7 +112,7 @@ Namespace My.Resources
         '''  &quot;objectAssets&quot;: [
         '''    {
         '''      &quot;object&quot;: {
-        '''        &quot;name&quot;: &quot;NewBitmapText&quot;,
+        '''        &quot;name&quot;: &quot;&quot;,
         '''        &quot;tags&quot;: &quot;&quot;,
         '''        &quot;type&quot;: &quot;BitmapText::BitmapTextObject&quot;,
         '''        &quot;variables&quot;: [],
@@ -122,8 +122,7 @@ Namespace My.Resources
         '''          &quot;text&quot;: &quot;bitmap font text.&quot;,
         '''          &quot;opacity&quot;: 255,
         '''          &quot;scale&quot;: 1,
-        '''          &quot;fontSize&quot;: 20,
-        '''  [rest of string was truncated]&quot;;.
+        '''          &quot;fontS [rest of string was truncated]&quot;;.
         '''</summary>
         Friend ReadOnly Property bitmaptext_template() As String
             Get
@@ -176,7 +175,7 @@ Namespace My.Resources
         '''  &quot;objectAssets&quot;: [
         '''    {
         '''      &quot;object&quot;: {
-        '''        &quot;name&quot;: &quot;NewLight&quot;,
+        '''        &quot;name&quot;: &quot;&quot;,
         '''        &quot;tags&quot;: &quot;&quot;,
         '''        &quot;type&quot;: &quot;Lighting::LightObject&quot;,
         '''        &quot;variables&quot;: [],
@@ -186,9 +185,7 @@ Namespace My.Resources
         '''          &quot;radius&quot;: 50,
         '''          &quot;color&quot;: &quot;255;255;255&quot;,
         '''          &quot;debugMode&quot;: false,
-        '''          &quot;texture&quot;: &quot;&quot;
-        '''        }
-        '''     [rest of string was truncated]&quot;;.
+        '''          &quot;texture&quot;: &quot; [rest of string was truncated]&quot;;.
         '''</summary>
         Friend ReadOnly Property light_template() As String
             Get
@@ -264,8 +261,7 @@ Namespace My.Resources
         '''        &quot;tiled&quot;: true,
         '''        &quot;topMargin&quot;: 0,
         '''        &quot;type&quot;: &quot;PanelSpriteObject::PanelSprite&quot;,
-        '''        &quot;width&quot;: 32,
-        '''        &quot;varia [rest of string was truncated]&quot;;.
+        '''        &quot;wi [rest of string was truncated]&quot;;.
         '''</summary>
         Friend ReadOnly Property panelsprite_template() As String
             Get
@@ -348,7 +344,7 @@ Namespace My.Resources
         '''          &quot;tilemapJsonFile&quot;: &quot;&quot;,
         '''          &quot;tilesetJsonFile&quot;: &quot;&quot;,
         '''          &quot;tilemapAtlasImage&quot;: &quot;&quot;,
-        '''          &quot;displayMode&quot;: &quot;vi [rest of string was truncated]&quot;;.
+        '''     [rest of string was truncated]&quot;;.
         '''</summary>
         Friend ReadOnly Property tilemap_template() As String
             Get

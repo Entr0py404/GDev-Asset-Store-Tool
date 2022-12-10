@@ -114,9 +114,7 @@ Public Class AssetInfo
 
                 Label_AnimationsList.Text = ""
 
-
                 For Each AnimationName As String In AllAnimationFiles
-                    Console.WriteLine("AnimationName: " & AnimationName)
                     Temp_ObjectName = Path.GetFileName(AnimationName)
                     If Temp_ObjectName.Contains("_") Then
                         Temp_ObjectName = Temp_ObjectName.Substring(0, Temp_ObjectName.IndexOf("_"))
@@ -129,12 +127,10 @@ Public Class AssetInfo
                                 Temp_AnimationName = Path.GetFileNameWithoutExtension(AnimationName)
                                 Temp_AnimationName = Temp_AnimationName.Substring(0, Temp_AnimationName.IndexOf("_"))
                                 AnimationName = "NA"
-                                'Console.WriteLine("IsNumeric")
                             Else
                                 Temp_AnimationName = Path.GetFileNameWithoutExtension(AnimationName)
                                 Temp_AnimationName = Temp_AnimationName.Substring(Temp_AnimationName.IndexOf("_") + 1)
                                 AnimationName = Temp_AnimationName
-                                'Console.WriteLine("Not IsNumeric")
                             End If
 
                         Else
@@ -142,12 +138,6 @@ Public Class AssetInfo
                             AnimationName = AnimationName.Substring(AnimationName.IndexOf("_") + 1)
                             AnimationName = AnimationName.Substring(0, AnimationName.IndexOf("_"))
                         End If
-
-                        Console.WriteLine("ObjectName: " & ObjectName)
-                        Console.WriteLine("AnimationName: " & AnimationName)
-                        Console.WriteLine("Temp_ObjectName: " & Temp_ObjectName)
-                        Console.WriteLine("Temp_AnimationName: " & Temp_AnimationName)
-                        Console.WriteLine("")
 
                         If Not AnimationName = LastAnimationName And ObjectName = Temp_ObjectName Then
 
@@ -198,7 +188,6 @@ Public Class AssetInfo
 
             AnimationFiles.Clear()
             Dim ComboBox_SelectedItem As String = "_" & ComboBox_Animations.SelectedItem.ToString
-
             Dim ThisObjectname As String = ""
             Dim Animationname As String = ""
             For Each PNG_file As String In AllAnimationFiles

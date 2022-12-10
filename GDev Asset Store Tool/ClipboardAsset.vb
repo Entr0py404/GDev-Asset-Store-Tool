@@ -1,4 +1,5 @@
-﻿Imports FastColoredTextBoxNS
+﻿'Imports System.Globalization
+Imports FastColoredTextBoxNS
 
 Public Class ClipboardAsset
     ReadOnly SupportedIamgeFormats() As String = {".png", ".bmp", ".jpeg", ".jpg", ".tiff", ".tif"}
@@ -6,8 +7,16 @@ Public Class ClipboardAsset
     Dim aspectRatio_IsAlready_1_1 As Boolean = False
     Dim ObjectsJson As New JArray
     Dim objectAssets As New JArray
+    Private key As New TextStyle(Brushes.MediumAquamarine, Nothing, FontStyle.Regular)
+    Private str As New TextStyle(Brushes.PaleGoldenrod, Nothing, FontStyle.Regular)
+    Private boo As New TextStyle(Brushes.MediumSlateBlue, Nothing, FontStyle.Regular)
+    Private num As New TextStyle(Brushes.DeepPink, Nothing, FontStyle.Regular)
+    Private nul As New TextStyle(Brushes.DarkGray, Nothing, FontStyle.Regular)
+    'ClipboardAsset - Load
     Private Sub ClipboardAsset_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ContextMenuStrip_PreviewImage.Renderer = New ToolStripProfessionalRenderer(New ColorTable())
+        ContextMenuStrip_AssetJSON.Renderer = New ToolStripProfessionalRenderer(New ColorTable())
+        ContextMenuStrip_Resources.Renderer = New ToolStripProfessionalRenderer(New ColorTable())
     End Sub
     'Button_PasteObjects - Click
     Private Sub Button_PasteObjects_Click(sender As Object, e As EventArgs) Handles Button_PasteObject.Click
@@ -92,7 +101,6 @@ Public Class ClipboardAsset
                         'draw the original at the new size on memory bitmap
                         g.DrawImage(PixelBox_PreviewImage.Image, 0, 0, bmp.Width, bmp.Height)
                         'save the temp resized bitmamp
-                        'Console.WriteLine(Path.GetDirectoryName(SaveFileDialog1.FileName) & "\" & tempImageName & ".preview.png")
                         bmp.Save(Path.GetDirectoryName(SaveFileDialog1.FileName) & "\" & tempImageName & ".preview.png", Imaging.ImageFormat.Png)
                     End Using
                 Else
@@ -107,6 +115,8 @@ Public Class ClipboardAsset
                 ListBox_Objects.Items.Clear()
                 FastColoredTextBox_AssetJson.Clear()
                 PixelBox_PreviewImage.Image = Nothing
+                ObjectsJson.Clear()
+                objectAssets.Clear()
 
             End If
         Else
@@ -128,38 +138,42 @@ Public Class ClipboardAsset
     End Sub
     'Panel_PreviewImage - DragDrop
     Private Sub Panel_PreviewImage_DragDrop(sender As Object, e As DragEventArgs) Handles Panel_PreviewImage.DragDrop
-        Dim files() As String = CType(e.Data.GetData(DataFormats.FileDrop), String())
-        If files.Length <> 0 Then
-            Try
-                'ClearPicturebox
-                PixelBox_PreviewImage.Image = SafeImageFromFile(files(0))
-                ErrorProvider1.SetError(PixelBox_PreviewImage, Nothing)
+        If e.Data.GetDataPresent(DataFormats.FileDrop) Then
+            Dim files() As String = CType(e.Data.GetData(DataFormats.FileDrop), String())
+            If files.Length <> 0 Then
+                Try
+                    'ClearPicturebox
+                    PixelBox_PreviewImage.Image = SafeImageFromFile(files(0))
+                    ErrorProvider1.SetError(PixelBox_PreviewImage, Nothing)
 
-                Dim aspectRatio As Decimal = CDec(PixelBox_PreviewImage.Image.Width / PixelBox_PreviewImage.Image.Height)
-                Dim Ratio_1_1 As Decimal = 1
-                aspectRatio_IsAlready_1_1 = Decimal.Equals(aspectRatio, Ratio_1_1)
+                    Dim aspectRatio As Decimal = CDec(PixelBox_PreviewImage.Image.Width / PixelBox_PreviewImage.Image.Height)
+                    Dim Ratio_1_1 As Decimal = 1
+                    aspectRatio_IsAlready_1_1 = Decimal.Equals(aspectRatio, Ratio_1_1)
 
-                If aspectRatio_IsAlready_1_1 = False Then
-                    Dim n1 As Double = PixelBox_PreviewImage.Image.Width
+                    If aspectRatio_IsAlready_1_1 = False Then
+                        Dim n1 As Double = PixelBox_PreviewImage.Image.Width
 
-                    Dim n2 As Double = PixelBox_PreviewImage.Image.Height
-                    n2 = n1
+                        Dim n2 As Double = PixelBox_PreviewImage.Image.Height
+                        n2 = n1
 
-                    ForceImageAspectRatio_1_1_Size.Width = Convert.ToInt32(n1)
-                    ForceImageAspectRatio_1_1_Size.Height = Convert.ToInt32(n2)
-                End If
-            Catch ex As Exception
-                MsgBox("Problem opening file.", MsgBoxStyle.Critical)
-            End Try
+                        ForceImageAspectRatio_1_1_Size.Width = Convert.ToInt32(n1)
+                        ForceImageAspectRatio_1_1_Size.Height = Convert.ToInt32(n2)
+                    End If
+                Catch ex As Exception
+                    MsgBox("Problem opening file.", MsgBoxStyle.Critical)
+                End Try
+            End If
         End If
     End Sub
     'Panel_PreviewImage - DragEnter
     Private Sub Panel_PreviewImage_DragEnter(sender As Object, e As DragEventArgs) Handles Panel_PreviewImage.DragEnter
-        Dim files() As String = CType(e.Data.GetData(DataFormats.FileDrop), String())
-        If e.Data.GetDataPresent(DataFormats.FileDrop) And SupportedIamgeFormats.Contains(Path.GetExtension(files(0)).ToLower) Then
-            e.Effect = DragDropEffects.Copy
-        Else
-            e.Effect = DragDropEffects.None
+        If e.Data.GetDataPresent(DataFormats.FileDrop) Then
+            Dim files() As String = CType(e.Data.GetData(DataFormats.FileDrop), String())
+            If e.Data.GetDataPresent(DataFormats.FileDrop) And SupportedIamgeFormats.Contains(Path.GetExtension(files(0)).ToLower) Then
+                e.Effect = DragDropEffects.Copy
+            Else
+                e.Effect = DragDropEffects.None
+            End If
         End If
     End Sub
     'ContextMenuStrip_PreviewImage - Opening
@@ -212,53 +226,148 @@ Public Class ClipboardAsset
             Return img
         End Using
     End Function
-    '
-    'Window Handle Code
-    '
-    'Move Window - Panel
-    Private Sub Panel_Main_MouseDown(sender As Object, e As MouseEventArgs) Handles Panel_Main.MouseDown
-        If e.Button = Windows.Forms.MouseButtons.Left Then
-            Panel_Main.Capture = False
-            Const WM_NCLBUTTONDOWN As Integer = &HA1S
-            Const HTCAPTION As Integer = 2
-            Dim msg As Message = Message.Create(Me.Handle, WM_NCLBUTTONDOWN, New IntPtr(HTCAPTION), IntPtr.Zero)
-            Me.DefWndProc(msg)
+    'FastColoredTextBox_AssetJson - TextChanged
+    Private Sub FastColoredTextBox_AssetJson_TextChanged(sender As Object, e As TextChangedEventArgs) Handles FastColoredTextBox_AssetJson.TextChanged
+        e.ChangedRange.ClearFoldingMarkers()
+        e.ChangedRange.SetFoldingMarkers("{", "}")
+        e.ChangedRange.SetFoldingMarkers("\[", "\]")
+        FastColoredTextBox_AssetJson.Range.ClearStyle(key, str, boo, nul)
+        For Each found As Range In FastColoredTextBox_AssetJson.GetRanges("(¤(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\¤])*¤(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)".Replace("¤"c, """"c))
+            If Regex.IsMatch(found.Text, "^¤".Replace("¤"c, """"c)) Then
+                If Regex.IsMatch(found.Text, ":$") Then
+                    found.SetStyle(key)
+                Else
+                    found.SetStyle(str)
+                End If
+            ElseIf Regex.IsMatch(found.Text, "true|false") Then
+                found.SetStyle(boo)
+            ElseIf Regex.IsMatch(found.Text, "\d") Then
+                found.SetStyle(num)
+            ElseIf Regex.IsMatch(found.Text, "null") Then
+                found.SetStyle(nul)
+            End If
+        Next
+    End Sub
+    'FastColoredTextBox_Resources - DragDrop
+    Private Sub FastColoredTextBox_Resources_DragDrop(sender As Object, e As DragEventArgs) Handles FastColoredTextBox_Resources.DragDrop
+        If e.Data.GetDataPresent(DataFormats.FileDrop) Then
+            Dim files() As String = CType(e.Data.GetData(DataFormats.FileDrop), String())
+            If files.Length <> 0 Then
+                Try
+                    Dim jsonFile As JObject = JObject.Parse(File.ReadAllText(files(0)))
+                    TextBox_ProjectFilepath.Text = files(0)
+                    FastColoredTextBox_Resources.Text = jsonFile.Item("resources")("resources").ToString
+                Catch ex As Exception
+                    MsgBox("Problem opening file.", MsgBoxStyle.Critical)
+                End Try
+            End If
         End If
     End Sub
-    'Move Window - Label_Application_Title
-    Private Sub Label_Application_Title_MouseDown(sender As Object, e As MouseEventArgs) Handles Label_Application_Title.MouseDown
-        If e.Button = Windows.Forms.MouseButtons.Left Then
-            Label_Application_Title.Capture = False
-            Const WM_NCLBUTTONDOWN As Integer = &HA1S
-            Const HTCAPTION As Integer = 2
-            Dim msg As Message = Message.Create(Me.Handle, WM_NCLBUTTONDOWN, New IntPtr(HTCAPTION), IntPtr.Zero)
-            Me.DefWndProc(msg)
+    'FastColoredTextBox_Resources - DragEnter
+    Private Sub FastColoredTextBox_Resources_DragEnter(sender As Object, e As DragEventArgs) Handles FastColoredTextBox_Resources.DragEnter
+        If e.Data.GetDataPresent(DataFormats.FileDrop) Then
+            Dim files() As String = CType(e.Data.GetData(DataFormats.FileDrop), String())
+            If Path.GetExtension(files(0)) = ".json" Then
+                e.Effect = DragDropEffects.Copy
+            Else
+                e.Effect = DragDropEffects.None
+            End If
         End If
     End Sub
-    'Minimize
-    Private Sub PictureBox_Minimize_Click(sender As Object, e As EventArgs) Handles PictureBox_Minimize.Click
-        Me.WindowState = FormWindowState.Minimized
+    'FastColoredTextBox_Resources - TextChanged
+    Private Sub FastColoredTextBox_Resources_TextChanged(sender As Object, e As TextChangedEventArgs) Handles FastColoredTextBox_Resources.TextChanged
+        e.ChangedRange.ClearFoldingMarkers()
+        e.ChangedRange.SetFoldingMarkers("{", "}")
+        e.ChangedRange.SetFoldingMarkers("\[", "\]")
+        FastColoredTextBox_Resources.Range.ClearStyle(key, str, boo, nul)
+        For Each found As Range In FastColoredTextBox_Resources.GetRanges("(¤(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\¤])*¤(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)".Replace("¤"c, """"c))
+            If Regex.IsMatch(found.Text, "^¤".Replace("¤"c, """"c)) Then
+                If Regex.IsMatch(found.Text, ":$") Then
+                    found.SetStyle(key)
+                Else
+                    found.SetStyle(str)
+                End If
+            ElseIf Regex.IsMatch(found.Text, "true|false") Then
+                found.SetStyle(boo)
+            ElseIf Regex.IsMatch(found.Text, "\d") Then
+                found.SetStyle(num)
+            ElseIf Regex.IsMatch(found.Text, "null") Then
+                found.SetStyle(nul)
+            End If
+        Next
     End Sub
-    'Close
-    Private Sub PictureBox_Close_Click(sender As Object, e As EventArgs) Handles PictureBox_Close.Click
-        Me.Close()
+    '
+    'ContextMenuStrip - Resources
+    '
+    'CutToolStripMenuItem_Click
+    Private Sub CutToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CutToolStripMenuItem.Click
+        FastColoredTextBox_Resources.Cut()
     End Sub
-    'Minimize Blue
-    Private Sub PictureBox_Minimize_MouseHover(sender As Object, e As EventArgs) Handles PictureBox_Minimize.MouseHover
-        PictureBox_Minimize.Image = My.Resources.Minimize_Blue
+    'CopyToolStripMenuItem_Click
+    Private Sub CopyToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CopyToolStripMenuItem.Click
+        FastColoredTextBox_Resources.Copy()
     End Sub
-    'Minimize Grey
-    Private Sub PictureBox_Minimize_MouseLeave(sender As Object, e As EventArgs) Handles PictureBox_Minimize.MouseLeave
-        PictureBox_Minimize.Image = My.Resources.Minimize_Grey
+    'ClearToolStripMenuItem_Click
+    Private Sub ClearToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ClearToolStripMenuItem.Click
+        FastColoredTextBox_Resources.Clear()
+        TextBox_ProjectFilepath.Clear()
     End Sub
-    'Form Deactivate Close Grey
-    Private Sub Main_Deactivate(sender As Object, e As EventArgs) Handles Me.Deactivate
-        PictureBox_Close.Image = My.Resources.Close_Grey
-        Panel_Main.BackColor = Color.FromArgb(28, 30, 34)
+    'ReloadToolStripMenuItem_Click
+    Private Sub ReloadToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ReloadToolStripMenuItem.Click
+        If File.Exists(TextBox_ProjectFilepath.Text) Then
+            Dim jsonFile As JObject = JObject.Parse(File.ReadAllText(TextBox_ProjectFilepath.Text))
+            FastColoredTextBox_Resources.Text = jsonFile.Item("resources")("resources").ToString
+        Else
+            'Tell the user that the file does not exist
+
+            'Clear the bad path
+            TextBox_ProjectFilepath.Clear()
+        End If
     End Sub
-    'Form Activated Close Red
-    Private Sub Main_Activated(sender As Object, e As EventArgs) Handles Me.Activated
-        PictureBox_Close.Image = My.Resources.Close_Red
-        Panel_Main.BackColor = Color.Black
+    'ContextMenuStrip_Resources - Opening
+    Private Sub ContextMenuStrip2_Opening(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles ContextMenuStrip_Resources.Opening
+        If Not FastColoredTextBox_Resources.SelectionLength = 0 Then
+            CutToolStripMenuItem.Enabled = True
+            CopyToolStripMenuItem.Enabled = True
+        Else
+            CutToolStripMenuItem.Enabled = False
+            CopyToolStripMenuItem.Enabled = False
+        End If
+
+        If Not TextBox_ProjectFilepath.Text = "" Then
+            ReloadToolStripMenuItem.Enabled = True
+        Else
+            ReloadToolStripMenuItem.Enabled = False
+        End If
+    End Sub
+    '
+    'ContextMenuStrip - AssetJSON
+    '
+    'CutToolStripMenuItem1 - Click
+    Private Sub CutToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles CutToolStripMenuItem1.Click
+        FastColoredTextBox_AssetJson.Cut()
+    End Sub
+    'CopyToolStripMenuItem1 - Click
+    Private Sub CopyToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles CopyToolStripMenuItem1.Click
+        FastColoredTextBox_AssetJson.Copy()
+    End Sub
+    'PasteToolStripMenuItem - Click
+    Private Sub PasteToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PasteToolStripMenuItem.Click
+        FastColoredTextBox_AssetJson.Paste()
+    End Sub
+    'ContextMenuStrip_AssetJSON - Opening
+    Private Sub ContextMenuStrip1_Opening(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles ContextMenuStrip_AssetJSON.Opening
+        If Not FastColoredTextBox_AssetJson.SelectionLength = 0 Then
+            CutToolStripMenuItem1.Enabled = True
+            CopyToolStripMenuItem1.Enabled = True
+        Else
+            CutToolStripMenuItem1.Enabled = False
+            CopyToolStripMenuItem1.Enabled = False
+        End If
+        If Clipboard.ContainsText Then
+            PasteToolStripMenuItem.Enabled = True
+        Else
+            PasteToolStripMenuItem.Enabled = False
+        End If
     End Sub
 End Class

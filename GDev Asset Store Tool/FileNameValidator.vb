@@ -1,4 +1,4 @@
-﻿Imports System.Windows.Forms.VisualStyles.VisualStyleElement
+﻿'Imports System.Windows.Forms.VisualStyles.VisualStyleElement
 
 Public Class FileNameValidator
     ReadOnly regexValidWords As New Regex("^[a-zA-Z0-9 ()_&.-]*$") '("\|!#$%&/()=?»«@£§€{}.-;'<>,")
@@ -41,7 +41,6 @@ Public Class FileNameValidator
     'OpenDirectory (ToolStripMenuItem) - Click
     Private Sub OpenDirectoryToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles OpenDirectoryToolStripMenuItem.Click
         If File.Exists(FolderBrowserDialog_Selected_Directory.SelectedPath & "\" & ListBox_Errors.SelectedItem.ToString) Then
-            'Process.Start(Path.GetDirectoryName(FolderBrowserDialog_Selected_Directory.SelectedPath & "\" & ListBox_Errors.SelectedItem.ToString))
             Process.Start("explorer.exe", "/select," & FolderBrowserDialog_Selected_Directory.SelectedPath & "\" & ListBox_Errors.SelectedItem.ToString)
         ElseIf Directory.Exists(ListBox_Errors.SelectedItem.ToString.Replace("Possible plural directory name: ", "")) Then
             Process.Start("explorer.exe", "/select," & ListBox_Errors.SelectedItem.ToString.Replace("Possible plural directory name: ", ""))
@@ -98,13 +97,9 @@ Public Class FileNameValidator
         TextBox_Selected_Directory.Text = FolderBrowserDialog_Selected_Directory.SelectedPath
 
         For Each Dir As String In Directory.GetDirectories(FolderBrowserDialog_Selected_Directory.SelectedPath)
-            'Console.WriteLine(Dir)
-            'Console.WriteLine(FolderBrowserDialog_Selected_Directory.SelectedPath)
-
             If Not Dir.ToLower.Contains("!zip") And Not Dir.ToLower.Contains("!remove") And Not Dir.ToLower.Contains("!notused") And Not Dir.ToLower.Contains("!not used") Then
                 If Dir.ToLower.EndsWith("s") Then 'Check for plural in folder name
                     TempListofFiles.Add("Possible plural directory name: " & Dir)
-                    'Console.WriteLine(Dir)
                 End If
             End If
         Next
