@@ -15,6 +15,9 @@ Public Class FileNameValidator
         If e.KeyChar = Chr(13) And TextBox_Selected_Directory.Text.Length > 0 Then
             e.Handled = True
             If Directory.Exists(TextBox_Selected_Directory.Text) Then
+                If TextBox_Selected_Directory.Text.EndsWith("\") Then
+                    TextBox_Selected_Directory.Text = TextBox_Selected_Directory.Text.TrimEnd(CChar("\"))
+                End If
                 FolderBrowserDialog_Selected_Directory.SelectedPath = TextBox_Selected_Directory.Text
                 LoadFiles()
             Else
