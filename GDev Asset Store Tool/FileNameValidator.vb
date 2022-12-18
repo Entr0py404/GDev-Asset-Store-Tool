@@ -1,5 +1,4 @@
-﻿'Imports System.Windows.Forms.VisualStyles.VisualStyleElement
-
+﻿
 Public Class FileNameValidator
     ReadOnly regexValidWords As New Regex("^[a-zA-Z0-9 ()_&.-]*$") '("\|!#$%&/()=?»«@£§€{}.-;'<>,")
     ReadOnly regexInvalidWords As New Regex("\s{2,}|_\s|\s_|__") '(  )(_ ) (_ ) (__)

@@ -1,5 +1,4 @@
-﻿'Imports System.Globalization
-Imports FastColoredTextBoxNS
+﻿Imports FastColoredTextBoxNS
 
 Public Class ClipboardAsset
     ReadOnly SupportedIamgeFormats() As String = {".png", ".bmp", ".jpeg", ".jpg", ".tiff", ".tif"}
