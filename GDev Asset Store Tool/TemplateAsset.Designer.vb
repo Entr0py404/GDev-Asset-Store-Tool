@@ -28,7 +28,7 @@ Partial Class TemplateAsset
         Me.Button_Save = New System.Windows.Forms.Button()
         Me.TextBox_BitmapFont = New System.Windows.Forms.TextBox()
         Me.RectangleShape2 = New Microsoft.VisualBasic.PowerPacks.RectangleShape()
-        Me.Button_SelectFont = New System.Windows.Forms.Button()
+        Me.Button_SelectBitmapFont = New System.Windows.Forms.Button()
         Me.FastColoredTextBox_AssetJson = New FastColoredTextBoxNS.FastColoredTextBox()
         Me.ContextMenuStrip_AssetJSON = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.CutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -40,20 +40,23 @@ Partial Class TemplateAsset
         Me.Panel_BitmapFont = New System.Windows.Forms.Panel()
         Me.Label_SelectedFont = New System.Windows.Forms.Label()
         Me.ShapeContainer2 = New Microsoft.VisualBasic.PowerPacks.ShapeContainer()
-        Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
+        Me.OpenFileDialog_Image = New System.Windows.Forms.OpenFileDialog()
         Me.Panel_BitmapAtlasImage = New System.Windows.Forms.Panel()
         Me.Label_BitmapAtlasImage = New System.Windows.Forms.Label()
         Me.Button_SelectBitmapAtlasImage = New System.Windows.Forms.Button()
         Me.TextBox_BitmapAtlasImage = New System.Windows.Forms.TextBox()
         Me.ShapeContainer1 = New Microsoft.VisualBasic.PowerPacks.ShapeContainer()
         Me.RectangleShape1 = New Microsoft.VisualBasic.PowerPacks.RectangleShape()
-        Me.OpenFileDialog2 = New System.Windows.Forms.OpenFileDialog()
+        Me.OpenFileDialog_JSON = New System.Windows.Forms.OpenFileDialog()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
         Me.TextBox_PanelSpriteIamge = New System.Windows.Forms.TextBox()
         Me.TextBox_TilemapAtlasImage = New System.Windows.Forms.TextBox()
         Me.TextBox_TilemapJSONFile = New System.Windows.Forms.TextBox()
         Me.TextBox_TilesetJSONFile = New System.Windows.Forms.TextBox()
         Me.TextBox_LightTexture = New System.Windows.Forms.TextBox()
+        Me.TextBox_Button_Idle_Image = New System.Windows.Forms.TextBox()
+        Me.TextBox_Button_Hovered_Image = New System.Windows.Forms.TextBox()
+        Me.TextBox_Button_Pressed_Image = New System.Windows.Forms.TextBox()
         Me.PixelBox_PreviewImage = New GDev_Asset_Store_Tool.PixelBox()
         Me.ContextMenuStrip_PreviewImage = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.SaveToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -91,6 +94,7 @@ Partial Class TemplateAsset
         Me.RectangleShape19 = New Microsoft.VisualBasic.PowerPacks.RectangleShape()
         Me.CheckBox_PSRepeatBoarders = New System.Windows.Forms.CheckBox()
         Me.Panel_PanelSpriteIamge = New System.Windows.Forms.Panel()
+        Me.Button_PanelSpriteIamge = New System.Windows.Forms.Button()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.ShapeContainer7 = New Microsoft.VisualBasic.PowerPacks.ShapeContainer()
         Me.RectangleShape5 = New Microsoft.VisualBasic.PowerPacks.RectangleShape()
@@ -103,14 +107,17 @@ Partial Class TemplateAsset
         Me.TabPage_Tilemap = New System.Windows.Forms.TabPage()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.Panel_TilemapAtlasImage = New System.Windows.Forms.Panel()
+        Me.Button_TilemapAtlasImage = New System.Windows.Forms.Button()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.ShapeContainer8 = New Microsoft.VisualBasic.PowerPacks.ShapeContainer()
         Me.RectangleShape6 = New Microsoft.VisualBasic.PowerPacks.RectangleShape()
         Me.Panel_TilemapJSONFile = New System.Windows.Forms.Panel()
+        Me.Button_TilemapJSONFile = New System.Windows.Forms.Button()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.ShapeContainer9 = New Microsoft.VisualBasic.PowerPacks.ShapeContainer()
         Me.RectangleShape7 = New Microsoft.VisualBasic.PowerPacks.RectangleShape()
         Me.Panel_TilesetJSONFile = New System.Windows.Forms.Panel()
+        Me.Button_TilesetJSONFile = New System.Windows.Forms.Button()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.ShapeContainer10 = New Microsoft.VisualBasic.PowerPacks.ShapeContainer()
         Me.RectangleShape8 = New Microsoft.VisualBasic.PowerPacks.RectangleShape()
@@ -140,16 +147,171 @@ Partial Class TemplateAsset
         Me.ShapeContainer14 = New Microsoft.VisualBasic.PowerPacks.ShapeContainer()
         Me.RectangleShape13 = New Microsoft.VisualBasic.PowerPacks.RectangleShape()
         Me.Panel_LightTexture = New System.Windows.Forms.Panel()
+        Me.Button_LightTexture = New System.Windows.Forms.Button()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.ShapeContainer6 = New Microsoft.VisualBasic.PowerPacks.ShapeContainer()
         Me.RectangleShape4 = New Microsoft.VisualBasic.PowerPacks.RectangleShape()
         Me.Button_LightColor = New System.Windows.Forms.Button()
         Me.Label3 = New System.Windows.Forms.Label()
+        Me.TabPage_Button = New System.Windows.Forms.TabPage()
+        Me.MenuStrip2 = New System.Windows.Forms.MenuStrip()
+        Me.IdleToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.HoveredToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.PressedToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.Panel22 = New System.Windows.Forms.Panel()
+        Me.Label47 = New System.Windows.Forms.Label()
+        Me.NumericUpDown_LabelFontSize = New System.Windows.Forms.NumericUpDown()
+        Me.ShapeContainer49 = New Microsoft.VisualBasic.PowerPacks.ShapeContainer()
+        Me.RectangleShape48 = New Microsoft.VisualBasic.PowerPacks.RectangleShape()
+        Me.Panel35 = New System.Windows.Forms.Panel()
+        Me.Panel29 = New System.Windows.Forms.Panel()
+        Me.Label35 = New System.Windows.Forms.Label()
+        Me.NumericUpDown_HoveredFadeOutDuration = New System.Windows.Forms.NumericUpDown()
+        Me.ShapeContainer37 = New Microsoft.VisualBasic.PowerPacks.ShapeContainer()
+        Me.RectangleShape36 = New Microsoft.VisualBasic.PowerPacks.RectangleShape()
+        Me.Panel30 = New System.Windows.Forms.Panel()
+        Me.Label36 = New System.Windows.Forms.Label()
+        Me.NumericUpDown_LableOffset_Y = New System.Windows.Forms.NumericUpDown()
+        Me.ShapeContainer38 = New Microsoft.VisualBasic.PowerPacks.ShapeContainer()
+        Me.RectangleShape37 = New Microsoft.VisualBasic.PowerPacks.RectangleShape()
+        Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.Label48 = New System.Windows.Forms.Label()
+        Me.Button_LabelColor = New System.Windows.Forms.Button()
+        Me.Panel31 = New System.Windows.Forms.Panel()
+        Me.Label37 = New System.Windows.Forms.Label()
+        Me.NumericUpDown_BottomPadding = New System.Windows.Forms.NumericUpDown()
+        Me.ShapeContainer39 = New Microsoft.VisualBasic.PowerPacks.ShapeContainer()
+        Me.RectangleShape38 = New Microsoft.VisualBasic.PowerPacks.RectangleShape()
+        Me.Panel32 = New System.Windows.Forms.Panel()
+        Me.Label38 = New System.Windows.Forms.Label()
+        Me.NumericUpDown_TopPadding = New System.Windows.Forms.NumericUpDown()
+        Me.ShapeContainer40 = New Microsoft.VisualBasic.PowerPacks.ShapeContainer()
+        Me.RectangleShape39 = New Microsoft.VisualBasic.PowerPacks.RectangleShape()
+        Me.Panel33 = New System.Windows.Forms.Panel()
+        Me.Label39 = New System.Windows.Forms.Label()
+        Me.NumericUpDown_LeftPadding = New System.Windows.Forms.NumericUpDown()
+        Me.ShapeContainer41 = New Microsoft.VisualBasic.PowerPacks.ShapeContainer()
+        Me.RectangleShape40 = New Microsoft.VisualBasic.PowerPacks.RectangleShape()
+        Me.Panel34 = New System.Windows.Forms.Panel()
+        Me.Label40 = New System.Windows.Forms.Label()
+        Me.NumericUpDown_RightPadding = New System.Windows.Forms.NumericUpDown()
+        Me.ShapeContainer42 = New Microsoft.VisualBasic.PowerPacks.ShapeContainer()
+        Me.RectangleShape41 = New Microsoft.VisualBasic.PowerPacks.RectangleShape()
+        Me.TabControl2 = New System.Windows.Forms.TabControl()
+        Me.TabPage_Idle = New System.Windows.Forms.TabPage()
+        Me.Panel8 = New System.Windows.Forms.Panel()
+        Me.Label25 = New System.Windows.Forms.Label()
+        Me.NumericUpDown_Idle_DefaultHeight = New System.Windows.Forms.NumericUpDown()
+        Me.ShapeContainer27 = New Microsoft.VisualBasic.PowerPacks.ShapeContainer()
+        Me.RectangleShape26 = New Microsoft.VisualBasic.PowerPacks.RectangleShape()
+        Me.Panel36 = New System.Windows.Forms.Panel()
+        Me.Label41 = New System.Windows.Forms.Label()
+        Me.NumericUpDown_Idle_DefaultWidth = New System.Windows.Forms.NumericUpDown()
+        Me.ShapeContainer43 = New Microsoft.VisualBasic.PowerPacks.ShapeContainer()
+        Me.RectangleShape42 = New Microsoft.VisualBasic.PowerPacks.RectangleShape()
+        Me.Panel_Button_Idle = New System.Windows.Forms.Panel()
+        Me.Button_Button_Idle_Image = New System.Windows.Forms.Button()
+        Me.Label20 = New System.Windows.Forms.Label()
+        Me.ShapeContainer5 = New Microsoft.VisualBasic.PowerPacks.ShapeContainer()
+        Me.RectangleShape21 = New Microsoft.VisualBasic.PowerPacks.RectangleShape()
+        Me.Panel5 = New System.Windows.Forms.Panel()
+        Me.Label22 = New System.Windows.Forms.Label()
+        Me.NumericUpDown_Idle_RightMargin = New System.Windows.Forms.NumericUpDown()
+        Me.ShapeContainer24 = New Microsoft.VisualBasic.PowerPacks.ShapeContainer()
+        Me.RectangleShape23 = New Microsoft.VisualBasic.PowerPacks.RectangleShape()
+        Me.Panel6 = New System.Windows.Forms.Panel()
+        Me.Label23 = New System.Windows.Forms.Label()
+        Me.NumericUpDown_Idle_BottomMargin = New System.Windows.Forms.NumericUpDown()
+        Me.ShapeContainer25 = New Microsoft.VisualBasic.PowerPacks.ShapeContainer()
+        Me.RectangleShape24 = New Microsoft.VisualBasic.PowerPacks.RectangleShape()
+        Me.Panel4 = New System.Windows.Forms.Panel()
+        Me.Label21 = New System.Windows.Forms.Label()
+        Me.NumericUpDown_Idle_LeftMargin = New System.Windows.Forms.NumericUpDown()
+        Me.ShapeContainer23 = New Microsoft.VisualBasic.PowerPacks.ShapeContainer()
+        Me.RectangleShape22 = New Microsoft.VisualBasic.PowerPacks.RectangleShape()
+        Me.Panel7 = New System.Windows.Forms.Panel()
+        Me.Label24 = New System.Windows.Forms.Label()
+        Me.NumericUpDown_Idle_TopMargin = New System.Windows.Forms.NumericUpDown()
+        Me.ShapeContainer26 = New Microsoft.VisualBasic.PowerPacks.ShapeContainer()
+        Me.RectangleShape25 = New Microsoft.VisualBasic.PowerPacks.RectangleShape()
+        Me.TabPage_Hovered = New System.Windows.Forms.TabPage()
+        Me.Panel20 = New System.Windows.Forms.Panel()
+        Me.Label26 = New System.Windows.Forms.Label()
+        Me.NumericUpDown_Hovered_DefaultHeight = New System.Windows.Forms.NumericUpDown()
+        Me.ShapeContainer28 = New Microsoft.VisualBasic.PowerPacks.ShapeContainer()
+        Me.RectangleShape27 = New Microsoft.VisualBasic.PowerPacks.RectangleShape()
+        Me.Panel21 = New System.Windows.Forms.Panel()
+        Me.Label27 = New System.Windows.Forms.Label()
+        Me.NumericUpDown_Hovered_DefaultWidth = New System.Windows.Forms.NumericUpDown()
+        Me.ShapeContainer29 = New Microsoft.VisualBasic.PowerPacks.ShapeContainer()
+        Me.RectangleShape28 = New Microsoft.VisualBasic.PowerPacks.RectangleShape()
+        Me.Panel_Button_Hovered = New System.Windows.Forms.Panel()
+        Me.Button_Button_Hovered_Image = New System.Windows.Forms.Button()
+        Me.Label28 = New System.Windows.Forms.Label()
+        Me.ShapeContainer30 = New Microsoft.VisualBasic.PowerPacks.ShapeContainer()
+        Me.RectangleShape29 = New Microsoft.VisualBasic.PowerPacks.RectangleShape()
+        Me.Panel26 = New System.Windows.Forms.Panel()
+        Me.Label32 = New System.Windows.Forms.Label()
+        Me.NumericUpDown_Hovered_RightMargin = New System.Windows.Forms.NumericUpDown()
+        Me.ShapeContainer34 = New Microsoft.VisualBasic.PowerPacks.ShapeContainer()
+        Me.RectangleShape33 = New Microsoft.VisualBasic.PowerPacks.RectangleShape()
+        Me.Panel23 = New System.Windows.Forms.Panel()
+        Me.Label29 = New System.Windows.Forms.Label()
+        Me.NumericUpDown_Hovered_BottomMargin = New System.Windows.Forms.NumericUpDown()
+        Me.ShapeContainer31 = New Microsoft.VisualBasic.PowerPacks.ShapeContainer()
+        Me.RectangleShape30 = New Microsoft.VisualBasic.PowerPacks.RectangleShape()
+        Me.Panel25 = New System.Windows.Forms.Panel()
+        Me.Label31 = New System.Windows.Forms.Label()
+        Me.NumericUpDown_Hovered_LeftMargin = New System.Windows.Forms.NumericUpDown()
+        Me.ShapeContainer33 = New Microsoft.VisualBasic.PowerPacks.ShapeContainer()
+        Me.RectangleShape32 = New Microsoft.VisualBasic.PowerPacks.RectangleShape()
+        Me.Panel24 = New System.Windows.Forms.Panel()
+        Me.Label30 = New System.Windows.Forms.Label()
+        Me.NumericUpDown_Hovered_TopMargin = New System.Windows.Forms.NumericUpDown()
+        Me.ShapeContainer32 = New Microsoft.VisualBasic.PowerPacks.ShapeContainer()
+        Me.RectangleShape31 = New Microsoft.VisualBasic.PowerPacks.RectangleShape()
+        Me.TabPage_Pressed = New System.Windows.Forms.TabPage()
+        Me.Panel27 = New System.Windows.Forms.Panel()
+        Me.Label33 = New System.Windows.Forms.Label()
+        Me.NumericUpDown_Pressed_DefaultHeight = New System.Windows.Forms.NumericUpDown()
+        Me.ShapeContainer35 = New Microsoft.VisualBasic.PowerPacks.ShapeContainer()
+        Me.RectangleShape34 = New Microsoft.VisualBasic.PowerPacks.RectangleShape()
+        Me.Panel28 = New System.Windows.Forms.Panel()
+        Me.Label34 = New System.Windows.Forms.Label()
+        Me.NumericUpDown_Pressed_DefaultWidth = New System.Windows.Forms.NumericUpDown()
+        Me.ShapeContainer36 = New Microsoft.VisualBasic.PowerPacks.ShapeContainer()
+        Me.RectangleShape35 = New Microsoft.VisualBasic.PowerPacks.RectangleShape()
+        Me.Panel_Button_Pressed = New System.Windows.Forms.Panel()
+        Me.Button_Button_Pressed_Image = New System.Windows.Forms.Button()
+        Me.Label42 = New System.Windows.Forms.Label()
+        Me.ShapeContainer44 = New Microsoft.VisualBasic.PowerPacks.ShapeContainer()
+        Me.RectangleShape43 = New Microsoft.VisualBasic.PowerPacks.RectangleShape()
+        Me.Panel41 = New System.Windows.Forms.Panel()
+        Me.Label46 = New System.Windows.Forms.Label()
+        Me.NumericUpDown_Pressed_RightMargin = New System.Windows.Forms.NumericUpDown()
+        Me.ShapeContainer48 = New Microsoft.VisualBasic.PowerPacks.ShapeContainer()
+        Me.RectangleShape47 = New Microsoft.VisualBasic.PowerPacks.RectangleShape()
+        Me.Panel38 = New System.Windows.Forms.Panel()
+        Me.Label43 = New System.Windows.Forms.Label()
+        Me.NumericUpDown_Pressed_BottomMargin = New System.Windows.Forms.NumericUpDown()
+        Me.ShapeContainer45 = New Microsoft.VisualBasic.PowerPacks.ShapeContainer()
+        Me.RectangleShape44 = New Microsoft.VisualBasic.PowerPacks.RectangleShape()
+        Me.Panel40 = New System.Windows.Forms.Panel()
+        Me.Label45 = New System.Windows.Forms.Label()
+        Me.NumericUpDown_Pressed_LeftMargin = New System.Windows.Forms.NumericUpDown()
+        Me.ShapeContainer47 = New Microsoft.VisualBasic.PowerPacks.ShapeContainer()
+        Me.RectangleShape46 = New Microsoft.VisualBasic.PowerPacks.RectangleShape()
+        Me.Panel39 = New System.Windows.Forms.Panel()
+        Me.Label44 = New System.Windows.Forms.Label()
+        Me.NumericUpDown_Pressed_TopMargin = New System.Windows.Forms.NumericUpDown()
+        Me.ShapeContainer46 = New Microsoft.VisualBasic.PowerPacks.ShapeContainer()
+        Me.RectangleShape45 = New Microsoft.VisualBasic.PowerPacks.RectangleShape()
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.PanelSpriteToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.BitmapTextToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TilemapToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.LightToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ButtonToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.Panel_PreviewImage = New System.Windows.Forms.Panel()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Label_Description = New System.Windows.Forms.Label()
@@ -169,6 +331,7 @@ Partial Class TemplateAsset
         Me.RectangleShape20 = New Microsoft.VisualBasic.PowerPacks.RectangleShape()
         Me.ErrorProvider1 = New System.Windows.Forms.ErrorProvider(Me.components)
         Me.SplitContainer1 = New System.Windows.Forms.SplitContainer()
+        Me.OpenFileDialog_FNT_XML = New System.Windows.Forms.OpenFileDialog()
         CType(Me.FastColoredTextBox_AssetJson, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ContextMenuStrip_AssetJSON.SuspendLayout()
         Me.Panel_BitmapFont.SuspendLayout()
@@ -210,6 +373,67 @@ Partial Class TemplateAsset
         Me.Panel9.SuspendLayout()
         CType(Me.NumericUpDown_LightRadius, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel_LightTexture.SuspendLayout()
+        Me.TabPage_Button.SuspendLayout()
+        Me.MenuStrip2.SuspendLayout()
+        Me.Panel22.SuspendLayout()
+        CType(Me.NumericUpDown_LabelFontSize, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Panel35.SuspendLayout()
+        Me.Panel29.SuspendLayout()
+        CType(Me.NumericUpDown_HoveredFadeOutDuration, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Panel30.SuspendLayout()
+        CType(Me.NumericUpDown_LableOffset_Y, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Panel2.SuspendLayout()
+        Me.Panel31.SuspendLayout()
+        CType(Me.NumericUpDown_BottomPadding, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Panel32.SuspendLayout()
+        CType(Me.NumericUpDown_TopPadding, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Panel33.SuspendLayout()
+        CType(Me.NumericUpDown_LeftPadding, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Panel34.SuspendLayout()
+        CType(Me.NumericUpDown_RightPadding, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.TabControl2.SuspendLayout()
+        Me.TabPage_Idle.SuspendLayout()
+        Me.Panel8.SuspendLayout()
+        CType(Me.NumericUpDown_Idle_DefaultHeight, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Panel36.SuspendLayout()
+        CType(Me.NumericUpDown_Idle_DefaultWidth, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Panel_Button_Idle.SuspendLayout()
+        Me.Panel5.SuspendLayout()
+        CType(Me.NumericUpDown_Idle_RightMargin, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Panel6.SuspendLayout()
+        CType(Me.NumericUpDown_Idle_BottomMargin, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Panel4.SuspendLayout()
+        CType(Me.NumericUpDown_Idle_LeftMargin, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Panel7.SuspendLayout()
+        CType(Me.NumericUpDown_Idle_TopMargin, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.TabPage_Hovered.SuspendLayout()
+        Me.Panel20.SuspendLayout()
+        CType(Me.NumericUpDown_Hovered_DefaultHeight, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Panel21.SuspendLayout()
+        CType(Me.NumericUpDown_Hovered_DefaultWidth, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Panel_Button_Hovered.SuspendLayout()
+        Me.Panel26.SuspendLayout()
+        CType(Me.NumericUpDown_Hovered_RightMargin, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Panel23.SuspendLayout()
+        CType(Me.NumericUpDown_Hovered_BottomMargin, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Panel25.SuspendLayout()
+        CType(Me.NumericUpDown_Hovered_LeftMargin, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Panel24.SuspendLayout()
+        CType(Me.NumericUpDown_Hovered_TopMargin, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.TabPage_Pressed.SuspendLayout()
+        Me.Panel27.SuspendLayout()
+        CType(Me.NumericUpDown_Pressed_DefaultHeight, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Panel28.SuspendLayout()
+        CType(Me.NumericUpDown_Pressed_DefaultWidth, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Panel_Button_Pressed.SuspendLayout()
+        Me.Panel41.SuspendLayout()
+        CType(Me.NumericUpDown_Pressed_RightMargin, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Panel38.SuspendLayout()
+        CType(Me.NumericUpDown_Pressed_BottomMargin, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Panel40.SuspendLayout()
+        CType(Me.NumericUpDown_Pressed_LeftMargin, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Panel39.SuspendLayout()
+        CType(Me.NumericUpDown_Pressed_TopMargin, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.MenuStrip1.SuspendLayout()
         Me.Panel_PreviewImage.SuspendLayout()
         Me.Panel1.SuspendLayout()
@@ -233,7 +457,7 @@ Partial Class TemplateAsset
         Me.Button_Save.FlatAppearance.BorderSize = 0
         Me.Button_Save.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button_Save.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button_Save.Location = New System.Drawing.Point(256, 328)
+        Me.Button_Save.Location = New System.Drawing.Point(312, 328)
         Me.Button_Save.Name = "Button_Save"
         Me.Button_Save.Size = New System.Drawing.Size(96, 24)
         Me.Button_Save.TabIndex = 105
@@ -247,7 +471,7 @@ Partial Class TemplateAsset
         Me.TextBox_BitmapFont.ForeColor = System.Drawing.Color.WhiteSmoke
         Me.TextBox_BitmapFont.Location = New System.Drawing.Point(16, 24)
         Me.TextBox_BitmapFont.Name = "TextBox_BitmapFont"
-        Me.TextBox_BitmapFont.Size = New System.Drawing.Size(328, 13)
+        Me.TextBox_BitmapFont.Size = New System.Drawing.Size(320, 13)
         Me.TextBox_BitmapFont.TabIndex = 106
         Me.ToolTip1.SetToolTip(Me.TextBox_BitmapFont, "You can drag & drop a fnt or xml file here.")
         '
@@ -262,21 +486,21 @@ Partial Class TemplateAsset
         Me.RectangleShape2.Location = New System.Drawing.Point(8, 16)
         Me.RectangleShape2.Name = "RectangleShape2"
         Me.RectangleShape2.SelectionColor = System.Drawing.Color.Transparent
-        Me.RectangleShape2.Size = New System.Drawing.Size(344, 24)
+        Me.RectangleShape2.Size = New System.Drawing.Size(336, 24)
         '
-        'Button_SelectFont
+        'Button_SelectBitmapFont
         '
-        Me.Button_SelectFont.BackColor = System.Drawing.Color.DodgerBlue
-        Me.Button_SelectFont.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer))
-        Me.Button_SelectFont.FlatAppearance.BorderSize = 0
-        Me.Button_SelectFont.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button_SelectFont.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button_SelectFont.Location = New System.Drawing.Point(400, 16)
-        Me.Button_SelectFont.Name = "Button_SelectFont"
-        Me.Button_SelectFont.Size = New System.Drawing.Size(56, 24)
-        Me.Button_SelectFont.TabIndex = 109
-        Me.Button_SelectFont.Text = "..."
-        Me.Button_SelectFont.UseVisualStyleBackColor = False
+        Me.Button_SelectBitmapFont.BackColor = System.Drawing.Color.DodgerBlue
+        Me.Button_SelectBitmapFont.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer))
+        Me.Button_SelectBitmapFont.FlatAppearance.BorderSize = 0
+        Me.Button_SelectBitmapFont.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button_SelectBitmapFont.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button_SelectBitmapFont.Location = New System.Drawing.Point(352, 16)
+        Me.Button_SelectBitmapFont.Name = "Button_SelectBitmapFont"
+        Me.Button_SelectBitmapFont.Size = New System.Drawing.Size(56, 24)
+        Me.Button_SelectBitmapFont.TabIndex = 109
+        Me.Button_SelectBitmapFont.Text = "..."
+        Me.Button_SelectBitmapFont.UseVisualStyleBackColor = False
         '
         'FastColoredTextBox_AssetJson
         '
@@ -308,7 +532,7 @@ Partial Class TemplateAsset
         Me.FastColoredTextBox_AssetJson.ServiceColors = CType(resources.GetObject("FastColoredTextBox_AssetJson.ServiceColors"), FastColoredTextBoxNS.ServiceColors)
         Me.FastColoredTextBox_AssetJson.ServiceLinesColor = System.Drawing.Color.WhiteSmoke
         Me.FastColoredTextBox_AssetJson.ShowFoldingLines = True
-        Me.FastColoredTextBox_AssetJson.Size = New System.Drawing.Size(628, 754)
+        Me.FastColoredTextBox_AssetJson.Size = New System.Drawing.Size(565, 769)
         Me.FastColoredTextBox_AssetJson.TabIndex = 92
         Me.FastColoredTextBox_AssetJson.Zoom = 100
         '
@@ -371,12 +595,12 @@ Partial Class TemplateAsset
         '
         Me.Panel_BitmapFont.AllowDrop = True
         Me.Panel_BitmapFont.Controls.Add(Me.Label_SelectedFont)
-        Me.Panel_BitmapFont.Controls.Add(Me.Button_SelectFont)
+        Me.Panel_BitmapFont.Controls.Add(Me.Button_SelectBitmapFont)
         Me.Panel_BitmapFont.Controls.Add(Me.TextBox_BitmapFont)
         Me.Panel_BitmapFont.Controls.Add(Me.ShapeContainer2)
         Me.Panel_BitmapFont.Location = New System.Drawing.Point(0, 8)
         Me.Panel_BitmapFont.Name = "Panel_BitmapFont"
-        Me.Panel_BitmapFont.Size = New System.Drawing.Size(360, 56)
+        Me.Panel_BitmapFont.Size = New System.Drawing.Size(416, 56)
         Me.Panel_BitmapFont.TabIndex = 113
         '
         'Label_SelectedFont
@@ -397,13 +621,13 @@ Partial Class TemplateAsset
         Me.ShapeContainer2.Margin = New System.Windows.Forms.Padding(0)
         Me.ShapeContainer2.Name = "ShapeContainer2"
         Me.ShapeContainer2.Shapes.AddRange(New Microsoft.VisualBasic.PowerPacks.Shape() {Me.RectangleShape2})
-        Me.ShapeContainer2.Size = New System.Drawing.Size(360, 56)
+        Me.ShapeContainer2.Size = New System.Drawing.Size(416, 56)
         Me.ShapeContainer2.TabIndex = 107
         Me.ShapeContainer2.TabStop = False
         '
-        'OpenFileDialog1
+        'OpenFileDialog_Image
         '
-        Me.OpenFileDialog1.FileName = "OpenFileDialog1"
+        Me.OpenFileDialog_Image.Filter = "PNG Files|*.png"
         '
         'Panel_BitmapAtlasImage
         '
@@ -414,7 +638,7 @@ Partial Class TemplateAsset
         Me.Panel_BitmapAtlasImage.Controls.Add(Me.ShapeContainer1)
         Me.Panel_BitmapAtlasImage.Location = New System.Drawing.Point(0, 64)
         Me.Panel_BitmapAtlasImage.Name = "Panel_BitmapAtlasImage"
-        Me.Panel_BitmapAtlasImage.Size = New System.Drawing.Size(360, 56)
+        Me.Panel_BitmapAtlasImage.Size = New System.Drawing.Size(416, 56)
         Me.Panel_BitmapAtlasImage.TabIndex = 115
         '
         'Label_BitmapAtlasImage
@@ -436,7 +660,7 @@ Partial Class TemplateAsset
         Me.Button_SelectBitmapAtlasImage.FlatAppearance.BorderSize = 0
         Me.Button_SelectBitmapAtlasImage.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button_SelectBitmapAtlasImage.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button_SelectBitmapAtlasImage.Location = New System.Drawing.Point(400, 16)
+        Me.Button_SelectBitmapAtlasImage.Location = New System.Drawing.Point(352, 16)
         Me.Button_SelectBitmapAtlasImage.Name = "Button_SelectBitmapAtlasImage"
         Me.Button_SelectBitmapAtlasImage.Size = New System.Drawing.Size(56, 24)
         Me.Button_SelectBitmapAtlasImage.TabIndex = 109
@@ -450,7 +674,7 @@ Partial Class TemplateAsset
         Me.TextBox_BitmapAtlasImage.ForeColor = System.Drawing.Color.WhiteSmoke
         Me.TextBox_BitmapAtlasImage.Location = New System.Drawing.Point(16, 24)
         Me.TextBox_BitmapAtlasImage.Name = "TextBox_BitmapAtlasImage"
-        Me.TextBox_BitmapAtlasImage.Size = New System.Drawing.Size(328, 13)
+        Me.TextBox_BitmapAtlasImage.Size = New System.Drawing.Size(320, 13)
         Me.TextBox_BitmapAtlasImage.TabIndex = 106
         Me.ToolTip1.SetToolTip(Me.TextBox_BitmapAtlasImage, "You can drag & drop a png file here.")
         '
@@ -460,7 +684,7 @@ Partial Class TemplateAsset
         Me.ShapeContainer1.Margin = New System.Windows.Forms.Padding(0)
         Me.ShapeContainer1.Name = "ShapeContainer1"
         Me.ShapeContainer1.Shapes.AddRange(New Microsoft.VisualBasic.PowerPacks.Shape() {Me.RectangleShape1})
-        Me.ShapeContainer1.Size = New System.Drawing.Size(360, 56)
+        Me.ShapeContainer1.Size = New System.Drawing.Size(416, 56)
         Me.ShapeContainer1.TabIndex = 107
         Me.ShapeContainer1.TabStop = False
         '
@@ -475,11 +699,11 @@ Partial Class TemplateAsset
         Me.RectangleShape1.Location = New System.Drawing.Point(8, 16)
         Me.RectangleShape1.Name = "RectangleShape2"
         Me.RectangleShape1.SelectionColor = System.Drawing.Color.Transparent
-        Me.RectangleShape1.Size = New System.Drawing.Size(344, 24)
+        Me.RectangleShape1.Size = New System.Drawing.Size(336, 24)
         '
-        'OpenFileDialog2
+        'OpenFileDialog_JSON
         '
-        Me.OpenFileDialog2.FileName = "OpenFileDialog1"
+        Me.OpenFileDialog_JSON.Filter = "JSON Files|*.json"
         '
         'ToolTip1
         '
@@ -493,7 +717,7 @@ Partial Class TemplateAsset
         Me.TextBox_PanelSpriteIamge.ForeColor = System.Drawing.Color.WhiteSmoke
         Me.TextBox_PanelSpriteIamge.Location = New System.Drawing.Point(16, 24)
         Me.TextBox_PanelSpriteIamge.Name = "TextBox_PanelSpriteIamge"
-        Me.TextBox_PanelSpriteIamge.Size = New System.Drawing.Size(328, 13)
+        Me.TextBox_PanelSpriteIamge.Size = New System.Drawing.Size(320, 13)
         Me.TextBox_PanelSpriteIamge.TabIndex = 106
         Me.ToolTip1.SetToolTip(Me.TextBox_PanelSpriteIamge, "You can drag & drop a png file here.")
         '
@@ -537,9 +761,42 @@ Partial Class TemplateAsset
         Me.TextBox_LightTexture.ForeColor = System.Drawing.Color.WhiteSmoke
         Me.TextBox_LightTexture.Location = New System.Drawing.Point(16, 24)
         Me.TextBox_LightTexture.Name = "TextBox_LightTexture"
-        Me.TextBox_LightTexture.Size = New System.Drawing.Size(328, 13)
+        Me.TextBox_LightTexture.Size = New System.Drawing.Size(320, 13)
         Me.TextBox_LightTexture.TabIndex = 106
         Me.ToolTip1.SetToolTip(Me.TextBox_LightTexture, "You can drag & drop a png file here.")
+        '
+        'TextBox_Button_Idle_Image
+        '
+        Me.TextBox_Button_Idle_Image.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(49, Byte), Integer), CType(CType(54, Byte), Integer))
+        Me.TextBox_Button_Idle_Image.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.TextBox_Button_Idle_Image.ForeColor = System.Drawing.Color.WhiteSmoke
+        Me.TextBox_Button_Idle_Image.Location = New System.Drawing.Point(16, 24)
+        Me.TextBox_Button_Idle_Image.Name = "TextBox_Button_Idle_Image"
+        Me.TextBox_Button_Idle_Image.Size = New System.Drawing.Size(296, 13)
+        Me.TextBox_Button_Idle_Image.TabIndex = 106
+        Me.ToolTip1.SetToolTip(Me.TextBox_Button_Idle_Image, "You can drag & drop a png file here.")
+        '
+        'TextBox_Button_Hovered_Image
+        '
+        Me.TextBox_Button_Hovered_Image.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(49, Byte), Integer), CType(CType(54, Byte), Integer))
+        Me.TextBox_Button_Hovered_Image.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.TextBox_Button_Hovered_Image.ForeColor = System.Drawing.Color.WhiteSmoke
+        Me.TextBox_Button_Hovered_Image.Location = New System.Drawing.Point(16, 24)
+        Me.TextBox_Button_Hovered_Image.Name = "TextBox_Button_Hovered_Image"
+        Me.TextBox_Button_Hovered_Image.Size = New System.Drawing.Size(296, 13)
+        Me.TextBox_Button_Hovered_Image.TabIndex = 106
+        Me.ToolTip1.SetToolTip(Me.TextBox_Button_Hovered_Image, "You can drag & drop a png file here.")
+        '
+        'TextBox_Button_Pressed_Image
+        '
+        Me.TextBox_Button_Pressed_Image.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(49, Byte), Integer), CType(CType(54, Byte), Integer))
+        Me.TextBox_Button_Pressed_Image.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.TextBox_Button_Pressed_Image.ForeColor = System.Drawing.Color.WhiteSmoke
+        Me.TextBox_Button_Pressed_Image.Location = New System.Drawing.Point(16, 24)
+        Me.TextBox_Button_Pressed_Image.Name = "TextBox_Button_Pressed_Image"
+        Me.TextBox_Button_Pressed_Image.Size = New System.Drawing.Size(296, 13)
+        Me.TextBox_Button_Pressed_Image.TabIndex = 106
+        Me.ToolTip1.SetToolTip(Me.TextBox_Button_Pressed_Image, "You can drag & drop a png file here.")
         '
         'PixelBox_PreviewImage
         '
@@ -577,10 +834,11 @@ Partial Class TemplateAsset
         Me.TabControl1.Controls.Add(Me.TabPage_BitmapText)
         Me.TabControl1.Controls.Add(Me.TabPage_Tilemap)
         Me.TabControl1.Controls.Add(Me.TabPage_Light)
+        Me.TabControl1.Controls.Add(Me.TabPage_Button)
         Me.TabControl1.Location = New System.Drawing.Point(8, 384)
         Me.TabControl1.Name = "TabControl1"
         Me.TabControl1.SelectedIndex = 0
-        Me.TabControl1.Size = New System.Drawing.Size(376, 416)
+        Me.TabControl1.Size = New System.Drawing.Size(432, 416)
         Me.TabControl1.TabIndex = 116
         '
         'TabPage_PanelSprite
@@ -597,7 +855,7 @@ Partial Class TemplateAsset
         Me.TabPage_PanelSprite.Location = New System.Drawing.Point(4, 22)
         Me.TabPage_PanelSprite.Name = "TabPage_PanelSprite"
         Me.TabPage_PanelSprite.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage_PanelSprite.Size = New System.Drawing.Size(368, 390)
+        Me.TabPage_PanelSprite.Size = New System.Drawing.Size(424, 390)
         Me.TabPage_PanelSprite.TabIndex = 3
         Me.TabPage_PanelSprite.Text = "Panel Sprite"
         '
@@ -947,13 +1205,28 @@ Partial Class TemplateAsset
         'Panel_PanelSpriteIamge
         '
         Me.Panel_PanelSpriteIamge.AllowDrop = True
+        Me.Panel_PanelSpriteIamge.Controls.Add(Me.Button_PanelSpriteIamge)
         Me.Panel_PanelSpriteIamge.Controls.Add(Me.Label4)
         Me.Panel_PanelSpriteIamge.Controls.Add(Me.TextBox_PanelSpriteIamge)
         Me.Panel_PanelSpriteIamge.Controls.Add(Me.ShapeContainer7)
         Me.Panel_PanelSpriteIamge.Location = New System.Drawing.Point(0, 8)
         Me.Panel_PanelSpriteIamge.Name = "Panel_PanelSpriteIamge"
-        Me.Panel_PanelSpriteIamge.Size = New System.Drawing.Size(360, 48)
+        Me.Panel_PanelSpriteIamge.Size = New System.Drawing.Size(416, 48)
         Me.Panel_PanelSpriteIamge.TabIndex = 121
+        '
+        'Button_PanelSpriteIamge
+        '
+        Me.Button_PanelSpriteIamge.BackColor = System.Drawing.Color.DodgerBlue
+        Me.Button_PanelSpriteIamge.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer))
+        Me.Button_PanelSpriteIamge.FlatAppearance.BorderSize = 0
+        Me.Button_PanelSpriteIamge.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button_PanelSpriteIamge.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button_PanelSpriteIamge.Location = New System.Drawing.Point(352, 16)
+        Me.Button_PanelSpriteIamge.Name = "Button_PanelSpriteIamge"
+        Me.Button_PanelSpriteIamge.Size = New System.Drawing.Size(56, 24)
+        Me.Button_PanelSpriteIamge.TabIndex = 111
+        Me.Button_PanelSpriteIamge.Text = "..."
+        Me.Button_PanelSpriteIamge.UseVisualStyleBackColor = False
         '
         'Label4
         '
@@ -973,7 +1246,7 @@ Partial Class TemplateAsset
         Me.ShapeContainer7.Margin = New System.Windows.Forms.Padding(0)
         Me.ShapeContainer7.Name = "ShapeContainer7"
         Me.ShapeContainer7.Shapes.AddRange(New Microsoft.VisualBasic.PowerPacks.Shape() {Me.RectangleShape5})
-        Me.ShapeContainer7.Size = New System.Drawing.Size(360, 48)
+        Me.ShapeContainer7.Size = New System.Drawing.Size(416, 48)
         Me.ShapeContainer7.TabIndex = 107
         Me.ShapeContainer7.TabStop = False
         '
@@ -988,7 +1261,7 @@ Partial Class TemplateAsset
         Me.RectangleShape5.Location = New System.Drawing.Point(8, 16)
         Me.RectangleShape5.Name = "RectangleShape2"
         Me.RectangleShape5.SelectionColor = System.Drawing.Color.Transparent
-        Me.RectangleShape5.Size = New System.Drawing.Size(344, 24)
+        Me.RectangleShape5.Size = New System.Drawing.Size(336, 24)
         '
         'TabPage_BitmapText
         '
@@ -999,7 +1272,7 @@ Partial Class TemplateAsset
         Me.TabPage_BitmapText.Location = New System.Drawing.Point(4, 22)
         Me.TabPage_BitmapText.Name = "TabPage_BitmapText"
         Me.TabPage_BitmapText.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage_BitmapText.Size = New System.Drawing.Size(368, 390)
+        Me.TabPage_BitmapText.Size = New System.Drawing.Size(424, 390)
         Me.TabPage_BitmapText.TabIndex = 0
         Me.TabPage_BitmapText.Text = "Bitmap Text"
         '
@@ -1010,7 +1283,7 @@ Partial Class TemplateAsset
         Me.Panel10.Controls.Add(Me.ShapeContainer16)
         Me.Panel10.Location = New System.Drawing.Point(0, 120)
         Me.Panel10.Name = "Panel10"
-        Me.Panel10.Size = New System.Drawing.Size(360, 32)
+        Me.Panel10.Size = New System.Drawing.Size(416, 32)
         Me.Panel10.TabIndex = 127
         '
         'Label13
@@ -1041,7 +1314,7 @@ Partial Class TemplateAsset
         Me.ShapeContainer16.Margin = New System.Windows.Forms.Padding(0)
         Me.ShapeContainer16.Name = "ShapeContainer16"
         Me.ShapeContainer16.Shapes.AddRange(New Microsoft.VisualBasic.PowerPacks.Shape() {Me.RectangleShape12})
-        Me.ShapeContainer16.Size = New System.Drawing.Size(360, 32)
+        Me.ShapeContainer16.Size = New System.Drawing.Size(416, 32)
         Me.ShapeContainer16.TabIndex = 125
         Me.ShapeContainer16.TabStop = False
         '
@@ -1068,7 +1341,7 @@ Partial Class TemplateAsset
         Me.TabPage_Tilemap.Location = New System.Drawing.Point(4, 22)
         Me.TabPage_Tilemap.Name = "TabPage_Tilemap"
         Me.TabPage_Tilemap.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage_Tilemap.Size = New System.Drawing.Size(368, 390)
+        Me.TabPage_Tilemap.Size = New System.Drawing.Size(424, 390)
         Me.TabPage_Tilemap.TabIndex = 2
         Me.TabPage_Tilemap.Text = "Tilemap"
         '
@@ -1081,7 +1354,7 @@ Partial Class TemplateAsset
         Me.GroupBox3.ForeColor = System.Drawing.Color.WhiteSmoke
         Me.GroupBox3.Location = New System.Drawing.Point(8, 208)
         Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Size = New System.Drawing.Size(352, 176)
+        Me.GroupBox3.Size = New System.Drawing.Size(408, 176)
         Me.GroupBox3.TabIndex = 135
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Tilemap And Tileset"
@@ -1089,13 +1362,28 @@ Partial Class TemplateAsset
         'Panel_TilemapAtlasImage
         '
         Me.Panel_TilemapAtlasImage.AllowDrop = True
+        Me.Panel_TilemapAtlasImage.Controls.Add(Me.Button_TilemapAtlasImage)
         Me.Panel_TilemapAtlasImage.Controls.Add(Me.Label6)
         Me.Panel_TilemapAtlasImage.Controls.Add(Me.TextBox_TilemapAtlasImage)
         Me.Panel_TilemapAtlasImage.Controls.Add(Me.ShapeContainer8)
         Me.Panel_TilemapAtlasImage.Location = New System.Drawing.Point(8, 24)
         Me.Panel_TilemapAtlasImage.Name = "Panel_TilemapAtlasImage"
-        Me.Panel_TilemapAtlasImage.Size = New System.Drawing.Size(336, 48)
+        Me.Panel_TilemapAtlasImage.Size = New System.Drawing.Size(392, 48)
         Me.Panel_TilemapAtlasImage.TabIndex = 122
+        '
+        'Button_TilemapAtlasImage
+        '
+        Me.Button_TilemapAtlasImage.BackColor = System.Drawing.Color.DodgerBlue
+        Me.Button_TilemapAtlasImage.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer))
+        Me.Button_TilemapAtlasImage.FlatAppearance.BorderSize = 0
+        Me.Button_TilemapAtlasImage.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button_TilemapAtlasImage.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button_TilemapAtlasImage.Location = New System.Drawing.Point(336, 16)
+        Me.Button_TilemapAtlasImage.Name = "Button_TilemapAtlasImage"
+        Me.Button_TilemapAtlasImage.Size = New System.Drawing.Size(56, 24)
+        Me.Button_TilemapAtlasImage.TabIndex = 111
+        Me.Button_TilemapAtlasImage.Text = "..."
+        Me.Button_TilemapAtlasImage.UseVisualStyleBackColor = False
         '
         'Label6
         '
@@ -1115,7 +1403,7 @@ Partial Class TemplateAsset
         Me.ShapeContainer8.Margin = New System.Windows.Forms.Padding(0)
         Me.ShapeContainer8.Name = "ShapeContainer8"
         Me.ShapeContainer8.Shapes.AddRange(New Microsoft.VisualBasic.PowerPacks.Shape() {Me.RectangleShape6})
-        Me.ShapeContainer8.Size = New System.Drawing.Size(336, 48)
+        Me.ShapeContainer8.Size = New System.Drawing.Size(392, 48)
         Me.ShapeContainer8.TabIndex = 107
         Me.ShapeContainer8.TabStop = False
         '
@@ -1135,13 +1423,28 @@ Partial Class TemplateAsset
         'Panel_TilemapJSONFile
         '
         Me.Panel_TilemapJSONFile.AllowDrop = True
+        Me.Panel_TilemapJSONFile.Controls.Add(Me.Button_TilemapJSONFile)
         Me.Panel_TilemapJSONFile.Controls.Add(Me.Label7)
         Me.Panel_TilemapJSONFile.Controls.Add(Me.TextBox_TilemapJSONFile)
         Me.Panel_TilemapJSONFile.Controls.Add(Me.ShapeContainer9)
         Me.Panel_TilemapJSONFile.Location = New System.Drawing.Point(8, 72)
         Me.Panel_TilemapJSONFile.Name = "Panel_TilemapJSONFile"
-        Me.Panel_TilemapJSONFile.Size = New System.Drawing.Size(336, 48)
+        Me.Panel_TilemapJSONFile.Size = New System.Drawing.Size(392, 48)
         Me.Panel_TilemapJSONFile.TabIndex = 123
+        '
+        'Button_TilemapJSONFile
+        '
+        Me.Button_TilemapJSONFile.BackColor = System.Drawing.Color.DodgerBlue
+        Me.Button_TilemapJSONFile.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer))
+        Me.Button_TilemapJSONFile.FlatAppearance.BorderSize = 0
+        Me.Button_TilemapJSONFile.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button_TilemapJSONFile.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button_TilemapJSONFile.Location = New System.Drawing.Point(336, 16)
+        Me.Button_TilemapJSONFile.Name = "Button_TilemapJSONFile"
+        Me.Button_TilemapJSONFile.Size = New System.Drawing.Size(56, 24)
+        Me.Button_TilemapJSONFile.TabIndex = 112
+        Me.Button_TilemapJSONFile.Text = "..."
+        Me.Button_TilemapJSONFile.UseVisualStyleBackColor = False
         '
         'Label7
         '
@@ -1161,7 +1464,7 @@ Partial Class TemplateAsset
         Me.ShapeContainer9.Margin = New System.Windows.Forms.Padding(0)
         Me.ShapeContainer9.Name = "ShapeContainer9"
         Me.ShapeContainer9.Shapes.AddRange(New Microsoft.VisualBasic.PowerPacks.Shape() {Me.RectangleShape7})
-        Me.ShapeContainer9.Size = New System.Drawing.Size(336, 48)
+        Me.ShapeContainer9.Size = New System.Drawing.Size(392, 48)
         Me.ShapeContainer9.TabIndex = 107
         Me.ShapeContainer9.TabStop = False
         '
@@ -1181,13 +1484,28 @@ Partial Class TemplateAsset
         'Panel_TilesetJSONFile
         '
         Me.Panel_TilesetJSONFile.AllowDrop = True
+        Me.Panel_TilesetJSONFile.Controls.Add(Me.Button_TilesetJSONFile)
         Me.Panel_TilesetJSONFile.Controls.Add(Me.Label8)
         Me.Panel_TilesetJSONFile.Controls.Add(Me.TextBox_TilesetJSONFile)
         Me.Panel_TilesetJSONFile.Controls.Add(Me.ShapeContainer10)
         Me.Panel_TilesetJSONFile.Location = New System.Drawing.Point(8, 120)
         Me.Panel_TilesetJSONFile.Name = "Panel_TilesetJSONFile"
-        Me.Panel_TilesetJSONFile.Size = New System.Drawing.Size(336, 48)
+        Me.Panel_TilesetJSONFile.Size = New System.Drawing.Size(392, 48)
         Me.Panel_TilesetJSONFile.TabIndex = 124
+        '
+        'Button_TilesetJSONFile
+        '
+        Me.Button_TilesetJSONFile.BackColor = System.Drawing.Color.DodgerBlue
+        Me.Button_TilesetJSONFile.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer))
+        Me.Button_TilesetJSONFile.FlatAppearance.BorderSize = 0
+        Me.Button_TilesetJSONFile.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button_TilesetJSONFile.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button_TilesetJSONFile.Location = New System.Drawing.Point(336, 16)
+        Me.Button_TilesetJSONFile.Name = "Button_TilesetJSONFile"
+        Me.Button_TilesetJSONFile.Size = New System.Drawing.Size(56, 24)
+        Me.Button_TilesetJSONFile.TabIndex = 112
+        Me.Button_TilesetJSONFile.Text = "..."
+        Me.Button_TilesetJSONFile.UseVisualStyleBackColor = False
         '
         'Label8
         '
@@ -1207,7 +1525,7 @@ Partial Class TemplateAsset
         Me.ShapeContainer10.Margin = New System.Windows.Forms.Padding(0)
         Me.ShapeContainer10.Name = "ShapeContainer10"
         Me.ShapeContainer10.Shapes.AddRange(New Microsoft.VisualBasic.PowerPacks.Shape() {Me.RectangleShape8})
-        Me.ShapeContainer10.Size = New System.Drawing.Size(336, 48)
+        Me.ShapeContainer10.Size = New System.Drawing.Size(392, 48)
         Me.ShapeContainer10.TabIndex = 107
         Me.ShapeContainer10.TabStop = False
         '
@@ -1233,7 +1551,7 @@ Partial Class TemplateAsset
         Me.GroupBox2.ForeColor = System.Drawing.Color.WhiteSmoke
         Me.GroupBox2.Location = New System.Drawing.Point(8, 104)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(352, 96)
+        Me.GroupBox2.Size = New System.Drawing.Size(408, 96)
         Me.GroupBox2.TabIndex = 134
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Appearance"
@@ -1267,7 +1585,7 @@ Partial Class TemplateAsset
         Me.Panel13.Controls.Add(Me.ShapeContainer12)
         Me.Panel13.Location = New System.Drawing.Point(3, 48)
         Me.Panel13.Name = "Panel13"
-        Me.Panel13.Size = New System.Drawing.Size(341, 40)
+        Me.Panel13.Size = New System.Drawing.Size(397, 40)
         Me.Panel13.TabIndex = 130
         '
         'NumericUpDown_TilemapLayerDisplayIndex
@@ -1297,7 +1615,7 @@ Partial Class TemplateAsset
         Me.ShapeContainer12.Margin = New System.Windows.Forms.Padding(0)
         Me.ShapeContainer12.Name = "ShapeContainer12"
         Me.ShapeContainer12.Shapes.AddRange(New Microsoft.VisualBasic.PowerPacks.Shape() {Me.RectangleShape9})
-        Me.ShapeContainer12.Size = New System.Drawing.Size(341, 40)
+        Me.ShapeContainer12.Size = New System.Drawing.Size(397, 40)
         Me.ShapeContainer12.TabIndex = 129
         Me.ShapeContainer12.TabStop = False
         '
@@ -1322,7 +1640,7 @@ Partial Class TemplateAsset
         Me.GroupBox1.ForeColor = System.Drawing.Color.WhiteSmoke
         Me.GroupBox1.Location = New System.Drawing.Point(8, 8)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(352, 88)
+        Me.GroupBox1.Size = New System.Drawing.Size(408, 88)
         Me.GroupBox1.TabIndex = 133
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Animation"
@@ -1334,7 +1652,7 @@ Partial Class TemplateAsset
         Me.Panel12.Controls.Add(Me.ShapeContainer17)
         Me.Panel12.Location = New System.Drawing.Point(8, 16)
         Me.Panel12.Name = "Panel12"
-        Me.Panel12.Size = New System.Drawing.Size(336, 32)
+        Me.Panel12.Size = New System.Drawing.Size(392, 32)
         Me.Panel12.TabIndex = 135
         '
         'Label11
@@ -1365,7 +1683,7 @@ Partial Class TemplateAsset
         Me.ShapeContainer17.Margin = New System.Windows.Forms.Padding(0)
         Me.ShapeContainer17.Name = "ShapeContainer17"
         Me.ShapeContainer17.Shapes.AddRange(New Microsoft.VisualBasic.PowerPacks.Shape() {Me.RectangleShape11})
-        Me.ShapeContainer17.Size = New System.Drawing.Size(336, 32)
+        Me.ShapeContainer17.Size = New System.Drawing.Size(392, 32)
         Me.ShapeContainer17.TabIndex = 131
         Me.ShapeContainer17.TabStop = False
         '
@@ -1389,7 +1707,7 @@ Partial Class TemplateAsset
         Me.Panel11.Controls.Add(Me.ShapeContainer13)
         Me.Panel11.Location = New System.Drawing.Point(8, 48)
         Me.Panel11.Name = "Panel11"
-        Me.Panel11.Size = New System.Drawing.Size(336, 32)
+        Me.Panel11.Size = New System.Drawing.Size(392, 32)
         Me.Panel11.TabIndex = 134
         '
         'Label12
@@ -1420,7 +1738,7 @@ Partial Class TemplateAsset
         Me.ShapeContainer13.Margin = New System.Windows.Forms.Padding(0)
         Me.ShapeContainer13.Name = "ShapeContainer13"
         Me.ShapeContainer13.Shapes.AddRange(New Microsoft.VisualBasic.PowerPacks.Shape() {Me.RectangleShape10})
-        Me.ShapeContainer13.Size = New System.Drawing.Size(336, 32)
+        Me.ShapeContainer13.Size = New System.Drawing.Size(392, 32)
         Me.ShapeContainer13.TabIndex = 132
         Me.ShapeContainer13.TabStop = False
         '
@@ -1447,7 +1765,7 @@ Partial Class TemplateAsset
         Me.TabPage_Light.Location = New System.Drawing.Point(4, 22)
         Me.TabPage_Light.Name = "TabPage_Light"
         Me.TabPage_Light.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage_Light.Size = New System.Drawing.Size(368, 390)
+        Me.TabPage_Light.Size = New System.Drawing.Size(424, 390)
         Me.TabPage_Light.TabIndex = 1
         Me.TabPage_Light.Text = "Light"
         '
@@ -1509,13 +1827,28 @@ Partial Class TemplateAsset
         'Panel_LightTexture
         '
         Me.Panel_LightTexture.AllowDrop = True
+        Me.Panel_LightTexture.Controls.Add(Me.Button_LightTexture)
         Me.Panel_LightTexture.Controls.Add(Me.Label5)
         Me.Panel_LightTexture.Controls.Add(Me.TextBox_LightTexture)
         Me.Panel_LightTexture.Controls.Add(Me.ShapeContainer6)
         Me.Panel_LightTexture.Location = New System.Drawing.Point(0, 8)
         Me.Panel_LightTexture.Name = "Panel_LightTexture"
-        Me.Panel_LightTexture.Size = New System.Drawing.Size(360, 48)
+        Me.Panel_LightTexture.Size = New System.Drawing.Size(416, 48)
         Me.Panel_LightTexture.TabIndex = 120
+        '
+        'Button_LightTexture
+        '
+        Me.Button_LightTexture.BackColor = System.Drawing.Color.DodgerBlue
+        Me.Button_LightTexture.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer))
+        Me.Button_LightTexture.FlatAppearance.BorderSize = 0
+        Me.Button_LightTexture.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button_LightTexture.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button_LightTexture.Location = New System.Drawing.Point(352, 16)
+        Me.Button_LightTexture.Name = "Button_LightTexture"
+        Me.Button_LightTexture.Size = New System.Drawing.Size(56, 24)
+        Me.Button_LightTexture.TabIndex = 112
+        Me.Button_LightTexture.Text = "..."
+        Me.Button_LightTexture.UseVisualStyleBackColor = False
         '
         'Label5
         '
@@ -1535,7 +1868,7 @@ Partial Class TemplateAsset
         Me.ShapeContainer6.Margin = New System.Windows.Forms.Padding(0)
         Me.ShapeContainer6.Name = "ShapeContainer6"
         Me.ShapeContainer6.Shapes.AddRange(New Microsoft.VisualBasic.PowerPacks.Shape() {Me.RectangleShape4})
-        Me.ShapeContainer6.Size = New System.Drawing.Size(360, 48)
+        Me.ShapeContainer6.Size = New System.Drawing.Size(416, 48)
         Me.ShapeContainer6.TabIndex = 107
         Me.ShapeContainer6.TabStop = False
         '
@@ -1550,7 +1883,7 @@ Partial Class TemplateAsset
         Me.RectangleShape4.Location = New System.Drawing.Point(8, 16)
         Me.RectangleShape4.Name = "RectangleShape2"
         Me.RectangleShape4.SelectionColor = System.Drawing.Color.Transparent
-        Me.RectangleShape4.Size = New System.Drawing.Size(344, 24)
+        Me.RectangleShape4.Size = New System.Drawing.Size(336, 24)
         '
         'Button_LightColor
         '
@@ -1576,15 +1909,1731 @@ Partial Class TemplateAsset
         Me.Label3.Text = "Color"
         Me.Label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
+        'TabPage_Button
+        '
+        Me.TabPage_Button.BackColor = System.Drawing.Color.FromArgb(CType(CType(54, Byte), Integer), CType(CType(57, Byte), Integer), CType(CType(62, Byte), Integer))
+        Me.TabPage_Button.Controls.Add(Me.MenuStrip2)
+        Me.TabPage_Button.Controls.Add(Me.Panel22)
+        Me.TabPage_Button.Controls.Add(Me.Panel35)
+        Me.TabPage_Button.Controls.Add(Me.TabControl2)
+        Me.TabPage_Button.Location = New System.Drawing.Point(4, 22)
+        Me.TabPage_Button.Name = "TabPage_Button"
+        Me.TabPage_Button.Padding = New System.Windows.Forms.Padding(3)
+        Me.TabPage_Button.Size = New System.Drawing.Size(424, 390)
+        Me.TabPage_Button.TabIndex = 4
+        Me.TabPage_Button.Text = "Button"
+        '
+        'MenuStrip2
+        '
+        Me.MenuStrip2.BackColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer))
+        Me.MenuStrip2.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.MenuStrip2.ImageScalingSize = New System.Drawing.Size(24, 24)
+        Me.MenuStrip2.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.IdleToolStripMenuItem, Me.HoveredToolStripMenuItem, Me.PressedToolStripMenuItem})
+        Me.MenuStrip2.Location = New System.Drawing.Point(3, 176)
+        Me.MenuStrip2.Name = "MenuStrip2"
+        Me.MenuStrip2.Size = New System.Drawing.Size(418, 29)
+        Me.MenuStrip2.TabIndex = 147
+        '
+        'IdleToolStripMenuItem
+        '
+        Me.IdleToolStripMenuItem.BackColor = System.Drawing.Color.RoyalBlue
+        Me.IdleToolStripMenuItem.ForeColor = System.Drawing.Color.WhiteSmoke
+        Me.IdleToolStripMenuItem.Name = "IdleToolStripMenuItem"
+        Me.IdleToolStripMenuItem.Size = New System.Drawing.Size(47, 25)
+        Me.IdleToolStripMenuItem.Text = "Idle"
+        '
+        'HoveredToolStripMenuItem
+        '
+        Me.HoveredToolStripMenuItem.ForeColor = System.Drawing.Color.WhiteSmoke
+        Me.HoveredToolStripMenuItem.Name = "HoveredToolStripMenuItem"
+        Me.HoveredToolStripMenuItem.Size = New System.Drawing.Size(81, 25)
+        Me.HoveredToolStripMenuItem.Text = "Hovered"
+        '
+        'PressedToolStripMenuItem
+        '
+        Me.PressedToolStripMenuItem.ForeColor = System.Drawing.Color.WhiteSmoke
+        Me.PressedToolStripMenuItem.Name = "PressedToolStripMenuItem"
+        Me.PressedToolStripMenuItem.Size = New System.Drawing.Size(76, 25)
+        Me.PressedToolStripMenuItem.Text = "Pressed"
+        '
+        'Panel22
+        '
+        Me.Panel22.Controls.Add(Me.Label47)
+        Me.Panel22.Controls.Add(Me.NumericUpDown_LabelFontSize)
+        Me.Panel22.Controls.Add(Me.ShapeContainer49)
+        Me.Panel22.Location = New System.Drawing.Point(99, 3)
+        Me.Panel22.Name = "Panel22"
+        Me.Panel22.Size = New System.Drawing.Size(111, 56)
+        Me.Panel22.TabIndex = 159
+        '
+        'Label47
+        '
+        Me.Label47.AutoSize = True
+        Me.Label47.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label47.Location = New System.Drawing.Point(8, 8)
+        Me.Label47.Name = "Label47"
+        Me.Label47.Size = New System.Drawing.Size(95, 13)
+        Me.Label47.TabIndex = 130
+        Me.Label47.Text = "Label Font Size"
+        Me.Label47.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'NumericUpDown_LabelFontSize
+        '
+        Me.NumericUpDown_LabelFontSize.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(49, Byte), Integer), CType(CType(54, Byte), Integer))
+        Me.NumericUpDown_LabelFontSize.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.NumericUpDown_LabelFontSize.ForeColor = System.Drawing.Color.WhiteSmoke
+        Me.NumericUpDown_LabelFontSize.Location = New System.Drawing.Point(16, 28)
+        Me.NumericUpDown_LabelFontSize.Maximum = New Decimal(New Integer() {2048, 0, 0, 0})
+        Me.NumericUpDown_LabelFontSize.Name = "NumericUpDown_LabelFontSize"
+        Me.NumericUpDown_LabelFontSize.Size = New System.Drawing.Size(64, 16)
+        Me.NumericUpDown_LabelFontSize.TabIndex = 128
+        '
+        'ShapeContainer49
+        '
+        Me.ShapeContainer49.Location = New System.Drawing.Point(0, 0)
+        Me.ShapeContainer49.Margin = New System.Windows.Forms.Padding(0)
+        Me.ShapeContainer49.Name = "ShapeContainer49"
+        Me.ShapeContainer49.Shapes.AddRange(New Microsoft.VisualBasic.PowerPacks.Shape() {Me.RectangleShape48})
+        Me.ShapeContainer49.Size = New System.Drawing.Size(111, 56)
+        Me.ShapeContainer49.TabIndex = 131
+        Me.ShapeContainer49.TabStop = False
+        '
+        'RectangleShape48
+        '
+        Me.RectangleShape48.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(49, Byte), Integer), CType(CType(54, Byte), Integer))
+        Me.RectangleShape48.BackStyle = Microsoft.VisualBasic.PowerPacks.BackStyle.Opaque
+        Me.RectangleShape48.BorderColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer))
+        Me.RectangleShape48.CornerRadius = 3
+        Me.RectangleShape48.FillColor = System.Drawing.Color.WhiteSmoke
+        Me.RectangleShape48.FillGradientColor = System.Drawing.Color.WhiteSmoke
+        Me.RectangleShape48.Location = New System.Drawing.Point(8, 24)
+        Me.RectangleShape48.Name = "RectangleShape18"
+        Me.RectangleShape48.SelectionColor = System.Drawing.Color.Transparent
+        Me.RectangleShape48.Size = New System.Drawing.Size(80, 24)
+        '
+        'Panel35
+        '
+        Me.Panel35.Controls.Add(Me.Panel29)
+        Me.Panel35.Controls.Add(Me.Panel30)
+        Me.Panel35.Controls.Add(Me.Panel2)
+        Me.Panel35.Controls.Add(Me.Panel31)
+        Me.Panel35.Controls.Add(Me.Panel32)
+        Me.Panel35.Controls.Add(Me.Panel33)
+        Me.Panel35.Controls.Add(Me.Panel34)
+        Me.Panel35.Dock = System.Windows.Forms.DockStyle.Top
+        Me.Panel35.Location = New System.Drawing.Point(3, 3)
+        Me.Panel35.Name = "Panel35"
+        Me.Panel35.Size = New System.Drawing.Size(418, 173)
+        Me.Panel35.TabIndex = 0
+        '
+        'Panel29
+        '
+        Me.Panel29.Controls.Add(Me.Label35)
+        Me.Panel29.Controls.Add(Me.NumericUpDown_HoveredFadeOutDuration)
+        Me.Panel29.Controls.Add(Me.ShapeContainer37)
+        Me.Panel29.Location = New System.Drawing.Point(208, 56)
+        Me.Panel29.Name = "Panel29"
+        Me.Panel29.Size = New System.Drawing.Size(200, 56)
+        Me.Panel29.TabIndex = 149
+        '
+        'Label35
+        '
+        Me.Label35.AutoSize = True
+        Me.Label35.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label35.Location = New System.Drawing.Point(8, 8)
+        Me.Label35.Name = "Label35"
+        Me.Label35.Size = New System.Drawing.Size(156, 13)
+        Me.Label35.TabIndex = 129
+        Me.Label35.Text = "Hovered fade out duration"
+        Me.Label35.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'NumericUpDown_HoveredFadeOutDuration
+        '
+        Me.NumericUpDown_HoveredFadeOutDuration.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(49, Byte), Integer), CType(CType(54, Byte), Integer))
+        Me.NumericUpDown_HoveredFadeOutDuration.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.NumericUpDown_HoveredFadeOutDuration.DecimalPlaces = 1
+        Me.NumericUpDown_HoveredFadeOutDuration.ForeColor = System.Drawing.Color.WhiteSmoke
+        Me.NumericUpDown_HoveredFadeOutDuration.Location = New System.Drawing.Point(16, 28)
+        Me.NumericUpDown_HoveredFadeOutDuration.Maximum = New Decimal(New Integer() {2048, 0, 0, 0})
+        Me.NumericUpDown_HoveredFadeOutDuration.Name = "NumericUpDown_HoveredFadeOutDuration"
+        Me.NumericUpDown_HoveredFadeOutDuration.Size = New System.Drawing.Size(64, 16)
+        Me.NumericUpDown_HoveredFadeOutDuration.TabIndex = 123
+        '
+        'ShapeContainer37
+        '
+        Me.ShapeContainer37.Location = New System.Drawing.Point(0, 0)
+        Me.ShapeContainer37.Margin = New System.Windows.Forms.Padding(0)
+        Me.ShapeContainer37.Name = "ShapeContainer37"
+        Me.ShapeContainer37.Shapes.AddRange(New Microsoft.VisualBasic.PowerPacks.Shape() {Me.RectangleShape36})
+        Me.ShapeContainer37.Size = New System.Drawing.Size(200, 56)
+        Me.ShapeContainer37.TabIndex = 130
+        Me.ShapeContainer37.TabStop = False
+        '
+        'RectangleShape36
+        '
+        Me.RectangleShape36.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(49, Byte), Integer), CType(CType(54, Byte), Integer))
+        Me.RectangleShape36.BackStyle = Microsoft.VisualBasic.PowerPacks.BackStyle.Opaque
+        Me.RectangleShape36.BorderColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer))
+        Me.RectangleShape36.CornerRadius = 3
+        Me.RectangleShape36.FillColor = System.Drawing.Color.WhiteSmoke
+        Me.RectangleShape36.FillGradientColor = System.Drawing.Color.WhiteSmoke
+        Me.RectangleShape36.Location = New System.Drawing.Point(8, 24)
+        Me.RectangleShape36.Name = "RectangleShape19"
+        Me.RectangleShape36.SelectionColor = System.Drawing.Color.Transparent
+        Me.RectangleShape36.Size = New System.Drawing.Size(80, 24)
+        '
+        'Panel30
+        '
+        Me.Panel30.Controls.Add(Me.Label36)
+        Me.Panel30.Controls.Add(Me.NumericUpDown_LableOffset_Y)
+        Me.Panel30.Controls.Add(Me.ShapeContainer38)
+        Me.Panel30.Location = New System.Drawing.Point(0, 56)
+        Me.Panel30.Name = "Panel30"
+        Me.Panel30.Size = New System.Drawing.Size(208, 56)
+        Me.Panel30.TabIndex = 150
+        '
+        'Label36
+        '
+        Me.Label36.AutoSize = True
+        Me.Label36.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label36.Location = New System.Drawing.Point(8, 8)
+        Me.Label36.Name = "Label36"
+        Me.Label36.Size = New System.Drawing.Size(182, 13)
+        Me.Label36.TabIndex = 130
+        Me.Label36.Text = "Label offset, Y axis on pressed"
+        Me.Label36.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'NumericUpDown_LableOffset_Y
+        '
+        Me.NumericUpDown_LableOffset_Y.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(49, Byte), Integer), CType(CType(54, Byte), Integer))
+        Me.NumericUpDown_LableOffset_Y.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.NumericUpDown_LableOffset_Y.ForeColor = System.Drawing.Color.WhiteSmoke
+        Me.NumericUpDown_LableOffset_Y.Location = New System.Drawing.Point(16, 28)
+        Me.NumericUpDown_LableOffset_Y.Maximum = New Decimal(New Integer() {2048, 0, 0, 0})
+        Me.NumericUpDown_LableOffset_Y.Name = "NumericUpDown_LableOffset_Y"
+        Me.NumericUpDown_LableOffset_Y.Size = New System.Drawing.Size(64, 16)
+        Me.NumericUpDown_LableOffset_Y.TabIndex = 128
+        '
+        'ShapeContainer38
+        '
+        Me.ShapeContainer38.Location = New System.Drawing.Point(0, 0)
+        Me.ShapeContainer38.Margin = New System.Windows.Forms.Padding(0)
+        Me.ShapeContainer38.Name = "ShapeContainer38"
+        Me.ShapeContainer38.Shapes.AddRange(New Microsoft.VisualBasic.PowerPacks.Shape() {Me.RectangleShape37})
+        Me.ShapeContainer38.Size = New System.Drawing.Size(208, 56)
+        Me.ShapeContainer38.TabIndex = 131
+        Me.ShapeContainer38.TabStop = False
+        '
+        'RectangleShape37
+        '
+        Me.RectangleShape37.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(49, Byte), Integer), CType(CType(54, Byte), Integer))
+        Me.RectangleShape37.BackStyle = Microsoft.VisualBasic.PowerPacks.BackStyle.Opaque
+        Me.RectangleShape37.BorderColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer))
+        Me.RectangleShape37.CornerRadius = 3
+        Me.RectangleShape37.FillColor = System.Drawing.Color.WhiteSmoke
+        Me.RectangleShape37.FillGradientColor = System.Drawing.Color.WhiteSmoke
+        Me.RectangleShape37.Location = New System.Drawing.Point(8, 24)
+        Me.RectangleShape37.Name = "RectangleShape18"
+        Me.RectangleShape37.SelectionColor = System.Drawing.Color.Transparent
+        Me.RectangleShape37.Size = New System.Drawing.Size(80, 24)
+        '
+        'Panel2
+        '
+        Me.Panel2.Controls.Add(Me.Label48)
+        Me.Panel2.Controls.Add(Me.Button_LabelColor)
+        Me.Panel2.Location = New System.Drawing.Point(0, 0)
+        Me.Panel2.Name = "Panel2"
+        Me.Panel2.Size = New System.Drawing.Size(96, 56)
+        Me.Panel2.TabIndex = 158
+        '
+        'Label48
+        '
+        Me.Label48.AutoSize = True
+        Me.Label48.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label48.Location = New System.Drawing.Point(0, 8)
+        Me.Label48.Name = "Label48"
+        Me.Label48.Size = New System.Drawing.Size(71, 13)
+        Me.Label48.TabIndex = 157
+        Me.Label48.Text = "Label Color"
+        Me.Label48.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'Button_LabelColor
+        '
+        Me.Button_LabelColor.BackColor = System.Drawing.Color.White
+        Me.Button_LabelColor.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Button_LabelColor.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer))
+        Me.Button_LabelColor.FlatAppearance.BorderSize = 0
+        Me.Button_LabelColor.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button_LabelColor.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button_LabelColor.Location = New System.Drawing.Point(8, 24)
+        Me.Button_LabelColor.Name = "Button_LabelColor"
+        Me.Button_LabelColor.Size = New System.Drawing.Size(24, 24)
+        Me.Button_LabelColor.TabIndex = 156
+        Me.Button_LabelColor.UseVisualStyleBackColor = False
+        '
+        'Panel31
+        '
+        Me.Panel31.Controls.Add(Me.Label37)
+        Me.Panel31.Controls.Add(Me.NumericUpDown_BottomPadding)
+        Me.Panel31.Controls.Add(Me.ShapeContainer39)
+        Me.Panel31.Location = New System.Drawing.Point(96, 112)
+        Me.Panel31.Name = "Panel31"
+        Me.Panel31.Size = New System.Drawing.Size(112, 56)
+        Me.Panel31.TabIndex = 152
+        '
+        'Label37
+        '
+        Me.Label37.AutoSize = True
+        Me.Label37.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label37.Location = New System.Drawing.Point(8, 8)
+        Me.Label37.Name = "Label37"
+        Me.Label37.Size = New System.Drawing.Size(96, 13)
+        Me.Label37.TabIndex = 130
+        Me.Label37.Text = "Bottom Padding"
+        Me.Label37.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'NumericUpDown_BottomPadding
+        '
+        Me.NumericUpDown_BottomPadding.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(49, Byte), Integer), CType(CType(54, Byte), Integer))
+        Me.NumericUpDown_BottomPadding.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.NumericUpDown_BottomPadding.ForeColor = System.Drawing.Color.WhiteSmoke
+        Me.NumericUpDown_BottomPadding.Location = New System.Drawing.Point(16, 28)
+        Me.NumericUpDown_BottomPadding.Maximum = New Decimal(New Integer() {2048, 0, 0, 0})
+        Me.NumericUpDown_BottomPadding.Name = "NumericUpDown_BottomPadding"
+        Me.NumericUpDown_BottomPadding.Size = New System.Drawing.Size(72, 16)
+        Me.NumericUpDown_BottomPadding.TabIndex = 128
+        '
+        'ShapeContainer39
+        '
+        Me.ShapeContainer39.Location = New System.Drawing.Point(0, 0)
+        Me.ShapeContainer39.Margin = New System.Windows.Forms.Padding(0)
+        Me.ShapeContainer39.Name = "ShapeContainer39"
+        Me.ShapeContainer39.Shapes.AddRange(New Microsoft.VisualBasic.PowerPacks.Shape() {Me.RectangleShape38})
+        Me.ShapeContainer39.Size = New System.Drawing.Size(112, 56)
+        Me.ShapeContainer39.TabIndex = 131
+        Me.ShapeContainer39.TabStop = False
+        '
+        'RectangleShape38
+        '
+        Me.RectangleShape38.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(49, Byte), Integer), CType(CType(54, Byte), Integer))
+        Me.RectangleShape38.BackStyle = Microsoft.VisualBasic.PowerPacks.BackStyle.Opaque
+        Me.RectangleShape38.BorderColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer))
+        Me.RectangleShape38.CornerRadius = 3
+        Me.RectangleShape38.FillColor = System.Drawing.Color.WhiteSmoke
+        Me.RectangleShape38.FillGradientColor = System.Drawing.Color.WhiteSmoke
+        Me.RectangleShape38.Location = New System.Drawing.Point(8, 24)
+        Me.RectangleShape38.Name = "RectangleShape18"
+        Me.RectangleShape38.SelectionColor = System.Drawing.Color.Transparent
+        Me.RectangleShape38.Size = New System.Drawing.Size(88, 24)
+        '
+        'Panel32
+        '
+        Me.Panel32.Controls.Add(Me.Label38)
+        Me.Panel32.Controls.Add(Me.NumericUpDown_TopPadding)
+        Me.Panel32.Controls.Add(Me.ShapeContainer40)
+        Me.Panel32.Location = New System.Drawing.Point(0, 112)
+        Me.Panel32.Name = "Panel32"
+        Me.Panel32.Size = New System.Drawing.Size(96, 56)
+        Me.Panel32.TabIndex = 151
+        '
+        'Label38
+        '
+        Me.Label38.AutoSize = True
+        Me.Label38.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label38.Location = New System.Drawing.Point(8, 8)
+        Me.Label38.Name = "Label38"
+        Me.Label38.Size = New System.Drawing.Size(79, 13)
+        Me.Label38.TabIndex = 129
+        Me.Label38.Text = "Top Padding"
+        Me.Label38.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'NumericUpDown_TopPadding
+        '
+        Me.NumericUpDown_TopPadding.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(49, Byte), Integer), CType(CType(54, Byte), Integer))
+        Me.NumericUpDown_TopPadding.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.NumericUpDown_TopPadding.ForeColor = System.Drawing.Color.WhiteSmoke
+        Me.NumericUpDown_TopPadding.Location = New System.Drawing.Point(16, 28)
+        Me.NumericUpDown_TopPadding.Maximum = New Decimal(New Integer() {2048, 0, 0, 0})
+        Me.NumericUpDown_TopPadding.Name = "NumericUpDown_TopPadding"
+        Me.NumericUpDown_TopPadding.Size = New System.Drawing.Size(64, 16)
+        Me.NumericUpDown_TopPadding.TabIndex = 123
+        '
+        'ShapeContainer40
+        '
+        Me.ShapeContainer40.Location = New System.Drawing.Point(0, 0)
+        Me.ShapeContainer40.Margin = New System.Windows.Forms.Padding(0)
+        Me.ShapeContainer40.Name = "ShapeContainer40"
+        Me.ShapeContainer40.Shapes.AddRange(New Microsoft.VisualBasic.PowerPacks.Shape() {Me.RectangleShape39})
+        Me.ShapeContainer40.Size = New System.Drawing.Size(96, 56)
+        Me.ShapeContainer40.TabIndex = 130
+        Me.ShapeContainer40.TabStop = False
+        '
+        'RectangleShape39
+        '
+        Me.RectangleShape39.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(49, Byte), Integer), CType(CType(54, Byte), Integer))
+        Me.RectangleShape39.BackStyle = Microsoft.VisualBasic.PowerPacks.BackStyle.Opaque
+        Me.RectangleShape39.BorderColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer))
+        Me.RectangleShape39.CornerRadius = 3
+        Me.RectangleShape39.FillColor = System.Drawing.Color.WhiteSmoke
+        Me.RectangleShape39.FillGradientColor = System.Drawing.Color.WhiteSmoke
+        Me.RectangleShape39.Location = New System.Drawing.Point(8, 24)
+        Me.RectangleShape39.Name = "RectangleShape19"
+        Me.RectangleShape39.SelectionColor = System.Drawing.Color.Transparent
+        Me.RectangleShape39.Size = New System.Drawing.Size(80, 24)
+        '
+        'Panel33
+        '
+        Me.Panel33.Controls.Add(Me.Label39)
+        Me.Panel33.Controls.Add(Me.NumericUpDown_LeftPadding)
+        Me.Panel33.Controls.Add(Me.ShapeContainer41)
+        Me.Panel33.Location = New System.Drawing.Point(208, 112)
+        Me.Panel33.Name = "Panel33"
+        Me.Panel33.Size = New System.Drawing.Size(96, 56)
+        Me.Panel33.TabIndex = 154
+        '
+        'Label39
+        '
+        Me.Label39.AutoSize = True
+        Me.Label39.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label39.Location = New System.Drawing.Point(8, 8)
+        Me.Label39.Name = "Label39"
+        Me.Label39.Size = New System.Drawing.Size(79, 13)
+        Me.Label39.TabIndex = 131
+        Me.Label39.Text = "Left Padding"
+        Me.Label39.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'NumericUpDown_LeftPadding
+        '
+        Me.NumericUpDown_LeftPadding.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(49, Byte), Integer), CType(CType(54, Byte), Integer))
+        Me.NumericUpDown_LeftPadding.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.NumericUpDown_LeftPadding.ForeColor = System.Drawing.Color.WhiteSmoke
+        Me.NumericUpDown_LeftPadding.Location = New System.Drawing.Point(16, 28)
+        Me.NumericUpDown_LeftPadding.Maximum = New Decimal(New Integer() {2048, 0, 0, 0})
+        Me.NumericUpDown_LeftPadding.Name = "NumericUpDown_LeftPadding"
+        Me.NumericUpDown_LeftPadding.Size = New System.Drawing.Size(64, 16)
+        Me.NumericUpDown_LeftPadding.TabIndex = 124
+        '
+        'ShapeContainer41
+        '
+        Me.ShapeContainer41.Location = New System.Drawing.Point(0, 0)
+        Me.ShapeContainer41.Margin = New System.Windows.Forms.Padding(0)
+        Me.ShapeContainer41.Name = "ShapeContainer41"
+        Me.ShapeContainer41.Shapes.AddRange(New Microsoft.VisualBasic.PowerPacks.Shape() {Me.RectangleShape40})
+        Me.ShapeContainer41.Size = New System.Drawing.Size(96, 56)
+        Me.ShapeContainer41.TabIndex = 125
+        Me.ShapeContainer41.TabStop = False
+        '
+        'RectangleShape40
+        '
+        Me.RectangleShape40.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(49, Byte), Integer), CType(CType(54, Byte), Integer))
+        Me.RectangleShape40.BackStyle = Microsoft.VisualBasic.PowerPacks.BackStyle.Opaque
+        Me.RectangleShape40.BorderColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer))
+        Me.RectangleShape40.CornerRadius = 3
+        Me.RectangleShape40.FillColor = System.Drawing.Color.WhiteSmoke
+        Me.RectangleShape40.FillGradientColor = System.Drawing.Color.WhiteSmoke
+        Me.RectangleShape40.Location = New System.Drawing.Point(8, 24)
+        Me.RectangleShape40.Name = "RectangleShape17"
+        Me.RectangleShape40.SelectionColor = System.Drawing.Color.Transparent
+        Me.RectangleShape40.Size = New System.Drawing.Size(80, 24)
+        '
+        'Panel34
+        '
+        Me.Panel34.Controls.Add(Me.Label40)
+        Me.Panel34.Controls.Add(Me.NumericUpDown_RightPadding)
+        Me.Panel34.Controls.Add(Me.ShapeContainer42)
+        Me.Panel34.Location = New System.Drawing.Point(304, 112)
+        Me.Panel34.Name = "Panel34"
+        Me.Panel34.Size = New System.Drawing.Size(104, 56)
+        Me.Panel34.TabIndex = 153
+        '
+        'Label40
+        '
+        Me.Label40.AutoSize = True
+        Me.Label40.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label40.Location = New System.Drawing.Point(8, 8)
+        Me.Label40.Name = "Label40"
+        Me.Label40.Size = New System.Drawing.Size(87, 13)
+        Me.Label40.TabIndex = 132
+        Me.Label40.Text = "Right Padding"
+        Me.Label40.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'NumericUpDown_RightPadding
+        '
+        Me.NumericUpDown_RightPadding.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(49, Byte), Integer), CType(CType(54, Byte), Integer))
+        Me.NumericUpDown_RightPadding.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.NumericUpDown_RightPadding.ForeColor = System.Drawing.Color.WhiteSmoke
+        Me.NumericUpDown_RightPadding.Location = New System.Drawing.Point(16, 28)
+        Me.NumericUpDown_RightPadding.Maximum = New Decimal(New Integer() {2048, 0, 0, 0})
+        Me.NumericUpDown_RightPadding.Name = "NumericUpDown_RightPadding"
+        Me.NumericUpDown_RightPadding.Size = New System.Drawing.Size(72, 16)
+        Me.NumericUpDown_RightPadding.TabIndex = 127
+        '
+        'ShapeContainer42
+        '
+        Me.ShapeContainer42.Location = New System.Drawing.Point(0, 0)
+        Me.ShapeContainer42.Margin = New System.Windows.Forms.Padding(0)
+        Me.ShapeContainer42.Name = "ShapeContainer42"
+        Me.ShapeContainer42.Shapes.AddRange(New Microsoft.VisualBasic.PowerPacks.Shape() {Me.RectangleShape41})
+        Me.ShapeContainer42.Size = New System.Drawing.Size(104, 56)
+        Me.ShapeContainer42.TabIndex = 133
+        Me.ShapeContainer42.TabStop = False
+        '
+        'RectangleShape41
+        '
+        Me.RectangleShape41.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(49, Byte), Integer), CType(CType(54, Byte), Integer))
+        Me.RectangleShape41.BackStyle = Microsoft.VisualBasic.PowerPacks.BackStyle.Opaque
+        Me.RectangleShape41.BorderColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer))
+        Me.RectangleShape41.CornerRadius = 3
+        Me.RectangleShape41.FillColor = System.Drawing.Color.WhiteSmoke
+        Me.RectangleShape41.FillGradientColor = System.Drawing.Color.WhiteSmoke
+        Me.RectangleShape41.Location = New System.Drawing.Point(8, 24)
+        Me.RectangleShape41.Name = "RectangleShape16"
+        Me.RectangleShape41.SelectionColor = System.Drawing.Color.Transparent
+        Me.RectangleShape41.Size = New System.Drawing.Size(88, 24)
+        '
+        'TabControl2
+        '
+        Me.TabControl2.Controls.Add(Me.TabPage_Idle)
+        Me.TabControl2.Controls.Add(Me.TabPage_Hovered)
+        Me.TabControl2.Controls.Add(Me.TabPage_Pressed)
+        Me.TabControl2.Location = New System.Drawing.Point(0, 184)
+        Me.TabControl2.Name = "TabControl2"
+        Me.TabControl2.SelectedIndex = 0
+        Me.TabControl2.Size = New System.Drawing.Size(416, 200)
+        Me.TabControl2.TabIndex = 148
+        '
+        'TabPage_Idle
+        '
+        Me.TabPage_Idle.BackColor = System.Drawing.Color.FromArgb(CType(CType(54, Byte), Integer), CType(CType(57, Byte), Integer), CType(CType(62, Byte), Integer))
+        Me.TabPage_Idle.Controls.Add(Me.Panel8)
+        Me.TabPage_Idle.Controls.Add(Me.Panel36)
+        Me.TabPage_Idle.Controls.Add(Me.Panel_Button_Idle)
+        Me.TabPage_Idle.Controls.Add(Me.Panel5)
+        Me.TabPage_Idle.Controls.Add(Me.Panel6)
+        Me.TabPage_Idle.Controls.Add(Me.Panel4)
+        Me.TabPage_Idle.Controls.Add(Me.Panel7)
+        Me.TabPage_Idle.Location = New System.Drawing.Point(4, 22)
+        Me.TabPage_Idle.Name = "TabPage_Idle"
+        Me.TabPage_Idle.Padding = New System.Windows.Forms.Padding(3)
+        Me.TabPage_Idle.Size = New System.Drawing.Size(408, 174)
+        Me.TabPage_Idle.TabIndex = 0
+        Me.TabPage_Idle.Text = "Idle"
+        '
+        'Panel8
+        '
+        Me.Panel8.Controls.Add(Me.Label25)
+        Me.Panel8.Controls.Add(Me.NumericUpDown_Idle_DefaultHeight)
+        Me.Panel8.Controls.Add(Me.ShapeContainer27)
+        Me.Panel8.Location = New System.Drawing.Point(96, 112)
+        Me.Panel8.Name = "Panel8"
+        Me.Panel8.Size = New System.Drawing.Size(104, 56)
+        Me.Panel8.TabIndex = 147
+        '
+        'Label25
+        '
+        Me.Label25.AutoSize = True
+        Me.Label25.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label25.Location = New System.Drawing.Point(8, 8)
+        Me.Label25.Name = "Label25"
+        Me.Label25.Size = New System.Drawing.Size(89, 13)
+        Me.Label25.TabIndex = 129
+        Me.Label25.Text = "Default Height"
+        Me.Label25.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'NumericUpDown_Idle_DefaultHeight
+        '
+        Me.NumericUpDown_Idle_DefaultHeight.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(49, Byte), Integer), CType(CType(54, Byte), Integer))
+        Me.NumericUpDown_Idle_DefaultHeight.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.NumericUpDown_Idle_DefaultHeight.ForeColor = System.Drawing.Color.WhiteSmoke
+        Me.NumericUpDown_Idle_DefaultHeight.Location = New System.Drawing.Point(16, 28)
+        Me.NumericUpDown_Idle_DefaultHeight.Maximum = New Decimal(New Integer() {2048, 0, 0, 0})
+        Me.NumericUpDown_Idle_DefaultHeight.Name = "NumericUpDown_Idle_DefaultHeight"
+        Me.NumericUpDown_Idle_DefaultHeight.Size = New System.Drawing.Size(64, 16)
+        Me.NumericUpDown_Idle_DefaultHeight.TabIndex = 123
+        '
+        'ShapeContainer27
+        '
+        Me.ShapeContainer27.Location = New System.Drawing.Point(0, 0)
+        Me.ShapeContainer27.Margin = New System.Windows.Forms.Padding(0)
+        Me.ShapeContainer27.Name = "ShapeContainer27"
+        Me.ShapeContainer27.Shapes.AddRange(New Microsoft.VisualBasic.PowerPacks.Shape() {Me.RectangleShape26})
+        Me.ShapeContainer27.Size = New System.Drawing.Size(104, 56)
+        Me.ShapeContainer27.TabIndex = 130
+        Me.ShapeContainer27.TabStop = False
+        '
+        'RectangleShape26
+        '
+        Me.RectangleShape26.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(49, Byte), Integer), CType(CType(54, Byte), Integer))
+        Me.RectangleShape26.BackStyle = Microsoft.VisualBasic.PowerPacks.BackStyle.Opaque
+        Me.RectangleShape26.BorderColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer))
+        Me.RectangleShape26.CornerRadius = 3
+        Me.RectangleShape26.FillColor = System.Drawing.Color.WhiteSmoke
+        Me.RectangleShape26.FillGradientColor = System.Drawing.Color.WhiteSmoke
+        Me.RectangleShape26.Location = New System.Drawing.Point(8, 24)
+        Me.RectangleShape26.Name = "RectangleShape19"
+        Me.RectangleShape26.SelectionColor = System.Drawing.Color.Transparent
+        Me.RectangleShape26.Size = New System.Drawing.Size(80, 24)
+        '
+        'Panel36
+        '
+        Me.Panel36.Controls.Add(Me.Label41)
+        Me.Panel36.Controls.Add(Me.NumericUpDown_Idle_DefaultWidth)
+        Me.Panel36.Controls.Add(Me.ShapeContainer43)
+        Me.Panel36.Location = New System.Drawing.Point(0, 112)
+        Me.Panel36.Name = "Panel36"
+        Me.Panel36.Size = New System.Drawing.Size(96, 56)
+        Me.Panel36.TabIndex = 146
+        '
+        'Label41
+        '
+        Me.Label41.AutoSize = True
+        Me.Label41.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label41.Location = New System.Drawing.Point(8, 8)
+        Me.Label41.Name = "Label41"
+        Me.Label41.Size = New System.Drawing.Size(85, 13)
+        Me.Label41.TabIndex = 129
+        Me.Label41.Text = "Default Width"
+        Me.Label41.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'NumericUpDown_Idle_DefaultWidth
+        '
+        Me.NumericUpDown_Idle_DefaultWidth.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(49, Byte), Integer), CType(CType(54, Byte), Integer))
+        Me.NumericUpDown_Idle_DefaultWidth.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.NumericUpDown_Idle_DefaultWidth.ForeColor = System.Drawing.Color.WhiteSmoke
+        Me.NumericUpDown_Idle_DefaultWidth.Location = New System.Drawing.Point(16, 28)
+        Me.NumericUpDown_Idle_DefaultWidth.Maximum = New Decimal(New Integer() {2048, 0, 0, 0})
+        Me.NumericUpDown_Idle_DefaultWidth.Name = "NumericUpDown_Idle_DefaultWidth"
+        Me.NumericUpDown_Idle_DefaultWidth.Size = New System.Drawing.Size(64, 16)
+        Me.NumericUpDown_Idle_DefaultWidth.TabIndex = 123
+        '
+        'ShapeContainer43
+        '
+        Me.ShapeContainer43.Location = New System.Drawing.Point(0, 0)
+        Me.ShapeContainer43.Margin = New System.Windows.Forms.Padding(0)
+        Me.ShapeContainer43.Name = "ShapeContainer43"
+        Me.ShapeContainer43.Shapes.AddRange(New Microsoft.VisualBasic.PowerPacks.Shape() {Me.RectangleShape42})
+        Me.ShapeContainer43.Size = New System.Drawing.Size(96, 56)
+        Me.ShapeContainer43.TabIndex = 130
+        Me.ShapeContainer43.TabStop = False
+        '
+        'RectangleShape42
+        '
+        Me.RectangleShape42.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(49, Byte), Integer), CType(CType(54, Byte), Integer))
+        Me.RectangleShape42.BackStyle = Microsoft.VisualBasic.PowerPacks.BackStyle.Opaque
+        Me.RectangleShape42.BorderColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer))
+        Me.RectangleShape42.CornerRadius = 3
+        Me.RectangleShape42.FillColor = System.Drawing.Color.WhiteSmoke
+        Me.RectangleShape42.FillGradientColor = System.Drawing.Color.WhiteSmoke
+        Me.RectangleShape42.Location = New System.Drawing.Point(8, 24)
+        Me.RectangleShape42.Name = "RectangleShape19"
+        Me.RectangleShape42.SelectionColor = System.Drawing.Color.Transparent
+        Me.RectangleShape42.Size = New System.Drawing.Size(80, 24)
+        '
+        'Panel_Button_Idle
+        '
+        Me.Panel_Button_Idle.AllowDrop = True
+        Me.Panel_Button_Idle.Controls.Add(Me.Button_Button_Idle_Image)
+        Me.Panel_Button_Idle.Controls.Add(Me.Label20)
+        Me.Panel_Button_Idle.Controls.Add(Me.TextBox_Button_Idle_Image)
+        Me.Panel_Button_Idle.Controls.Add(Me.ShapeContainer5)
+        Me.Panel_Button_Idle.Location = New System.Drawing.Point(0, 8)
+        Me.Panel_Button_Idle.Name = "Panel_Button_Idle"
+        Me.Panel_Button_Idle.Size = New System.Drawing.Size(392, 48)
+        Me.Panel_Button_Idle.TabIndex = 122
+        '
+        'Button_Button_Idle_Image
+        '
+        Me.Button_Button_Idle_Image.BackColor = System.Drawing.Color.DodgerBlue
+        Me.Button_Button_Idle_Image.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer))
+        Me.Button_Button_Idle_Image.FlatAppearance.BorderSize = 0
+        Me.Button_Button_Idle_Image.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button_Button_Idle_Image.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button_Button_Idle_Image.Location = New System.Drawing.Point(328, 16)
+        Me.Button_Button_Idle_Image.Name = "Button_Button_Idle_Image"
+        Me.Button_Button_Idle_Image.Size = New System.Drawing.Size(56, 24)
+        Me.Button_Button_Idle_Image.TabIndex = 111
+        Me.Button_Button_Idle_Image.Text = "..."
+        Me.Button_Button_Idle_Image.UseVisualStyleBackColor = False
+        '
+        'Label20
+        '
+        Me.Label20.AutoSize = True
+        Me.Label20.Dock = System.Windows.Forms.DockStyle.Top
+        Me.Label20.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold)
+        Me.Label20.Location = New System.Drawing.Point(0, 0)
+        Me.Label20.Name = "Label20"
+        Me.Label20.Padding = New System.Windows.Forms.Padding(8, 0, 0, 0)
+        Me.Label20.Size = New System.Drawing.Size(49, 13)
+        Me.Label20.TabIndex = 110
+        Me.Label20.Text = "Image"
+        '
+        'ShapeContainer5
+        '
+        Me.ShapeContainer5.Location = New System.Drawing.Point(0, 0)
+        Me.ShapeContainer5.Margin = New System.Windows.Forms.Padding(0)
+        Me.ShapeContainer5.Name = "ShapeContainer5"
+        Me.ShapeContainer5.Shapes.AddRange(New Microsoft.VisualBasic.PowerPacks.Shape() {Me.RectangleShape21})
+        Me.ShapeContainer5.Size = New System.Drawing.Size(392, 48)
+        Me.ShapeContainer5.TabIndex = 107
+        Me.ShapeContainer5.TabStop = False
+        '
+        'RectangleShape21
+        '
+        Me.RectangleShape21.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(49, Byte), Integer), CType(CType(54, Byte), Integer))
+        Me.RectangleShape21.BackStyle = Microsoft.VisualBasic.PowerPacks.BackStyle.Opaque
+        Me.RectangleShape21.BorderColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer))
+        Me.RectangleShape21.CornerRadius = 3
+        Me.RectangleShape21.FillColor = System.Drawing.Color.WhiteSmoke
+        Me.RectangleShape21.FillGradientColor = System.Drawing.Color.WhiteSmoke
+        Me.RectangleShape21.Location = New System.Drawing.Point(8, 16)
+        Me.RectangleShape21.Name = "RectangleShape2"
+        Me.RectangleShape21.SelectionColor = System.Drawing.Color.Transparent
+        Me.RectangleShape21.Size = New System.Drawing.Size(312, 24)
+        '
+        'Panel5
+        '
+        Me.Panel5.Controls.Add(Me.Label22)
+        Me.Panel5.Controls.Add(Me.NumericUpDown_Idle_RightMargin)
+        Me.Panel5.Controls.Add(Me.ShapeContainer24)
+        Me.Panel5.Location = New System.Drawing.Point(296, 56)
+        Me.Panel5.Name = "Panel5"
+        Me.Panel5.Size = New System.Drawing.Size(96, 56)
+        Me.Panel5.TabIndex = 144
+        '
+        'Label22
+        '
+        Me.Label22.AutoSize = True
+        Me.Label22.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label22.Location = New System.Drawing.Point(8, 8)
+        Me.Label22.Name = "Label22"
+        Me.Label22.Size = New System.Drawing.Size(79, 13)
+        Me.Label22.TabIndex = 132
+        Me.Label22.Text = "Right Margin"
+        Me.Label22.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'NumericUpDown_Idle_RightMargin
+        '
+        Me.NumericUpDown_Idle_RightMargin.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(49, Byte), Integer), CType(CType(54, Byte), Integer))
+        Me.NumericUpDown_Idle_RightMargin.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.NumericUpDown_Idle_RightMargin.ForeColor = System.Drawing.Color.WhiteSmoke
+        Me.NumericUpDown_Idle_RightMargin.Location = New System.Drawing.Point(16, 28)
+        Me.NumericUpDown_Idle_RightMargin.Maximum = New Decimal(New Integer() {2048, 0, 0, 0})
+        Me.NumericUpDown_Idle_RightMargin.Name = "NumericUpDown_Idle_RightMargin"
+        Me.NumericUpDown_Idle_RightMargin.Size = New System.Drawing.Size(64, 16)
+        Me.NumericUpDown_Idle_RightMargin.TabIndex = 127
+        '
+        'ShapeContainer24
+        '
+        Me.ShapeContainer24.Location = New System.Drawing.Point(0, 0)
+        Me.ShapeContainer24.Margin = New System.Windows.Forms.Padding(0)
+        Me.ShapeContainer24.Name = "ShapeContainer24"
+        Me.ShapeContainer24.Shapes.AddRange(New Microsoft.VisualBasic.PowerPacks.Shape() {Me.RectangleShape23})
+        Me.ShapeContainer24.Size = New System.Drawing.Size(96, 56)
+        Me.ShapeContainer24.TabIndex = 133
+        Me.ShapeContainer24.TabStop = False
+        '
+        'RectangleShape23
+        '
+        Me.RectangleShape23.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(49, Byte), Integer), CType(CType(54, Byte), Integer))
+        Me.RectangleShape23.BackStyle = Microsoft.VisualBasic.PowerPacks.BackStyle.Opaque
+        Me.RectangleShape23.BorderColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer))
+        Me.RectangleShape23.CornerRadius = 3
+        Me.RectangleShape23.FillColor = System.Drawing.Color.WhiteSmoke
+        Me.RectangleShape23.FillGradientColor = System.Drawing.Color.WhiteSmoke
+        Me.RectangleShape23.Location = New System.Drawing.Point(8, 24)
+        Me.RectangleShape23.Name = "RectangleShape16"
+        Me.RectangleShape23.SelectionColor = System.Drawing.Color.Transparent
+        Me.RectangleShape23.Size = New System.Drawing.Size(80, 24)
+        '
+        'Panel6
+        '
+        Me.Panel6.Controls.Add(Me.Label23)
+        Me.Panel6.Controls.Add(Me.NumericUpDown_Idle_BottomMargin)
+        Me.Panel6.Controls.Add(Me.ShapeContainer25)
+        Me.Panel6.Location = New System.Drawing.Point(96, 56)
+        Me.Panel6.Name = "Panel6"
+        Me.Panel6.Size = New System.Drawing.Size(104, 56)
+        Me.Panel6.TabIndex = 143
+        '
+        'Label23
+        '
+        Me.Label23.AutoSize = True
+        Me.Label23.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label23.Location = New System.Drawing.Point(8, 8)
+        Me.Label23.Name = "Label23"
+        Me.Label23.Size = New System.Drawing.Size(88, 13)
+        Me.Label23.TabIndex = 130
+        Me.Label23.Text = "Bottom Margin"
+        Me.Label23.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'NumericUpDown_Idle_BottomMargin
+        '
+        Me.NumericUpDown_Idle_BottomMargin.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(49, Byte), Integer), CType(CType(54, Byte), Integer))
+        Me.NumericUpDown_Idle_BottomMargin.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.NumericUpDown_Idle_BottomMargin.ForeColor = System.Drawing.Color.WhiteSmoke
+        Me.NumericUpDown_Idle_BottomMargin.Location = New System.Drawing.Point(16, 28)
+        Me.NumericUpDown_Idle_BottomMargin.Maximum = New Decimal(New Integer() {2048, 0, 0, 0})
+        Me.NumericUpDown_Idle_BottomMargin.Name = "NumericUpDown_Idle_BottomMargin"
+        Me.NumericUpDown_Idle_BottomMargin.Size = New System.Drawing.Size(72, 16)
+        Me.NumericUpDown_Idle_BottomMargin.TabIndex = 128
+        '
+        'ShapeContainer25
+        '
+        Me.ShapeContainer25.Location = New System.Drawing.Point(0, 0)
+        Me.ShapeContainer25.Margin = New System.Windows.Forms.Padding(0)
+        Me.ShapeContainer25.Name = "ShapeContainer25"
+        Me.ShapeContainer25.Shapes.AddRange(New Microsoft.VisualBasic.PowerPacks.Shape() {Me.RectangleShape24})
+        Me.ShapeContainer25.Size = New System.Drawing.Size(104, 56)
+        Me.ShapeContainer25.TabIndex = 131
+        Me.ShapeContainer25.TabStop = False
+        '
+        'RectangleShape24
+        '
+        Me.RectangleShape24.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(49, Byte), Integer), CType(CType(54, Byte), Integer))
+        Me.RectangleShape24.BackStyle = Microsoft.VisualBasic.PowerPacks.BackStyle.Opaque
+        Me.RectangleShape24.BorderColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer))
+        Me.RectangleShape24.CornerRadius = 3
+        Me.RectangleShape24.FillColor = System.Drawing.Color.WhiteSmoke
+        Me.RectangleShape24.FillGradientColor = System.Drawing.Color.WhiteSmoke
+        Me.RectangleShape24.Location = New System.Drawing.Point(8, 24)
+        Me.RectangleShape24.Name = "RectangleShape18"
+        Me.RectangleShape24.SelectionColor = System.Drawing.Color.Transparent
+        Me.RectangleShape24.Size = New System.Drawing.Size(88, 24)
+        '
+        'Panel4
+        '
+        Me.Panel4.Controls.Add(Me.Label21)
+        Me.Panel4.Controls.Add(Me.NumericUpDown_Idle_LeftMargin)
+        Me.Panel4.Controls.Add(Me.ShapeContainer23)
+        Me.Panel4.Location = New System.Drawing.Point(200, 56)
+        Me.Panel4.Name = "Panel4"
+        Me.Panel4.Size = New System.Drawing.Size(96, 56)
+        Me.Panel4.TabIndex = 145
+        '
+        'Label21
+        '
+        Me.Label21.AutoSize = True
+        Me.Label21.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label21.Location = New System.Drawing.Point(8, 8)
+        Me.Label21.Name = "Label21"
+        Me.Label21.Size = New System.Drawing.Size(71, 13)
+        Me.Label21.TabIndex = 131
+        Me.Label21.Text = "Left Margin"
+        Me.Label21.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'NumericUpDown_Idle_LeftMargin
+        '
+        Me.NumericUpDown_Idle_LeftMargin.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(49, Byte), Integer), CType(CType(54, Byte), Integer))
+        Me.NumericUpDown_Idle_LeftMargin.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.NumericUpDown_Idle_LeftMargin.ForeColor = System.Drawing.Color.WhiteSmoke
+        Me.NumericUpDown_Idle_LeftMargin.Location = New System.Drawing.Point(16, 28)
+        Me.NumericUpDown_Idle_LeftMargin.Maximum = New Decimal(New Integer() {2048, 0, 0, 0})
+        Me.NumericUpDown_Idle_LeftMargin.Name = "NumericUpDown_Idle_LeftMargin"
+        Me.NumericUpDown_Idle_LeftMargin.Size = New System.Drawing.Size(64, 16)
+        Me.NumericUpDown_Idle_LeftMargin.TabIndex = 124
+        '
+        'ShapeContainer23
+        '
+        Me.ShapeContainer23.Location = New System.Drawing.Point(0, 0)
+        Me.ShapeContainer23.Margin = New System.Windows.Forms.Padding(0)
+        Me.ShapeContainer23.Name = "ShapeContainer23"
+        Me.ShapeContainer23.Shapes.AddRange(New Microsoft.VisualBasic.PowerPacks.Shape() {Me.RectangleShape22})
+        Me.ShapeContainer23.Size = New System.Drawing.Size(96, 56)
+        Me.ShapeContainer23.TabIndex = 125
+        Me.ShapeContainer23.TabStop = False
+        '
+        'RectangleShape22
+        '
+        Me.RectangleShape22.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(49, Byte), Integer), CType(CType(54, Byte), Integer))
+        Me.RectangleShape22.BackStyle = Microsoft.VisualBasic.PowerPacks.BackStyle.Opaque
+        Me.RectangleShape22.BorderColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer))
+        Me.RectangleShape22.CornerRadius = 3
+        Me.RectangleShape22.FillColor = System.Drawing.Color.WhiteSmoke
+        Me.RectangleShape22.FillGradientColor = System.Drawing.Color.WhiteSmoke
+        Me.RectangleShape22.Location = New System.Drawing.Point(8, 24)
+        Me.RectangleShape22.Name = "RectangleShape17"
+        Me.RectangleShape22.SelectionColor = System.Drawing.Color.Transparent
+        Me.RectangleShape22.Size = New System.Drawing.Size(80, 24)
+        '
+        'Panel7
+        '
+        Me.Panel7.Controls.Add(Me.Label24)
+        Me.Panel7.Controls.Add(Me.NumericUpDown_Idle_TopMargin)
+        Me.Panel7.Controls.Add(Me.ShapeContainer26)
+        Me.Panel7.Location = New System.Drawing.Point(0, 56)
+        Me.Panel7.Name = "Panel7"
+        Me.Panel7.Size = New System.Drawing.Size(96, 56)
+        Me.Panel7.TabIndex = 142
+        '
+        'Label24
+        '
+        Me.Label24.AutoSize = True
+        Me.Label24.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label24.Location = New System.Drawing.Point(8, 8)
+        Me.Label24.Name = "Label24"
+        Me.Label24.Size = New System.Drawing.Size(71, 13)
+        Me.Label24.TabIndex = 129
+        Me.Label24.Text = "Top Margin"
+        Me.Label24.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'NumericUpDown_Idle_TopMargin
+        '
+        Me.NumericUpDown_Idle_TopMargin.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(49, Byte), Integer), CType(CType(54, Byte), Integer))
+        Me.NumericUpDown_Idle_TopMargin.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.NumericUpDown_Idle_TopMargin.ForeColor = System.Drawing.Color.WhiteSmoke
+        Me.NumericUpDown_Idle_TopMargin.Location = New System.Drawing.Point(16, 28)
+        Me.NumericUpDown_Idle_TopMargin.Maximum = New Decimal(New Integer() {2048, 0, 0, 0})
+        Me.NumericUpDown_Idle_TopMargin.Name = "NumericUpDown_Idle_TopMargin"
+        Me.NumericUpDown_Idle_TopMargin.Size = New System.Drawing.Size(64, 16)
+        Me.NumericUpDown_Idle_TopMargin.TabIndex = 123
+        '
+        'ShapeContainer26
+        '
+        Me.ShapeContainer26.Location = New System.Drawing.Point(0, 0)
+        Me.ShapeContainer26.Margin = New System.Windows.Forms.Padding(0)
+        Me.ShapeContainer26.Name = "ShapeContainer26"
+        Me.ShapeContainer26.Shapes.AddRange(New Microsoft.VisualBasic.PowerPacks.Shape() {Me.RectangleShape25})
+        Me.ShapeContainer26.Size = New System.Drawing.Size(96, 56)
+        Me.ShapeContainer26.TabIndex = 130
+        Me.ShapeContainer26.TabStop = False
+        '
+        'RectangleShape25
+        '
+        Me.RectangleShape25.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(49, Byte), Integer), CType(CType(54, Byte), Integer))
+        Me.RectangleShape25.BackStyle = Microsoft.VisualBasic.PowerPacks.BackStyle.Opaque
+        Me.RectangleShape25.BorderColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer))
+        Me.RectangleShape25.CornerRadius = 3
+        Me.RectangleShape25.FillColor = System.Drawing.Color.WhiteSmoke
+        Me.RectangleShape25.FillGradientColor = System.Drawing.Color.WhiteSmoke
+        Me.RectangleShape25.Location = New System.Drawing.Point(8, 24)
+        Me.RectangleShape25.Name = "RectangleShape19"
+        Me.RectangleShape25.SelectionColor = System.Drawing.Color.Transparent
+        Me.RectangleShape25.Size = New System.Drawing.Size(80, 24)
+        '
+        'TabPage_Hovered
+        '
+        Me.TabPage_Hovered.BackColor = System.Drawing.Color.FromArgb(CType(CType(54, Byte), Integer), CType(CType(57, Byte), Integer), CType(CType(62, Byte), Integer))
+        Me.TabPage_Hovered.Controls.Add(Me.Panel20)
+        Me.TabPage_Hovered.Controls.Add(Me.Panel21)
+        Me.TabPage_Hovered.Controls.Add(Me.Panel_Button_Hovered)
+        Me.TabPage_Hovered.Controls.Add(Me.Panel26)
+        Me.TabPage_Hovered.Controls.Add(Me.Panel23)
+        Me.TabPage_Hovered.Controls.Add(Me.Panel25)
+        Me.TabPage_Hovered.Controls.Add(Me.Panel24)
+        Me.TabPage_Hovered.Location = New System.Drawing.Point(4, 22)
+        Me.TabPage_Hovered.Name = "TabPage_Hovered"
+        Me.TabPage_Hovered.Padding = New System.Windows.Forms.Padding(3)
+        Me.TabPage_Hovered.Size = New System.Drawing.Size(408, 174)
+        Me.TabPage_Hovered.TabIndex = 1
+        Me.TabPage_Hovered.Text = "Hovered"
+        '
+        'Panel20
+        '
+        Me.Panel20.Controls.Add(Me.Label26)
+        Me.Panel20.Controls.Add(Me.NumericUpDown_Hovered_DefaultHeight)
+        Me.Panel20.Controls.Add(Me.ShapeContainer28)
+        Me.Panel20.Location = New System.Drawing.Point(96, 112)
+        Me.Panel20.Name = "Panel20"
+        Me.Panel20.Size = New System.Drawing.Size(104, 56)
+        Me.Panel20.TabIndex = 147
+        '
+        'Label26
+        '
+        Me.Label26.AutoSize = True
+        Me.Label26.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label26.Location = New System.Drawing.Point(8, 8)
+        Me.Label26.Name = "Label26"
+        Me.Label26.Size = New System.Drawing.Size(89, 13)
+        Me.Label26.TabIndex = 129
+        Me.Label26.Text = "Default Height"
+        Me.Label26.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'NumericUpDown_Hovered_DefaultHeight
+        '
+        Me.NumericUpDown_Hovered_DefaultHeight.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(49, Byte), Integer), CType(CType(54, Byte), Integer))
+        Me.NumericUpDown_Hovered_DefaultHeight.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.NumericUpDown_Hovered_DefaultHeight.ForeColor = System.Drawing.Color.WhiteSmoke
+        Me.NumericUpDown_Hovered_DefaultHeight.Location = New System.Drawing.Point(16, 28)
+        Me.NumericUpDown_Hovered_DefaultHeight.Maximum = New Decimal(New Integer() {2048, 0, 0, 0})
+        Me.NumericUpDown_Hovered_DefaultHeight.Name = "NumericUpDown_Hovered_DefaultHeight"
+        Me.NumericUpDown_Hovered_DefaultHeight.Size = New System.Drawing.Size(64, 16)
+        Me.NumericUpDown_Hovered_DefaultHeight.TabIndex = 123
+        '
+        'ShapeContainer28
+        '
+        Me.ShapeContainer28.Location = New System.Drawing.Point(0, 0)
+        Me.ShapeContainer28.Margin = New System.Windows.Forms.Padding(0)
+        Me.ShapeContainer28.Name = "ShapeContainer28"
+        Me.ShapeContainer28.Shapes.AddRange(New Microsoft.VisualBasic.PowerPacks.Shape() {Me.RectangleShape27})
+        Me.ShapeContainer28.Size = New System.Drawing.Size(104, 56)
+        Me.ShapeContainer28.TabIndex = 130
+        Me.ShapeContainer28.TabStop = False
+        '
+        'RectangleShape27
+        '
+        Me.RectangleShape27.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(49, Byte), Integer), CType(CType(54, Byte), Integer))
+        Me.RectangleShape27.BackStyle = Microsoft.VisualBasic.PowerPacks.BackStyle.Opaque
+        Me.RectangleShape27.BorderColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer))
+        Me.RectangleShape27.CornerRadius = 3
+        Me.RectangleShape27.FillColor = System.Drawing.Color.WhiteSmoke
+        Me.RectangleShape27.FillGradientColor = System.Drawing.Color.WhiteSmoke
+        Me.RectangleShape27.Location = New System.Drawing.Point(8, 24)
+        Me.RectangleShape27.Name = "RectangleShape19"
+        Me.RectangleShape27.SelectionColor = System.Drawing.Color.Transparent
+        Me.RectangleShape27.Size = New System.Drawing.Size(80, 24)
+        '
+        'Panel21
+        '
+        Me.Panel21.Controls.Add(Me.Label27)
+        Me.Panel21.Controls.Add(Me.NumericUpDown_Hovered_DefaultWidth)
+        Me.Panel21.Controls.Add(Me.ShapeContainer29)
+        Me.Panel21.Location = New System.Drawing.Point(0, 112)
+        Me.Panel21.Name = "Panel21"
+        Me.Panel21.Size = New System.Drawing.Size(96, 56)
+        Me.Panel21.TabIndex = 146
+        '
+        'Label27
+        '
+        Me.Label27.AutoSize = True
+        Me.Label27.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label27.Location = New System.Drawing.Point(8, 8)
+        Me.Label27.Name = "Label27"
+        Me.Label27.Size = New System.Drawing.Size(85, 13)
+        Me.Label27.TabIndex = 129
+        Me.Label27.Text = "Default Width"
+        Me.Label27.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'NumericUpDown_Hovered_DefaultWidth
+        '
+        Me.NumericUpDown_Hovered_DefaultWidth.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(49, Byte), Integer), CType(CType(54, Byte), Integer))
+        Me.NumericUpDown_Hovered_DefaultWidth.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.NumericUpDown_Hovered_DefaultWidth.ForeColor = System.Drawing.Color.WhiteSmoke
+        Me.NumericUpDown_Hovered_DefaultWidth.Location = New System.Drawing.Point(16, 28)
+        Me.NumericUpDown_Hovered_DefaultWidth.Maximum = New Decimal(New Integer() {2048, 0, 0, 0})
+        Me.NumericUpDown_Hovered_DefaultWidth.Name = "NumericUpDown_Hovered_DefaultWidth"
+        Me.NumericUpDown_Hovered_DefaultWidth.Size = New System.Drawing.Size(64, 16)
+        Me.NumericUpDown_Hovered_DefaultWidth.TabIndex = 123
+        '
+        'ShapeContainer29
+        '
+        Me.ShapeContainer29.Location = New System.Drawing.Point(0, 0)
+        Me.ShapeContainer29.Margin = New System.Windows.Forms.Padding(0)
+        Me.ShapeContainer29.Name = "ShapeContainer29"
+        Me.ShapeContainer29.Shapes.AddRange(New Microsoft.VisualBasic.PowerPacks.Shape() {Me.RectangleShape28})
+        Me.ShapeContainer29.Size = New System.Drawing.Size(96, 56)
+        Me.ShapeContainer29.TabIndex = 130
+        Me.ShapeContainer29.TabStop = False
+        '
+        'RectangleShape28
+        '
+        Me.RectangleShape28.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(49, Byte), Integer), CType(CType(54, Byte), Integer))
+        Me.RectangleShape28.BackStyle = Microsoft.VisualBasic.PowerPacks.BackStyle.Opaque
+        Me.RectangleShape28.BorderColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer))
+        Me.RectangleShape28.CornerRadius = 3
+        Me.RectangleShape28.FillColor = System.Drawing.Color.WhiteSmoke
+        Me.RectangleShape28.FillGradientColor = System.Drawing.Color.WhiteSmoke
+        Me.RectangleShape28.Location = New System.Drawing.Point(8, 24)
+        Me.RectangleShape28.Name = "RectangleShape19"
+        Me.RectangleShape28.SelectionColor = System.Drawing.Color.Transparent
+        Me.RectangleShape28.Size = New System.Drawing.Size(80, 24)
+        '
+        'Panel_Button_Hovered
+        '
+        Me.Panel_Button_Hovered.AllowDrop = True
+        Me.Panel_Button_Hovered.Controls.Add(Me.Button_Button_Hovered_Image)
+        Me.Panel_Button_Hovered.Controls.Add(Me.Label28)
+        Me.Panel_Button_Hovered.Controls.Add(Me.TextBox_Button_Hovered_Image)
+        Me.Panel_Button_Hovered.Controls.Add(Me.ShapeContainer30)
+        Me.Panel_Button_Hovered.Location = New System.Drawing.Point(0, 8)
+        Me.Panel_Button_Hovered.Name = "Panel_Button_Hovered"
+        Me.Panel_Button_Hovered.Size = New System.Drawing.Size(392, 48)
+        Me.Panel_Button_Hovered.TabIndex = 122
+        '
+        'Button_Button_Hovered_Image
+        '
+        Me.Button_Button_Hovered_Image.BackColor = System.Drawing.Color.DodgerBlue
+        Me.Button_Button_Hovered_Image.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer))
+        Me.Button_Button_Hovered_Image.FlatAppearance.BorderSize = 0
+        Me.Button_Button_Hovered_Image.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button_Button_Hovered_Image.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button_Button_Hovered_Image.Location = New System.Drawing.Point(328, 16)
+        Me.Button_Button_Hovered_Image.Name = "Button_Button_Hovered_Image"
+        Me.Button_Button_Hovered_Image.Size = New System.Drawing.Size(56, 24)
+        Me.Button_Button_Hovered_Image.TabIndex = 111
+        Me.Button_Button_Hovered_Image.Text = "..."
+        Me.Button_Button_Hovered_Image.UseVisualStyleBackColor = False
+        '
+        'Label28
+        '
+        Me.Label28.AutoSize = True
+        Me.Label28.Dock = System.Windows.Forms.DockStyle.Top
+        Me.Label28.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold)
+        Me.Label28.Location = New System.Drawing.Point(0, 0)
+        Me.Label28.Name = "Label28"
+        Me.Label28.Padding = New System.Windows.Forms.Padding(8, 0, 0, 0)
+        Me.Label28.Size = New System.Drawing.Size(49, 13)
+        Me.Label28.TabIndex = 110
+        Me.Label28.Text = "Image"
+        '
+        'ShapeContainer30
+        '
+        Me.ShapeContainer30.Location = New System.Drawing.Point(0, 0)
+        Me.ShapeContainer30.Margin = New System.Windows.Forms.Padding(0)
+        Me.ShapeContainer30.Name = "ShapeContainer30"
+        Me.ShapeContainer30.Shapes.AddRange(New Microsoft.VisualBasic.PowerPacks.Shape() {Me.RectangleShape29})
+        Me.ShapeContainer30.Size = New System.Drawing.Size(392, 48)
+        Me.ShapeContainer30.TabIndex = 107
+        Me.ShapeContainer30.TabStop = False
+        '
+        'RectangleShape29
+        '
+        Me.RectangleShape29.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(49, Byte), Integer), CType(CType(54, Byte), Integer))
+        Me.RectangleShape29.BackStyle = Microsoft.VisualBasic.PowerPacks.BackStyle.Opaque
+        Me.RectangleShape29.BorderColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer))
+        Me.RectangleShape29.CornerRadius = 3
+        Me.RectangleShape29.FillColor = System.Drawing.Color.WhiteSmoke
+        Me.RectangleShape29.FillGradientColor = System.Drawing.Color.WhiteSmoke
+        Me.RectangleShape29.Location = New System.Drawing.Point(8, 16)
+        Me.RectangleShape29.Name = "RectangleShape2"
+        Me.RectangleShape29.SelectionColor = System.Drawing.Color.Transparent
+        Me.RectangleShape29.Size = New System.Drawing.Size(312, 24)
+        '
+        'Panel26
+        '
+        Me.Panel26.Controls.Add(Me.Label32)
+        Me.Panel26.Controls.Add(Me.NumericUpDown_Hovered_RightMargin)
+        Me.Panel26.Controls.Add(Me.ShapeContainer34)
+        Me.Panel26.Location = New System.Drawing.Point(296, 56)
+        Me.Panel26.Name = "Panel26"
+        Me.Panel26.Size = New System.Drawing.Size(96, 56)
+        Me.Panel26.TabIndex = 144
+        '
+        'Label32
+        '
+        Me.Label32.AutoSize = True
+        Me.Label32.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label32.Location = New System.Drawing.Point(8, 8)
+        Me.Label32.Name = "Label32"
+        Me.Label32.Size = New System.Drawing.Size(79, 13)
+        Me.Label32.TabIndex = 132
+        Me.Label32.Text = "Right Margin"
+        Me.Label32.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'NumericUpDown_Hovered_RightMargin
+        '
+        Me.NumericUpDown_Hovered_RightMargin.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(49, Byte), Integer), CType(CType(54, Byte), Integer))
+        Me.NumericUpDown_Hovered_RightMargin.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.NumericUpDown_Hovered_RightMargin.ForeColor = System.Drawing.Color.WhiteSmoke
+        Me.NumericUpDown_Hovered_RightMargin.Location = New System.Drawing.Point(16, 28)
+        Me.NumericUpDown_Hovered_RightMargin.Maximum = New Decimal(New Integer() {2048, 0, 0, 0})
+        Me.NumericUpDown_Hovered_RightMargin.Name = "NumericUpDown_Hovered_RightMargin"
+        Me.NumericUpDown_Hovered_RightMargin.Size = New System.Drawing.Size(64, 16)
+        Me.NumericUpDown_Hovered_RightMargin.TabIndex = 127
+        '
+        'ShapeContainer34
+        '
+        Me.ShapeContainer34.Location = New System.Drawing.Point(0, 0)
+        Me.ShapeContainer34.Margin = New System.Windows.Forms.Padding(0)
+        Me.ShapeContainer34.Name = "ShapeContainer34"
+        Me.ShapeContainer34.Shapes.AddRange(New Microsoft.VisualBasic.PowerPacks.Shape() {Me.RectangleShape33})
+        Me.ShapeContainer34.Size = New System.Drawing.Size(96, 56)
+        Me.ShapeContainer34.TabIndex = 133
+        Me.ShapeContainer34.TabStop = False
+        '
+        'RectangleShape33
+        '
+        Me.RectangleShape33.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(49, Byte), Integer), CType(CType(54, Byte), Integer))
+        Me.RectangleShape33.BackStyle = Microsoft.VisualBasic.PowerPacks.BackStyle.Opaque
+        Me.RectangleShape33.BorderColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer))
+        Me.RectangleShape33.CornerRadius = 3
+        Me.RectangleShape33.FillColor = System.Drawing.Color.WhiteSmoke
+        Me.RectangleShape33.FillGradientColor = System.Drawing.Color.WhiteSmoke
+        Me.RectangleShape33.Location = New System.Drawing.Point(8, 24)
+        Me.RectangleShape33.Name = "RectangleShape16"
+        Me.RectangleShape33.SelectionColor = System.Drawing.Color.Transparent
+        Me.RectangleShape33.Size = New System.Drawing.Size(80, 24)
+        '
+        'Panel23
+        '
+        Me.Panel23.Controls.Add(Me.Label29)
+        Me.Panel23.Controls.Add(Me.NumericUpDown_Hovered_BottomMargin)
+        Me.Panel23.Controls.Add(Me.ShapeContainer31)
+        Me.Panel23.Location = New System.Drawing.Point(96, 56)
+        Me.Panel23.Name = "Panel23"
+        Me.Panel23.Size = New System.Drawing.Size(104, 56)
+        Me.Panel23.TabIndex = 143
+        '
+        'Label29
+        '
+        Me.Label29.AutoSize = True
+        Me.Label29.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label29.Location = New System.Drawing.Point(8, 8)
+        Me.Label29.Name = "Label29"
+        Me.Label29.Size = New System.Drawing.Size(88, 13)
+        Me.Label29.TabIndex = 130
+        Me.Label29.Text = "Bottom Margin"
+        Me.Label29.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'NumericUpDown_Hovered_BottomMargin
+        '
+        Me.NumericUpDown_Hovered_BottomMargin.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(49, Byte), Integer), CType(CType(54, Byte), Integer))
+        Me.NumericUpDown_Hovered_BottomMargin.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.NumericUpDown_Hovered_BottomMargin.ForeColor = System.Drawing.Color.WhiteSmoke
+        Me.NumericUpDown_Hovered_BottomMargin.Location = New System.Drawing.Point(16, 28)
+        Me.NumericUpDown_Hovered_BottomMargin.Maximum = New Decimal(New Integer() {2048, 0, 0, 0})
+        Me.NumericUpDown_Hovered_BottomMargin.Name = "NumericUpDown_Hovered_BottomMargin"
+        Me.NumericUpDown_Hovered_BottomMargin.Size = New System.Drawing.Size(72, 16)
+        Me.NumericUpDown_Hovered_BottomMargin.TabIndex = 128
+        '
+        'ShapeContainer31
+        '
+        Me.ShapeContainer31.Location = New System.Drawing.Point(0, 0)
+        Me.ShapeContainer31.Margin = New System.Windows.Forms.Padding(0)
+        Me.ShapeContainer31.Name = "ShapeContainer31"
+        Me.ShapeContainer31.Shapes.AddRange(New Microsoft.VisualBasic.PowerPacks.Shape() {Me.RectangleShape30})
+        Me.ShapeContainer31.Size = New System.Drawing.Size(104, 56)
+        Me.ShapeContainer31.TabIndex = 131
+        Me.ShapeContainer31.TabStop = False
+        '
+        'RectangleShape30
+        '
+        Me.RectangleShape30.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(49, Byte), Integer), CType(CType(54, Byte), Integer))
+        Me.RectangleShape30.BackStyle = Microsoft.VisualBasic.PowerPacks.BackStyle.Opaque
+        Me.RectangleShape30.BorderColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer))
+        Me.RectangleShape30.CornerRadius = 3
+        Me.RectangleShape30.FillColor = System.Drawing.Color.WhiteSmoke
+        Me.RectangleShape30.FillGradientColor = System.Drawing.Color.WhiteSmoke
+        Me.RectangleShape30.Location = New System.Drawing.Point(8, 24)
+        Me.RectangleShape30.Name = "RectangleShape18"
+        Me.RectangleShape30.SelectionColor = System.Drawing.Color.Transparent
+        Me.RectangleShape30.Size = New System.Drawing.Size(88, 24)
+        '
+        'Panel25
+        '
+        Me.Panel25.Controls.Add(Me.Label31)
+        Me.Panel25.Controls.Add(Me.NumericUpDown_Hovered_LeftMargin)
+        Me.Panel25.Controls.Add(Me.ShapeContainer33)
+        Me.Panel25.Location = New System.Drawing.Point(200, 56)
+        Me.Panel25.Name = "Panel25"
+        Me.Panel25.Size = New System.Drawing.Size(96, 56)
+        Me.Panel25.TabIndex = 145
+        '
+        'Label31
+        '
+        Me.Label31.AutoSize = True
+        Me.Label31.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label31.Location = New System.Drawing.Point(8, 8)
+        Me.Label31.Name = "Label31"
+        Me.Label31.Size = New System.Drawing.Size(71, 13)
+        Me.Label31.TabIndex = 131
+        Me.Label31.Text = "Left Margin"
+        Me.Label31.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'NumericUpDown_Hovered_LeftMargin
+        '
+        Me.NumericUpDown_Hovered_LeftMargin.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(49, Byte), Integer), CType(CType(54, Byte), Integer))
+        Me.NumericUpDown_Hovered_LeftMargin.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.NumericUpDown_Hovered_LeftMargin.ForeColor = System.Drawing.Color.WhiteSmoke
+        Me.NumericUpDown_Hovered_LeftMargin.Location = New System.Drawing.Point(16, 28)
+        Me.NumericUpDown_Hovered_LeftMargin.Maximum = New Decimal(New Integer() {2048, 0, 0, 0})
+        Me.NumericUpDown_Hovered_LeftMargin.Name = "NumericUpDown_Hovered_LeftMargin"
+        Me.NumericUpDown_Hovered_LeftMargin.Size = New System.Drawing.Size(64, 16)
+        Me.NumericUpDown_Hovered_LeftMargin.TabIndex = 124
+        '
+        'ShapeContainer33
+        '
+        Me.ShapeContainer33.Location = New System.Drawing.Point(0, 0)
+        Me.ShapeContainer33.Margin = New System.Windows.Forms.Padding(0)
+        Me.ShapeContainer33.Name = "ShapeContainer33"
+        Me.ShapeContainer33.Shapes.AddRange(New Microsoft.VisualBasic.PowerPacks.Shape() {Me.RectangleShape32})
+        Me.ShapeContainer33.Size = New System.Drawing.Size(96, 56)
+        Me.ShapeContainer33.TabIndex = 125
+        Me.ShapeContainer33.TabStop = False
+        '
+        'RectangleShape32
+        '
+        Me.RectangleShape32.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(49, Byte), Integer), CType(CType(54, Byte), Integer))
+        Me.RectangleShape32.BackStyle = Microsoft.VisualBasic.PowerPacks.BackStyle.Opaque
+        Me.RectangleShape32.BorderColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer))
+        Me.RectangleShape32.CornerRadius = 3
+        Me.RectangleShape32.FillColor = System.Drawing.Color.WhiteSmoke
+        Me.RectangleShape32.FillGradientColor = System.Drawing.Color.WhiteSmoke
+        Me.RectangleShape32.Location = New System.Drawing.Point(8, 24)
+        Me.RectangleShape32.Name = "RectangleShape17"
+        Me.RectangleShape32.SelectionColor = System.Drawing.Color.Transparent
+        Me.RectangleShape32.Size = New System.Drawing.Size(80, 24)
+        '
+        'Panel24
+        '
+        Me.Panel24.Controls.Add(Me.Label30)
+        Me.Panel24.Controls.Add(Me.NumericUpDown_Hovered_TopMargin)
+        Me.Panel24.Controls.Add(Me.ShapeContainer32)
+        Me.Panel24.Location = New System.Drawing.Point(0, 56)
+        Me.Panel24.Name = "Panel24"
+        Me.Panel24.Size = New System.Drawing.Size(96, 56)
+        Me.Panel24.TabIndex = 142
+        '
+        'Label30
+        '
+        Me.Label30.AutoSize = True
+        Me.Label30.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label30.Location = New System.Drawing.Point(8, 8)
+        Me.Label30.Name = "Label30"
+        Me.Label30.Size = New System.Drawing.Size(71, 13)
+        Me.Label30.TabIndex = 129
+        Me.Label30.Text = "Top Margin"
+        Me.Label30.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'NumericUpDown_Hovered_TopMargin
+        '
+        Me.NumericUpDown_Hovered_TopMargin.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(49, Byte), Integer), CType(CType(54, Byte), Integer))
+        Me.NumericUpDown_Hovered_TopMargin.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.NumericUpDown_Hovered_TopMargin.ForeColor = System.Drawing.Color.WhiteSmoke
+        Me.NumericUpDown_Hovered_TopMargin.Location = New System.Drawing.Point(16, 28)
+        Me.NumericUpDown_Hovered_TopMargin.Maximum = New Decimal(New Integer() {2048, 0, 0, 0})
+        Me.NumericUpDown_Hovered_TopMargin.Name = "NumericUpDown_Hovered_TopMargin"
+        Me.NumericUpDown_Hovered_TopMargin.Size = New System.Drawing.Size(64, 16)
+        Me.NumericUpDown_Hovered_TopMargin.TabIndex = 123
+        '
+        'ShapeContainer32
+        '
+        Me.ShapeContainer32.Location = New System.Drawing.Point(0, 0)
+        Me.ShapeContainer32.Margin = New System.Windows.Forms.Padding(0)
+        Me.ShapeContainer32.Name = "ShapeContainer32"
+        Me.ShapeContainer32.Shapes.AddRange(New Microsoft.VisualBasic.PowerPacks.Shape() {Me.RectangleShape31})
+        Me.ShapeContainer32.Size = New System.Drawing.Size(96, 56)
+        Me.ShapeContainer32.TabIndex = 130
+        Me.ShapeContainer32.TabStop = False
+        '
+        'RectangleShape31
+        '
+        Me.RectangleShape31.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(49, Byte), Integer), CType(CType(54, Byte), Integer))
+        Me.RectangleShape31.BackStyle = Microsoft.VisualBasic.PowerPacks.BackStyle.Opaque
+        Me.RectangleShape31.BorderColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer))
+        Me.RectangleShape31.CornerRadius = 3
+        Me.RectangleShape31.FillColor = System.Drawing.Color.WhiteSmoke
+        Me.RectangleShape31.FillGradientColor = System.Drawing.Color.WhiteSmoke
+        Me.RectangleShape31.Location = New System.Drawing.Point(8, 24)
+        Me.RectangleShape31.Name = "RectangleShape19"
+        Me.RectangleShape31.SelectionColor = System.Drawing.Color.Transparent
+        Me.RectangleShape31.Size = New System.Drawing.Size(80, 24)
+        '
+        'TabPage_Pressed
+        '
+        Me.TabPage_Pressed.BackColor = System.Drawing.Color.FromArgb(CType(CType(54, Byte), Integer), CType(CType(57, Byte), Integer), CType(CType(62, Byte), Integer))
+        Me.TabPage_Pressed.Controls.Add(Me.Panel27)
+        Me.TabPage_Pressed.Controls.Add(Me.Panel28)
+        Me.TabPage_Pressed.Controls.Add(Me.Panel_Button_Pressed)
+        Me.TabPage_Pressed.Controls.Add(Me.Panel41)
+        Me.TabPage_Pressed.Controls.Add(Me.Panel38)
+        Me.TabPage_Pressed.Controls.Add(Me.Panel40)
+        Me.TabPage_Pressed.Controls.Add(Me.Panel39)
+        Me.TabPage_Pressed.Location = New System.Drawing.Point(4, 22)
+        Me.TabPage_Pressed.Name = "TabPage_Pressed"
+        Me.TabPage_Pressed.Size = New System.Drawing.Size(408, 174)
+        Me.TabPage_Pressed.TabIndex = 2
+        Me.TabPage_Pressed.Text = "Pressed"
+        '
+        'Panel27
+        '
+        Me.Panel27.Controls.Add(Me.Label33)
+        Me.Panel27.Controls.Add(Me.NumericUpDown_Pressed_DefaultHeight)
+        Me.Panel27.Controls.Add(Me.ShapeContainer35)
+        Me.Panel27.Location = New System.Drawing.Point(96, 112)
+        Me.Panel27.Name = "Panel27"
+        Me.Panel27.Size = New System.Drawing.Size(104, 56)
+        Me.Panel27.TabIndex = 147
+        '
+        'Label33
+        '
+        Me.Label33.AutoSize = True
+        Me.Label33.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label33.Location = New System.Drawing.Point(8, 8)
+        Me.Label33.Name = "Label33"
+        Me.Label33.Size = New System.Drawing.Size(89, 13)
+        Me.Label33.TabIndex = 129
+        Me.Label33.Text = "Default Height"
+        Me.Label33.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'NumericUpDown_Pressed_DefaultHeight
+        '
+        Me.NumericUpDown_Pressed_DefaultHeight.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(49, Byte), Integer), CType(CType(54, Byte), Integer))
+        Me.NumericUpDown_Pressed_DefaultHeight.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.NumericUpDown_Pressed_DefaultHeight.ForeColor = System.Drawing.Color.WhiteSmoke
+        Me.NumericUpDown_Pressed_DefaultHeight.Location = New System.Drawing.Point(16, 28)
+        Me.NumericUpDown_Pressed_DefaultHeight.Maximum = New Decimal(New Integer() {2048, 0, 0, 0})
+        Me.NumericUpDown_Pressed_DefaultHeight.Name = "NumericUpDown_Pressed_DefaultHeight"
+        Me.NumericUpDown_Pressed_DefaultHeight.Size = New System.Drawing.Size(64, 16)
+        Me.NumericUpDown_Pressed_DefaultHeight.TabIndex = 123
+        '
+        'ShapeContainer35
+        '
+        Me.ShapeContainer35.Location = New System.Drawing.Point(0, 0)
+        Me.ShapeContainer35.Margin = New System.Windows.Forms.Padding(0)
+        Me.ShapeContainer35.Name = "ShapeContainer35"
+        Me.ShapeContainer35.Shapes.AddRange(New Microsoft.VisualBasic.PowerPacks.Shape() {Me.RectangleShape34})
+        Me.ShapeContainer35.Size = New System.Drawing.Size(104, 56)
+        Me.ShapeContainer35.TabIndex = 130
+        Me.ShapeContainer35.TabStop = False
+        '
+        'RectangleShape34
+        '
+        Me.RectangleShape34.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(49, Byte), Integer), CType(CType(54, Byte), Integer))
+        Me.RectangleShape34.BackStyle = Microsoft.VisualBasic.PowerPacks.BackStyle.Opaque
+        Me.RectangleShape34.BorderColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer))
+        Me.RectangleShape34.CornerRadius = 3
+        Me.RectangleShape34.FillColor = System.Drawing.Color.WhiteSmoke
+        Me.RectangleShape34.FillGradientColor = System.Drawing.Color.WhiteSmoke
+        Me.RectangleShape34.Location = New System.Drawing.Point(8, 24)
+        Me.RectangleShape34.Name = "RectangleShape19"
+        Me.RectangleShape34.SelectionColor = System.Drawing.Color.Transparent
+        Me.RectangleShape34.Size = New System.Drawing.Size(80, 24)
+        '
+        'Panel28
+        '
+        Me.Panel28.Controls.Add(Me.Label34)
+        Me.Panel28.Controls.Add(Me.NumericUpDown_Pressed_DefaultWidth)
+        Me.Panel28.Controls.Add(Me.ShapeContainer36)
+        Me.Panel28.Location = New System.Drawing.Point(0, 112)
+        Me.Panel28.Name = "Panel28"
+        Me.Panel28.Size = New System.Drawing.Size(96, 56)
+        Me.Panel28.TabIndex = 146
+        '
+        'Label34
+        '
+        Me.Label34.AutoSize = True
+        Me.Label34.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label34.Location = New System.Drawing.Point(8, 8)
+        Me.Label34.Name = "Label34"
+        Me.Label34.Size = New System.Drawing.Size(85, 13)
+        Me.Label34.TabIndex = 129
+        Me.Label34.Text = "Default Width"
+        Me.Label34.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'NumericUpDown_Pressed_DefaultWidth
+        '
+        Me.NumericUpDown_Pressed_DefaultWidth.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(49, Byte), Integer), CType(CType(54, Byte), Integer))
+        Me.NumericUpDown_Pressed_DefaultWidth.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.NumericUpDown_Pressed_DefaultWidth.ForeColor = System.Drawing.Color.WhiteSmoke
+        Me.NumericUpDown_Pressed_DefaultWidth.Location = New System.Drawing.Point(16, 28)
+        Me.NumericUpDown_Pressed_DefaultWidth.Maximum = New Decimal(New Integer() {2048, 0, 0, 0})
+        Me.NumericUpDown_Pressed_DefaultWidth.Name = "NumericUpDown_Pressed_DefaultWidth"
+        Me.NumericUpDown_Pressed_DefaultWidth.Size = New System.Drawing.Size(64, 16)
+        Me.NumericUpDown_Pressed_DefaultWidth.TabIndex = 123
+        '
+        'ShapeContainer36
+        '
+        Me.ShapeContainer36.Location = New System.Drawing.Point(0, 0)
+        Me.ShapeContainer36.Margin = New System.Windows.Forms.Padding(0)
+        Me.ShapeContainer36.Name = "ShapeContainer36"
+        Me.ShapeContainer36.Shapes.AddRange(New Microsoft.VisualBasic.PowerPacks.Shape() {Me.RectangleShape35})
+        Me.ShapeContainer36.Size = New System.Drawing.Size(96, 56)
+        Me.ShapeContainer36.TabIndex = 130
+        Me.ShapeContainer36.TabStop = False
+        '
+        'RectangleShape35
+        '
+        Me.RectangleShape35.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(49, Byte), Integer), CType(CType(54, Byte), Integer))
+        Me.RectangleShape35.BackStyle = Microsoft.VisualBasic.PowerPacks.BackStyle.Opaque
+        Me.RectangleShape35.BorderColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer))
+        Me.RectangleShape35.CornerRadius = 3
+        Me.RectangleShape35.FillColor = System.Drawing.Color.WhiteSmoke
+        Me.RectangleShape35.FillGradientColor = System.Drawing.Color.WhiteSmoke
+        Me.RectangleShape35.Location = New System.Drawing.Point(8, 24)
+        Me.RectangleShape35.Name = "RectangleShape19"
+        Me.RectangleShape35.SelectionColor = System.Drawing.Color.Transparent
+        Me.RectangleShape35.Size = New System.Drawing.Size(80, 24)
+        '
+        'Panel_Button_Pressed
+        '
+        Me.Panel_Button_Pressed.AllowDrop = True
+        Me.Panel_Button_Pressed.Controls.Add(Me.Button_Button_Pressed_Image)
+        Me.Panel_Button_Pressed.Controls.Add(Me.Label42)
+        Me.Panel_Button_Pressed.Controls.Add(Me.TextBox_Button_Pressed_Image)
+        Me.Panel_Button_Pressed.Controls.Add(Me.ShapeContainer44)
+        Me.Panel_Button_Pressed.Location = New System.Drawing.Point(0, 8)
+        Me.Panel_Button_Pressed.Name = "Panel_Button_Pressed"
+        Me.Panel_Button_Pressed.Size = New System.Drawing.Size(392, 48)
+        Me.Panel_Button_Pressed.TabIndex = 122
+        '
+        'Button_Button_Pressed_Image
+        '
+        Me.Button_Button_Pressed_Image.BackColor = System.Drawing.Color.DodgerBlue
+        Me.Button_Button_Pressed_Image.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer))
+        Me.Button_Button_Pressed_Image.FlatAppearance.BorderSize = 0
+        Me.Button_Button_Pressed_Image.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button_Button_Pressed_Image.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button_Button_Pressed_Image.Location = New System.Drawing.Point(328, 16)
+        Me.Button_Button_Pressed_Image.Name = "Button_Button_Pressed_Image"
+        Me.Button_Button_Pressed_Image.Size = New System.Drawing.Size(56, 24)
+        Me.Button_Button_Pressed_Image.TabIndex = 111
+        Me.Button_Button_Pressed_Image.Text = "..."
+        Me.Button_Button_Pressed_Image.UseVisualStyleBackColor = False
+        '
+        'Label42
+        '
+        Me.Label42.AutoSize = True
+        Me.Label42.Dock = System.Windows.Forms.DockStyle.Top
+        Me.Label42.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold)
+        Me.Label42.Location = New System.Drawing.Point(0, 0)
+        Me.Label42.Name = "Label42"
+        Me.Label42.Padding = New System.Windows.Forms.Padding(8, 0, 0, 0)
+        Me.Label42.Size = New System.Drawing.Size(49, 13)
+        Me.Label42.TabIndex = 110
+        Me.Label42.Text = "Image"
+        '
+        'ShapeContainer44
+        '
+        Me.ShapeContainer44.Location = New System.Drawing.Point(0, 0)
+        Me.ShapeContainer44.Margin = New System.Windows.Forms.Padding(0)
+        Me.ShapeContainer44.Name = "ShapeContainer44"
+        Me.ShapeContainer44.Shapes.AddRange(New Microsoft.VisualBasic.PowerPacks.Shape() {Me.RectangleShape43})
+        Me.ShapeContainer44.Size = New System.Drawing.Size(392, 48)
+        Me.ShapeContainer44.TabIndex = 107
+        Me.ShapeContainer44.TabStop = False
+        '
+        'RectangleShape43
+        '
+        Me.RectangleShape43.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(49, Byte), Integer), CType(CType(54, Byte), Integer))
+        Me.RectangleShape43.BackStyle = Microsoft.VisualBasic.PowerPacks.BackStyle.Opaque
+        Me.RectangleShape43.BorderColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer))
+        Me.RectangleShape43.CornerRadius = 3
+        Me.RectangleShape43.FillColor = System.Drawing.Color.WhiteSmoke
+        Me.RectangleShape43.FillGradientColor = System.Drawing.Color.WhiteSmoke
+        Me.RectangleShape43.Location = New System.Drawing.Point(8, 16)
+        Me.RectangleShape43.Name = "RectangleShape2"
+        Me.RectangleShape43.SelectionColor = System.Drawing.Color.Transparent
+        Me.RectangleShape43.Size = New System.Drawing.Size(312, 24)
+        '
+        'Panel41
+        '
+        Me.Panel41.Controls.Add(Me.Label46)
+        Me.Panel41.Controls.Add(Me.NumericUpDown_Pressed_RightMargin)
+        Me.Panel41.Controls.Add(Me.ShapeContainer48)
+        Me.Panel41.Location = New System.Drawing.Point(296, 56)
+        Me.Panel41.Name = "Panel41"
+        Me.Panel41.Size = New System.Drawing.Size(96, 56)
+        Me.Panel41.TabIndex = 144
+        '
+        'Label46
+        '
+        Me.Label46.AutoSize = True
+        Me.Label46.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label46.Location = New System.Drawing.Point(8, 8)
+        Me.Label46.Name = "Label46"
+        Me.Label46.Size = New System.Drawing.Size(79, 13)
+        Me.Label46.TabIndex = 132
+        Me.Label46.Text = "Right Margin"
+        Me.Label46.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'NumericUpDown_Pressed_RightMargin
+        '
+        Me.NumericUpDown_Pressed_RightMargin.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(49, Byte), Integer), CType(CType(54, Byte), Integer))
+        Me.NumericUpDown_Pressed_RightMargin.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.NumericUpDown_Pressed_RightMargin.ForeColor = System.Drawing.Color.WhiteSmoke
+        Me.NumericUpDown_Pressed_RightMargin.Location = New System.Drawing.Point(16, 28)
+        Me.NumericUpDown_Pressed_RightMargin.Maximum = New Decimal(New Integer() {2048, 0, 0, 0})
+        Me.NumericUpDown_Pressed_RightMargin.Name = "NumericUpDown_Pressed_RightMargin"
+        Me.NumericUpDown_Pressed_RightMargin.Size = New System.Drawing.Size(64, 16)
+        Me.NumericUpDown_Pressed_RightMargin.TabIndex = 127
+        '
+        'ShapeContainer48
+        '
+        Me.ShapeContainer48.Location = New System.Drawing.Point(0, 0)
+        Me.ShapeContainer48.Margin = New System.Windows.Forms.Padding(0)
+        Me.ShapeContainer48.Name = "ShapeContainer48"
+        Me.ShapeContainer48.Shapes.AddRange(New Microsoft.VisualBasic.PowerPacks.Shape() {Me.RectangleShape47})
+        Me.ShapeContainer48.Size = New System.Drawing.Size(96, 56)
+        Me.ShapeContainer48.TabIndex = 133
+        Me.ShapeContainer48.TabStop = False
+        '
+        'RectangleShape47
+        '
+        Me.RectangleShape47.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(49, Byte), Integer), CType(CType(54, Byte), Integer))
+        Me.RectangleShape47.BackStyle = Microsoft.VisualBasic.PowerPacks.BackStyle.Opaque
+        Me.RectangleShape47.BorderColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer))
+        Me.RectangleShape47.CornerRadius = 3
+        Me.RectangleShape47.FillColor = System.Drawing.Color.WhiteSmoke
+        Me.RectangleShape47.FillGradientColor = System.Drawing.Color.WhiteSmoke
+        Me.RectangleShape47.Location = New System.Drawing.Point(8, 24)
+        Me.RectangleShape47.Name = "RectangleShape16"
+        Me.RectangleShape47.SelectionColor = System.Drawing.Color.Transparent
+        Me.RectangleShape47.Size = New System.Drawing.Size(80, 24)
+        '
+        'Panel38
+        '
+        Me.Panel38.Controls.Add(Me.Label43)
+        Me.Panel38.Controls.Add(Me.NumericUpDown_Pressed_BottomMargin)
+        Me.Panel38.Controls.Add(Me.ShapeContainer45)
+        Me.Panel38.Location = New System.Drawing.Point(96, 56)
+        Me.Panel38.Name = "Panel38"
+        Me.Panel38.Size = New System.Drawing.Size(104, 56)
+        Me.Panel38.TabIndex = 143
+        '
+        'Label43
+        '
+        Me.Label43.AutoSize = True
+        Me.Label43.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label43.Location = New System.Drawing.Point(8, 8)
+        Me.Label43.Name = "Label43"
+        Me.Label43.Size = New System.Drawing.Size(88, 13)
+        Me.Label43.TabIndex = 130
+        Me.Label43.Text = "Bottom Margin"
+        Me.Label43.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'NumericUpDown_Pressed_BottomMargin
+        '
+        Me.NumericUpDown_Pressed_BottomMargin.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(49, Byte), Integer), CType(CType(54, Byte), Integer))
+        Me.NumericUpDown_Pressed_BottomMargin.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.NumericUpDown_Pressed_BottomMargin.ForeColor = System.Drawing.Color.WhiteSmoke
+        Me.NumericUpDown_Pressed_BottomMargin.Location = New System.Drawing.Point(16, 28)
+        Me.NumericUpDown_Pressed_BottomMargin.Maximum = New Decimal(New Integer() {2048, 0, 0, 0})
+        Me.NumericUpDown_Pressed_BottomMargin.Name = "NumericUpDown_Pressed_BottomMargin"
+        Me.NumericUpDown_Pressed_BottomMargin.Size = New System.Drawing.Size(72, 16)
+        Me.NumericUpDown_Pressed_BottomMargin.TabIndex = 128
+        '
+        'ShapeContainer45
+        '
+        Me.ShapeContainer45.Location = New System.Drawing.Point(0, 0)
+        Me.ShapeContainer45.Margin = New System.Windows.Forms.Padding(0)
+        Me.ShapeContainer45.Name = "ShapeContainer45"
+        Me.ShapeContainer45.Shapes.AddRange(New Microsoft.VisualBasic.PowerPacks.Shape() {Me.RectangleShape44})
+        Me.ShapeContainer45.Size = New System.Drawing.Size(104, 56)
+        Me.ShapeContainer45.TabIndex = 131
+        Me.ShapeContainer45.TabStop = False
+        '
+        'RectangleShape44
+        '
+        Me.RectangleShape44.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(49, Byte), Integer), CType(CType(54, Byte), Integer))
+        Me.RectangleShape44.BackStyle = Microsoft.VisualBasic.PowerPacks.BackStyle.Opaque
+        Me.RectangleShape44.BorderColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer))
+        Me.RectangleShape44.CornerRadius = 3
+        Me.RectangleShape44.FillColor = System.Drawing.Color.WhiteSmoke
+        Me.RectangleShape44.FillGradientColor = System.Drawing.Color.WhiteSmoke
+        Me.RectangleShape44.Location = New System.Drawing.Point(8, 24)
+        Me.RectangleShape44.Name = "RectangleShape18"
+        Me.RectangleShape44.SelectionColor = System.Drawing.Color.Transparent
+        Me.RectangleShape44.Size = New System.Drawing.Size(88, 24)
+        '
+        'Panel40
+        '
+        Me.Panel40.Controls.Add(Me.Label45)
+        Me.Panel40.Controls.Add(Me.NumericUpDown_Pressed_LeftMargin)
+        Me.Panel40.Controls.Add(Me.ShapeContainer47)
+        Me.Panel40.Location = New System.Drawing.Point(200, 56)
+        Me.Panel40.Name = "Panel40"
+        Me.Panel40.Size = New System.Drawing.Size(96, 56)
+        Me.Panel40.TabIndex = 145
+        '
+        'Label45
+        '
+        Me.Label45.AutoSize = True
+        Me.Label45.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label45.Location = New System.Drawing.Point(8, 8)
+        Me.Label45.Name = "Label45"
+        Me.Label45.Size = New System.Drawing.Size(71, 13)
+        Me.Label45.TabIndex = 131
+        Me.Label45.Text = "Left Margin"
+        Me.Label45.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'NumericUpDown_Pressed_LeftMargin
+        '
+        Me.NumericUpDown_Pressed_LeftMargin.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(49, Byte), Integer), CType(CType(54, Byte), Integer))
+        Me.NumericUpDown_Pressed_LeftMargin.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.NumericUpDown_Pressed_LeftMargin.ForeColor = System.Drawing.Color.WhiteSmoke
+        Me.NumericUpDown_Pressed_LeftMargin.Location = New System.Drawing.Point(16, 28)
+        Me.NumericUpDown_Pressed_LeftMargin.Maximum = New Decimal(New Integer() {2048, 0, 0, 0})
+        Me.NumericUpDown_Pressed_LeftMargin.Name = "NumericUpDown_Pressed_LeftMargin"
+        Me.NumericUpDown_Pressed_LeftMargin.Size = New System.Drawing.Size(64, 16)
+        Me.NumericUpDown_Pressed_LeftMargin.TabIndex = 124
+        '
+        'ShapeContainer47
+        '
+        Me.ShapeContainer47.Location = New System.Drawing.Point(0, 0)
+        Me.ShapeContainer47.Margin = New System.Windows.Forms.Padding(0)
+        Me.ShapeContainer47.Name = "ShapeContainer47"
+        Me.ShapeContainer47.Shapes.AddRange(New Microsoft.VisualBasic.PowerPacks.Shape() {Me.RectangleShape46})
+        Me.ShapeContainer47.Size = New System.Drawing.Size(96, 56)
+        Me.ShapeContainer47.TabIndex = 125
+        Me.ShapeContainer47.TabStop = False
+        '
+        'RectangleShape46
+        '
+        Me.RectangleShape46.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(49, Byte), Integer), CType(CType(54, Byte), Integer))
+        Me.RectangleShape46.BackStyle = Microsoft.VisualBasic.PowerPacks.BackStyle.Opaque
+        Me.RectangleShape46.BorderColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer))
+        Me.RectangleShape46.CornerRadius = 3
+        Me.RectangleShape46.FillColor = System.Drawing.Color.WhiteSmoke
+        Me.RectangleShape46.FillGradientColor = System.Drawing.Color.WhiteSmoke
+        Me.RectangleShape46.Location = New System.Drawing.Point(8, 24)
+        Me.RectangleShape46.Name = "RectangleShape17"
+        Me.RectangleShape46.SelectionColor = System.Drawing.Color.Transparent
+        Me.RectangleShape46.Size = New System.Drawing.Size(80, 24)
+        '
+        'Panel39
+        '
+        Me.Panel39.Controls.Add(Me.Label44)
+        Me.Panel39.Controls.Add(Me.NumericUpDown_Pressed_TopMargin)
+        Me.Panel39.Controls.Add(Me.ShapeContainer46)
+        Me.Panel39.Location = New System.Drawing.Point(0, 56)
+        Me.Panel39.Name = "Panel39"
+        Me.Panel39.Size = New System.Drawing.Size(96, 56)
+        Me.Panel39.TabIndex = 142
+        '
+        'Label44
+        '
+        Me.Label44.AutoSize = True
+        Me.Label44.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label44.Location = New System.Drawing.Point(8, 8)
+        Me.Label44.Name = "Label44"
+        Me.Label44.Size = New System.Drawing.Size(71, 13)
+        Me.Label44.TabIndex = 129
+        Me.Label44.Text = "Top Margin"
+        Me.Label44.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'NumericUpDown_Pressed_TopMargin
+        '
+        Me.NumericUpDown_Pressed_TopMargin.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(49, Byte), Integer), CType(CType(54, Byte), Integer))
+        Me.NumericUpDown_Pressed_TopMargin.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.NumericUpDown_Pressed_TopMargin.ForeColor = System.Drawing.Color.WhiteSmoke
+        Me.NumericUpDown_Pressed_TopMargin.Location = New System.Drawing.Point(16, 28)
+        Me.NumericUpDown_Pressed_TopMargin.Maximum = New Decimal(New Integer() {2048, 0, 0, 0})
+        Me.NumericUpDown_Pressed_TopMargin.Name = "NumericUpDown_Pressed_TopMargin"
+        Me.NumericUpDown_Pressed_TopMargin.Size = New System.Drawing.Size(64, 16)
+        Me.NumericUpDown_Pressed_TopMargin.TabIndex = 123
+        '
+        'ShapeContainer46
+        '
+        Me.ShapeContainer46.Location = New System.Drawing.Point(0, 0)
+        Me.ShapeContainer46.Margin = New System.Windows.Forms.Padding(0)
+        Me.ShapeContainer46.Name = "ShapeContainer46"
+        Me.ShapeContainer46.Shapes.AddRange(New Microsoft.VisualBasic.PowerPacks.Shape() {Me.RectangleShape45})
+        Me.ShapeContainer46.Size = New System.Drawing.Size(96, 56)
+        Me.ShapeContainer46.TabIndex = 130
+        Me.ShapeContainer46.TabStop = False
+        '
+        'RectangleShape45
+        '
+        Me.RectangleShape45.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(49, Byte), Integer), CType(CType(54, Byte), Integer))
+        Me.RectangleShape45.BackStyle = Microsoft.VisualBasic.PowerPacks.BackStyle.Opaque
+        Me.RectangleShape45.BorderColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer))
+        Me.RectangleShape45.CornerRadius = 3
+        Me.RectangleShape45.FillColor = System.Drawing.Color.WhiteSmoke
+        Me.RectangleShape45.FillGradientColor = System.Drawing.Color.WhiteSmoke
+        Me.RectangleShape45.Location = New System.Drawing.Point(8, 24)
+        Me.RectangleShape45.Name = "RectangleShape19"
+        Me.RectangleShape45.SelectionColor = System.Drawing.Color.Transparent
+        Me.RectangleShape45.Size = New System.Drawing.Size(80, 24)
+        '
         'MenuStrip1
         '
         Me.MenuStrip1.BackColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer))
         Me.MenuStrip1.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.MenuStrip1.ImageScalingSize = New System.Drawing.Size(24, 24)
-        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.PanelSpriteToolStripMenuItem, Me.BitmapTextToolStripMenuItem, Me.TilemapToolStripMenuItem, Me.LightToolStripMenuItem})
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.PanelSpriteToolStripMenuItem, Me.BitmapTextToolStripMenuItem, Me.TilemapToolStripMenuItem, Me.LightToolStripMenuItem, Me.ButtonToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(8, 376)
         Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Size = New System.Drawing.Size(362, 29)
+        Me.MenuStrip1.Size = New System.Drawing.Size(425, 29)
         Me.MenuStrip1.TabIndex = 117
         '
         'PanelSpriteToolStripMenuItem
@@ -1616,6 +3665,13 @@ Partial Class TemplateAsset
         Me.LightToolStripMenuItem.Size = New System.Drawing.Size(57, 25)
         Me.LightToolStripMenuItem.Text = "Light"
         '
+        'ButtonToolStripMenuItem
+        '
+        Me.ButtonToolStripMenuItem.ForeColor = System.Drawing.Color.WhiteSmoke
+        Me.ButtonToolStripMenuItem.Name = "ButtonToolStripMenuItem"
+        Me.ButtonToolStripMenuItem.Size = New System.Drawing.Size(68, 25)
+        Me.ButtonToolStripMenuItem.Text = "Button"
+        '
         'Panel_PreviewImage
         '
         Me.Panel_PreviewImage.AllowDrop = True
@@ -1629,7 +3685,7 @@ Partial Class TemplateAsset
         Me.Panel_PreviewImage.Location = New System.Drawing.Point(8, 8)
         Me.Panel_PreviewImage.Name = "Panel_PreviewImage"
         Me.Panel_PreviewImage.Padding = New System.Windows.Forms.Padding(0, 8, 0, 0)
-        Me.Panel_PreviewImage.Size = New System.Drawing.Size(362, 368)
+        Me.Panel_PreviewImage.Size = New System.Drawing.Size(425, 368)
         Me.Panel_PreviewImage.TabIndex = 118
         '
         'Panel1
@@ -1639,7 +3695,7 @@ Partial Class TemplateAsset
         Me.Panel1.Controls.Add(Me.ShapeContainer4)
         Me.Panel1.Location = New System.Drawing.Point(0, 272)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(360, 48)
+        Me.Panel1.Size = New System.Drawing.Size(416, 48)
         Me.Panel1.TabIndex = 119
         '
         'Label_Description
@@ -1661,7 +3717,7 @@ Partial Class TemplateAsset
         Me.TextBox_Description.ForeColor = System.Drawing.Color.WhiteSmoke
         Me.TextBox_Description.Location = New System.Drawing.Point(16, 24)
         Me.TextBox_Description.Name = "TextBox_Description"
-        Me.TextBox_Description.Size = New System.Drawing.Size(328, 13)
+        Me.TextBox_Description.Size = New System.Drawing.Size(384, 13)
         Me.TextBox_Description.TabIndex = 106
         '
         'ShapeContainer4
@@ -1670,7 +3726,7 @@ Partial Class TemplateAsset
         Me.ShapeContainer4.Margin = New System.Windows.Forms.Padding(0)
         Me.ShapeContainer4.Name = "ShapeContainer4"
         Me.ShapeContainer4.Shapes.AddRange(New Microsoft.VisualBasic.PowerPacks.Shape() {Me.RectangleShape3})
-        Me.ShapeContainer4.Size = New System.Drawing.Size(360, 48)
+        Me.ShapeContainer4.Size = New System.Drawing.Size(416, 48)
         Me.ShapeContainer4.TabIndex = 107
         Me.ShapeContainer4.TabStop = False
         '
@@ -1685,7 +3741,7 @@ Partial Class TemplateAsset
         Me.RectangleShape3.Location = New System.Drawing.Point(8, 16)
         Me.RectangleShape3.Name = "RectangleShape2"
         Me.RectangleShape3.SelectionColor = System.Drawing.Color.Transparent
-        Me.RectangleShape3.Size = New System.Drawing.Size(344, 24)
+        Me.RectangleShape3.Size = New System.Drawing.Size(400, 24)
         '
         'Button_GenerateAsset
         '
@@ -1718,7 +3774,7 @@ Partial Class TemplateAsset
         Me.ShapeContainer3.Margin = New System.Windows.Forms.Padding(0)
         Me.ShapeContainer3.Name = "ShapeContainer3"
         Me.ShapeContainer3.Shapes.AddRange(New Microsoft.VisualBasic.PowerPacks.Shape() {Me.RectangleShape_Image})
-        Me.ShapeContainer3.Size = New System.Drawing.Size(362, 360)
+        Me.ShapeContainer3.Size = New System.Drawing.Size(425, 360)
         Me.ShapeContainer3.TabIndex = 104
         Me.ShapeContainer3.TabStop = False
         '
@@ -1751,7 +3807,7 @@ Partial Class TemplateAsset
         Me.Panel3.Controls.Add(Me.ShapeContainer15)
         Me.Panel3.Location = New System.Drawing.Point(8, 232)
         Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(360, 48)
+        Me.Panel3.Size = New System.Drawing.Size(416, 48)
         Me.Panel3.TabIndex = 121
         '
         'Label2
@@ -1773,7 +3829,7 @@ Partial Class TemplateAsset
         Me.TextBox_Name.ForeColor = System.Drawing.Color.WhiteSmoke
         Me.TextBox_Name.Location = New System.Drawing.Point(16, 24)
         Me.TextBox_Name.Name = "TextBox_Name"
-        Me.TextBox_Name.Size = New System.Drawing.Size(328, 13)
+        Me.TextBox_Name.Size = New System.Drawing.Size(384, 13)
         Me.TextBox_Name.TabIndex = 106
         '
         'ShapeContainer15
@@ -1782,7 +3838,7 @@ Partial Class TemplateAsset
         Me.ShapeContainer15.Margin = New System.Windows.Forms.Padding(0)
         Me.ShapeContainer15.Name = "ShapeContainer15"
         Me.ShapeContainer15.Shapes.AddRange(New Microsoft.VisualBasic.PowerPacks.Shape() {Me.RectangleShape20})
-        Me.ShapeContainer15.Size = New System.Drawing.Size(360, 48)
+        Me.ShapeContainer15.Size = New System.Drawing.Size(416, 48)
         Me.ShapeContainer15.TabIndex = 107
         Me.ShapeContainer15.TabStop = False
         '
@@ -1797,7 +3853,7 @@ Partial Class TemplateAsset
         Me.RectangleShape20.Location = New System.Drawing.Point(8, 16)
         Me.RectangleShape20.Name = "RectangleShape2"
         Me.RectangleShape20.SelectionColor = System.Drawing.Color.Transparent
-        Me.RectangleShape20.Size = New System.Drawing.Size(344, 24)
+        Me.RectangleShape20.Size = New System.Drawing.Size(400, 24)
         '
         'ErrorProvider1
         '
@@ -1824,16 +3880,20 @@ Partial Class TemplateAsset
         Me.SplitContainer1.Panel2.Controls.Add(Me.FastColoredTextBox_AssetJson)
         Me.SplitContainer1.Panel2.Controls.Add(Me.Label_assetjson)
         Me.SplitContainer1.Panel2.Padding = New System.Windows.Forms.Padding(0, 0, 8, 8)
-        Me.SplitContainer1.Size = New System.Drawing.Size(1018, 791)
-        Me.SplitContainer1.SplitterDistance = 378
+        Me.SplitContainer1.Size = New System.Drawing.Size(1018, 806)
+        Me.SplitContainer1.SplitterDistance = 441
         Me.SplitContainer1.TabIndex = 122
+        '
+        'OpenFileDialog_FNT_XML
+        '
+        Me.OpenFileDialog_FNT_XML.Filter = "Supported Files|*.fnt;*.xml"
         '
         'TemplateAsset
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(54, Byte), Integer), CType(CType(57, Byte), Integer), CType(CType(62, Byte), Integer))
-        Me.ClientSize = New System.Drawing.Size(1018, 791)
+        Me.ClientSize = New System.Drawing.Size(1018, 806)
         Me.Controls.Add(Me.SplitContainer1)
         Me.ForeColor = System.Drawing.Color.WhiteSmoke
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
@@ -1896,6 +3956,98 @@ Partial Class TemplateAsset
         CType(Me.NumericUpDown_LightRadius, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel_LightTexture.ResumeLayout(False)
         Me.Panel_LightTexture.PerformLayout()
+        Me.TabPage_Button.ResumeLayout(False)
+        Me.TabPage_Button.PerformLayout()
+        Me.MenuStrip2.ResumeLayout(False)
+        Me.MenuStrip2.PerformLayout()
+        Me.Panel22.ResumeLayout(False)
+        Me.Panel22.PerformLayout()
+        CType(Me.NumericUpDown_LabelFontSize, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Panel35.ResumeLayout(False)
+        Me.Panel29.ResumeLayout(False)
+        Me.Panel29.PerformLayout()
+        CType(Me.NumericUpDown_HoveredFadeOutDuration, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Panel30.ResumeLayout(False)
+        Me.Panel30.PerformLayout()
+        CType(Me.NumericUpDown_LableOffset_Y, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Panel2.ResumeLayout(False)
+        Me.Panel2.PerformLayout()
+        Me.Panel31.ResumeLayout(False)
+        Me.Panel31.PerformLayout()
+        CType(Me.NumericUpDown_BottomPadding, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Panel32.ResumeLayout(False)
+        Me.Panel32.PerformLayout()
+        CType(Me.NumericUpDown_TopPadding, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Panel33.ResumeLayout(False)
+        Me.Panel33.PerformLayout()
+        CType(Me.NumericUpDown_LeftPadding, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Panel34.ResumeLayout(False)
+        Me.Panel34.PerformLayout()
+        CType(Me.NumericUpDown_RightPadding, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.TabControl2.ResumeLayout(False)
+        Me.TabPage_Idle.ResumeLayout(False)
+        Me.Panel8.ResumeLayout(False)
+        Me.Panel8.PerformLayout()
+        CType(Me.NumericUpDown_Idle_DefaultHeight, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Panel36.ResumeLayout(False)
+        Me.Panel36.PerformLayout()
+        CType(Me.NumericUpDown_Idle_DefaultWidth, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Panel_Button_Idle.ResumeLayout(False)
+        Me.Panel_Button_Idle.PerformLayout()
+        Me.Panel5.ResumeLayout(False)
+        Me.Panel5.PerformLayout()
+        CType(Me.NumericUpDown_Idle_RightMargin, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Panel6.ResumeLayout(False)
+        Me.Panel6.PerformLayout()
+        CType(Me.NumericUpDown_Idle_BottomMargin, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Panel4.ResumeLayout(False)
+        Me.Panel4.PerformLayout()
+        CType(Me.NumericUpDown_Idle_LeftMargin, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Panel7.ResumeLayout(False)
+        Me.Panel7.PerformLayout()
+        CType(Me.NumericUpDown_Idle_TopMargin, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.TabPage_Hovered.ResumeLayout(False)
+        Me.Panel20.ResumeLayout(False)
+        Me.Panel20.PerformLayout()
+        CType(Me.NumericUpDown_Hovered_DefaultHeight, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Panel21.ResumeLayout(False)
+        Me.Panel21.PerformLayout()
+        CType(Me.NumericUpDown_Hovered_DefaultWidth, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Panel_Button_Hovered.ResumeLayout(False)
+        Me.Panel_Button_Hovered.PerformLayout()
+        Me.Panel26.ResumeLayout(False)
+        Me.Panel26.PerformLayout()
+        CType(Me.NumericUpDown_Hovered_RightMargin, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Panel23.ResumeLayout(False)
+        Me.Panel23.PerformLayout()
+        CType(Me.NumericUpDown_Hovered_BottomMargin, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Panel25.ResumeLayout(False)
+        Me.Panel25.PerformLayout()
+        CType(Me.NumericUpDown_Hovered_LeftMargin, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Panel24.ResumeLayout(False)
+        Me.Panel24.PerformLayout()
+        CType(Me.NumericUpDown_Hovered_TopMargin, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.TabPage_Pressed.ResumeLayout(False)
+        Me.Panel27.ResumeLayout(False)
+        Me.Panel27.PerformLayout()
+        CType(Me.NumericUpDown_Pressed_DefaultHeight, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Panel28.ResumeLayout(False)
+        Me.Panel28.PerformLayout()
+        CType(Me.NumericUpDown_Pressed_DefaultWidth, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Panel_Button_Pressed.ResumeLayout(False)
+        Me.Panel_Button_Pressed.PerformLayout()
+        Me.Panel41.ResumeLayout(False)
+        Me.Panel41.PerformLayout()
+        CType(Me.NumericUpDown_Pressed_RightMargin, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Panel38.ResumeLayout(False)
+        Me.Panel38.PerformLayout()
+        CType(Me.NumericUpDown_Pressed_BottomMargin, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Panel40.ResumeLayout(False)
+        Me.Panel40.PerformLayout()
+        CType(Me.NumericUpDown_Pressed_LeftMargin, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Panel39.ResumeLayout(False)
+        Me.Panel39.PerformLayout()
+        CType(Me.NumericUpDown_Pressed_TopMargin, System.ComponentModel.ISupportInitialize).EndInit()
         Me.MenuStrip1.ResumeLayout(False)
         Me.MenuStrip1.PerformLayout()
         Me.Panel_PreviewImage.ResumeLayout(False)
@@ -1918,19 +4070,19 @@ Partial Class TemplateAsset
     Friend WithEvents Button_Save As Button
     Friend WithEvents TextBox_BitmapFont As TextBox
     Friend WithEvents RectangleShape2 As RectangleShape
-    Friend WithEvents Button_SelectFont As Button
+    Friend WithEvents Button_SelectBitmapFont As Button
     Friend WithEvents Label_assetjson As Label
     Friend WithEvents Panel_BitmapFont As Panel
     Friend WithEvents Label_SelectedFont As Label
     Friend WithEvents ShapeContainer2 As ShapeContainer
-    Friend WithEvents OpenFileDialog1 As OpenFileDialog
+    Friend WithEvents OpenFileDialog_Image As OpenFileDialog
     Friend WithEvents Panel_BitmapAtlasImage As Panel
     Friend WithEvents Label_BitmapAtlasImage As Label
     Friend WithEvents Button_SelectBitmapAtlasImage As Button
     Friend WithEvents TextBox_BitmapAtlasImage As TextBox
     Friend WithEvents ShapeContainer1 As ShapeContainer
     Friend WithEvents RectangleShape1 As RectangleShape
-    Friend WithEvents OpenFileDialog2 As OpenFileDialog
+    Friend WithEvents OpenFileDialog_JSON As OpenFileDialog
     Friend WithEvents ToolTip1 As ToolTip
     Friend WithEvents TabControl1 As TabControl
     Friend WithEvents TabPage_BitmapText As TabPage
@@ -2059,4 +4211,167 @@ Partial Class TemplateAsset
     Friend WithEvents CopyToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ToolStripSeparator1 As ToolStripSeparator
     Friend WithEvents ClearToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ButtonToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents Button_PanelSpriteIamge As Button
+    Friend WithEvents Button_TilemapAtlasImage As Button
+    Friend WithEvents Button_TilemapJSONFile As Button
+    Friend WithEvents Button_TilesetJSONFile As Button
+    Friend WithEvents Button_LightTexture As Button
+    Friend WithEvents TabPage_Button As TabPage
+    Friend WithEvents Panel_Button_Idle As Panel
+    Friend WithEvents Button_Button_Idle_Image As Button
+    Friend WithEvents Label20 As Label
+    Friend WithEvents TextBox_Button_Idle_Image As TextBox
+    Friend WithEvents ShapeContainer5 As ShapeContainer
+    Friend WithEvents RectangleShape21 As RectangleShape
+    Friend WithEvents Panel6 As Panel
+    Friend WithEvents Label23 As Label
+    Friend WithEvents NumericUpDown_Idle_BottomMargin As NumericUpDown
+    Friend WithEvents ShapeContainer25 As ShapeContainer
+    Friend WithEvents RectangleShape24 As RectangleShape
+    Friend WithEvents Panel7 As Panel
+    Friend WithEvents Label24 As Label
+    Friend WithEvents NumericUpDown_Idle_TopMargin As NumericUpDown
+    Friend WithEvents ShapeContainer26 As ShapeContainer
+    Friend WithEvents RectangleShape25 As RectangleShape
+    Friend WithEvents Panel4 As Panel
+    Friend WithEvents Label21 As Label
+    Friend WithEvents NumericUpDown_Idle_LeftMargin As NumericUpDown
+    Friend WithEvents ShapeContainer23 As ShapeContainer
+    Friend WithEvents RectangleShape22 As RectangleShape
+    Friend WithEvents Panel5 As Panel
+    Friend WithEvents Label22 As Label
+    Friend WithEvents NumericUpDown_Idle_RightMargin As NumericUpDown
+    Friend WithEvents ShapeContainer24 As ShapeContainer
+    Friend WithEvents RectangleShape23 As RectangleShape
+    Friend WithEvents Panel30 As Panel
+    Friend WithEvents Label36 As Label
+    Friend WithEvents NumericUpDown_LableOffset_Y As NumericUpDown
+    Friend WithEvents ShapeContainer38 As ShapeContainer
+    Friend WithEvents RectangleShape37 As RectangleShape
+    Friend WithEvents Panel29 As Panel
+    Friend WithEvents Label35 As Label
+    Friend WithEvents NumericUpDown_HoveredFadeOutDuration As NumericUpDown
+    Friend WithEvents ShapeContainer37 As ShapeContainer
+    Friend WithEvents RectangleShape36 As RectangleShape
+    Friend WithEvents Panel31 As Panel
+    Friend WithEvents Label37 As Label
+    Friend WithEvents NumericUpDown_BottomPadding As NumericUpDown
+    Friend WithEvents ShapeContainer39 As ShapeContainer
+    Friend WithEvents RectangleShape38 As RectangleShape
+    Friend WithEvents Panel32 As Panel
+    Friend WithEvents Label38 As Label
+    Friend WithEvents NumericUpDown_TopPadding As NumericUpDown
+    Friend WithEvents ShapeContainer40 As ShapeContainer
+    Friend WithEvents RectangleShape39 As RectangleShape
+    Friend WithEvents Panel34 As Panel
+    Friend WithEvents Label40 As Label
+    Friend WithEvents NumericUpDown_RightPadding As NumericUpDown
+    Friend WithEvents ShapeContainer42 As ShapeContainer
+    Friend WithEvents RectangleShape41 As RectangleShape
+    Friend WithEvents Panel33 As Panel
+    Friend WithEvents Label39 As Label
+    Friend WithEvents NumericUpDown_LeftPadding As NumericUpDown
+    Friend WithEvents ShapeContainer41 As ShapeContainer
+    Friend WithEvents RectangleShape40 As RectangleShape
+    Friend WithEvents Panel35 As Panel
+    Friend WithEvents Panel36 As Panel
+    Friend WithEvents Label41 As Label
+    Friend WithEvents NumericUpDown_Idle_DefaultWidth As NumericUpDown
+    Friend WithEvents ShapeContainer43 As ShapeContainer
+    Friend WithEvents RectangleShape42 As RectangleShape
+    Friend WithEvents Panel8 As Panel
+    Friend WithEvents Label25 As Label
+    Friend WithEvents NumericUpDown_Idle_DefaultHeight As NumericUpDown
+    Friend WithEvents ShapeContainer27 As ShapeContainer
+    Friend WithEvents RectangleShape26 As RectangleShape
+    Friend WithEvents MenuStrip2 As MenuStrip
+    Friend WithEvents IdleToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents HoveredToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents PressedToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents TabControl2 As TabControl
+    Friend WithEvents TabPage_Idle As TabPage
+    Friend WithEvents TabPage_Hovered As TabPage
+    Friend WithEvents TabPage_Pressed As TabPage
+    Friend WithEvents Panel20 As Panel
+    Friend WithEvents Label26 As Label
+    Friend WithEvents NumericUpDown_Hovered_DefaultHeight As NumericUpDown
+    Friend WithEvents ShapeContainer28 As ShapeContainer
+    Friend WithEvents RectangleShape27 As RectangleShape
+    Friend WithEvents Panel21 As Panel
+    Friend WithEvents Label27 As Label
+    Friend WithEvents NumericUpDown_Hovered_DefaultWidth As NumericUpDown
+    Friend WithEvents ShapeContainer29 As ShapeContainer
+    Friend WithEvents RectangleShape28 As RectangleShape
+    Friend WithEvents Panel_Button_Hovered As Panel
+    Friend WithEvents Button_Button_Hovered_Image As Button
+    Friend WithEvents Label28 As Label
+    Friend WithEvents TextBox_Button_Hovered_Image As TextBox
+    Friend WithEvents ShapeContainer30 As ShapeContainer
+    Friend WithEvents RectangleShape29 As RectangleShape
+    Friend WithEvents Panel26 As Panel
+    Friend WithEvents Label32 As Label
+    Friend WithEvents NumericUpDown_Hovered_RightMargin As NumericUpDown
+    Friend WithEvents ShapeContainer34 As ShapeContainer
+    Friend WithEvents RectangleShape33 As RectangleShape
+    Friend WithEvents Panel23 As Panel
+    Friend WithEvents Label29 As Label
+    Friend WithEvents NumericUpDown_Hovered_BottomMargin As NumericUpDown
+    Friend WithEvents ShapeContainer31 As ShapeContainer
+    Friend WithEvents RectangleShape30 As RectangleShape
+    Friend WithEvents Panel25 As Panel
+    Friend WithEvents Label31 As Label
+    Friend WithEvents NumericUpDown_Hovered_LeftMargin As NumericUpDown
+    Friend WithEvents ShapeContainer33 As ShapeContainer
+    Friend WithEvents RectangleShape32 As RectangleShape
+    Friend WithEvents Panel24 As Panel
+    Friend WithEvents Label30 As Label
+    Friend WithEvents NumericUpDown_Hovered_TopMargin As NumericUpDown
+    Friend WithEvents ShapeContainer32 As ShapeContainer
+    Friend WithEvents RectangleShape31 As RectangleShape
+    Friend WithEvents Panel27 As Panel
+    Friend WithEvents Label33 As Label
+    Friend WithEvents NumericUpDown_Pressed_DefaultHeight As NumericUpDown
+    Friend WithEvents ShapeContainer35 As ShapeContainer
+    Friend WithEvents RectangleShape34 As RectangleShape
+    Friend WithEvents Panel28 As Panel
+    Friend WithEvents Label34 As Label
+    Friend WithEvents NumericUpDown_Pressed_DefaultWidth As NumericUpDown
+    Friend WithEvents ShapeContainer36 As ShapeContainer
+    Friend WithEvents RectangleShape35 As RectangleShape
+    Friend WithEvents Panel_Button_Pressed As Panel
+    Friend WithEvents Button_Button_Pressed_Image As Button
+    Friend WithEvents Label42 As Label
+    Friend WithEvents TextBox_Button_Pressed_Image As TextBox
+    Friend WithEvents ShapeContainer44 As ShapeContainer
+    Friend WithEvents RectangleShape43 As RectangleShape
+    Friend WithEvents Panel41 As Panel
+    Friend WithEvents Label46 As Label
+    Friend WithEvents NumericUpDown_Pressed_RightMargin As NumericUpDown
+    Friend WithEvents ShapeContainer48 As ShapeContainer
+    Friend WithEvents RectangleShape47 As RectangleShape
+    Friend WithEvents Panel38 As Panel
+    Friend WithEvents Label43 As Label
+    Friend WithEvents NumericUpDown_Pressed_BottomMargin As NumericUpDown
+    Friend WithEvents ShapeContainer45 As ShapeContainer
+    Friend WithEvents RectangleShape44 As RectangleShape
+    Friend WithEvents Panel40 As Panel
+    Friend WithEvents Label45 As Label
+    Friend WithEvents NumericUpDown_Pressed_LeftMargin As NumericUpDown
+    Friend WithEvents ShapeContainer47 As ShapeContainer
+    Friend WithEvents RectangleShape46 As RectangleShape
+    Friend WithEvents Panel39 As Panel
+    Friend WithEvents Label44 As Label
+    Friend WithEvents NumericUpDown_Pressed_TopMargin As NumericUpDown
+    Friend WithEvents ShapeContainer46 As ShapeContainer
+    Friend WithEvents RectangleShape45 As RectangleShape
+    Friend WithEvents OpenFileDialog_FNT_XML As OpenFileDialog
+    Friend WithEvents Label48 As Label
+    Friend WithEvents Button_LabelColor As Button
+    Friend WithEvents Panel2 As Panel
+    Friend WithEvents Panel22 As Panel
+    Friend WithEvents Label47 As Label
+    Friend WithEvents NumericUpDown_LabelFontSize As NumericUpDown
+    Friend WithEvents ShapeContainer49 As ShapeContainer
+    Friend WithEvents RectangleShape48 As RectangleShape
 End Class

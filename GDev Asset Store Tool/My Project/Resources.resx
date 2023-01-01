@@ -402,4 +402,116 @@
       "customization": []
 }</value>
   </data>
+  <data name="button_template" xml:space="preserve">
+    <value>{
+  "id": "",
+  "name": "",
+  "authors": [
+    ""
+  ],
+  "license": "",
+  "shortDescription": "",
+  "description": "",
+  "previewImageUrls": [],
+  "tags": [],
+  "objectAssets": [
+    {
+      "object": {
+        "name": "",
+        "tags": "",
+        "type": "PanelSpriteButton::PanelSpriteButton",
+        "variables": [],
+        "effects": [],
+        "behaviors": [],
+        "content": {
+          "LeftPadding": 0,
+          "RightPadding": 0,
+          "PressedLabelOffsetY": 0,
+          "BottomPadding": 0,
+          "TopPadding": 0
+        },
+        "childrenContent": {
+          "Hovered": {
+            "bottomMargin": 0,
+            "height": 0,
+            "leftMargin": 0,
+            "rightMargin": 0,
+            "texture": "",
+            "tiled": true,
+            "topMargin": 0,
+            "width": 0
+          },
+          "Idle": {
+            "bottomMargin": 0,
+            "height": 0,
+            "leftMargin": 0,
+            "rightMargin": 0,
+            "texture": "",
+            "tiled": true,
+            "topMargin": 0,
+            "width": 0
+          },
+          "Label": {
+            "bold": false,
+            "italic": false,
+            "smoothed": true,
+            "underlined": false,
+            "string": "Button",
+            "font": "",
+            "textAlignment": "",
+            "characterSize": 60,
+            "color": {
+              "b": 99,
+              "g": 69,
+              "r": 28
+            }
+          },
+          "Pressed": {
+            "bottomMargin": 0,
+            "height": 0,
+            "leftMargin": 0,
+            "rightMargin": 0,
+            "texture": "",
+            "tiled": true,
+            "topMargin": 0,
+            "width": 0
+          }
+        }
+      },
+      "resources": [
+        {
+          "alwaysLoaded": false,
+          "file": "",
+          "kind": "image",
+          "metadata": "",
+          "name": "",
+          "smoothed": true,
+          "userAdded": true
+        },
+        {
+          "alwaysLoaded": false,
+          "file": "",
+          "kind": "image",
+          "metadata": "",
+          "name": "",
+          "smoothed": true,
+          "userAdded": true
+        },
+        {
+          "alwaysLoaded": false,
+          "file": "",
+          "kind": "image",
+          "metadata": "",
+          "name": "",
+          "smoothed": true,
+          "userAdded": true
+        }
+      ],
+      "customization": []
+    }
+  ],
+  "gdevelopVersion": "",
+  "version": ""
+}</value>
+  </data>
 </root>

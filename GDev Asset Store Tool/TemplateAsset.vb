@@ -1,4 +1,5 @@
-﻿Imports FastColoredTextBoxNS
+﻿Imports System.Security.Policy
+Imports FastColoredTextBoxNS
 
 Public Class TemplateAsset
     ReadOnly SupportedIamgeFormats() As String = {".png", ".bmp", ".jpeg", ".jpg", ".tiff", ".tif"}
@@ -9,47 +10,19 @@ Public Class TemplateAsset
     Private boo As New TextStyle(Brushes.MediumSlateBlue, Nothing, FontStyle.Regular)
     Private num As New TextStyle(Brushes.DeepPink, Nothing, FontStyle.Regular)
     Private nul As New TextStyle(Brushes.DarkGray, Nothing, FontStyle.Regular)
-
     'TemplateAsset - Load
     Private Sub TemplateAsset_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         TabControl1.DrawMode = TabDrawMode.OwnerDrawFixed
         Me.TabControl1.Region = New Region(New RectangleF(Me.TabPage_BitmapText.Left, Me.TabPage_BitmapText.Top, Me.TabPage_BitmapText.Width, Me.TabPage_BitmapText.Height))
+        TabControl2.DrawMode = TabDrawMode.OwnerDrawFixed
+        Me.TabControl2.Region = New Region(New RectangleF(Me.TabPage_Idle.Left, Me.TabPage_Idle.Top, Me.TabPage_Idle.Width, Me.TabPage_Idle.Height))
+
         ComboBox_TilemapDisplayMode.SelectedIndex = 0
         MenuStrip1.Renderer = New ToolStripProfessionalRenderer(New ColorTable())
+        MenuStrip2.Renderer = New ToolStripProfessionalRenderer(New ColorTable())
         ContextMenuStrip_PreviewImage.Renderer = New ToolStripProfessionalRenderer(New ColorTable())
         ContextMenuStrip_AssetJSON.Renderer = New ToolStripProfessionalRenderer(New ColorTable())
         FastColoredTextBox_AssetJson.AutoIndentCharsPatterns = "^\\s*[\\w\\.]+(\\s\\w+)?\\s*(?<range>=)\\s*(?<range>[^;=]+);\r\n^\\s*(case|default)\\s*[^:]*" + "(?<range>:)\\s*(?<range>[^;]+);"
-    End Sub
-    'BitmapText (ToolStripMenuItem) - Click
-    Private Sub BitmapTextToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles BitmapTextToolStripMenuItem.Click
-        TabControl1.SelectedTab = TabPage_BitmapText
-        ResetToolStripMenuItemBackGroundColors()
-        BitmapTextToolStripMenuItem.BackColor = Color.RoyalBlue
-    End Sub
-    'Light (ToolStripMenuItem) - Click
-    Private Sub LightToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LightToolStripMenuItem.Click
-        TabControl1.SelectedTab = TabPage_Light
-        ResetToolStripMenuItemBackGroundColors()
-        LightToolStripMenuItem.BackColor = Color.RoyalBlue
-    End Sub
-    'Tilemap (ToolStripMenuItem) - Click
-    Private Sub TilemapToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TilemapToolStripMenuItem.Click
-        TabControl1.SelectedTab = TabPage_Tilemap
-        ResetToolStripMenuItemBackGroundColors()
-        TilemapToolStripMenuItem.BackColor = Color.RoyalBlue
-    End Sub
-    'PanelSprite (ToolStripMenuItem) - Click
-    Private Sub PanelSpriteToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PanelSpriteToolStripMenuItem.Click
-        TabControl1.SelectedTab = TabPage_PanelSprite
-        ResetToolStripMenuItemBackGroundColors()
-        PanelSpriteToolStripMenuItem.BackColor = Color.RoyalBlue
-    End Sub
-    'ResetToolStripMenuItemBackGroundColors
-    Private Sub ResetToolStripMenuItemBackGroundColors()
-        BitmapTextToolStripMenuItem.BackColor = Color.FromArgb(28, 30, 34)
-        LightToolStripMenuItem.BackColor = Color.FromArgb(28, 30, 34)
-        TilemapToolStripMenuItem.BackColor = Color.FromArgb(28, 30, 34)
-        PanelSpriteToolStripMenuItem.BackColor = Color.FromArgb(28, 30, 34)
     End Sub
     'Button_GenerateAsset - Click
     Private Sub Button_GenerateAsset_Click(sender As Object, e As EventArgs) Handles Button_GenerateAsset.Click
@@ -184,9 +157,9 @@ Public Class TemplateAsset
                 End If
 
                 FastColoredTextBox_AssetJson.Text = jsonFile.ToString
-                Else
+            Else
 
-                    If TextBox_Name.Text.Length = 0 Then
+                If TextBox_Name.Text.Length = 0 Then
                     ErrorProvider1.SetError(TextBox_Name, "Required")
                 End If
 
@@ -200,6 +173,112 @@ Public Class TemplateAsset
 
                 If Not TextBox_TilemapAtlasImage.Text.EndsWith(".png") Then
                     ErrorProvider1.SetError(TextBox_TilemapAtlasImage, "Blank or does not end with .png")
+                End If
+
+                MsgBox("Please fill out all fields.", MsgBoxStyle.Information)
+            End If
+
+        ElseIf TabControl1.SelectedTab Is TabPage_Button Then
+
+            If TextBox_Button_Hovered_Image.Text.Length > 0 And TextBox_Button_Hovered_Image.Text.EndsWith(".png") _
+                And TextBox_Button_Idle_Image.Text.Length > 0 And TextBox_Button_Idle_Image.Text.EndsWith(".png") _
+                And TextBox_Button_Pressed_Image.Text.Length > 0 And TextBox_Button_Pressed_Image.Text.EndsWith(".png") Then
+                FastColoredTextBox_AssetJson.Clear()
+                ErrorProvider1.SetError(FastColoredTextBox_AssetJson, Nothing)
+
+                Dim jsonFile As JObject = JObject.Parse(My.Resources.button_template)
+                jsonFile.Item("description") = TextBox_Description.Text
+                jsonFile.Item("objectAssets")(0)("object")("name") = TextBox_Name.Text
+                'content
+                jsonFile.Item("objectAssets")(0)("object")("content")("LeftPadding") = NumericUpDown_LeftPadding.Value
+                jsonFile.Item("objectAssets")(0)("object")("content")("RightPadding") = NumericUpDown_RightPadding.Value
+                jsonFile.Item("objectAssets")(0)("object")("content")("PressedLabelOffsetY") = NumericUpDown_LableOffset_Y.Value
+                jsonFile.Item("objectAssets")(0)("object")("content")("BottomPadding") = NumericUpDown_BottomPadding.Value
+                jsonFile.Item("objectAssets")(0)("object")("content")("TopPadding") = NumericUpDown_TopPadding.Value
+                'Hovered
+                jsonFile.Item("objectAssets")(0)("object")("childrenContent")("Hovered")("bottomMargin") = CInt(NumericUpDown_Hovered_BottomMargin.Value)
+                jsonFile.Item("objectAssets")(0)("object")("childrenContent")("Hovered")("height") = CInt(NumericUpDown_Hovered_DefaultHeight.Value)
+                jsonFile.Item("objectAssets")(0)("object")("childrenContent")("Hovered")("leftMargin") = CInt(NumericUpDown_Hovered_LeftMargin.Value)
+                jsonFile.Item("objectAssets")(0)("object")("childrenContent")("Hovered")("rightMargin") = CInt(NumericUpDown_Hovered_RightMargin.Value)
+                jsonFile.Item("objectAssets")(0)("object")("childrenContent")("Hovered")("texture") = TextBox_Button_Hovered_Image.Text
+                jsonFile.Item("objectAssets")(0)("object")("childrenContent")("Hovered")("topMargin") = CInt(NumericUpDown_Hovered_TopMargin.Value)
+                jsonFile.Item("objectAssets")(0)("object")("childrenContent")("Hovered")("width") = CInt(NumericUpDown_Hovered_DefaultWidth.Value)
+                'Idle
+                jsonFile.Item("objectAssets")(0)("object")("childrenContent")("Idle")("bottomMargin") = CInt(NumericUpDown_Idle_BottomMargin.Value)
+                jsonFile.Item("objectAssets")(0)("object")("childrenContent")("Idle")("height") = CInt(NumericUpDown_Idle_DefaultHeight.Value)
+                jsonFile.Item("objectAssets")(0)("object")("childrenContent")("Idle")("leftMargin") = CInt(NumericUpDown_Idle_LeftMargin.Value)
+                jsonFile.Item("objectAssets")(0)("object")("childrenContent")("Idle")("rightMargin") = CInt(NumericUpDown_Idle_RightMargin.Value)
+                jsonFile.Item("objectAssets")(0)("object")("childrenContent")("Idle")("texture") = TextBox_Button_Idle_Image.Text
+                jsonFile.Item("objectAssets")(0)("object")("childrenContent")("Idle")("topMargin") = CInt(NumericUpDown_Idle_TopMargin.Value)
+                jsonFile.Item("objectAssets")(0)("object")("childrenContent")("Idle")("width") = CInt(NumericUpDown_Idle_DefaultWidth.Value)
+                'Label
+                jsonFile.Item("objectAssets")(0)("object")("childrenContent")("Label")("characterSize") = CInt(NumericUpDown_LabelFontSize.Value)
+                jsonFile.Item("objectAssets")(0)("object")("childrenContent")("Label")("color")("b") = Button_LabelColor.BackColor.B.ToString
+                jsonFile.Item("objectAssets")(0)("object")("childrenContent")("Label")("color")("g") = Button_LabelColor.BackColor.G.ToString
+                jsonFile.Item("objectAssets")(0)("object")("childrenContent")("Label")("color")("r") = Button_LabelColor.BackColor.R.ToString
+                'Pressed
+                jsonFile.Item("objectAssets")(0)("object")("childrenContent")("Pressed")("bottomMargin") = CInt(NumericUpDown_Pressed_BottomMargin.Value)
+                jsonFile.Item("objectAssets")(0)("object")("childrenContent")("Pressed")("height") = CInt(NumericUpDown_Pressed_DefaultHeight.Value)
+                jsonFile.Item("objectAssets")(0)("object")("childrenContent")("Pressed")("leftMargin") = CInt(NumericUpDown_Pressed_LeftMargin.Value)
+                jsonFile.Item("objectAssets")(0)("object")("childrenContent")("Pressed")("rightMargin") = CInt(NumericUpDown_Pressed_RightMargin.Value)
+                jsonFile.Item("objectAssets")(0)("object")("childrenContent")("Pressed")("texture") = TextBox_Button_Pressed_Image.Text
+                jsonFile.Item("objectAssets")(0)("object")("childrenContent")("Pressed")("topMargin") = CInt(NumericUpDown_Pressed_TopMargin.Value)
+                jsonFile.Item("objectAssets")(0)("object")("childrenContent")("Pressed")("width") = CInt(NumericUpDown_Pressed_DefaultWidth.Value)
+
+                If Not TextBox_Button_Hovered_Image.Text = TextBox_Button_Idle_Image.Text And Not TextBox_Button_Hovered_Image.Text = TextBox_Button_Pressed_Image.Text Then
+                    jsonFile.Item("objectAssets")(0)("resources")(0)("file") = TextBox_Button_Hovered_Image.Text
+                    jsonFile.Item("objectAssets")(0)("resources")(0)("name") = TextBox_Button_Hovered_Image.Text
+                Else
+                    jsonFile.Item("objectAssets")(0)("resources")(0).Remove()
+                    End If
+
+                If Not TextBox_Button_Idle_Image.Text = TextBox_Button_Pressed_Image.Text And Not TextBox_Button_Idle_Image.Text = TextBox_Button_Hovered_Image.Text Then
+                    jsonFile.Item("objectAssets")(0)("resources")(1)("file") = TextBox_Button_Idle_Image.Text
+                    jsonFile.Item("objectAssets")(0)("resources")(1)("name") = TextBox_Button_Idle_Image.Text
+                Else
+                    jsonFile.Item("objectAssets")(0)("resources")(1).Remove()
+                End If
+
+                If Not TextBox_Button_Pressed_Image.Text = TextBox_Button_Idle_Image.Text And Not TextBox_Button_Pressed_Image.Text = TextBox_Button_Hovered_Image.Text Then
+                    jsonFile.Item("objectAssets")(0)("resources")(2)("file") = TextBox_Button_Pressed_Image.Text
+                    jsonFile.Item("objectAssets")(0)("resources")(2)("name") = TextBox_Button_Pressed_Image.Text
+                Else
+                    jsonFile.Item("objectAssets")(0)("resources")(2).Remove()
+                End If
+
+                FastColoredTextBox_AssetJson.Text = jsonFile.ToString
+                Else
+
+                    If TextBox_Name.Text.Length = 0 Then
+                    ErrorProvider1.SetError(TextBox_Name, "Required")
+                End If
+
+                If TextBox_Description.Text.Length = 0 Then
+                    ErrorProvider1.SetError(TextBox_Description, "Required")
+                End If
+
+                If TextBox_Button_Hovered_Image.Text.Length = 0 Then
+                    ErrorProvider1.SetError(TextBox_Button_Hovered_Image, "Required")
+                End If
+
+                If TextBox_Button_Idle_Image.Text.Length = 0 Then
+                    ErrorProvider1.SetError(TextBox_Button_Idle_Image, "Required")
+                End If
+
+                If TextBox_Button_Pressed_Image.Text.Length = 0 Then
+                    ErrorProvider1.SetError(TextBox_Button_Pressed_Image, "Required")
+                End If
+
+                If Not TextBox_Button_Hovered_Image.Text.EndsWith(".png") Then
+                    ErrorProvider1.SetError(TextBox_Button_Hovered_Image, "Blank or does not end with .png")
+                End If
+
+                If Not TextBox_Button_Idle_Image.Text.EndsWith(".png") Then
+                    ErrorProvider1.SetError(TextBox_Button_Idle_Image, "Blank or does not end with .png")
+                End If
+
+                If Not TextBox_Button_Pressed_Image.Text.EndsWith(".png") Then
+                    ErrorProvider1.SetError(TextBox_Button_Pressed_Image, "Blank or does not end with .png")
                 End If
 
                 MsgBox("Please fill out all fields.", MsgBoxStyle.Information)
@@ -273,6 +352,87 @@ Public Class TemplateAsset
             MsgBox("Please fill out all fields.", MsgBoxStyle.Information)
         End If
     End Sub
+    'ContextMenuStrip_PreviewImage - Opening
+    Private Sub ContextMenuStrip_PreviewImage_Opening(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles ContextMenuStrip_PreviewImage.Opening
+        If PixelBox_PreviewImage.Image IsNot Nothing Then
+            SaveToolStripMenuItem.Enabled = True
+        Else
+            SaveToolStripMenuItem.Enabled = False
+        End If
+    End Sub
+    'Save (ToolStripMenuItem) - Click
+    Private Sub SaveToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SaveToolStripMenuItem.Click
+        If SaveFileDialog_PreviewImage.ShowDialog = DialogResult.OK Then
+            If aspectRatio_IsAlready_1_1 = False Then
+                Dim bmp = New Bitmap(ForceImageAspectRatio_1_1_Size.Width, ForceImageAspectRatio_1_1_Size.Height)
+                Using g As Graphics = Graphics.FromImage(bmp)
+                    'draw the original at the new size on memory bitmap
+                    g.DrawImage(PixelBox_PreviewImage.Image, 0, 0, bmp.Width, bmp.Height)
+                    'save the temp resized bitmamp
+                    bmp.Save(SaveFileDialog_PreviewImage.FileName, Imaging.ImageFormat.Png)
+                End Using
+            Else
+                PixelBox_PreviewImage.Image.Save(SaveFileDialog_PreviewImage.FileName, Imaging.ImageFormat.Png)
+            End If
+        End If
+    End Sub
+    '
+    'TabControl1 - ToolStripMenuItems
+    '
+    'BitmapText (ToolStripMenuItem) - Click
+    Private Sub BitmapTextToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles BitmapTextToolStripMenuItem.Click
+        TabControl1.SelectedTab = TabPage_BitmapText
+        ResetToolStripMenuItemBackGroundColors()
+        BitmapTextToolStripMenuItem.BackColor = Color.RoyalBlue
+    End Sub
+    'Light (ToolStripMenuItem) - Click
+    Private Sub LightToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LightToolStripMenuItem.Click
+        TabControl1.SelectedTab = TabPage_Light
+        ResetToolStripMenuItemBackGroundColors()
+        LightToolStripMenuItem.BackColor = Color.RoyalBlue
+    End Sub
+    'Button (ToolStripMenuItem) - Click
+    Private Sub ButtonToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ButtonToolStripMenuItem.Click
+        TabControl1.SelectedTab = TabPage_Button
+        ResetToolStripMenuItemBackGroundColors()
+        ButtonToolStripMenuItem.BackColor = Color.RoyalBlue
+    End Sub
+    'Tilemap (ToolStripMenuItem) - Click
+    Private Sub TilemapToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TilemapToolStripMenuItem.Click
+        TabControl1.SelectedTab = TabPage_Tilemap
+        ResetToolStripMenuItemBackGroundColors()
+        TilemapToolStripMenuItem.BackColor = Color.RoyalBlue
+    End Sub
+    'PanelSprite (ToolStripMenuItem) - Click
+    Private Sub PanelSpriteToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PanelSpriteToolStripMenuItem.Click
+        TabControl1.SelectedTab = TabPage_PanelSprite
+        ResetToolStripMenuItemBackGroundColors()
+        PanelSpriteToolStripMenuItem.BackColor = Color.RoyalBlue
+    End Sub
+    '
+    'TabControl2 - ToolStripMenuItems
+    '
+    'Idle (ToolStripMenuItem - Click
+    Private Sub IdleToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles IdleToolStripMenuItem.Click
+        TabControl2.SelectedTab = TabPage_Idle
+        ResetToolStripMenuItemBackGroundColors_Button()
+        IdleToolStripMenuItem.BackColor = Color.RoyalBlue
+    End Sub
+    'Hovered (ToolStripMenuItem) - Click
+    Private Sub HoveredToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles HoveredToolStripMenuItem.Click
+        TabControl2.SelectedTab = TabPage_Hovered
+        ResetToolStripMenuItemBackGroundColors_Button()
+        HoveredToolStripMenuItem.BackColor = Color.RoyalBlue
+    End Sub
+    'Pressed (ToolStripMenuItem) - Click
+    Private Sub PressedToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PressedToolStripMenuItem.Click
+        TabControl2.SelectedTab = TabPage_Pressed
+        ResetToolStripMenuItemBackGroundColors_Button()
+        PressedToolStripMenuItem.BackColor = Color.RoyalBlue
+    End Sub
+    '
+    'Drag & Drop
+    '
     'Panel_PreviewImage - DragDrop
     Private Sub Panel_PreviewImage_DragDrop(sender As Object, e As DragEventArgs) Handles Panel_PreviewImage.DragDrop
         Dim files() As String = CType(e.Data.GetData(DataFormats.FileDrop), String())
@@ -311,39 +471,6 @@ Public Class TemplateAsset
             End If
         End If
     End Sub
-    'ContextMenuStrip_PreviewImage - Opening
-    Private Sub ContextMenuStrip_PreviewImage_Opening(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles ContextMenuStrip_PreviewImage.Opening
-        If PixelBox_PreviewImage.Image IsNot Nothing Then
-            SaveToolStripMenuItem.Enabled = True
-        Else
-            SaveToolStripMenuItem.Enabled = False
-        End If
-    End Sub
-    'Save (ToolStripMenuItem) - Click
-    Private Sub SaveToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SaveToolStripMenuItem.Click
-        If SaveFileDialog_PreviewImage.ShowDialog = DialogResult.OK Then
-            If aspectRatio_IsAlready_1_1 = False Then
-                Dim bmp = New Bitmap(ForceImageAspectRatio_1_1_Size.Width, ForceImageAspectRatio_1_1_Size.Height)
-                Using g As Graphics = Graphics.FromImage(bmp)
-                    'draw the original at the new size on memory bitmap
-                    g.DrawImage(PixelBox_PreviewImage.Image, 0, 0, bmp.Width, bmp.Height)
-                    'save the temp resized bitmamp
-                    bmp.Save(SaveFileDialog_PreviewImage.FileName, Imaging.ImageFormat.Png)
-                End Using
-            Else
-                PixelBox_PreviewImage.Image.Save(SaveFileDialog_PreviewImage.FileName, Imaging.ImageFormat.Png)
-            End If
-        End If
-    End Sub
-    'Button_LightColor - Click
-    Private Sub Button_LightColor_Click(sender As Object, e As EventArgs) Handles Button_LightColor.Click
-        If ColorDialog1.ShowDialog = DialogResult.OK Then
-            Button_LightColor.BackColor = ColorDialog1.Color
-        End If
-    End Sub
-    '
-    'Drag & Drop
-    '
     'Panel_PanelSpriteIamge - DragDrop
     Private Sub Panel_PanelSpriteIamge_DragDrop(sender As Object, e As DragEventArgs) Handles Panel_PanelSpriteIamge.DragDrop
         Dim files() As String = CType(e.Data.GetData(DataFormats.FileDrop), String())
@@ -491,6 +618,87 @@ Public Class TemplateAsset
             e.Effect = DragDropEffects.None
         End If
     End Sub
+    'Panel_Button_Idle - DragDrop
+    Private Sub Panel_Button_Idle_DragDrop(sender As Object, e As DragEventArgs) Handles Panel_Button_Idle.DragDrop
+        Dim files() As String = CType(e.Data.GetData(DataFormats.FileDrop), String())
+        If files.Length <> 0 Then
+            Try
+                Dim tempImage As Image = SafeImageFromFile(files(0))
+                TextBox_Button_Idle_Image.Text = Path.GetFileName(files(0))
+                NumericUpDown_Idle_TopMargin.Value = CDec(tempImage.Height / 3) 'TopMargin
+                NumericUpDown_Idle_BottomMargin.Value = CDec(tempImage.Height / 3) 'BottomMargin
+                NumericUpDown_Idle_LeftMargin.Value = CDec(tempImage.Width / 3) 'LeftMargin
+                NumericUpDown_Idle_RightMargin.Value = CDec(tempImage.Width / 3) 'RightMargin
+                NumericUpDown_Idle_DefaultHeight.Value = tempImage.Height 'DefaultHeight
+                NumericUpDown_Idle_DefaultWidth.Value = tempImage.Width 'DefaultWidth
+            Catch ex As Exception
+                MsgBox("Problem opening file.", MsgBoxStyle.Critical)
+            End Try
+        End If
+    End Sub
+    'Panel_Button_Idle - DragEnter
+    Private Sub Panel_Button_Idle_DragEnter(sender As Object, e As DragEventArgs) Handles Panel_Button_Idle.DragEnter
+        Dim files() As String = CType(e.Data.GetData(DataFormats.FileDrop), String())
+        If e.Data.GetDataPresent(DataFormats.FileDrop) And files(0).EndsWith(".png") Then
+            e.Effect = DragDropEffects.Copy
+        Else
+            e.Effect = DragDropEffects.None
+        End If
+    End Sub
+    'Panel_Button_Hovered - DragDrop
+    Private Sub Panel_Button_Hovered_DragDrop(sender As Object, e As DragEventArgs) Handles Panel_Button_Hovered.DragDrop
+        Dim files() As String = CType(e.Data.GetData(DataFormats.FileDrop), String())
+        If files.Length <> 0 Then
+            Try
+                Dim tempImage As Image = SafeImageFromFile(files(0))
+                TextBox_Button_Hovered_Image.Text = Path.GetFileName(files(0))
+                NumericUpDown_Hovered_TopMargin.Value = CDec(tempImage.Height / 3) 'TopMargin
+                NumericUpDown_Hovered_BottomMargin.Value = CDec(tempImage.Height / 3) 'BottomMargin
+                NumericUpDown_Hovered_LeftMargin.Value = CDec(tempImage.Width / 3) 'LeftMargin
+                NumericUpDown_Hovered_RightMargin.Value = CDec(tempImage.Width / 3) 'RightMargin
+                NumericUpDown_Hovered_DefaultHeight.Value = tempImage.Height 'DefaultHeight
+                NumericUpDown_Hovered_DefaultWidth.Value = tempImage.Width 'DefaultWidth
+            Catch ex As Exception
+                MsgBox("Problem opening file.", MsgBoxStyle.Critical)
+            End Try
+        End If
+    End Sub
+    'Panel_Button_Hovered - DragEnter
+    Private Sub Panel_Button_Hovered_DragEnter(sender As Object, e As DragEventArgs) Handles Panel_Button_Hovered.DragEnter
+        Dim files() As String = CType(e.Data.GetData(DataFormats.FileDrop), String())
+        If e.Data.GetDataPresent(DataFormats.FileDrop) And files(0).EndsWith(".png") Then
+            e.Effect = DragDropEffects.Copy
+        Else
+            e.Effect = DragDropEffects.None
+        End If
+    End Sub
+    'Panel_Button_Pressed - DragDrop
+    Private Sub Panel_Button_Pressed_DragDrop(sender As Object, e As DragEventArgs) Handles Panel_Button_Pressed.DragDrop
+        Dim files() As String = CType(e.Data.GetData(DataFormats.FileDrop), String())
+        If files.Length <> 0 Then
+            Try
+                Dim tempImage As Image = SafeImageFromFile(files(0))
+                TextBox_Button_Pressed_Image.Text = Path.GetFileName(files(0))
+                NumericUpDown_Pressed_TopMargin.Value = CDec(tempImage.Height / 3) 'TopMargin
+                NumericUpDown_Pressed_BottomMargin.Value = CDec(tempImage.Height / 3) 'BottomMargin
+                NumericUpDown_Pressed_LeftMargin.Value = CDec(tempImage.Width / 3) 'LeftMargin
+                NumericUpDown_Pressed_RightMargin.Value = CDec(tempImage.Width / 3) 'RightMargin
+                NumericUpDown_Pressed_DefaultHeight.Value = tempImage.Height 'DefaultHeight
+                NumericUpDown_Pressed_DefaultWidth.Value = tempImage.Width 'DefaultWidth
+            Catch ex As Exception
+                MsgBox("Problem opening file.", MsgBoxStyle.Critical)
+            End Try
+        End If
+    End Sub
+    'Panel_Button_Pressed - DragEnter
+    Private Sub Panel_Button_Pressed_DragEnter(sender As Object, e As DragEventArgs) Handles Panel_Button_Pressed.DragEnter
+        Dim files() As String = CType(e.Data.GetData(DataFormats.FileDrop), String())
+        If e.Data.GetDataPresent(DataFormats.FileDrop) And files(0).EndsWith(".png") Then
+            e.Effect = DragDropEffects.Copy
+        Else
+            e.Effect = DragDropEffects.None
+        End If
+    End Sub
     'TabControl1 - Selected
     Private Sub TabControl1_Selected(sender As Object, e As TabControlEventArgs) Handles TabControl1.Selected
         ErrorProvider1.Clear()
@@ -566,22 +774,6 @@ Public Class TemplateAsset
             ErrorProvider1.SetError(TextBox_PanelSpriteIamge, "Blank or does not end with .png")
         End If
     End Sub
-    'FastColoredTextBox_AssetJson - TextChanging
-    Private Sub FastColoredTextBox_AssetJson_TextChanging(sender As Object, e As TextChangingEventArgs) Handles FastColoredTextBox_AssetJson.TextChanging
-        'If FastColoredTextBox_AssetJson.Text.Length = 0 Then
-        'ErrorProvider1.SetError(FastColoredTextBox_AssetJson, "Required")
-        'Else
-        'ErrorProvider1.SetError(FastColoredTextBox_AssetJson, Nothing)
-        'End If
-    End Sub
-    'SafeImageFromFile()
-    Public Shared Function SafeImageFromFile(path As String) As Image
-        Dim bytes = File.ReadAllBytes(path)
-        Using ms As New MemoryStream(bytes)
-            Dim img = Image.FromStream(ms)
-            Return img
-        End Using
-    End Function
     'FastColoredTextBox_AssetJson - TextChanged
     Private Sub FastColoredTextBox_AssetJson_TextChanged(sender As Object, e As TextChangedEventArgs) Handles FastColoredTextBox_AssetJson.TextChanged
         e.ChangedRange.ClearFoldingMarkers()
@@ -604,6 +796,73 @@ Public Class TemplateAsset
             End If
         Next
     End Sub
+    'TextBox_Button_Hovered_Image - TextChanged
+    Private Sub TextBox_Button_Hovered_Image_TextChanged(sender As Object, e As EventArgs) Handles TextBox_Button_Hovered_Image.TextChanged
+        If TextBox_Button_Hovered_Image.Text.EndsWith(".png") Then
+            ErrorProvider1.SetError(TextBox_Button_Hovered_Image, Nothing)
+        Else
+            ErrorProvider1.SetError(TextBox_Button_Hovered_Image, "Blank or does not end with .png")
+        End If
+    End Sub
+    'TextBox_Button_Idle_Image - TextChanged
+    Private Sub TextBox_Button_Idle_Image_TextChanged(sender As Object, e As EventArgs) Handles TextBox_Button_Idle_Image.TextChanged
+        If TextBox_Button_Idle_Image.Text.EndsWith(".png") Then
+            ErrorProvider1.SetError(TextBox_Button_Idle_Image, Nothing)
+        Else
+            ErrorProvider1.SetError(TextBox_Button_Idle_Image, "Blank or does not end with .png")
+        End If
+    End Sub
+    'TextBox_Button_Pressed_Image - TextChanged
+    Private Sub TextBox_Button_Pressed_Image_TextChanged(sender As Object, e As EventArgs) Handles TextBox_Button_Pressed_Image.TextChanged
+        If TextBox_Button_Pressed_Image.Text.EndsWith(".png") Then
+            ErrorProvider1.SetError(TextBox_Button_Pressed_Image, Nothing)
+        Else
+            ErrorProvider1.SetError(TextBox_Button_Pressed_Image, "Blank or does not end with .png")
+        End If
+    End Sub
+    '
+    'Functions & Subs
+    '
+    'SafeImageFromFile()
+    Public Shared Function SafeImageFromFile(path As String) As Image
+        Dim bytes = File.ReadAllBytes(path)
+        Using ms As New MemoryStream(bytes)
+            Dim img = Image.FromStream(ms)
+            Return img
+        End Using
+    End Function
+    'ResetToolStripMenuItemBackGroundColors_Button
+    Private Sub ResetToolStripMenuItemBackGroundColors_Button()
+        IdleToolStripMenuItem.BackColor = Color.FromArgb(28, 30, 34)
+        HoveredToolStripMenuItem.BackColor = Color.FromArgb(28, 30, 34)
+        PressedToolStripMenuItem.BackColor = Color.FromArgb(28, 30, 34)
+    End Sub
+    'ResetToolStripMenuItemBackGroundColors
+    Private Sub ResetToolStripMenuItemBackGroundColors()
+        BitmapTextToolStripMenuItem.BackColor = Color.FromArgb(28, 30, 34)
+        LightToolStripMenuItem.BackColor = Color.FromArgb(28, 30, 34)
+        TilemapToolStripMenuItem.BackColor = Color.FromArgb(28, 30, 34)
+        PanelSpriteToolStripMenuItem.BackColor = Color.FromArgb(28, 30, 34)
+        ButtonToolStripMenuItem.BackColor = Color.FromArgb(28, 30, 34)
+    End Sub
+    '
+    'ContextMenuStrip_AssetJSON & ToolStripMenuItems
+    '
+    'ContextMenuStrip_AssetJSON - Opening
+    Private Sub ContextMenuStrip_AssetJSON_Opening(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles ContextMenuStrip_AssetJSON.Opening
+        If Not FastColoredTextBox_AssetJson.SelectionLength = 0 Then
+            CutToolStripMenuItem.Enabled = True
+            CopyToolStripMenuItem.Enabled = True
+        Else
+            CutToolStripMenuItem.Enabled = False
+            CopyToolStripMenuItem.Enabled = False
+        End If
+        If Clipboard.ContainsText Then
+            PasteToolStripMenuItem.Enabled = True
+        Else
+            PasteToolStripMenuItem.Enabled = False
+        End If
+    End Sub
     'CutToolStripMenuItem - Click
     Private Sub CutToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles CutToolStripMenuItem.Click
         FastColoredTextBox_AssetJson.Cut()
@@ -620,19 +879,135 @@ Public Class TemplateAsset
     Private Sub ClearToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ClearToolStripMenuItem.Click
         FastColoredTextBox_AssetJson.Clear()
     End Sub
-    'ContextMenuStrip_AssetJSON - Opening
-    Private Sub ContextMenuStrip_AssetJSON_Opening(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles ContextMenuStrip_AssetJSON.Opening
-        If Not FastColoredTextBox_AssetJson.SelectionLength = 0 Then
-            CutToolStripMenuItem.Enabled = True
-            CopyToolStripMenuItem.Enabled = True
-        Else
-            CutToolStripMenuItem.Enabled = False
-            CopyToolStripMenuItem.Enabled = False
+    '
+    'PanelSprite - Buttons
+    '
+    'Button_PanelSpriteIamge - Click
+    Private Sub Button_PanelSpriteIamge_Click(sender As Object, e As EventArgs) Handles Button_PanelSpriteIamge.Click
+        If OpenFileDialog_Image.ShowDialog = DialogResult.OK Then
+            Try
+                Dim tempImage As Image = SafeImageFromFile(OpenFileDialog_Image.FileName)
+                TextBox_PanelSpriteIamge.Text = Path.GetFileName(OpenFileDialog_Image.FileName)
+                NumericUpDown_PSTopMargin.Value = CDec(tempImage.Height / 3)
+                NumericUpDown_PSBottomMargin.Value = CDec(tempImage.Height / 3)
+                NumericUpDown_PSLeftMargin.Value = CDec(tempImage.Width / 3)
+                NumericUpDown_PSRightMargin.Value = CDec(tempImage.Width / 3)
+                NumericUpDown_PSDefaultHeight.Value = tempImage.Height
+                NumericUpDown_DefaultWidth.Value = tempImage.Width
+            Catch ex As Exception
+                MsgBox("Problem opening file.", MsgBoxStyle.Critical)
+            End Try
         End If
-        If Clipboard.ContainsText Then
-            PasteToolStripMenuItem.Enabled = True
-        Else
-            PasteToolStripMenuItem.Enabled = False
+    End Sub
+    '
+    'Bitmap Font - Buttons
+    '
+    'Button_SelectFont - Click
+    Private Sub Button_SelectFont_Click(sender As Object, e As EventArgs) Handles Button_SelectBitmapFont.Click
+        If OpenFileDialog_FNT_XML.ShowDialog = DialogResult.OK Then
+            TextBox_BitmapFont.Text = Path.GetFileName(OpenFileDialog_FNT_XML.FileName)
+        End If
+    End Sub
+    'Button_SelectBitmapAtlasImage - Click
+    Private Sub Button_SelectBitmapAtlasImage_Click(sender As Object, e As EventArgs) Handles Button_SelectBitmapAtlasImage.Click
+        If OpenFileDialog_Image.ShowDialog = DialogResult.OK Then
+            TextBox_BitmapAtlasImage.Text = Path.GetFileName(OpenFileDialog_Image.FileName)
+        End If
+    End Sub
+    '
+    'Tilemap - Buttons
+    '
+    'Button_TilemapAtlasImage - Click
+    Private Sub Button_TilemapAtlasImage_Click(sender As Object, e As EventArgs) Handles Button_TilemapAtlasImage.Click
+        If OpenFileDialog_Image.ShowDialog = DialogResult.OK Then
+            TextBox_TilemapAtlasImage.Text = Path.GetFileName(OpenFileDialog_Image.FileName)
+        End If
+    End Sub
+    'Button_TilemapJSONFile - Click
+    Private Sub Button_TilemapJSONFile_Click(sender As Object, e As EventArgs) Handles Button_TilemapJSONFile.Click
+        If OpenFileDialog_JSON.ShowDialog = DialogResult.OK Then
+            TextBox_TilemapJSONFile.Text = Path.GetFileName(OpenFileDialog_JSON.FileName)
+        End If
+    End Sub
+    'Button_TilesetJSONFile - Click
+    Private Sub Button_TilesetJSONFile_Click(sender As Object, e As EventArgs) Handles Button_TilesetJSONFile.Click
+        If OpenFileDialog_JSON.ShowDialog = DialogResult.OK Then
+            TextBox_TilesetJSONFile.Text = Path.GetFileName(OpenFileDialog_JSON.FileName)
+        End If
+    End Sub
+    '
+    'Light - Buttons
+    '
+    'Button_LightTexture - Click
+    Private Sub Button_LightTexture_Click(sender As Object, e As EventArgs) Handles Button_LightTexture.Click
+        If OpenFileDialog_Image.ShowDialog = DialogResult.OK Then
+            TextBox_LightTexture.Text = Path.GetFileName(OpenFileDialog_Image.FileName)
+        End If
+    End Sub
+    'Button_LightColor - Click
+    Private Sub Button_LightColor_Click(sender As Object, e As EventArgs) Handles Button_LightColor.Click
+        If ColorDialog1.ShowDialog = DialogResult.OK Then
+            Button_LightColor.BackColor = ColorDialog1.Color
+        End If
+    End Sub
+    '
+    'Button - Buttons
+    '
+    'Button_Button_Idle_Image - Click
+    Private Sub Button_Button_Idle_Image_Click(sender As Object, e As EventArgs) Handles Button_Button_Idle_Image.Click
+        If OpenFileDialog_Image.ShowDialog = DialogResult.OK Then
+            Try
+                Dim tempImage As Image = SafeImageFromFile(OpenFileDialog_Image.FileName)
+                TextBox_Button_Idle_Image.Text = Path.GetFileName(OpenFileDialog_Image.FileName)
+                NumericUpDown_Idle_TopMargin.Value = CDec(tempImage.Height / 3) 'TopMargin
+                NumericUpDown_Idle_BottomMargin.Value = CDec(tempImage.Height / 3) 'BottomMargin
+                NumericUpDown_Idle_LeftMargin.Value = CDec(tempImage.Width / 3) 'LeftMargin
+                NumericUpDown_Idle_RightMargin.Value = CDec(tempImage.Width / 3) 'RightMargin
+                NumericUpDown_Idle_DefaultHeight.Value = tempImage.Height 'DefaultHeight
+                NumericUpDown_Idle_DefaultWidth.Value = tempImage.Width 'DefaultWidth
+            Catch ex As Exception
+                MsgBox("Problem opening file.", MsgBoxStyle.Critical)
+            End Try
+        End If
+    End Sub
+    'Button_Button_Hovered_Image - Click
+    Private Sub Button_Button_Hovered_Image_Click(sender As Object, e As EventArgs) Handles Button_Button_Hovered_Image.Click
+        If OpenFileDialog_Image.ShowDialog = DialogResult.OK Then
+            Try
+                Dim tempImage As Image = SafeImageFromFile(OpenFileDialog_Image.FileName)
+                TextBox_Button_Hovered_Image.Text = Path.GetFileName(OpenFileDialog_Image.FileName)
+                NumericUpDown_Hovered_TopMargin.Value = CDec(tempImage.Height / 3) 'TopMargin
+                NumericUpDown_Hovered_BottomMargin.Value = CDec(tempImage.Height / 3) 'BottomMargin
+                NumericUpDown_Hovered_LeftMargin.Value = CDec(tempImage.Width / 3) 'LeftMargin
+                NumericUpDown_Hovered_RightMargin.Value = CDec(tempImage.Width / 3) 'RightMargin
+                NumericUpDown_Hovered_DefaultHeight.Value = tempImage.Height 'DefaultHeight
+                NumericUpDown_Hovered_DefaultWidth.Value = tempImage.Width 'DefaultWidth
+            Catch ex As Exception
+                MsgBox("Problem opening file.", MsgBoxStyle.Critical)
+            End Try
+        End If
+    End Sub
+    'Button_Button_Pressed_Image - Click
+    Private Sub Button_Button_Pressed_Image_Click(sender As Object, e As EventArgs) Handles Button_Button_Pressed_Image.Click
+        If OpenFileDialog_Image.ShowDialog = DialogResult.OK Then
+            Try
+                Dim tempImage As Image = SafeImageFromFile(OpenFileDialog_Image.FileName)
+                TextBox_Button_Pressed_Image.Text = Path.GetFileName(OpenFileDialog_Image.FileName)
+                NumericUpDown_Pressed_TopMargin.Value = CDec(tempImage.Height / 3) 'TopMargin
+                NumericUpDown_Pressed_BottomMargin.Value = CDec(tempImage.Height / 3) 'BottomMargin
+                NumericUpDown_Pressed_LeftMargin.Value = CDec(tempImage.Width / 3) 'LeftMargin
+                NumericUpDown_Pressed_RightMargin.Value = CDec(tempImage.Width / 3) 'RightMargin
+                NumericUpDown_Pressed_DefaultHeight.Value = tempImage.Height 'DefaultHeight
+                NumericUpDown_Pressed_DefaultWidth.Value = tempImage.Width 'DefaultWidth
+            Catch ex As Exception
+                MsgBox("Problem opening file.", MsgBoxStyle.Critical)
+            End Try
+        End If
+    End Sub
+    'Button_LabelColor - Click
+    Private Sub Button_LabelColor_Click(sender As Object, e As EventArgs) Handles Button_LabelColor.Click
+        If ColorDialog1.ShowDialog = DialogResult.OK Then
+            Button_LabelColor.BackColor = ColorDialog1.Color
         End If
     End Sub
 End Class

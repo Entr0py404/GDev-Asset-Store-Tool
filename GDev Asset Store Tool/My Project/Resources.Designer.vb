@@ -131,6 +131,39 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  Looks up a localized string similar to {
+        '''  &quot;id&quot;: &quot;&quot;,
+        '''  &quot;name&quot;: &quot;&quot;,
+        '''  &quot;authors&quot;: [
+        '''    &quot;&quot;
+        '''  ],
+        '''  &quot;license&quot;: &quot;&quot;,
+        '''  &quot;shortDescription&quot;: &quot;&quot;,
+        '''  &quot;description&quot;: &quot;&quot;,
+        '''  &quot;previewImageUrls&quot;: [],
+        '''  &quot;tags&quot;: [],
+        '''  &quot;objectAssets&quot;: [
+        '''    {
+        '''      &quot;object&quot;: {
+        '''        &quot;name&quot;: &quot;&quot;,
+        '''        &quot;tags&quot;: &quot;&quot;,
+        '''        &quot;type&quot;: &quot;PanelSpriteButton::PanelSpriteButton&quot;,
+        '''        &quot;variables&quot;: [],
+        '''        &quot;effects&quot;: [],
+        '''        &quot;behaviors&quot;: [],
+        '''        &quot;content&quot;: {
+        '''          &quot;LeftPadding&quot;: 0,
+        '''          &quot;RightPadding&quot;: 0,
+        '''          &quot;PressedLabelOffsetY&quot;: 0,
+        '''   [rest of string was truncated]&quot;;.
+        '''</summary>
+        Friend ReadOnly Property button_template() As String
+            Get
+                Return ResourceManager.GetString("button_template", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  Looks up a localized resource of type System.Drawing.Bitmap.
         '''</summary>
         Friend ReadOnly Property Close_Grey() As System.Drawing.Bitmap
