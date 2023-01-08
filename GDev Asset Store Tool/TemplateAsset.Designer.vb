@@ -518,7 +518,6 @@ Partial Class TemplateAsset
         Me.FastColoredTextBox_AssetJson.DisabledColor = System.Drawing.Color.FromArgb(CType(CType(100, Byte), Integer), CType(CType(180, Byte), Integer), CType(CType(180, Byte), Integer), CType(CType(180, Byte), Integer))
         Me.FastColoredTextBox_AssetJson.Dock = System.Windows.Forms.DockStyle.Fill
         Me.FastColoredTextBox_AssetJson.FoldingIndicatorColor = System.Drawing.Color.Khaki
-        Me.FastColoredTextBox_AssetJson.Font = New System.Drawing.Font("Courier New", 9.75!)
         Me.FastColoredTextBox_AssetJson.ForeColor = System.Drawing.Color.WhiteSmoke
         Me.FastColoredTextBox_AssetJson.IndentBackColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer))
         Me.FastColoredTextBox_AssetJson.IsReplaceMode = False

@@ -45,7 +45,9 @@ Public Class FileNameValidator
         If File.Exists(FolderBrowserDialog_Selected_Directory.SelectedPath & "\" & ListBox_Errors.SelectedItem.ToString) Then
             Process.Start("explorer.exe", "/select," & FolderBrowserDialog_Selected_Directory.SelectedPath & "\" & ListBox_Errors.SelectedItem.ToString)
         ElseIf Directory.Exists(ListBox_Errors.SelectedItem.ToString.Replace("Possible plural directory name: ", "")) Then
-            Process.Start("explorer.exe", "/select," & ListBox_Errors.SelectedItem.ToString.Replace("Possible plural directory name: ", ""))
+            Process.Start("explorer.exe", ListBox_Errors.SelectedItem.ToString.Replace("Possible plural directory name: ", ""))
+        ElseIf Directory.Exists(ListBox_Errors.SelectedItem.ToString.Replace("Invalid directory name: ", "")) Then
+            Process.Start("explorer.exe", ListBox_Errors.SelectedItem.ToString.Replace("Invalid directory name: ", ""))
         Else
             MsgBox("Directory does Not exist, Interface will be reloaded", MsgBoxStyle.OkOnly)
             If Directory.Exists(FolderBrowserDialog_Selected_Directory.SelectedPath) Then
@@ -76,8 +78,10 @@ Public Class FileNameValidator
     Private Sub ContextMenuStrip_ListBox_Errors_Opening(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles ContextMenuStrip_ListBox_Errors.Opening
         If Not ListBox_Errors.SelectedIndex = -1 Then
             OpenDirectoryToolStripMenuItem.Enabled = True
-            If Not ListBox_Errors.SelectedItem.ToString.StartsWith("Possible plural directory name") Then
+            If Not ListBox_Errors.SelectedItem.ToString.StartsWith("Possible") And Not ListBox_Errors.SelectedItem.ToString.StartsWith("Invalid") Then
                 OpenFileToolStripMenuItem.Enabled = True
+            Else
+                OpenFileToolStripMenuItem.Enabled = False
             End If
         Else
             OpenDirectoryToolStripMenuItem.Enabled = False
@@ -98,10 +102,14 @@ Public Class FileNameValidator
         Dim TempListofFiles As New ArrayList
         TextBox_Selected_Directory.Text = FolderBrowserDialog_Selected_Directory.SelectedPath
 
-        For Each Dir As String In Directory.GetDirectories(FolderBrowserDialog_Selected_Directory.SelectedPath)
-            If Not Dir.ToLower.Contains("!zip") And Not Dir.ToLower.Contains("!remove") And Not Dir.ToLower.Contains("!notused") And Not Dir.ToLower.Contains("!not used") Then
+        For Each Dir As String In Directory.GetDirectories(FolderBrowserDialog_Selected_Directory.SelectedPath, "*", SearchOption.AllDirectories)
+            'Console.WriteLine(Path.GetFileName(Dir))
+            If Not Path.GetFileName(Dir).ToLower.Contains("!zip") And Not Dir.ToLower.Contains("!remove") And Not Dir.ToLower.Contains("!notused") And Not Dir.ToLower.Contains("!not used") Then
                 If Dir.ToLower.EndsWith("s") Then 'Check for plural in folder name
                     TempListofFiles.Add("Possible plural directory name: " & Dir)
+                End If
+                If Not regexValidWords.IsMatch(Path.GetFileName(Dir)) Or regexInvalidWords.IsMatch(Path.GetFileName(Dir)) Or Path.GetFileName(Dir).Contains("_") Then
+                    TempListofFiles.Add("Invalid directory name: " & Dir)
                 End If
             End If
         Next
@@ -110,31 +118,53 @@ Public Class FileNameValidator
 
             If Not PNG_file.ToLower.Contains("!zip") And Not PNG_file.ToLower.Contains("!remove") And Not PNG_file.ToLower.Contains("!notused") And Not PNG_file.ToLower.Contains("!not used") Then
                 Dim PNG_filefull As String = PNG_file.Replace(FolderBrowserDialog_Selected_Directory.SelectedPath + "\", "")
-                PNG_file = Path.GetFileNameWithoutExtension(PNG_file)
+                Dim PNG_fileNameNoExt As String = Path.GetFileNameWithoutExtension(PNG_file)
+                Dim PNG_fileName As String = Path.GetFileName(PNG_file)
 
-                If Not regexValidWords.IsMatch(PNG_file) Or regexInvalidWords.IsMatch(PNG_file) Or CountCharacter(PNG_file, CChar("_")) > 2 Or PNG_filefull.ToLower.EndsWith(".png.png") Or Not Char.IsLetter(PNG_file.First) And Not PNG_file.ToLower.StartsWith("9patch_") Then
+                'Console.WriteLine(PNG_filefull)
+                'Console.WriteLine(PNG_fileNameNoExt)
+                'Console.WriteLine(PNG_file)
+
+                If Not regexValidWords.IsMatch(PNG_fileNameNoExt) Or regexInvalidWords.IsMatch(PNG_fileNameNoExt) Or CountCharacter(PNG_fileNameNoExt, CChar("_")) > 2 Or PNG_filefull.ToLower.EndsWith(".png.png") Or Not Char.IsLetter(PNG_fileNameNoExt.First) And Not PNG_fileNameNoExt.ToLower.StartsWith("9patch_") Then
+
                     TempListofFiles.Add(PNG_filefull)
+
+                    'ElseIf CountCharacter(PNG_filefull, CChar("_")) = 1 Then 'Check if contains one _
+                    'Dim AllAnimationFiles As New List(Of String)()
+                    'AllAnimationFiles.AddRange(Directory.GetFiles(Path.GetDirectoryName(PNG_file), "*" & PNG_fileNameNoExt & "*.png", SearchOption.TopDirectoryOnly)) 'Check if there are any files starting with sprite name _
+
+                    'Console.WriteLine("TESTING")
+                    'Console.WriteLine(AllAnimationFiles.Count)
+                    'For Each str As String In AllAnimationFiles
+                    'Console.WriteLine(str)
+                    'Next
+
+                    'If AllAnimationFiles.Count > 1 Then 'If array cotaining file names is more then 1
+                    'then add to error list
+                    'TempListofFiles.Add(PNG_filefull)
+                    'End If
+
                 Else
-                    If PNG_file.ToLower.StartsWith("tiled_") Then
+                    If PNG_fileName.ToLower.StartsWith("tiled_") Then
                         RichTextBox_Correct.SelectionColor = Color.MediumTurquoise
                         RichTextBox_Correct.AppendText("Tiled: ")
                         RichTextBox_Correct.SelectionColor = Color.WhiteSmoke
-                        RichTextBox_Correct.AppendText(PNG_file & vbNewLine)
-                    ElseIf PNG_file.ToLower.StartsWith("9patch_") Then
+                        RichTextBox_Correct.AppendText(PNG_fileName & vbNewLine)
+                    ElseIf PNG_fileName.ToLower.StartsWith("9patch_") Then
                         RichTextBox_Correct.SelectionColor = Color.PaleGoldenrod
                         RichTextBox_Correct.AppendText("9 Patch: ")
                         RichTextBox_Correct.SelectionColor = Color.WhiteSmoke
-                        RichTextBox_Correct.AppendText(PNG_file & vbNewLine)
-                    ElseIf CountCharacter(PNG_file, CChar("_")) = 0 Then
+                        RichTextBox_Correct.AppendText(PNG_fileName & vbNewLine)
+                    ElseIf CountCharacter(PNG_fileName, CChar("_")) = 0 Then
                         RichTextBox_Correct.SelectionColor = Color.HotPink
                         RichTextBox_Correct.AppendText("Single frame: ")
                         RichTextBox_Correct.SelectionColor = Color.WhiteSmoke
-                        RichTextBox_Correct.AppendText(PNG_file & vbNewLine)
-                    ElseIf CountCharacter(PNG_file, CChar("_")) <= 2 Then
+                        RichTextBox_Correct.AppendText(PNG_fileName & vbNewLine)
+                    ElseIf CountCharacter(PNG_fileName, CChar("_")) <= 2 Then
                         RichTextBox_Correct.SelectionColor = Color.LightSkyBlue
                         RichTextBox_Correct.AppendText("Multi frame: ")
                         RichTextBox_Correct.SelectionColor = Color.WhiteSmoke
-                        RichTextBox_Correct.AppendText(PNG_file & vbNewLine)
+                        RichTextBox_Correct.AppendText(PNG_fileName & vbNewLine)
                     End If
                 End If
             Else
@@ -157,17 +187,19 @@ Public Class FileNameValidator
             Label_CurrentName.Text = "Current Name: "
             PixelBox1.Image = Nothing
             TextBox_NewName.Clear()
-            If File.Exists(FolderBrowserDialog_Selected_Directory.SelectedPath & "\" & ListBox_Errors.SelectedItem.ToString) Then
-                Label_CurrentName.Text = "Current Name: " & Path.GetFileNameWithoutExtension(ListBox_Errors.SelectedItem.ToString)
-                TextBox_NewName.Text = Path.GetFileNameWithoutExtension(ListBox_Errors.SelectedItem.ToString)
-                PixelBox1.Image = SafeImageFromFile(FolderBrowserDialog_Selected_Directory.SelectedPath & "\" & ListBox_Errors.SelectedItem.ToString)
-            ElseIf Path.HasExtension(ListBox_Errors.SelectedItem.ToString) Then
-                ClearForNext()
-                MsgBox("Selected file doesn't exist directory will now be reloaded.", MsgBoxStyle.Information)
-                If Directory.Exists(FolderBrowserDialog_Selected_Directory.SelectedPath) Then
-                    LoadFiles()
-                Else
-                    MsgBox("This path no longer exists, Please select a new directory.", MsgBoxStyle.Information)
+            If Not ListBox_Errors.SelectedItem.ToString.StartsWith("Possible") And Not ListBox_Errors.SelectedItem.ToString.StartsWith("Invalid") Then
+                If File.Exists(FolderBrowserDialog_Selected_Directory.SelectedPath & "\" & ListBox_Errors.SelectedItem.ToString) Then
+                    Label_CurrentName.Text = "Current Name: " & Path.GetFileNameWithoutExtension(ListBox_Errors.SelectedItem.ToString)
+                    TextBox_NewName.Text = Path.GetFileNameWithoutExtension(ListBox_Errors.SelectedItem.ToString)
+                    PixelBox1.Image = SafeImageFromFile(FolderBrowserDialog_Selected_Directory.SelectedPath & "\" & ListBox_Errors.SelectedItem.ToString)
+                ElseIf Path.HasExtension(ListBox_Errors.SelectedItem.ToString) Then
+                    ClearForNext()
+                    MsgBox("Selected file doesn't exist directory will now be reloaded.", MsgBoxStyle.Information)
+                    If Directory.Exists(FolderBrowserDialog_Selected_Directory.SelectedPath) Then
+                        LoadFiles()
+                    Else
+                        MsgBox("This path no longer exists, Please select a new directory.", MsgBoxStyle.Information)
+                    End If
                 End If
             End If
         End If
@@ -207,6 +239,8 @@ Public Class FileNameValidator
         ListBox_Errors.Items.Clear()
         RichTextBox_Correct.Clear()
         TextBox_Selected_Directory.Clear()
+        Label_CurrentName.Text = "Current Name: "
+        TextBox_NewName.Clear()
     End Sub
     'FileNameValidator - DragEnter
     Private Sub FileNameValidator_DragEnter(sender As Object, e As DragEventArgs) Handles Me.DragEnter

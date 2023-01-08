@@ -53,7 +53,6 @@ Partial Class FileNameValidator
         Me.PictureBox_AppIcon = New System.Windows.Forms.PictureBox()
         Me.Panel_Image = New System.Windows.Forms.Panel()
         Me.Label_Image = New System.Windows.Forms.Label()
-        Me.PixelBox1 = New GDev_Asset_Store_Tool.PixelBox()
         Me.ShapeContainer3 = New Microsoft.VisualBasic.PowerPacks.ShapeContainer()
         Me.FolderBrowserDialog_Selected_Directory = New System.Windows.Forms.FolderBrowserDialog()
         Me.Panel_Selected_Directory_Controls = New System.Windows.Forms.Panel()
@@ -67,6 +66,7 @@ Partial Class FileNameValidator
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Label_Status = New System.Windows.Forms.Label()
+        Me.PixelBox1 = New GDev_Asset_Store_Tool.PixelBox()
         Me.Panel_Errors.SuspendLayout()
         Me.Panel2.SuspendLayout()
         Me.ContextMenuStrip_ListBox_Errors.SuspendLayout()
@@ -77,9 +77,9 @@ Partial Class FileNameValidator
         CType(Me.PictureBox_Minimize, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox_AppIcon, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel_Image.SuspendLayout()
-        CType(Me.PixelBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel_Selected_Directory_Controls.SuspendLayout()
         Me.Panel1.SuspendLayout()
+        CType(Me.PixelBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Panel_Errors
@@ -210,14 +210,13 @@ Partial Class FileNameValidator
         Me.ContextMenuStrip_ListBox_Errors.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.OpenDirectoryToolStripMenuItem, Me.OpenFileToolStripMenuItem})
         Me.ContextMenuStrip_ListBox_Errors.Name = "ContextMenuStrip1"
         Me.ContextMenuStrip_ListBox_Errors.ShowImageMargin = False
-        Me.ContextMenuStrip_ListBox_Errors.Size = New System.Drawing.Size(155, 52)
+        Me.ContextMenuStrip_ListBox_Errors.Size = New System.Drawing.Size(156, 74)
         '
         'OpenDirectoryToolStripMenuItem
         '
-        Me.OpenDirectoryToolStripMenuItem.Enabled = False
         Me.OpenDirectoryToolStripMenuItem.ForeColor = System.Drawing.Color.WhiteSmoke
         Me.OpenDirectoryToolStripMenuItem.Name = "OpenDirectoryToolStripMenuItem"
-        Me.OpenDirectoryToolStripMenuItem.Size = New System.Drawing.Size(154, 24)
+        Me.OpenDirectoryToolStripMenuItem.Size = New System.Drawing.Size(155, 24)
         Me.OpenDirectoryToolStripMenuItem.Text = "Open Directory"
         '
         'OpenFileToolStripMenuItem
@@ -225,7 +224,7 @@ Partial Class FileNameValidator
         Me.OpenFileToolStripMenuItem.Enabled = False
         Me.OpenFileToolStripMenuItem.ForeColor = System.Drawing.Color.WhiteSmoke
         Me.OpenFileToolStripMenuItem.Name = "OpenFileToolStripMenuItem"
-        Me.OpenFileToolStripMenuItem.Size = New System.Drawing.Size(154, 24)
+        Me.OpenFileToolStripMenuItem.Size = New System.Drawing.Size(155, 24)
         Me.OpenFileToolStripMenuItem.Text = "Open File"
         '
         'ShapeContainer4
@@ -408,18 +407,6 @@ Partial Class FileNameValidator
         Me.Label_Image.TabIndex = 103
         Me.Label_Image.Text = "Image"
         '
-        'PixelBox1
-        '
-        Me.PixelBox1.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(49, Byte), Integer), CType(CType(54, Byte), Integer))
-        Me.PixelBox1.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality
-        Me.PixelBox1.ContextMenuStrip = Me.ContextMenuStrip_ListBox_Errors
-        Me.PixelBox1.Location = New System.Drawing.Point(320, 24)
-        Me.PixelBox1.Name = "PixelBox1"
-        Me.PixelBox1.Size = New System.Drawing.Size(176, 168)
-        Me.PixelBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
-        Me.PixelBox1.TabIndex = 103
-        Me.PixelBox1.TabStop = False
-        '
         'ShapeContainer3
         '
         Me.ShapeContainer3.Location = New System.Drawing.Point(0, 8)
@@ -561,6 +548,18 @@ Partial Class FileNameValidator
         Me.Label_Status.TabIndex = 0
         Me.Label_Status.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
+        'PixelBox1
+        '
+        Me.PixelBox1.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(49, Byte), Integer), CType(CType(54, Byte), Integer))
+        Me.PixelBox1.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality
+        Me.PixelBox1.ContextMenuStrip = Me.ContextMenuStrip_ListBox_Errors
+        Me.PixelBox1.Location = New System.Drawing.Point(320, 24)
+        Me.PixelBox1.Name = "PixelBox1"
+        Me.PixelBox1.Size = New System.Drawing.Size(176, 168)
+        Me.PixelBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.PixelBox1.TabIndex = 103
+        Me.PixelBox1.TabStop = False
+        '
         'FileNameValidator
         '
         Me.AllowDrop = True
@@ -595,10 +594,10 @@ Partial Class FileNameValidator
         CType(Me.PictureBox_AppIcon, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel_Image.ResumeLayout(False)
         Me.Panel_Image.PerformLayout()
-        CType(Me.PixelBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel_Selected_Directory_Controls.ResumeLayout(False)
         Me.Panel_Selected_Directory_Controls.PerformLayout()
         Me.Panel1.ResumeLayout(False)
+        CType(Me.PixelBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
