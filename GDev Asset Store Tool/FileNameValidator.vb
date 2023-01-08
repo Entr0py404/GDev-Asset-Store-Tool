@@ -44,10 +44,12 @@ Public Class FileNameValidator
     Private Sub OpenDirectoryToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles OpenDirectoryToolStripMenuItem.Click
         If File.Exists(FolderBrowserDialog_Selected_Directory.SelectedPath & "\" & ListBox_Errors.SelectedItem.ToString) Then
             Process.Start("explorer.exe", "/select," & FolderBrowserDialog_Selected_Directory.SelectedPath & "\" & ListBox_Errors.SelectedItem.ToString)
-        ElseIf Directory.Exists(ListBox_Errors.SelectedItem.ToString.Replace("Possible plural directory name: ", "")) Then
-            Process.Start("explorer.exe", ListBox_Errors.SelectedItem.ToString.Replace("Possible plural directory name: ", ""))
-        ElseIf Directory.Exists(ListBox_Errors.SelectedItem.ToString.Replace("Invalid directory name: ", "")) Then
-            Process.Start("explorer.exe", ListBox_Errors.SelectedItem.ToString.Replace("Invalid directory name: ", ""))
+
+        ElseIf ListBox_Errors.SelectedItem.ToString.StartsWith("Possible") Or ListBox_Errors.SelectedItem.ToString.StartsWith("Invalid") And File.Exists(ListBox_Errors.SelectedItem.ToString.Substring(ListBox_Errors.SelectedItem.ToString.IndexOf("|") + 2)) Then
+            Process.Start("explorer.exe", ListBox_Errors.SelectedItem.ToString.Substring(ListBox_Errors.SelectedItem.ToString.IndexOf("|") + 2))
+
+        ElseIf ListBox_Errors.SelectedItem.ToString.Contains("|") And File.Exists(FolderBrowserDialog_Selected_Directory.SelectedPath & "\" & ListBox_Errors.SelectedItem.ToString.Substring(ListBox_Errors.SelectedItem.ToString.IndexOf("|") + 2)) Then
+            Process.Start("explorer.exe", "/select," & FolderBrowserDialog_Selected_Directory.SelectedPath & "\" & ListBox_Errors.SelectedItem.ToString.Substring(ListBox_Errors.SelectedItem.ToString.IndexOf("|") + 2))
         Else
             MsgBox("Directory does Not exist, Interface will be reloaded", MsgBoxStyle.OkOnly)
             If Directory.Exists(FolderBrowserDialog_Selected_Directory.SelectedPath) Then
@@ -61,7 +63,9 @@ Public Class FileNameValidator
     End Sub
     'OpenFile (ToolStripMenuItem) - Click
     Private Sub OpenFileToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles OpenFileToolStripMenuItem.Click
-        If File.Exists(FolderBrowserDialog_Selected_Directory.SelectedPath & "\" & ListBox_Errors.SelectedItem.ToString) Then
+        If ListBox_Errors.SelectedItem.ToString.Contains("|") And File.Exists(FolderBrowserDialog_Selected_Directory.SelectedPath & "\" & ListBox_Errors.SelectedItem.ToString.Substring(ListBox_Errors.SelectedItem.ToString.IndexOf("|") + 2)) Then
+            Process.Start(FolderBrowserDialog_Selected_Directory.SelectedPath & "\" & ListBox_Errors.SelectedItem.ToString.Substring(ListBox_Errors.SelectedItem.ToString.IndexOf("|") + 2))
+        ElseIf File.Exists(FolderBrowserDialog_Selected_Directory.SelectedPath & "\" & ListBox_Errors.SelectedItem.ToString) Then
             Process.Start(FolderBrowserDialog_Selected_Directory.SelectedPath & "\" & ListBox_Errors.SelectedItem.ToString)
         Else
             MsgBox("File does Not exist, Interface will be reloaded", MsgBoxStyle.OkOnly)
@@ -106,10 +110,10 @@ Public Class FileNameValidator
             'Console.WriteLine(Path.GetFileName(Dir))
             If Not Path.GetFileName(Dir).ToLower.Contains("!zip") And Not Dir.ToLower.Contains("!remove") And Not Dir.ToLower.Contains("!notused") And Not Dir.ToLower.Contains("!not used") Then
                 If Dir.ToLower.EndsWith("s") Then 'Check for plural in folder name
-                    TempListofFiles.Add("Possible plural directory name: " & Dir)
+                    TempListofFiles.Add("Possible plural directory name. | " & Dir)
                 End If
                 If Not regexValidWords.IsMatch(Path.GetFileName(Dir)) Or regexInvalidWords.IsMatch(Path.GetFileName(Dir)) Or Path.GetFileName(Dir).Contains("_") Then
-                    TempListofFiles.Add("Invalid directory name: " & Dir)
+                    TempListofFiles.Add("Invalid directory name. | " & Dir)
                 End If
             End If
         Next
@@ -120,30 +124,38 @@ Public Class FileNameValidator
                 Dim PNG_filefull As String = PNG_file.Replace(FolderBrowserDialog_Selected_Directory.SelectedPath + "\", "")
                 Dim PNG_fileNameNoExt As String = Path.GetFileNameWithoutExtension(PNG_file)
                 Dim PNG_fileName As String = Path.GetFileName(PNG_file)
-
-                'Console.WriteLine(PNG_filefull)
-                'Console.WriteLine(PNG_fileNameNoExt)
-                'Console.WriteLine(PNG_file)
-
+                'Console.WriteLine("PNG_filefull: " + PNG_filefull)
+                'Console.WriteLine("PNG_fileNameNoExt: " + PNG_fileNameNoExt)
+                'Console.WriteLine("PNG_file: " + PNG_file)
                 If Not regexValidWords.IsMatch(PNG_fileNameNoExt) Or regexInvalidWords.IsMatch(PNG_fileNameNoExt) Or CountCharacter(PNG_fileNameNoExt, CChar("_")) > 2 Or PNG_filefull.ToLower.EndsWith(".png.png") Or Not Char.IsLetter(PNG_fileNameNoExt.First) And Not PNG_fileNameNoExt.ToLower.StartsWith("9patch_") Then
-
                     TempListofFiles.Add(PNG_filefull)
-
-                    'ElseIf CountCharacter(PNG_filefull, CChar("_")) = 1 Then 'Check if contains one _
-                    'Dim AllAnimationFiles As New List(Of String)()
-                    'AllAnimationFiles.AddRange(Directory.GetFiles(Path.GetDirectoryName(PNG_file), "*" & PNG_fileNameNoExt & "*.png", SearchOption.TopDirectoryOnly)) 'Check if there are any files starting with sprite name _
-
-                    'Console.WriteLine("TESTING")
+                ElseIf CountCharacter(PNG_filefull, CChar("_")) = 1 Then 'Check if contains one _
+                    Dim AllAnimationFiles As New List(Of String)()
+                    AllAnimationFiles.AddRange(Directory.GetFiles(Path.GetDirectoryName(PNG_file), "*" & PNG_fileNameNoExt + "_" & "*.png", SearchOption.TopDirectoryOnly)) 'Check if there are any files starting with sprite name _
+                    'For Each str As String In AllAnimationFiles
+                    'Dim strN As String = Path.GetFileNameWithoutExtension(str)
+                    'strN = strN.Substring(strN.IndexOf("_") + 1)
+                    'Console.WriteLine(strN)
+                    'If IsNumeric(strN) Then
+                    'Console.WriteLine("Is Numeric")
+                    'Else
+                    'Console.WriteLine("Is Not Numeric")
+                    'End If
+                    'Console.WriteLine(str)
+                    'Next
                     'Console.WriteLine(AllAnimationFiles.Count)
+                    If AllAnimationFiles.Count > 1 Then 'If array cotaining file names is more then 1 add to error list
+                        TempListofFiles.Add("Animation name needed object has more then one animation. | " + PNG_filefull)
+                    End If
+                ElseIf CountCharacter(PNG_fileNameNoExt, CChar("_")) = 0 Then
+                    Dim AllAnimationFiles As New List(Of String)()
+                    AllAnimationFiles.AddRange(Directory.GetFiles(Path.GetDirectoryName(PNG_file), "*" & PNG_fileNameNoExt + "_" & "*.png", SearchOption.TopDirectoryOnly)) 'Check if there are any files starting with sprite name _
                     'For Each str As String In AllAnimationFiles
                     'Console.WriteLine(str)
                     'Next
-
-                    'If AllAnimationFiles.Count > 1 Then 'If array cotaining file names is more then 1
-                    'then add to error list
-                    'TempListofFiles.Add(PNG_filefull)
-                    'End If
-
+                    If AllAnimationFiles.Count > 1 Then 'If array cotaining file names is more then 1 add to error list
+                        TempListofFiles.Add("Part of a object that is missing its animation name. | " + PNG_filefull)
+                    End If
                 Else
                     If PNG_fileName.ToLower.StartsWith("tiled_") Then
                         RichTextBox_Correct.SelectionColor = Color.MediumTurquoise
@@ -188,7 +200,11 @@ Public Class FileNameValidator
             PixelBox1.Image = Nothing
             TextBox_NewName.Clear()
             If Not ListBox_Errors.SelectedItem.ToString.StartsWith("Possible") And Not ListBox_Errors.SelectedItem.ToString.StartsWith("Invalid") Then
-                If File.Exists(FolderBrowserDialog_Selected_Directory.SelectedPath & "\" & ListBox_Errors.SelectedItem.ToString) Then
+                If ListBox_Errors.SelectedItem.ToString.Contains("|") And File.Exists(FolderBrowserDialog_Selected_Directory.SelectedPath & "\" & ListBox_Errors.SelectedItem.ToString.Substring(ListBox_Errors.SelectedItem.ToString.IndexOf("|") + 2)) Then
+                    Label_CurrentName.Text = "Current Name: " & Path.GetFileNameWithoutExtension(ListBox_Errors.SelectedItem.ToString.Substring(ListBox_Errors.SelectedItem.ToString.IndexOf("|") + 2))
+                    TextBox_NewName.Text = Path.GetFileNameWithoutExtension(ListBox_Errors.SelectedItem.ToString.Substring(ListBox_Errors.SelectedItem.ToString.IndexOf("|") + 2))
+                    PixelBox1.Image = SafeImageFromFile(FolderBrowserDialog_Selected_Directory.SelectedPath & "\" & ListBox_Errors.SelectedItem.ToString.Substring(ListBox_Errors.SelectedItem.ToString.IndexOf("|") + 2))
+                ElseIf File.Exists(FolderBrowserDialog_Selected_Directory.SelectedPath & "\" & ListBox_Errors.SelectedItem.ToString) Then
                     Label_CurrentName.Text = "Current Name: " & Path.GetFileNameWithoutExtension(ListBox_Errors.SelectedItem.ToString)
                     TextBox_NewName.Text = Path.GetFileNameWithoutExtension(ListBox_Errors.SelectedItem.ToString)
                     PixelBox1.Image = SafeImageFromFile(FolderBrowserDialog_Selected_Directory.SelectedPath & "\" & ListBox_Errors.SelectedItem.ToString)
