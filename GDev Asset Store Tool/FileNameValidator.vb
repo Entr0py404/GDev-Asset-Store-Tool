@@ -42,14 +42,12 @@ Public Class FileNameValidator
     End Sub
     'OpenDirectory (ToolStripMenuItem) - Click
     Private Sub OpenDirectoryToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles OpenDirectoryToolStripMenuItem.Click
-        If File.Exists(FolderBrowserDialog_Selected_Directory.SelectedPath & "\" & ListBox_Errors.SelectedItem.ToString) Then
-            Process.Start("explorer.exe", "/select," & FolderBrowserDialog_Selected_Directory.SelectedPath & "\" & ListBox_Errors.SelectedItem.ToString)
-
-        ElseIf ListBox_Errors.SelectedItem.ToString.StartsWith("Possible") Or ListBox_Errors.SelectedItem.ToString.StartsWith("Invalid") And File.Exists(ListBox_Errors.SelectedItem.ToString.Substring(ListBox_Errors.SelectedItem.ToString.IndexOf("|") + 2)) Then
+        If (ListBox_Errors.SelectedItem.ToString.StartsWith("Possible") Or ListBox_Errors.SelectedItem.ToString.StartsWith("Invalid")) And Directory.Exists(ListBox_Errors.SelectedItem.ToString.Substring(ListBox_Errors.SelectedItem.ToString.IndexOf("|") + 2)) Then
             Process.Start("explorer.exe", ListBox_Errors.SelectedItem.ToString.Substring(ListBox_Errors.SelectedItem.ToString.IndexOf("|") + 2))
-
         ElseIf ListBox_Errors.SelectedItem.ToString.Contains("|") And File.Exists(FolderBrowserDialog_Selected_Directory.SelectedPath & "\" & ListBox_Errors.SelectedItem.ToString.Substring(ListBox_Errors.SelectedItem.ToString.IndexOf("|") + 2)) Then
             Process.Start("explorer.exe", "/select," & FolderBrowserDialog_Selected_Directory.SelectedPath & "\" & ListBox_Errors.SelectedItem.ToString.Substring(ListBox_Errors.SelectedItem.ToString.IndexOf("|") + 2))
+        ElseIf File.Exists(FolderBrowserDialog_Selected_Directory.SelectedPath & "\" & ListBox_Errors.SelectedItem.ToString) Then
+            Process.Start("explorer.exe", "/select," & FolderBrowserDialog_Selected_Directory.SelectedPath & "\" & ListBox_Errors.SelectedItem.ToString)
         Else
             MsgBox("Directory does Not exist, Interface will be reloaded", MsgBoxStyle.OkOnly)
             If Directory.Exists(FolderBrowserDialog_Selected_Directory.SelectedPath) Then
@@ -119,7 +117,6 @@ Public Class FileNameValidator
         Next
 
         For Each PNG_file As String In Directory.GetFiles(FolderBrowserDialog_Selected_Directory.SelectedPath, "*.png", SearchOption.AllDirectories)
-
             If Not PNG_file.ToLower.Contains("!zip") And Not PNG_file.ToLower.Contains("!remove") And Not PNG_file.ToLower.Contains("!notused") And Not PNG_file.ToLower.Contains("!not used") Then
                 Dim PNG_filefull As String = PNG_file.Replace(FolderBrowserDialog_Selected_Directory.SelectedPath + "\", "")
                 Dim PNG_fileNameNoExt As String = Path.GetFileNameWithoutExtension(PNG_file)
@@ -129,18 +126,10 @@ Public Class FileNameValidator
                 'Console.WriteLine("PNG_file: " + PNG_file)
                 If Not regexValidWords.IsMatch(PNG_fileNameNoExt) Or regexInvalidWords.IsMatch(PNG_fileNameNoExt) Or CountCharacter(PNG_fileNameNoExt, CChar("_")) > 2 Or PNG_filefull.ToLower.EndsWith(".png.png") Or Not Char.IsLetter(PNG_fileNameNoExt.First) And Not PNG_fileNameNoExt.ToLower.StartsWith("9patch_") Then
                     TempListofFiles.Add(PNG_filefull)
-                ElseIf CountCharacter(PNG_filefull, CChar("_")) = 1 Then 'Check if contains one _
+                ElseIf CountCharacter(PNG_filefull, CChar("_")) = 1 Then
                     Dim AllAnimationFiles As New List(Of String)()
-                    AllAnimationFiles.AddRange(Directory.GetFiles(Path.GetDirectoryName(PNG_file), "*" & PNG_fileNameNoExt + "_" & "*.png", SearchOption.TopDirectoryOnly)) 'Check if there are any files starting with sprite name _
+                    AllAnimationFiles.AddRange(Directory.GetFiles(Path.GetDirectoryName(PNG_file), "*.png", SearchOption.TopDirectoryOnly).Where(Function(x) Path.GetFileName(x).StartsWith(PNG_fileNameNoExt + "_"))) 'Check if there are any files starting with sprite name _
                     'For Each str As String In AllAnimationFiles
-                    'Dim strN As String = Path.GetFileNameWithoutExtension(str)
-                    'strN = strN.Substring(strN.IndexOf("_") + 1)
-                    'Console.WriteLine(strN)
-                    'If IsNumeric(strN) Then
-                    'Console.WriteLine("Is Numeric")
-                    'Else
-                    'Console.WriteLine("Is Not Numeric")
-                    'End If
                     'Console.WriteLine(str)
                     'Next
                     'Console.WriteLine(AllAnimationFiles.Count)
@@ -149,11 +138,14 @@ Public Class FileNameValidator
                     End If
                 ElseIf CountCharacter(PNG_fileNameNoExt, CChar("_")) = 0 Then
                     Dim AllAnimationFiles As New List(Of String)()
-                    AllAnimationFiles.AddRange(Directory.GetFiles(Path.GetDirectoryName(PNG_file), "*" & PNG_fileNameNoExt + "_" & "*.png", SearchOption.TopDirectoryOnly)) 'Check if there are any files starting with sprite name _
+                    AllAnimationFiles.AddRange(Directory.GetFiles(Path.GetDirectoryName(PNG_file), "*.png", SearchOption.TopDirectoryOnly).Where(Function(x) Path.GetFileName(x).StartsWith(PNG_fileNameNoExt + "_"))) 'Check if there are any files starting with sprite name _
+                    Console.WriteLine("PNG_fileNameNoExt: " + PNG_fileNameNoExt)
                     'For Each str As String In AllAnimationFiles
                     'Console.WriteLine(str)
                     'Next
+                    'Console.WriteLine(AllAnimationFiles.Count)
                     If AllAnimationFiles.Count > 1 Then 'If array cotaining file names is more then 1 add to error list
+                        Console.WriteLine("PNG_file: " + PNG_file)
                         TempListofFiles.Add("Part of a object that is missing its animation name. | " + PNG_filefull)
                     End If
                 Else

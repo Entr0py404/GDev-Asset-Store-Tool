@@ -110,7 +110,7 @@ Public Class AssetInfo
                 ObjectName = TempFileNameNoExt
 
                 ComboBox_Animations.BeginUpdate()
-                AllAnimationFiles.AddRange(Directory.GetFiles(Path.GetDirectoryName(assetFilePath), "*" & TempFileNameNoExt & "*.png", SearchOption.TopDirectoryOnly))
+                AllAnimationFiles.AddRange(Directory.GetFiles(Path.GetDirectoryName(assetFilePath), "*.png", SearchOption.TopDirectoryOnly).Where(Function(x) Path.GetFileName(x).StartsWith(TempFileNameNoExt)))
 
                 Label_AnimationsList.Text = ""
 
@@ -185,7 +185,6 @@ Public Class AssetInfo
     'ComboBox_Animations - SelectedIndexChanged
     Private Sub ComboBox_Animations_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBox_Animations.SelectedIndexChanged
         Try
-
             AnimationFiles.Clear()
             Dim ComboBox_SelectedItem As String = "_" & ComboBox_Animations.SelectedItem.ToString
             Dim ThisObjectname As String = ""
