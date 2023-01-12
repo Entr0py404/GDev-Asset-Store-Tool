@@ -139,13 +139,12 @@ Public Class FileNameValidator
                 ElseIf CountCharacter(PNG_fileNameNoExt, CChar("_")) = 0 Then
                     Dim AllAnimationFiles As New List(Of String)()
                     AllAnimationFiles.AddRange(Directory.GetFiles(Path.GetDirectoryName(PNG_file), "*.png", SearchOption.TopDirectoryOnly).Where(Function(x) Path.GetFileName(x).StartsWith(PNG_fileNameNoExt + "_"))) 'Check if there are any files starting with sprite name _
-                    Console.WriteLine("PNG_fileNameNoExt: " + PNG_fileNameNoExt)
+                    'Console.WriteLine("PNG_fileNameNoExt: " + PNG_fileNameNoExt)
                     'For Each str As String In AllAnimationFiles
                     'Console.WriteLine(str)
                     'Next
                     'Console.WriteLine(AllAnimationFiles.Count)
                     If AllAnimationFiles.Count > 1 Then 'If array cotaining file names is more then 1 add to error list
-                        Console.WriteLine("PNG_file: " + PNG_file)
                         TempListofFiles.Add("Part of a object that is missing its animation name. | " + PNG_filefull)
                     End If
                 Else
