@@ -1,5 +1,4 @@
-﻿Imports System.Security.Policy
-Imports FastColoredTextBoxNS
+﻿Imports FastColoredTextBoxNS
 
 Public Class TemplateAsset
     ReadOnly SupportedIamgeFormats() As String = {".png", ".bmp", ".jpeg", ".jpg", ".tiff", ".tif"}

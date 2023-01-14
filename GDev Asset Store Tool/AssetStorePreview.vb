@@ -1,5 +1,4 @@
-﻿Imports System.Windows.Forms.VisualStyles.VisualStyleElement
-
+﻿
 Public Class AssetStorePreview
     Dim RectangleShape_SelectedDirectory_Padding As Integer = 0
     Dim TextBox_Selected_Directory_Padding As Integer = 0
