@@ -708,69 +708,9 @@ Public Class TemplateAsset
     Private Sub TabControl1_Selected(sender As Object, e As TabControlEventArgs) Handles TabControl1.Selected
         ErrorProvider1.Clear()
     End Sub
-    'TextBox_Name - TextChanged
-    Private Sub TextBox_Name_TextChanged(sender As Object, e As EventArgs) Handles TextBox_Name.TextChanged
-        If TextBox_Name.Text.Length > 0 And ErrorProvider1.GetError(TextBox_Name) IsNot Nothing Then
-            ErrorProvider1.SetError(TextBox_Name, Nothing)
-        End If
-    End Sub
-    'TextBox_Description - TextChanged
-    Private Sub TextBox_Description_TextChanged(sender As Object, e As EventArgs) Handles TextBox_Description.TextChanged
-        If TextBox_Description.Text.Length > 0 And ErrorProvider1.GetError(TextBox_Description) IsNot Nothing Then
-            ErrorProvider1.SetError(TextBox_Description, Nothing)
-        End If
-    End Sub
     '
     'TextChanged
     '
-    'TextBox_LightTexture - TextChanged
-    Private Sub TextBox_LightTexture_TextChanged(sender As Object, e As EventArgs) Handles TextBox_LightTexture.TextChanged
-        If TextBox_LightTexture.Text.EndsWith(".png") Then
-            ErrorProvider1.SetError(TextBox_LightTexture, Nothing)
-        Else
-            ErrorProvider1.SetError(TextBox_LightTexture, "Blank or does not end with .png")
-        End If
-    End Sub
-    'TextBox_TilemapAtlasImage - TextChanged
-    Private Sub TextBox_TilemapAtlasImage_TextChanged(sender As Object, e As EventArgs) Handles TextBox_TilemapAtlasImage.TextChanged
-        If TextBox_TilemapAtlasImage.Text.EndsWith(".png") Then
-            ErrorProvider1.SetError(TextBox_TilemapAtlasImage, Nothing)
-        Else
-            ErrorProvider1.SetError(TextBox_TilemapAtlasImage, "Blank or does not end with .png")
-        End If
-    End Sub
-    'TextBox_TilemapJSONFile - TextChanged
-    Private Sub TextBox_TilemapJSONFile_TextChanged(sender As Object, e As EventArgs) Handles TextBox_TilemapJSONFile.TextChanged
-        If TextBox_TilemapJSONFile.Text.EndsWith(".json") Then
-            ErrorProvider1.SetError(TextBox_TilemapJSONFile, Nothing)
-        Else
-            ErrorProvider1.SetError(TextBox_TilemapJSONFile, "Blank or does not end with .json")
-        End If
-    End Sub
-    'TextBox_BitmapFont - TextChanged
-    Private Sub TextBox_BitmapFont_TextChanged(sender As Object, e As EventArgs) Handles TextBox_BitmapFont.TextChanged
-        If TextBox_BitmapFont.Text.EndsWith(".fnt") Or TextBox_BitmapFont.Text.EndsWith(".xml") Then
-            ErrorProvider1.SetError(TextBox_BitmapFont, Nothing)
-        Else
-            ErrorProvider1.SetError(TextBox_BitmapFont, "Blank or does not end with .fnt or .xml")
-        End If
-    End Sub
-    'TextBox_BitmapAtlasImage - TextChanged
-    Private Sub TextBox_BitmapAtlasImage_TextChanged(sender As Object, e As EventArgs) Handles TextBox_BitmapAtlasImage.TextChanged
-        If TextBox_BitmapAtlasImage.Text.EndsWith(".png") Then
-            ErrorProvider1.SetError(TextBox_BitmapAtlasImage, Nothing)
-        Else
-            ErrorProvider1.SetError(TextBox_BitmapAtlasImage, "Blank or does not end with .png")
-        End If
-    End Sub
-    'TextBox_PanelSpriteIamge - TextChanged
-    Private Sub TextBox_PanelSpriteIamge_TextChanged(sender As Object, e As EventArgs) Handles TextBox_PanelSpriteIamge.TextChanged
-        If TextBox_PanelSpriteIamge.Text.EndsWith(".png") Then
-            ErrorProvider1.SetError(TextBox_PanelSpriteIamge, Nothing)
-        Else
-            ErrorProvider1.SetError(TextBox_PanelSpriteIamge, "Blank or does not end with .png")
-        End If
-    End Sub
     'FastColoredTextBox_AssetJson - TextChanged
     Private Sub FastColoredTextBox_AssetJson_TextChanged(sender As Object, e As TextChangedEventArgs) Handles FastColoredTextBox_AssetJson.TextChanged
         e.ChangedRange.ClearFoldingMarkers()
@@ -793,28 +733,99 @@ Public Class TemplateAsset
             End If
         Next
     End Sub
-    'TextBox_Button_Hovered_Image - TextChanged
-    Private Sub TextBox_Button_Hovered_Image_TextChanged(sender As Object, e As EventArgs) Handles TextBox_Button_Hovered_Image.TextChanged
-        If TextBox_Button_Hovered_Image.Text.EndsWith(".png") Then
-            ErrorProvider1.SetError(TextBox_Button_Hovered_Image, Nothing)
+    'TextBox_Name - TextChanged
+    Private Sub TextBox_Name_TextChanged(sender As Object, e As EventArgs) Handles TextBox_Name.TextChanged
+        If TextBox_Name.Text.Length > 0 And ErrorProvider1.GetError(TextBox_Name) IsNot Nothing Then
+            ErrorProvider1.SetError(TextBox_Name, Nothing)
+        End If
+    End Sub
+    'TextBox_Description - TextChanged
+    Private Sub TextBox_Description_TextChanged(sender As Object, e As EventArgs) Handles TextBox_Description.TextChanged
+        If TextBox_Description.Text.Length > 0 And ErrorProvider1.GetError(TextBox_Description) IsNot Nothing Then
+            ErrorProvider1.SetError(TextBox_Description, Nothing)
+        End If
+    End Sub
+    '
+    'LostFocus
+    '
+    'TextBox_LightTexture - LostFocus
+    Private Sub TextBox_LightTexture_LostFocus(sender As Object, e As EventArgs) Handles TextBox_LightTexture.LostFocus
+        If Not TextBox_LightTexture.Text.EndsWith(".png") And TextBox_LightTexture.Text.Length > 0 Then
+            ErrorProvider1.SetError(TextBox_LightTexture, "Blank or does not end with .png")
         Else
+            ErrorProvider1.SetError(TextBox_LightTexture, Nothing)
+        End If
+    End Sub
+    'TextBox_TilemapAtlasImage - LostFocus
+    Private Sub TextBox_TilemapAtlasImage_LostFocus(sender As Object, e As EventArgs) Handles TextBox_TilemapAtlasImage.LostFocus
+        If Not TextBox_TilemapAtlasImage.Text.EndsWith(".png") And TextBox_TilemapAtlasImage.Text.Length > 0 Then
+            ErrorProvider1.SetError(TextBox_TilemapAtlasImage, "Blank or does not end with .png")
+        Else
+            ErrorProvider1.SetError(TextBox_TilemapAtlasImage, Nothing)
+        End If
+    End Sub
+    'TextBox_TilemapJSONFile - LostFocus
+    Private Sub TextBox_TilemapJSONFile_LostFocus(sender As Object, e As EventArgs) Handles TextBox_TilemapJSONFile.LostFocus
+        If Not TextBox_TilemapJSONFile.Text.EndsWith(".json") And TextBox_TilemapJSONFile.Text.Length > 0 Then
+            ErrorProvider1.SetError(TextBox_TilemapJSONFile, "Blank or does not end with .json")
+        Else
+            ErrorProvider1.SetError(TextBox_TilemapJSONFile, Nothing)
+        End If
+    End Sub
+    'TextBox_TilesetJSONFile - LostFocus
+    Private Sub TextBox_TilesetJSONFile_LostFocus(sender As Object, e As EventArgs) Handles TextBox_TilesetJSONFile.LostFocus
+        If Not TextBox_TilesetJSONFile.Text.EndsWith(".json") And TextBox_TilesetJSONFile.Text.Length > 0 Then
+            ErrorProvider1.SetError(TextBox_TilesetJSONFile, "Blank or does not end with .json")
+        Else
+            ErrorProvider1.SetError(TextBox_TilesetJSONFile, Nothing)
+        End If
+    End Sub
+    'TextBox_BitmapFont - LostFocus
+    Private Sub TextBox_BitmapFont_LostFocus(sender As Object, e As EventArgs) Handles TextBox_BitmapFont.LostFocus
+        If Not TextBox_BitmapFont.Text.EndsWith(".fnt") And Not TextBox_BitmapFont.Text.EndsWith(".xml") And TextBox_BitmapFont.Text.Length > 0 Then
+            ErrorProvider1.SetError(TextBox_BitmapFont, "Blank or does not end with .fnt or .xml")
+        Else
+            ErrorProvider1.SetError(TextBox_BitmapFont, Nothing)
+        End If
+    End Sub
+    'TextBox_BitmapAtlasImage - LostFocus
+    Private Sub TextBox_BitmapAtlasImage_LostFocus(sender As Object, e As EventArgs) Handles TextBox_BitmapAtlasImage.LostFocus
+        If Not TextBox_BitmapAtlasImage.Text.EndsWith(".png") And TextBox_BitmapAtlasImage.Text.Length > 0 Then
+            ErrorProvider1.SetError(TextBox_BitmapAtlasImage, "Blank or does not end with .png")
+        Else
+            ErrorProvider1.SetError(TextBox_BitmapAtlasImage, Nothing)
+        End If
+    End Sub
+    'TextBox_PanelSpriteIamge - LostFocus
+    Private Sub TextBox_PanelSpriteIamge_LostFocus(sender As Object, e As EventArgs) Handles TextBox_PanelSpriteIamge.LostFocus
+        If Not TextBox_PanelSpriteIamge.Text.EndsWith(".png") And TextBox_PanelSpriteIamge.Text.Length > 0 Then
+            ErrorProvider1.SetError(TextBox_PanelSpriteIamge, "Blank or does not end with .png")
+        Else
+            ErrorProvider1.SetError(TextBox_PanelSpriteIamge, Nothing)
+        End If
+    End Sub
+    'TextBox_Button_Hovered_Image - LostFocus
+    Private Sub TextBox_Button_Hovered_Image_LostFocus(sender As Object, e As EventArgs) Handles TextBox_Button_Hovered_Image.LostFocus
+        If Not TextBox_Button_Hovered_Image.Text.EndsWith(".png") And TextBox_Button_Hovered_Image.Text.Length > 0 Then
             ErrorProvider1.SetError(TextBox_Button_Hovered_Image, "Blank or does not end with .png")
+        Else
+            ErrorProvider1.SetError(TextBox_Button_Hovered_Image, Nothing)
         End If
     End Sub
-    'TextBox_Button_Idle_Image - TextChanged
-    Private Sub TextBox_Button_Idle_Image_TextChanged(sender As Object, e As EventArgs) Handles TextBox_Button_Idle_Image.TextChanged
-        If TextBox_Button_Idle_Image.Text.EndsWith(".png") Then
-            ErrorProvider1.SetError(TextBox_Button_Idle_Image, Nothing)
-        Else
+    'TextBox_Button_Idle_Image - LostFocus
+    Private Sub TextBox_Button_Idle_Image_LostFocus(sender As Object, e As EventArgs) Handles TextBox_Button_Idle_Image.LostFocus
+        If Not TextBox_Button_Idle_Image.Text.EndsWith(".png") And TextBox_Button_Idle_Image.Text.Length > 0 Then
             ErrorProvider1.SetError(TextBox_Button_Idle_Image, "Blank or does not end with .png")
+        Else
+            ErrorProvider1.SetError(TextBox_Button_Idle_Image, Nothing)
         End If
     End Sub
-    'TextBox_Button_Pressed_Image - TextChanged
-    Private Sub TextBox_Button_Pressed_Image_TextChanged(sender As Object, e As EventArgs) Handles TextBox_Button_Pressed_Image.TextChanged
-        If TextBox_Button_Pressed_Image.Text.EndsWith(".png") Then
-            ErrorProvider1.SetError(TextBox_Button_Pressed_Image, Nothing)
-        Else
+    'TextBox_Button_Pressed_Image - LostFocus
+    Private Sub TextBox_Button_Pressed_Image_LostFocus(sender As Object, e As EventArgs) Handles TextBox_Button_Pressed_Image.LostFocus
+        If Not TextBox_Button_Pressed_Image.Text.EndsWith(".png") And TextBox_Button_Pressed_Image.Text.Length > 0 Then
             ErrorProvider1.SetError(TextBox_Button_Pressed_Image, "Blank or does not end with .png")
+        Else
+            ErrorProvider1.SetError(TextBox_Button_Pressed_Image, Nothing)
         End If
     End Sub
     '

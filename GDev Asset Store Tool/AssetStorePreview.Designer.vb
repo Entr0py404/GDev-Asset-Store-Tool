@@ -199,10 +199,11 @@ Partial Class AssetStorePreview
         Me.Button1.FlatAppearance.BorderSize = 0
         Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button1.Location = New System.Drawing.Point(8, 8)
+        Me.Button1.Location = New System.Drawing.Point(0, 0)
         Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(16, 16)
+        Me.Button1.Size = New System.Drawing.Size(32, 32)
         Me.Button1.TabIndex = 96
+        Me.Button1.Text = "☰"
         Me.Button1.UseVisualStyleBackColor = False
         '
         'Label_AssetCount
@@ -318,6 +319,7 @@ Partial Class AssetStorePreview
         Me.Controls.Add(Me.Panel_Selected_Directory_Controls)
         Me.ForeColor = System.Drawing.Color.WhiteSmoke
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.MinimumSize = New System.Drawing.Size(452, 264)
         Me.Name = "AssetStorePreview"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Asset Store Preview"
