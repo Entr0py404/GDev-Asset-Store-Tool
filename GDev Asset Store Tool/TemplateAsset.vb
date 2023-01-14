@@ -230,7 +230,7 @@ Public Class TemplateAsset
                     jsonFile.Item("objectAssets")(0)("resources")(0)("name") = TextBox_Button_Hovered_Image.Text
                 Else
                     jsonFile.Item("objectAssets")(0)("resources")(0).Remove()
-                    End If
+                End If
 
                 If Not TextBox_Button_Idle_Image.Text = TextBox_Button_Pressed_Image.Text And Not TextBox_Button_Idle_Image.Text = TextBox_Button_Hovered_Image.Text Then
                     jsonFile.Item("objectAssets")(0)("resources")(1)("file") = TextBox_Button_Idle_Image.Text
@@ -247,9 +247,9 @@ Public Class TemplateAsset
                 End If
 
                 FastColoredTextBox_AssetJson.Text = jsonFile.ToString
-                Else
+            Else
 
-                    If TextBox_Name.Text.Length = 0 Then
+                If TextBox_Name.Text.Length = 0 Then
                     ErrorProvider1.SetError(TextBox_Name, "Required")
                 End If
 
@@ -287,7 +287,7 @@ Public Class TemplateAsset
     End Sub
     'Button_Save - Click
     Private Sub Button_Save_Click(sender As Object, e As EventArgs) Handles Button_Save.Click
-        If TextBox_Description.Text.Length > 0 And FastColoredTextBox_AssetJson.Text.Length > 0 And PixelBox_PreviewImage.Image IsNot Nothing Then
+        If TextBox_Description.Text.Length > 0 And FastColoredTextBox_AssetJson.Text.Length > 0 Then
             If SaveFileDialog1.InitialDirectory = "" Then
                 If Directory.Exists(MetadataGenerator.FolderBrowserDialog_Selected_Directory.SelectedPath) Then
                     SaveFileDialog1.InitialDirectory = MetadataGenerator.FolderBrowserDialog_Selected_Directory.SelectedPath
@@ -297,25 +297,25 @@ Public Class TemplateAsset
             End If
 
             If SaveFileDialog1.ShowDialog = DialogResult.OK Then
-
-                Dim tempImageName As String = Path.GetFileNameWithoutExtension(SaveFileDialog1.FileName)
-                tempImageName = Path.GetFileNameWithoutExtension(tempImageName)
-
-                If aspectRatio_IsAlready_1_1 = False Then
-                    Dim bmp = New Bitmap(ForceImageAspectRatio_1_1_Size.Width, ForceImageAspectRatio_1_1_Size.Height)
-                    Using g As Graphics = Graphics.FromImage(bmp)
-                        'draw the original at the new size on memory bitmap
-                        g.DrawImage(PixelBox_PreviewImage.Image, 0, 0, bmp.Width, bmp.Height)
-                        'save the temp resized bitmamp
-                        'Console.WriteLine(Path.GetDirectoryName(SaveFileDialog1.FileName) & "\" & tempImageName & ".preview.png")
-                        bmp.Save(Path.GetDirectoryName(SaveFileDialog1.FileName) & "\" & tempImageName & ".preview.png", Imaging.ImageFormat.Png)
-                    End Using
-                Else
-                    PixelBox_PreviewImage.Image.Save(Path.GetDirectoryName(SaveFileDialog1.FileName) & "\" & tempImageName & ".preview.png", Imaging.ImageFormat.Png)
-                End If
-
                 'Write Asset Json
                 My.Computer.FileSystem.WriteAllText(SaveFileDialog1.FileName, FastColoredTextBox_AssetJson.Text, False)
+
+                If PixelBox_PreviewImage.Image IsNot Nothing Then
+                    Dim tempImageName As String = Path.GetFileNameWithoutExtension(SaveFileDialog1.FileName)
+                    tempImageName = Path.GetFileNameWithoutExtension(tempImageName)
+                    If aspectRatio_IsAlready_1_1 = False Then
+                        Dim bmp = New Bitmap(ForceImageAspectRatio_1_1_Size.Width, ForceImageAspectRatio_1_1_Size.Height)
+                        Using g As Graphics = Graphics.FromImage(bmp)
+                            'draw the original at the new size on memory bitmap
+                            g.DrawImage(PixelBox_PreviewImage.Image, 0, 0, bmp.Width, bmp.Height)
+                            'save the temp resized bitmamp
+                            'Console.WriteLine(Path.GetDirectoryName(SaveFileDialog1.FileName) & "\" & tempImageName & ".preview.png")
+                            bmp.Save(Path.GetDirectoryName(SaveFileDialog1.FileName) & "\" & tempImageName & ".preview.png", Imaging.ImageFormat.Png)
+                        End Using
+                    Else
+                        PixelBox_PreviewImage.Image.Save(Path.GetDirectoryName(SaveFileDialog1.FileName) & "\" & tempImageName & ".preview.png", Imaging.ImageFormat.Png)
+                    End If
+                End If
 
                 'Clear all
                 TextBox_Name.Clear()
@@ -341,9 +341,9 @@ Public Class TemplateAsset
             End If
         Else
 
-            If PixelBox_PreviewImage.Image Is Nothing Then
-                ErrorProvider1.SetError(PixelBox_PreviewImage, "Required")
-            End If
+            'If PixelBox_PreviewImage.Image Is Nothing Then
+            'ErrorProvider1.SetError(PixelBox_PreviewImage, "Required")
+            'End If
 
             If FastColoredTextBox_AssetJson.Text.Length = 0 Then
                 ErrorProvider1.SetError(FastColoredTextBox_AssetJson, "Required")
@@ -356,8 +356,10 @@ Public Class TemplateAsset
     Private Sub ContextMenuStrip_PreviewImage_Opening(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles ContextMenuStrip_PreviewImage.Opening
         If PixelBox_PreviewImage.Image IsNot Nothing Then
             SaveToolStripMenuItem.Enabled = True
+            ClearPreviewImageToolStripMenuItem.Enabled = True
         Else
             SaveToolStripMenuItem.Enabled = False
+            ClearPreviewImageToolStripMenuItem.Enabled = False
         End If
     End Sub
     'Save (ToolStripMenuItem) - Click
@@ -375,6 +377,10 @@ Public Class TemplateAsset
                 PixelBox_PreviewImage.Image.Save(SaveFileDialog_PreviewImage.FileName, Imaging.ImageFormat.Png)
             End If
         End If
+    End Sub
+    'ClearPreviewImage (ToolStripMenuItem) - Click
+    Private Sub ClearPreviewImageToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ClearPreviewImageToolStripMenuItem.Click
+        PixelBox_PreviewImage.Image = Nothing
     End Sub
     '
     'TabControl1 - ToolStripMenuItems
@@ -703,24 +709,16 @@ Public Class TemplateAsset
     Private Sub TabControl1_Selected(sender As Object, e As TabControlEventArgs) Handles TabControl1.Selected
         ErrorProvider1.Clear()
     End Sub
-    'TextBox_Name - GotFocus
-    Private Sub TextBox_Name_GotFocus(sender As Object, e As EventArgs) Handles TextBox_Name.GotFocus
-        ErrorProvider1.SetError(TextBox_Name, Nothing)
-    End Sub
-    'TextBox_Name - LostFocus
-    Private Sub TextBox_Name_LostFocus(sender As Object, e As EventArgs) Handles TextBox_Name.LostFocus
-        If TextBox_Name.Text.Length = 0 Then
-            ErrorProvider1.SetError(TextBox_Name, "Required")
+    'TextBox_Name - TextChanged
+    Private Sub TextBox_Name_TextChanged(sender As Object, e As EventArgs) Handles TextBox_Name.TextChanged
+        If TextBox_Name.Text.Length > 0 And ErrorProvider1.GetError(TextBox_Name) IsNot Nothing Then
+            ErrorProvider1.SetError(TextBox_Name, Nothing)
         End If
     End Sub
-    'TextBox_Description  - GotFocus
-    Private Sub TextBox_Description_GotFocus(sender As Object, e As EventArgs) Handles TextBox_Description.GotFocus
-        ErrorProvider1.SetError(TextBox_Description, Nothing)
-    End Sub
-    'TextBox_Description - LostFocus
-    Private Sub TextBox_Description_LostFocus(sender As Object, e As EventArgs) Handles TextBox_Description.LostFocus
-        If TextBox_Description.Text.Length = 0 Then
-            ErrorProvider1.SetError(TextBox_Description, "Required")
+    'TextBox_Description - TextChanged
+    Private Sub TextBox_Description_TextChanged(sender As Object, e As EventArgs) Handles TextBox_Description.TextChanged
+        If TextBox_Description.Text.Length > 0 And ErrorProvider1.GetError(TextBox_Description) IsNot Nothing Then
+            ErrorProvider1.SetError(TextBox_Description, Nothing)
         End If
     End Sub
     '

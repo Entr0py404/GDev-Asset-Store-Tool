@@ -60,6 +60,7 @@ Partial Class TemplateAsset
         Me.PixelBox_PreviewImage = New GDev_Asset_Store_Tool.PixelBox()
         Me.ContextMenuStrip_PreviewImage = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.SaveToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ClearPreviewImageToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage_PanelSprite = New System.Windows.Forms.TabPage()
         Me.Panel19 = New System.Windows.Forms.Panel()
@@ -506,18 +507,19 @@ Partial Class TemplateAsset
         '
         Me.FastColoredTextBox_AssetJson.AllowDrop = False
         Me.FastColoredTextBox_AssetJson.AutoCompleteBracketsList = New Char() {Global.Microsoft.VisualBasic.ChrW(40), Global.Microsoft.VisualBasic.ChrW(41), Global.Microsoft.VisualBasic.ChrW(123), Global.Microsoft.VisualBasic.ChrW(125), Global.Microsoft.VisualBasic.ChrW(91), Global.Microsoft.VisualBasic.ChrW(93), Global.Microsoft.VisualBasic.ChrW(34), Global.Microsoft.VisualBasic.ChrW(34), Global.Microsoft.VisualBasic.ChrW(39), Global.Microsoft.VisualBasic.ChrW(39)}
-        Me.FastColoredTextBox_AssetJson.AutoScrollMinSize = New System.Drawing.Size(27, 14)
+        Me.FastColoredTextBox_AssetJson.AutoScrollMinSize = New System.Drawing.Size(29, 16)
         Me.FastColoredTextBox_AssetJson.BackBrush = Nothing
         Me.FastColoredTextBox_AssetJson.BackColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer))
         Me.FastColoredTextBox_AssetJson.CaretColor = System.Drawing.Color.DodgerBlue
-        Me.FastColoredTextBox_AssetJson.CharHeight = 14
-        Me.FastColoredTextBox_AssetJson.CharWidth = 8
+        Me.FastColoredTextBox_AssetJson.CharHeight = 16
+        Me.FastColoredTextBox_AssetJson.CharWidth = 9
         Me.FastColoredTextBox_AssetJson.CommentPrefix = "'"
         Me.FastColoredTextBox_AssetJson.ContextMenuStrip = Me.ContextMenuStrip_AssetJSON
         Me.FastColoredTextBox_AssetJson.Cursor = System.Windows.Forms.Cursors.IBeam
         Me.FastColoredTextBox_AssetJson.DisabledColor = System.Drawing.Color.FromArgb(CType(CType(100, Byte), Integer), CType(CType(180, Byte), Integer), CType(CType(180, Byte), Integer), CType(CType(180, Byte), Integer))
         Me.FastColoredTextBox_AssetJson.Dock = System.Windows.Forms.DockStyle.Fill
         Me.FastColoredTextBox_AssetJson.FoldingIndicatorColor = System.Drawing.Color.Khaki
+        Me.FastColoredTextBox_AssetJson.Font = New System.Drawing.Font("Courier New", 11.25!)
         Me.FastColoredTextBox_AssetJson.ForeColor = System.Drawing.Color.WhiteSmoke
         Me.FastColoredTextBox_AssetJson.IndentBackColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer))
         Me.FastColoredTextBox_AssetJson.IsReplaceMode = False
@@ -815,17 +817,24 @@ Partial Class TemplateAsset
         '
         Me.ContextMenuStrip_PreviewImage.BackColor = System.Drawing.Color.FromArgb(CType(CType(54, Byte), Integer), CType(CType(57, Byte), Integer), CType(CType(62, Byte), Integer))
         Me.ContextMenuStrip_PreviewImage.Font = New System.Drawing.Font("Segoe UI", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ContextMenuStrip_PreviewImage.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SaveToolStripMenuItem})
+        Me.ContextMenuStrip_PreviewImage.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SaveToolStripMenuItem, Me.ClearPreviewImageToolStripMenuItem})
         Me.ContextMenuStrip_PreviewImage.Name = "ContextMenuStrip_PackageThumbnail"
         Me.ContextMenuStrip_PreviewImage.ShowImageMargin = False
-        Me.ContextMenuStrip_PreviewImage.Size = New System.Drawing.Size(85, 28)
+        Me.ContextMenuStrip_PreviewImage.Size = New System.Drawing.Size(88, 52)
         '
         'SaveToolStripMenuItem
         '
         Me.SaveToolStripMenuItem.ForeColor = System.Drawing.Color.WhiteSmoke
         Me.SaveToolStripMenuItem.Name = "SaveToolStripMenuItem"
-        Me.SaveToolStripMenuItem.Size = New System.Drawing.Size(84, 24)
+        Me.SaveToolStripMenuItem.Size = New System.Drawing.Size(87, 24)
         Me.SaveToolStripMenuItem.Text = "Save"
+        '
+        'ClearPreviewImageToolStripMenuItem
+        '
+        Me.ClearPreviewImageToolStripMenuItem.ForeColor = System.Drawing.Color.WhiteSmoke
+        Me.ClearPreviewImageToolStripMenuItem.Name = "ClearPreviewImageToolStripMenuItem"
+        Me.ClearPreviewImageToolStripMenuItem.Size = New System.Drawing.Size(87, 24)
+        Me.ClearPreviewImageToolStripMenuItem.Text = "Clear"
         '
         'TabControl1
         '
@@ -4373,4 +4382,5 @@ Partial Class TemplateAsset
     Friend WithEvents NumericUpDown_LabelFontSize As NumericUpDown
     Friend WithEvents ShapeContainer49 As ShapeContainer
     Friend WithEvents RectangleShape48 As RectangleShape
+    Friend WithEvents ClearPreviewImageToolStripMenuItem As ToolStripMenuItem
 End Class

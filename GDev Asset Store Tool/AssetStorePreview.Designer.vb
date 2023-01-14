@@ -36,6 +36,7 @@ Partial Class AssetStorePreview
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
         Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.Label_AssetCount = New System.Windows.Forms.Label()
         Me.FolderBrowserDialog_Selected_Directory = New System.Windows.Forms.FolderBrowserDialog()
         Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
@@ -43,12 +44,19 @@ Partial Class AssetStorePreview
         Me.OpenFileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.Label_Status = New System.Windows.Forms.Label()
+        Me.ContextMenuStrip2 = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.Small_ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.Medium_ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MediumLarge_ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.Large_ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ExtraLarge_ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.Panel_Selected_Directory_Controls.SuspendLayout()
         Me.Panel_Selected_Directory.SuspendLayout()
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
         Me.ContextMenuStrip1.SuspendLayout()
         Me.Panel3.SuspendLayout()
+        Me.ContextMenuStrip2.SuspendLayout()
         Me.SuspendLayout()
         '
         'FlowLayoutPanel1
@@ -57,7 +65,7 @@ Partial Class AssetStorePreview
         Me.FlowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.FlowLayoutPanel1.Location = New System.Drawing.Point(0, 96)
         Me.FlowLayoutPanel1.Name = "FlowLayoutPanel1"
-        Me.FlowLayoutPanel1.Size = New System.Drawing.Size(826, 441)
+        Me.FlowLayoutPanel1.Size = New System.Drawing.Size(826, 539)
         Me.FlowLayoutPanel1.TabIndex = 0
         '
         'Button_Reload
@@ -175,12 +183,27 @@ Partial Class AssetStorePreview
         'Panel2
         '
         Me.Panel2.BackColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer))
+        Me.Panel2.Controls.Add(Me.Button1)
         Me.Panel2.Controls.Add(Me.Label_AssetCount)
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel2.Location = New System.Drawing.Point(0, 64)
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(826, 32)
         Me.Panel2.TabIndex = 101
+        '
+        'Button1
+        '
+        Me.Button1.BackColor = System.Drawing.Color.DodgerBlue
+        Me.Button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Button1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer))
+        Me.Button1.FlatAppearance.BorderSize = 0
+        Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button1.Location = New System.Drawing.Point(8, 8)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(16, 16)
+        Me.Button1.TabIndex = 96
+        Me.Button1.UseVisualStyleBackColor = False
         '
         'Label_AssetCount
         '
@@ -222,7 +245,7 @@ Partial Class AssetStorePreview
         Me.Panel3.BackColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer))
         Me.Panel3.Controls.Add(Me.Label_Status)
         Me.Panel3.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Panel3.Location = New System.Drawing.Point(0, 537)
+        Me.Panel3.Location = New System.Drawing.Point(0, 635)
         Me.Panel3.Name = "Panel3"
         Me.Panel3.Size = New System.Drawing.Size(826, 24)
         Me.Panel3.TabIndex = 102
@@ -237,13 +260,58 @@ Partial Class AssetStorePreview
         Me.Label_Status.TabIndex = 0
         Me.Label_Status.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
+        'ContextMenuStrip2
+        '
+        Me.ContextMenuStrip2.BackColor = System.Drawing.Color.FromArgb(CType(CType(54, Byte), Integer), CType(CType(57, Byte), Integer), CType(CType(62, Byte), Integer))
+        Me.ContextMenuStrip2.Font = New System.Drawing.Font("Segoe UI", 11.25!)
+        Me.ContextMenuStrip2.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.Small_ToolStripMenuItem, Me.Medium_ToolStripMenuItem, Me.MediumLarge_ToolStripMenuItem, Me.Large_ToolStripMenuItem, Me.ExtraLarge_ToolStripMenuItem})
+        Me.ContextMenuStrip2.Name = "ContextMenuStrip2"
+        Me.ContextMenuStrip2.ShowCheckMargin = True
+        Me.ContextMenuStrip2.ShowImageMargin = False
+        Me.ContextMenuStrip2.Size = New System.Drawing.Size(175, 124)
+        '
+        'Small_ToolStripMenuItem
+        '
+        Me.Small_ToolStripMenuItem.ForeColor = System.Drawing.Color.WhiteSmoke
+        Me.Small_ToolStripMenuItem.Name = "Small_ToolStripMenuItem"
+        Me.Small_ToolStripMenuItem.Size = New System.Drawing.Size(174, 24)
+        Me.Small_ToolStripMenuItem.Text = "Small"
+        '
+        'Medium_ToolStripMenuItem
+        '
+        Me.Medium_ToolStripMenuItem.ForeColor = System.Drawing.Color.WhiteSmoke
+        Me.Medium_ToolStripMenuItem.Name = "Medium_ToolStripMenuItem"
+        Me.Medium_ToolStripMenuItem.Size = New System.Drawing.Size(174, 24)
+        Me.Medium_ToolStripMenuItem.Text = "Medium"
+        '
+        'MediumLarge_ToolStripMenuItem
+        '
+        Me.MediumLarge_ToolStripMenuItem.ForeColor = System.Drawing.Color.WhiteSmoke
+        Me.MediumLarge_ToolStripMenuItem.Name = "MediumLarge_ToolStripMenuItem"
+        Me.MediumLarge_ToolStripMenuItem.Size = New System.Drawing.Size(174, 24)
+        Me.MediumLarge_ToolStripMenuItem.Text = "Medium Large"
+        '
+        'Large_ToolStripMenuItem
+        '
+        Me.Large_ToolStripMenuItem.ForeColor = System.Drawing.Color.WhiteSmoke
+        Me.Large_ToolStripMenuItem.Name = "Large_ToolStripMenuItem"
+        Me.Large_ToolStripMenuItem.Size = New System.Drawing.Size(174, 24)
+        Me.Large_ToolStripMenuItem.Text = "Large"
+        '
+        'ExtraLarge_ToolStripMenuItem
+        '
+        Me.ExtraLarge_ToolStripMenuItem.ForeColor = System.Drawing.Color.WhiteSmoke
+        Me.ExtraLarge_ToolStripMenuItem.Name = "ExtraLarge_ToolStripMenuItem"
+        Me.ExtraLarge_ToolStripMenuItem.Size = New System.Drawing.Size(174, 24)
+        Me.ExtraLarge_ToolStripMenuItem.Text = "Extra Large"
+        '
         'AssetStorePreview
         '
         Me.AllowDrop = True
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(54, Byte), Integer), CType(CType(57, Byte), Integer), CType(CType(62, Byte), Integer))
-        Me.ClientSize = New System.Drawing.Size(826, 561)
+        Me.ClientSize = New System.Drawing.Size(826, 659)
         Me.Controls.Add(Me.FlowLayoutPanel1)
         Me.Controls.Add(Me.Panel3)
         Me.Controls.Add(Me.Panel2)
@@ -260,6 +328,7 @@ Partial Class AssetStorePreview
         Me.Panel2.ResumeLayout(False)
         Me.ContextMenuStrip1.ResumeLayout(False)
         Me.Panel3.ResumeLayout(False)
+        Me.ContextMenuStrip2.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
@@ -283,4 +352,11 @@ Partial Class AssetStorePreview
     Friend WithEvents OpenFileToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents Panel3 As Panel
     Friend WithEvents Label_Status As Label
+    Friend WithEvents ContextMenuStrip2 As ContextMenuStrip
+    Friend WithEvents Button1 As Button
+    Friend WithEvents Medium_ToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents Small_ToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents MediumLarge_ToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents Large_ToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ExtraLarge_ToolStripMenuItem As ToolStripMenuItem
 End Class

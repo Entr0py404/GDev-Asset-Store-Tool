@@ -152,7 +152,7 @@ Partial Class MetadataGenerator
         Me.ContextMenuStrip_TreeView.Name = "ContextMenuStrip_Listbox"
         Me.ContextMenuStrip_TreeView.ShowCheckMargin = True
         Me.ContextMenuStrip_TreeView.ShowImageMargin = False
-        Me.ContextMenuStrip_TreeView.Size = New System.Drawing.Size(271, 242)
+        Me.ContextMenuStrip_TreeView.Size = New System.Drawing.Size(271, 220)
         '
         'RegenerateSelectedFileToolStripMenuItem
         '

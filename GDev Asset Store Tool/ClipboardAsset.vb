@@ -34,10 +34,6 @@ Public Class ClipboardAsset
         If Not ListBox_Objects.SelectedIndex = -1 Then
             ObjectsJson.RemoveAt(ListBox_Objects.SelectedIndex)
             ListBox_Objects.Items.RemoveAt(ListBox_Objects.SelectedIndex)
-
-            If ListBox_Objects.Items.Count = 0 Then
-                ErrorProvider1.SetError(ListBox_Objects, "Required")
-            End If
         End If
     End Sub
     'Button_GenerateAsset - Click
@@ -74,7 +70,7 @@ Public Class ClipboardAsset
     End Sub
     'Button_Save - Click
     Private Sub Button_Save_Click(sender As Object, e As EventArgs) Handles Button_Save.Click
-        If TextBox_Description.Text.Length > 0 And FastColoredTextBox_AssetJson.Text.Length > 0 And PixelBox_PreviewImage.Image IsNot Nothing Then
+        If TextBox_Description.Text.Length > 0 And FastColoredTextBox_AssetJson.Text.Length > 0 Then
             If SaveFileDialog1.InitialDirectory = "" Then
                 If Directory.Exists(MetadataGenerator.FolderBrowserDialog_Selected_Directory.SelectedPath) Then
                     SaveFileDialog1.InitialDirectory = MetadataGenerator.FolderBrowserDialog_Selected_Directory.SelectedPath
@@ -90,24 +86,24 @@ Public Class ClipboardAsset
             End If
 
             If SaveFileDialog1.ShowDialog = DialogResult.OK Then
-
-                Dim tempImageName As String = Path.GetFileNameWithoutExtension(SaveFileDialog1.FileName)
-                tempImageName = Path.GetFileNameWithoutExtension(tempImageName)
-
-                If aspectRatio_IsAlready_1_1 = False Then
-                    Dim bmp = New Bitmap(ForceImageAspectRatio_1_1_Size.Width, ForceImageAspectRatio_1_1_Size.Height)
-                    Using g As Graphics = Graphics.FromImage(bmp)
-                        'draw the original at the new size on memory bitmap
-                        g.DrawImage(PixelBox_PreviewImage.Image, 0, 0, bmp.Width, bmp.Height)
-                        'save the temp resized bitmamp
-                        bmp.Save(Path.GetDirectoryName(SaveFileDialog1.FileName) & "\" & tempImageName & ".preview.png", Imaging.ImageFormat.Png)
-                    End Using
-                Else
-                    PixelBox_PreviewImage.Image.Save(Path.GetDirectoryName(SaveFileDialog1.FileName) & "\" & tempImageName & ".preview.png", Imaging.ImageFormat.Png)
-                End If
-
                 'Write Asset Json
                 My.Computer.FileSystem.WriteAllText(SaveFileDialog1.FileName, FastColoredTextBox_AssetJson.Text, False)
+
+                If PixelBox_PreviewImage.Image IsNot Nothing Then
+                    Dim tempImageName As String = Path.GetFileNameWithoutExtension(SaveFileDialog1.FileName)
+                    tempImageName = Path.GetFileNameWithoutExtension(tempImageName)
+                    If aspectRatio_IsAlready_1_1 = False Then
+                        Dim bmp = New Bitmap(ForceImageAspectRatio_1_1_Size.Width, ForceImageAspectRatio_1_1_Size.Height)
+                        Using g As Graphics = Graphics.FromImage(bmp)
+                            'draw the original at the new size on memory bitmap
+                            g.DrawImage(PixelBox_PreviewImage.Image, 0, 0, bmp.Width, bmp.Height)
+                            'save the temp resized bitmamp
+                            bmp.Save(Path.GetDirectoryName(SaveFileDialog1.FileName) & "\" & tempImageName & ".preview.png", Imaging.ImageFormat.Png)
+                        End Using
+                    Else
+                        PixelBox_PreviewImage.Image.Save(Path.GetDirectoryName(SaveFileDialog1.FileName) & "\" & tempImageName & ".preview.png", Imaging.ImageFormat.Png)
+                    End If
+                End If
 
                 'Clear all
                 TextBox_Description.Clear()
@@ -120,17 +116,13 @@ Public Class ClipboardAsset
             End If
         Else
 
-            'If TextBox_Description.Text.Length = 0 Then
-            'ErrorProvider1.SetError(TextBox_Description, "Required")
+            If TextBox_Description.Text.Length = 0 Then
+                ErrorProvider1.SetError(TextBox_Description, "Required")
+            End If
+
+            'If FastColoredTextBox_AssetJson.Text.Length = 0 Then
+            'ErrorProvider1.SetError(FastColoredTextBox_AssetJson, "Required")
             'End If
-
-            If PixelBox_PreviewImage.Image Is Nothing Then
-                ErrorProvider1.SetError(PixelBox_PreviewImage, "Required")
-            End If
-
-            If FastColoredTextBox_AssetJson.Text.Length = 0 Then
-                ErrorProvider1.SetError(FastColoredTextBox_AssetJson, "Required")
-            End If
 
             MsgBox("Please fill out all fields.", MsgBoxStyle.Information)
         End If
@@ -141,9 +133,7 @@ Public Class ClipboardAsset
             Dim files() As String = CType(e.Data.GetData(DataFormats.FileDrop), String())
             If files.Length <> 0 Then
                 Try
-                    'ClearPicturebox
                     PixelBox_PreviewImage.Image = SafeImageFromFile(files(0))
-                    ErrorProvider1.SetError(PixelBox_PreviewImage, Nothing)
 
                     Dim aspectRatio As Decimal = CDec(PixelBox_PreviewImage.Image.Width / PixelBox_PreviewImage.Image.Height)
                     Dim Ratio_1_1 As Decimal = 1
@@ -179,8 +169,10 @@ Public Class ClipboardAsset
     Private Sub ContextMenuStrip_PreviewImage_Opening(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles ContextMenuStrip_PreviewImage.Opening
         If PixelBox_PreviewImage.Image IsNot Nothing Then
             SaveToolStripMenuItem.Enabled = True
+            ClearPreviewImageToolStripMenuItem.Enabled = True
         Else
             SaveToolStripMenuItem.Enabled = False
+            ClearPreviewImageToolStripMenuItem.Enabled = False
         End If
     End Sub
     'Save (ToolStripMenuItem) - Click
@@ -199,22 +191,14 @@ Public Class ClipboardAsset
             End If
         End If
     End Sub
-    'TextBox_Description  - GotFocus
-    Private Sub TextBox_Description_GotFocus(sender As Object, e As EventArgs) Handles TextBox_Description.GotFocus
-        ErrorProvider1.SetError(TextBox_Description, Nothing)
+    'ClearPreviewImage (ToolStripMenuItem) - Click
+    Private Sub ClearPreviewImageToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ClearPreviewImageToolStripMenuItem.Click
+        PixelBox_PreviewImage.Image = Nothing
     End Sub
-    'TextBox_Description - LostFocus
-    Private Sub TextBox_Description_LostFocus(sender As Object, e As EventArgs) Handles TextBox_Description.LostFocus
-        If TextBox_Description.Text.Length = 0 Then
-            ErrorProvider1.SetError(TextBox_Description, "Required")
-        End If
-    End Sub
-    'FastColoredTextBox_AssetJson - TextChanging
-    Private Sub FastColoredTextBox_AssetJson_TextChanging(sender As Object, e As TextChangingEventArgs) Handles FastColoredTextBox_AssetJson.TextChanging
-        If FastColoredTextBox_AssetJson.Text.Length = 0 Then
-            ErrorProvider1.SetError(FastColoredTextBox_AssetJson, "Required")
-        Else
-            ErrorProvider1.SetError(FastColoredTextBox_AssetJson, Nothing)
+    'TextBox_Description - TextChanged
+    Private Sub TextBox_Description_TextChanged(sender As Object, e As EventArgs) Handles TextBox_Description.TextChanged
+        If TextBox_Description.Text.Length > 0 And ErrorProvider1.GetError(TextBox_Description) IsNot Nothing Then
+            ErrorProvider1.SetError(TextBox_Description, Nothing)
         End If
     End Sub
     'SafeImageFromFile()

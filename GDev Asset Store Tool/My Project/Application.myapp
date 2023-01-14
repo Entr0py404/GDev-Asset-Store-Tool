@@ -6,5 +6,6 @@
   <ShutdownMode>0</ShutdownMode>
   <EnableVisualStyles>true</EnableVisualStyles>
   <AuthenticationMode>0</AuthenticationMode>
-  <SaveMySettingsOnExit>false</SaveMySettingsOnExit>
+  <SaveMySettingsOnExit>true</SaveMySettingsOnExit>
+  <HighDpiMpde>false</HighDpiMpde>
 </MyApplicationData>

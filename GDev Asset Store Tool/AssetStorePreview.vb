@@ -1,4 +1,5 @@
-﻿
+﻿Imports System.Windows.Forms.VisualStyles.VisualStyleElement
+
 Public Class AssetStorePreview
     Dim RectangleShape_SelectedDirectory_Padding As Integer = 0
     Dim TextBox_Selected_Directory_Padding As Integer = 0
@@ -6,6 +7,23 @@ Public Class AssetStorePreview
     Private Sub AssetStorePreview_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         RectangleShape_SelectedDirectory_Padding = Panel_Selected_Directory.Width - RectangleShape_Selected_Directory.Width
         TextBox_Selected_Directory_Padding = RectangleShape_Selected_Directory.Width - TextBox_Selected_Directory.Width
+        ContextMenuStrip1.Renderer = New ToolStripProfessionalRenderer(New ColorTable())
+        ContextMenuStrip2.Renderer = New ToolStripProfessionalRenderer(New ColorTable())
+
+        If My.Settings.AssetPannelSize = 98 Then
+            Small_ToolStripMenuItem.Checked = True
+        ElseIf My.Settings.AssetPannelSize = 128 Then
+            Medium_ToolStripMenuItem.Checked = True
+        ElseIf My.Settings.AssetPannelSize = 150 Then
+            MediumLarge_ToolStripMenuItem.Checked = True
+        ElseIf My.Settings.AssetPannelSize = 182 Then
+            Large_ToolStripMenuItem.Checked = True
+        ElseIf My.Settings.AssetPannelSize = 229 Then
+            ExtraLarge_ToolStripMenuItem.Checked = True
+        Else
+            Medium_ToolStripMenuItem.Checked = True
+        End If
+
         resizeLoadlock = False
     End Sub
     'LoadAssetsFromSelectedDirectory
@@ -76,7 +94,7 @@ Public Class AssetStorePreview
     Private Sub CreateNewPanel(imagePath As String, assetObjectText As String, textColor As Color)
         'Panel
         Dim AssetPanel = New Panel
-        AssetPanel.Size = New Size(128, 128)
+        AssetPanel.Size = New Size(My.Settings.AssetPannelSize, My.Settings.AssetPannelSize)
         AssetPanel.BackColor = Color.FromArgb(46, 49, 54)
         AssetPanel.Name = "AssetPanel1"
 
@@ -199,5 +217,59 @@ Public Class AssetStorePreview
                 MsgBox("Directory does Not exists.", MsgBoxStyle.Information)
             End If
         End If
+    End Sub
+    'Button1 - Click
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        ContextMenuStrip2.Show(Button1, 4, 4)
+    End Sub
+    'ResizePanels (sizeInt)
+    Private Sub ResizePanels(sizeInt As Integer)
+        My.Settings.AssetPannelSize = sizeInt
+
+        FlowLayoutPanel1.Visible = False
+        For Each oObj As Control In FlowLayoutPanel1.Controls
+            Dim pPanel As Panel = CType(oObj, Panel)
+            pPanel.Width = sizeInt
+            pPanel.Height = sizeInt
+        Next
+        FlowLayoutPanel1.Visible = True
+    End Sub
+    'Small_ToolStripMenuItem - Click
+    Private Sub Small_ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles Small_ToolStripMenuItem.Click
+        UnCheckAllSizes()
+        Small_ToolStripMenuItem.Checked = True
+        ResizePanels(98)
+    End Sub
+    'Medium_ToolStripMenuItem - Click
+    Private Sub Medium_ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles Medium_ToolStripMenuItem.Click
+        UnCheckAllSizes()
+        Medium_ToolStripMenuItem.Checked = True
+        ResizePanels(128)
+    End Sub
+    'MediumLarge_ToolStripMenuItem - Click
+    Private Sub MediumLarge_ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles MediumLarge_ToolStripMenuItem.Click
+        UnCheckAllSizes()
+        MediumLarge_ToolStripMenuItem.Checked = True
+        ResizePanels(150)
+    End Sub
+    'Large_ToolStripMenuItem - Click
+    Private Sub Large_ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles Large_ToolStripMenuItem.Click
+        UnCheckAllSizes()
+        Large_ToolStripMenuItem.Checked = True
+        ResizePanels(182)
+    End Sub
+    'ExtraLarge_ToolStripMenuItem - Click
+    Private Sub ExtraLarge_ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ExtraLarge_ToolStripMenuItem.Click
+        UnCheckAllSizes()
+        ExtraLarge_ToolStripMenuItem.Checked = True
+        ResizePanels(229)
+    End Sub
+    'UnCheckAllSizes
+    Private Sub UnCheckAllSizes()
+        Small_ToolStripMenuItem.Checked = False
+        Medium_ToolStripMenuItem.Checked = False
+        MediumLarge_ToolStripMenuItem.Checked = False
+        Large_ToolStripMenuItem.Checked = False
+        ExtraLarge_ToolStripMenuItem.Checked = False
     End Sub
 End Class

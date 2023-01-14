@@ -51,6 +51,7 @@ Partial Class ClipboardAsset
         Me.PixelBox_PreviewImage = New GDev_Asset_Store_Tool.PixelBox()
         Me.ContextMenuStrip_PreviewImage = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.SaveToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ClearPreviewImageToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ShapeContainer3 = New Microsoft.VisualBasic.PowerPacks.ShapeContainer()
         Me.RectangleShape_Image = New Microsoft.VisualBasic.PowerPacks.RectangleShape()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
@@ -145,19 +146,19 @@ Partial Class ClipboardAsset
         Me.FastColoredTextBox_AssetJson.AllowDrop = False
         Me.FastColoredTextBox_AssetJson.AutoCompleteBracketsList = New Char() {Global.Microsoft.VisualBasic.ChrW(40), Global.Microsoft.VisualBasic.ChrW(41), Global.Microsoft.VisualBasic.ChrW(123), Global.Microsoft.VisualBasic.ChrW(125), Global.Microsoft.VisualBasic.ChrW(91), Global.Microsoft.VisualBasic.ChrW(93), Global.Microsoft.VisualBasic.ChrW(34), Global.Microsoft.VisualBasic.ChrW(34), Global.Microsoft.VisualBasic.ChrW(39), Global.Microsoft.VisualBasic.ChrW(39)}
         Me.FastColoredTextBox_AssetJson.AutoIndentCharsPatterns = "" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "^\s*[\w\.\(\)]+\s*(?<range>=)\s*(?<range>.+)" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
-        Me.FastColoredTextBox_AssetJson.AutoScrollMinSize = New System.Drawing.Size(27, 14)
+        Me.FastColoredTextBox_AssetJson.AutoScrollMinSize = New System.Drawing.Size(29, 16)
         Me.FastColoredTextBox_AssetJson.BackBrush = Nothing
         Me.FastColoredTextBox_AssetJson.BackColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer))
         Me.FastColoredTextBox_AssetJson.CaretColor = System.Drawing.Color.DodgerBlue
-        Me.FastColoredTextBox_AssetJson.CharHeight = 14
-        Me.FastColoredTextBox_AssetJson.CharWidth = 8
+        Me.FastColoredTextBox_AssetJson.CharHeight = 16
+        Me.FastColoredTextBox_AssetJson.CharWidth = 9
         Me.FastColoredTextBox_AssetJson.CommentPrefix = "'"
         Me.FastColoredTextBox_AssetJson.ContextMenuStrip = Me.ContextMenuStrip_AssetJSON
         Me.FastColoredTextBox_AssetJson.Cursor = System.Windows.Forms.Cursors.IBeam
         Me.FastColoredTextBox_AssetJson.DisabledColor = System.Drawing.Color.FromArgb(CType(CType(100, Byte), Integer), CType(CType(180, Byte), Integer), CType(CType(180, Byte), Integer), CType(CType(180, Byte), Integer))
         Me.FastColoredTextBox_AssetJson.Dock = System.Windows.Forms.DockStyle.Fill
         Me.FastColoredTextBox_AssetJson.FoldingIndicatorColor = System.Drawing.Color.Khaki
-        Me.FastColoredTextBox_AssetJson.Font = New System.Drawing.Font("Courier New", 9.75!)
+        Me.FastColoredTextBox_AssetJson.Font = New System.Drawing.Font("Courier New", 11.25!)
         Me.FastColoredTextBox_AssetJson.ForeColor = System.Drawing.Color.WhiteSmoke
         Me.FastColoredTextBox_AssetJson.IndentBackColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer))
         Me.FastColoredTextBox_AssetJson.IsReplaceMode = False
@@ -171,7 +172,7 @@ Partial Class ClipboardAsset
         Me.FastColoredTextBox_AssetJson.ServiceColors = CType(resources.GetObject("FastColoredTextBox_AssetJson.ServiceColors"), FastColoredTextBoxNS.ServiceColors)
         Me.FastColoredTextBox_AssetJson.ServiceLinesColor = System.Drawing.Color.WhiteSmoke
         Me.FastColoredTextBox_AssetJson.ShowFoldingLines = True
-        Me.FastColoredTextBox_AssetJson.Size = New System.Drawing.Size(671, 412)
+        Me.FastColoredTextBox_AssetJson.Size = New System.Drawing.Size(670, 412)
         Me.FastColoredTextBox_AssetJson.TabIndex = 91
         Me.FastColoredTextBox_AssetJson.Zoom = 100
         '
@@ -371,17 +372,24 @@ Partial Class ClipboardAsset
         '
         Me.ContextMenuStrip_PreviewImage.BackColor = System.Drawing.Color.FromArgb(CType(CType(54, Byte), Integer), CType(CType(57, Byte), Integer), CType(CType(62, Byte), Integer))
         Me.ContextMenuStrip_PreviewImage.Font = New System.Drawing.Font("Segoe UI", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ContextMenuStrip_PreviewImage.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SaveToolStripMenuItem})
+        Me.ContextMenuStrip_PreviewImage.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SaveToolStripMenuItem, Me.ClearPreviewImageToolStripMenuItem})
         Me.ContextMenuStrip_PreviewImage.Name = "ContextMenuStrip_PackageThumbnail"
         Me.ContextMenuStrip_PreviewImage.ShowImageMargin = False
-        Me.ContextMenuStrip_PreviewImage.Size = New System.Drawing.Size(85, 28)
+        Me.ContextMenuStrip_PreviewImage.Size = New System.Drawing.Size(88, 52)
         '
         'SaveToolStripMenuItem
         '
         Me.SaveToolStripMenuItem.ForeColor = System.Drawing.Color.WhiteSmoke
         Me.SaveToolStripMenuItem.Name = "SaveToolStripMenuItem"
-        Me.SaveToolStripMenuItem.Size = New System.Drawing.Size(84, 24)
+        Me.SaveToolStripMenuItem.Size = New System.Drawing.Size(87, 24)
         Me.SaveToolStripMenuItem.Text = "Save"
+        '
+        'ClearPreviewImageToolStripMenuItem
+        '
+        Me.ClearPreviewImageToolStripMenuItem.ForeColor = System.Drawing.Color.WhiteSmoke
+        Me.ClearPreviewImageToolStripMenuItem.Name = "ClearPreviewImageToolStripMenuItem"
+        Me.ClearPreviewImageToolStripMenuItem.Size = New System.Drawing.Size(87, 24)
+        Me.ClearPreviewImageToolStripMenuItem.Text = "Clear"
         '
         'ShapeContainer3
         '
@@ -418,19 +426,19 @@ Partial Class ClipboardAsset
         '
         Me.FastColoredTextBox_Resources.AutoCompleteBracketsList = New Char() {Global.Microsoft.VisualBasic.ChrW(40), Global.Microsoft.VisualBasic.ChrW(41), Global.Microsoft.VisualBasic.ChrW(123), Global.Microsoft.VisualBasic.ChrW(125), Global.Microsoft.VisualBasic.ChrW(91), Global.Microsoft.VisualBasic.ChrW(93), Global.Microsoft.VisualBasic.ChrW(34), Global.Microsoft.VisualBasic.ChrW(34), Global.Microsoft.VisualBasic.ChrW(39), Global.Microsoft.VisualBasic.ChrW(39)}
         Me.FastColoredTextBox_Resources.AutoIndentCharsPatterns = "" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "^\s*[\w\.\(\)]+\s*(?<range>=)\s*(?<range>.+)" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
-        Me.FastColoredTextBox_Resources.AutoScrollMinSize = New System.Drawing.Size(27, 14)
+        Me.FastColoredTextBox_Resources.AutoScrollMinSize = New System.Drawing.Size(29, 16)
         Me.FastColoredTextBox_Resources.BackBrush = Nothing
         Me.FastColoredTextBox_Resources.BackColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer))
         Me.FastColoredTextBox_Resources.CaretColor = System.Drawing.Color.DodgerBlue
-        Me.FastColoredTextBox_Resources.CharHeight = 14
-        Me.FastColoredTextBox_Resources.CharWidth = 8
+        Me.FastColoredTextBox_Resources.CharHeight = 16
+        Me.FastColoredTextBox_Resources.CharWidth = 9
         Me.FastColoredTextBox_Resources.CommentPrefix = "'"
         Me.FastColoredTextBox_Resources.ContextMenuStrip = Me.ContextMenuStrip_Resources
         Me.FastColoredTextBox_Resources.Cursor = System.Windows.Forms.Cursors.IBeam
         Me.FastColoredTextBox_Resources.DisabledColor = System.Drawing.Color.FromArgb(CType(CType(100, Byte), Integer), CType(CType(180, Byte), Integer), CType(CType(180, Byte), Integer), CType(CType(180, Byte), Integer))
         Me.FastColoredTextBox_Resources.Dock = System.Windows.Forms.DockStyle.Fill
         Me.FastColoredTextBox_Resources.FoldingIndicatorColor = System.Drawing.Color.Khaki
-        Me.FastColoredTextBox_Resources.Font = New System.Drawing.Font("Courier New", 9.75!)
+        Me.FastColoredTextBox_Resources.Font = New System.Drawing.Font("Courier New", 11.25!)
         Me.FastColoredTextBox_Resources.ForeColor = System.Drawing.Color.WhiteSmoke
         Me.FastColoredTextBox_Resources.IndentBackColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer))
         Me.FastColoredTextBox_Resources.IsReplaceMode = False
@@ -521,8 +529,8 @@ Partial Class ClipboardAsset
         Me.SplitContainer1.Panel2.Controls.Add(Me.TextBox_ProjectFilepath)
         Me.SplitContainer1.Panel2.Controls.Add(Me.Label2)
         Me.SplitContainer1.Panel2.Padding = New System.Windows.Forms.Padding(0, 0, 8, 8)
-        Me.SplitContainer1.Size = New System.Drawing.Size(1065, 449)
-        Me.SplitContainer1.SplitterDistance = 679
+        Me.SplitContainer1.Size = New System.Drawing.Size(1064, 449)
+        Me.SplitContainer1.SplitterDistance = 678
         Me.SplitContainer1.SplitterWidth = 16
         Me.SplitContainer1.TabIndex = 119
         '
@@ -550,7 +558,7 @@ Partial Class ClipboardAsset
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel2.Location = New System.Drawing.Point(0, 0)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(1065, 232)
+        Me.Panel2.Size = New System.Drawing.Size(1064, 232)
         Me.Panel2.TabIndex = 120
         '
         'ClipboardAsset
@@ -558,11 +566,12 @@ Partial Class ClipboardAsset
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(54, Byte), Integer), CType(CType(57, Byte), Integer), CType(CType(62, Byte), Integer))
-        Me.ClientSize = New System.Drawing.Size(1065, 681)
+        Me.ClientSize = New System.Drawing.Size(1064, 681)
         Me.Controls.Add(Me.SplitContainer1)
         Me.Controls.Add(Me.Panel2)
         Me.ForeColor = System.Drawing.Color.WhiteSmoke
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.MinimumSize = New System.Drawing.Size(1080, 720)
         Me.Name = "ClipboardAsset"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Clipboard Asset"
@@ -632,4 +641,5 @@ Partial Class ClipboardAsset
     Friend WithEvents PasteToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents CutToolStripMenuItem1 As ToolStripMenuItem
     Friend WithEvents CopyToolStripMenuItem1 As ToolStripMenuItem
+    Friend WithEvents ClearPreviewImageToolStripMenuItem As ToolStripMenuItem
 End Class
