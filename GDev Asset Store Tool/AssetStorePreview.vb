@@ -31,7 +31,6 @@ Public Class AssetStorePreview
         FlowLayoutPanel1.Controls.Clear()
         Label_AssetCount.Text = "Assets"
         Label_AssetCount.Update()
-        FlowLayoutPanel1.Hide()
         Label_Status.Text = "Loading Files..."
         Label_Status.Refresh()
         Dim ContainsIgnoredDirectories As Boolean = False
@@ -39,6 +38,7 @@ Public Class AssetStorePreview
         Dim PreviousAssetPath As String = ""
         Dim AssetCount As Integer = 0
         Dim TempColor As Color = Color.WhiteSmoke
+        FlowLayoutPanel1.Visible = False
         For Each PNG_file As String In Directory.GetFiles(AssetDirectory, "*.png", SearchOption.AllDirectories)
             If Not PNG_file.ToLower.Contains("!zip") And Not PNG_file.ToLower.Contains("!remove") And Not PNG_file.ToLower.Contains("!notused") And Not PNG_file.ToLower.Contains("!not used") Then
 
@@ -87,7 +87,8 @@ Public Class AssetStorePreview
         End If
 
         Label_AssetCount.Text = AssetCount & " Assets"
-        FlowLayoutPanel1.Show()
+
+        FlowLayoutPanel1.Visible = True
     End Sub
     'CreateNewPanel
     Private Sub CreateNewPanel(imagePath As String, assetObjectText As String, textColor As Color)
@@ -225,6 +226,7 @@ Public Class AssetStorePreview
     Private Sub ResizePanels(sizeInt As Integer)
         My.Settings.AssetPannelSize = sizeInt
 
+        FlowLayoutPanel1.SuspendLayout()
         FlowLayoutPanel1.Visible = False
         For Each oObj As Control In FlowLayoutPanel1.Controls
             Dim pPanel As Panel = CType(oObj, Panel)
@@ -232,6 +234,7 @@ Public Class AssetStorePreview
             pPanel.Height = sizeInt
         Next
         FlowLayoutPanel1.Visible = True
+        FlowLayoutPanel1.ResumeLayout()
     End Sub
     'Small_ToolStripMenuItem - Click
     Private Sub Small_ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles Small_ToolStripMenuItem.Click
