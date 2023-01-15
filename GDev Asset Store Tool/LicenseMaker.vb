@@ -18,12 +18,8 @@
     Private Sub Button_Save_Click(sender As Object, e As EventArgs) Handles Button_Save.Click
         If ComboBox_License.SelectedIndex > -1 And Not TextBox_Artist.Text = "" And Not TextBox_ArtistLink.Text = "" Then
             SaveFileDialog_License.FileName = "license.txt"
-            If SaveFileDialog_License.InitialDirectory = "" Then
-                If Directory.Exists(MetadataGenerator.FolderBrowserDialog_Selected_Directory.SelectedPath) Then
-                    SaveFileDialog_License.InitialDirectory = MetadataGenerator.FolderBrowserDialog_Selected_Directory.SelectedPath
-                Else
-                    SaveFileDialog_License.InitialDirectory = My.Computer.FileSystem.SpecialDirectories.Desktop
-                End If
+            If Not Directory.Exists(SaveFileDialog_License.InitialDirectory) Then
+                SaveFileDialog_License.InitialDirectory = My.Computer.FileSystem.SpecialDirectories.Desktop
             End If
 
             If SaveFileDialog_License.ShowDialog = DialogResult.OK Then
@@ -34,7 +30,7 @@
                 file.WriteLine(TextBox_ArtistLink.Text)
                 file.Close()
                 'Clear all for next
-                SaveFileDialog_License.InitialDirectory = ""
+                'SaveFileDialog_License.InitialDirectory = ""
                 ComboBox_License.SelectedIndex = -1
                 TextBox_Artist.Clear()
                 TextBox_ArtistLink.Clear()

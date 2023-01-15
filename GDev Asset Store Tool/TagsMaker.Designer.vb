@@ -32,11 +32,9 @@ Partial Class TagsMaker
         Me.Label_Existingtags = New System.Windows.Forms.Label()
         Me.ShapeContainer2 = New Microsoft.VisualBasic.PowerPacks.ShapeContainer()
         Me.RectangleShape_Animation = New Microsoft.VisualBasic.PowerPacks.RectangleShape()
-        Me.Panel_TAGSmd = New System.Windows.Forms.Panel()
         Me.Button_Open = New System.Windows.Forms.Button()
         Me.Button_Save = New System.Windows.Forms.Button()
         Me.Label_TAGSmd = New System.Windows.Forms.Label()
-        Me.ShapeContainer3 = New Microsoft.VisualBasic.PowerPacks.ShapeContainer()
         Me.RectangleShape1 = New Microsoft.VisualBasic.PowerPacks.RectangleShape()
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.Label_Newtag = New System.Windows.Forms.Label()
@@ -59,8 +57,14 @@ Partial Class TagsMaker
         Me.LinkLabel_Wiki_Info = New System.Windows.Forms.LinkLabel()
         Me.SaveFileDialog1 = New System.Windows.Forms.SaveFileDialog()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
+        Me.ListBox1 = New System.Windows.Forms.ListBox()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.RectangleShape4 = New Microsoft.VisualBasic.PowerPacks.RectangleShape()
+        Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.ShapeContainer1 = New Microsoft.VisualBasic.PowerPacks.ShapeContainer()
+        Me.Panel5 = New System.Windows.Forms.Panel()
+        Me.ShapeContainer6 = New Microsoft.VisualBasic.PowerPacks.ShapeContainer()
         Me.Panel1.SuspendLayout()
-        Me.Panel_TAGSmd.SuspendLayout()
         Me.Panel3.SuspendLayout()
         Me.Panel4.SuspendLayout()
         Me.Panel_Main.SuspendLayout()
@@ -69,6 +73,8 @@ Partial Class TagsMaker
         CType(Me.PictureBox_Minimize, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox_AppIcon, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel7.SuspendLayout()
+        Me.Panel2.SuspendLayout()
+        Me.Panel5.SuspendLayout()
         Me.SuspendLayout()
         '
         'ListBox_ExistingTags
@@ -105,7 +111,7 @@ Partial Class TagsMaker
         Me.ListBox_TAGS.FormattingEnabled = True
         Me.ListBox_TAGS.Location = New System.Drawing.Point(16, 32)
         Me.ListBox_TAGS.Name = "ListBox_TAGS"
-        Me.ListBox_TAGS.Size = New System.Drawing.Size(240, 312)
+        Me.ListBox_TAGS.Size = New System.Drawing.Size(240, 143)
         Me.ListBox_TAGS.TabIndex = 5
         Me.ToolTip1.SetToolTip(Me.ListBox_TAGS, "Double-click to remove tag from list." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "You can drag & drop a TAGS.md file here.")
         '
@@ -135,9 +141,9 @@ Partial Class TagsMaker
         Me.Label_Existingtags.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold)
         Me.Label_Existingtags.Location = New System.Drawing.Point(8, 8)
         Me.Label_Existingtags.Name = "Label_Existingtags"
-        Me.Label_Existingtags.Size = New System.Drawing.Size(79, 13)
+        Me.Label_Existingtags.Size = New System.Drawing.Size(152, 13)
         Me.Label_Existingtags.TabIndex = 84
-        Me.Label_Existingtags.Text = "Existing tags"
+        Me.Label_Existingtags.Text = "Existing Asset Store Tags"
         '
         'ShapeContainer2
         '
@@ -162,19 +168,6 @@ Partial Class TagsMaker
         Me.RectangleShape_Animation.SelectionColor = System.Drawing.Color.Transparent
         Me.RectangleShape_Animation.Size = New System.Drawing.Size(256, 264)
         '
-        'Panel_TAGSmd
-        '
-        Me.Panel_TAGSmd.AllowDrop = True
-        Me.Panel_TAGSmd.Controls.Add(Me.Button_Open)
-        Me.Panel_TAGSmd.Controls.Add(Me.Button_Save)
-        Me.Panel_TAGSmd.Controls.Add(Me.Label_TAGSmd)
-        Me.Panel_TAGSmd.Controls.Add(Me.ListBox_TAGS)
-        Me.Panel_TAGSmd.Controls.Add(Me.ShapeContainer3)
-        Me.Panel_TAGSmd.Location = New System.Drawing.Point(272, 128)
-        Me.Panel_TAGSmd.Name = "Panel_TAGSmd"
-        Me.Panel_TAGSmd.Size = New System.Drawing.Size(272, 392)
-        Me.Panel_TAGSmd.TabIndex = 12
-        '
         'Button_Open
         '
         Me.Button_Open.BackColor = System.Drawing.Color.DodgerBlue
@@ -182,7 +175,7 @@ Partial Class TagsMaker
         Me.Button_Open.FlatAppearance.BorderSize = 0
         Me.Button_Open.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button_Open.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button_Open.Location = New System.Drawing.Point(8, 360)
+        Me.Button_Open.Location = New System.Drawing.Point(280, 480)
         Me.Button_Open.Name = "Button_Open"
         Me.Button_Open.Size = New System.Drawing.Size(96, 24)
         Me.Button_Open.TabIndex = 93
@@ -198,7 +191,7 @@ Partial Class TagsMaker
         Me.Button_Save.FlatAppearance.BorderSize = 0
         Me.Button_Save.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button_Save.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button_Save.Location = New System.Drawing.Point(168, 360)
+        Me.Button_Save.Location = New System.Drawing.Point(440, 480)
         Me.Button_Save.Name = "Button_Save"
         Me.Button_Save.Size = New System.Drawing.Size(96, 24)
         Me.Button_Save.TabIndex = 92
@@ -215,16 +208,6 @@ Partial Class TagsMaker
         Me.Label_TAGSmd.TabIndex = 85
         Me.Label_TAGSmd.Text = "TAGS.md"
         '
-        'ShapeContainer3
-        '
-        Me.ShapeContainer3.Location = New System.Drawing.Point(0, 0)
-        Me.ShapeContainer3.Margin = New System.Windows.Forms.Padding(0)
-        Me.ShapeContainer3.Name = "ShapeContainer3"
-        Me.ShapeContainer3.Shapes.AddRange(New Microsoft.VisualBasic.PowerPacks.Shape() {Me.RectangleShape1})
-        Me.ShapeContainer3.Size = New System.Drawing.Size(272, 392)
-        Me.ShapeContainer3.TabIndex = 6
-        Me.ShapeContainer3.TabStop = False
-        '
         'RectangleShape1
         '
         Me.RectangleShape1.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(49, Byte), Integer), CType(CType(54, Byte), Integer))
@@ -236,14 +219,14 @@ Partial Class TagsMaker
         Me.RectangleShape1.Location = New System.Drawing.Point(8, 24)
         Me.RectangleShape1.Name = "RectangleShape1"
         Me.RectangleShape1.SelectionColor = System.Drawing.Color.Transparent
-        Me.RectangleShape1.Size = New System.Drawing.Size(256, 328)
+        Me.RectangleShape1.Size = New System.Drawing.Size(256, 160)
         '
         'Panel3
         '
         Me.Panel3.Controls.Add(Me.Label_Newtag)
         Me.Panel3.Controls.Add(Me.TextBox_NewTag)
         Me.Panel3.Controls.Add(Me.ShapeContainer4)
-        Me.Panel3.Location = New System.Drawing.Point(272, 72)
+        Me.Panel3.Location = New System.Drawing.Point(272, 224)
         Me.Panel3.Name = "Panel3"
         Me.Panel3.Size = New System.Drawing.Size(272, 56)
         Me.Panel3.TabIndex = 13
@@ -254,9 +237,9 @@ Partial Class TagsMaker
         Me.Label_Newtag.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold)
         Me.Label_Newtag.Location = New System.Drawing.Point(8, 8)
         Me.Label_Newtag.Name = "Label_Newtag"
-        Me.Label_Newtag.Size = New System.Drawing.Size(54, 13)
+        Me.Label_Newtag.Size = New System.Drawing.Size(58, 13)
         Me.Label_Newtag.TabIndex = 83
-        Me.Label_Newtag.Text = "New tag"
+        Me.Label_Newtag.Text = "New Tag"
         '
         'ShapeContainer4
         '
@@ -287,9 +270,9 @@ Partial Class TagsMaker
         Me.Label_Specialtags.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold)
         Me.Label_Specialtags.Location = New System.Drawing.Point(8, 8)
         Me.Label_Specialtags.Name = "Label_Specialtags"
-        Me.Label_Specialtags.Size = New System.Drawing.Size(77, 13)
+        Me.Label_Specialtags.Size = New System.Drawing.Size(81, 13)
         Me.Label_Specialtags.TabIndex = 86
-        Me.Label_Specialtags.Text = "Special tags"
+        Me.Label_Specialtags.Text = "Special Tags"
         '
         'RectangleShape3
         '
@@ -335,7 +318,7 @@ Partial Class TagsMaker
         Me.Panel_Main.ForeColor = System.Drawing.Color.White
         Me.Panel_Main.Location = New System.Drawing.Point(0, 0)
         Me.Panel_Main.Name = "Panel_Main"
-        Me.Panel_Main.Size = New System.Drawing.Size(547, 26)
+        Me.Panel_Main.Size = New System.Drawing.Size(544, 26)
         Me.Panel_Main.TabIndex = 95
         '
         'Panel_ControlBox
@@ -343,7 +326,7 @@ Partial Class TagsMaker
         Me.Panel_ControlBox.Controls.Add(Me.PictureBox_Close)
         Me.Panel_ControlBox.Controls.Add(Me.PictureBox_Minimize)
         Me.Panel_ControlBox.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Panel_ControlBox.Location = New System.Drawing.Point(495, 0)
+        Me.Panel_ControlBox.Location = New System.Drawing.Point(492, 0)
         Me.Panel_ControlBox.Name = "Panel_ControlBox"
         Me.Panel_ControlBox.Size = New System.Drawing.Size(52, 26)
         Me.Panel_ControlBox.TabIndex = 4
@@ -425,7 +408,7 @@ Partial Class TagsMaker
         Me.Panel7.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel7.Location = New System.Drawing.Point(0, 26)
         Me.Panel7.Name = "Panel7"
-        Me.Panel7.Size = New System.Drawing.Size(547, 40)
+        Me.Panel7.Size = New System.Drawing.Size(544, 40)
         Me.Panel7.TabIndex = 97
         '
         'LinkLabel_Wiki_Info
@@ -433,7 +416,7 @@ Partial Class TagsMaker
         Me.LinkLabel_Wiki_Info.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.LinkLabel_Wiki_Info.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LinkLabel_Wiki_Info.LinkColor = System.Drawing.Color.DodgerBlue
-        Me.LinkLabel_Wiki_Info.Location = New System.Drawing.Point(474, 8)
+        Me.LinkLabel_Wiki_Info.Location = New System.Drawing.Point(471, 8)
         Me.LinkLabel_Wiki_Info.Name = "LinkLabel_Wiki_Info"
         Me.LinkLabel_Wiki_Info.Size = New System.Drawing.Size(65, 24)
         Me.LinkLabel_Wiki_Info.TabIndex = 108
@@ -452,17 +435,95 @@ Partial Class TagsMaker
         Me.ToolTip1.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info
         Me.ToolTip1.ToolTipTitle = "Hint"
         '
+        'ListBox1
+        '
+        Me.ListBox1.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(49, Byte), Integer), CType(CType(54, Byte), Integer))
+        Me.ListBox1.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.ListBox1.ForeColor = System.Drawing.Color.Gray
+        Me.ListBox1.FormattingEnabled = True
+        Me.ListBox1.Location = New System.Drawing.Point(16, 32)
+        Me.ListBox1.Name = "ListBox1"
+        Me.ListBox1.Size = New System.Drawing.Size(240, 104)
+        Me.ListBox1.TabIndex = 94
+        Me.ToolTip1.SetToolTip(Me.ListBox1, "Double-click to remove tag from list." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "You can drag & drop a TAGS.md file here.")
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold)
+        Me.Label1.Location = New System.Drawing.Point(8, 8)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(131, 13)
+        Me.Label1.TabIndex = 95
+        Me.Label1.Text = "Tags From Directories"
+        '
+        'RectangleShape4
+        '
+        Me.RectangleShape4.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(49, Byte), Integer), CType(CType(54, Byte), Integer))
+        Me.RectangleShape4.BackStyle = Microsoft.VisualBasic.PowerPacks.BackStyle.Opaque
+        Me.RectangleShape4.BorderColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer))
+        Me.RectangleShape4.CornerRadius = 3
+        Me.RectangleShape4.FillColor = System.Drawing.Color.WhiteSmoke
+        Me.RectangleShape4.FillGradientColor = System.Drawing.Color.WhiteSmoke
+        Me.RectangleShape4.Location = New System.Drawing.Point(8, 24)
+        Me.RectangleShape4.Name = "RectangleShape4"
+        Me.RectangleShape4.SelectionColor = System.Drawing.Color.Transparent
+        Me.RectangleShape4.Size = New System.Drawing.Size(256, 120)
+        '
+        'Panel2
+        '
+        Me.Panel2.Controls.Add(Me.Label1)
+        Me.Panel2.Controls.Add(Me.ListBox1)
+        Me.Panel2.Controls.Add(Me.ShapeContainer1)
+        Me.Panel2.Location = New System.Drawing.Point(272, 72)
+        Me.Panel2.Name = "Panel2"
+        Me.Panel2.Size = New System.Drawing.Size(272, 152)
+        Me.Panel2.TabIndex = 96
+        '
+        'ShapeContainer1
+        '
+        Me.ShapeContainer1.Location = New System.Drawing.Point(0, 0)
+        Me.ShapeContainer1.Margin = New System.Windows.Forms.Padding(0)
+        Me.ShapeContainer1.Name = "ShapeContainer1"
+        Me.ShapeContainer1.Shapes.AddRange(New Microsoft.VisualBasic.PowerPacks.Shape() {Me.RectangleShape4})
+        Me.ShapeContainer1.Size = New System.Drawing.Size(272, 152)
+        Me.ShapeContainer1.TabIndex = 96
+        Me.ShapeContainer1.TabStop = False
+        '
+        'Panel5
+        '
+        Me.Panel5.Controls.Add(Me.Label_TAGSmd)
+        Me.Panel5.Controls.Add(Me.ListBox_TAGS)
+        Me.Panel5.Controls.Add(Me.ShapeContainer6)
+        Me.Panel5.Location = New System.Drawing.Point(272, 280)
+        Me.Panel5.Name = "Panel5"
+        Me.Panel5.Size = New System.Drawing.Size(272, 192)
+        Me.Panel5.TabIndex = 97
+        '
+        'ShapeContainer6
+        '
+        Me.ShapeContainer6.Location = New System.Drawing.Point(0, 0)
+        Me.ShapeContainer6.Margin = New System.Windows.Forms.Padding(0)
+        Me.ShapeContainer6.Name = "ShapeContainer6"
+        Me.ShapeContainer6.Shapes.AddRange(New Microsoft.VisualBasic.PowerPacks.Shape() {Me.RectangleShape1})
+        Me.ShapeContainer6.Size = New System.Drawing.Size(272, 192)
+        Me.ShapeContainer6.TabIndex = 86
+        Me.ShapeContainer6.TabStop = False
+        '
         'TagsMaker
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(54, Byte), Integer), CType(CType(57, Byte), Integer), CType(CType(62, Byte), Integer))
-        Me.ClientSize = New System.Drawing.Size(547, 522)
+        Me.ClientSize = New System.Drawing.Size(544, 520)
+        Me.Controls.Add(Me.Panel2)
+        Me.Controls.Add(Me.Button_Open)
+        Me.Controls.Add(Me.Button_Save)
+        Me.Controls.Add(Me.Panel5)
         Me.Controls.Add(Me.Panel7)
         Me.Controls.Add(Me.Panel_Main)
         Me.Controls.Add(Me.Panel4)
         Me.Controls.Add(Me.Panel3)
-        Me.Controls.Add(Me.Panel_TAGSmd)
         Me.Controls.Add(Me.Panel1)
         Me.ForeColor = System.Drawing.Color.WhiteSmoke
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
@@ -473,8 +534,6 @@ Partial Class TagsMaker
         Me.Text = "Tags Maker"
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
-        Me.Panel_TAGSmd.ResumeLayout(False)
-        Me.Panel_TAGSmd.PerformLayout()
         Me.Panel3.ResumeLayout(False)
         Me.Panel3.PerformLayout()
         Me.Panel4.ResumeLayout(False)
@@ -485,6 +544,10 @@ Partial Class TagsMaker
         CType(Me.PictureBox_Minimize, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox_AppIcon, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel7.ResumeLayout(False)
+        Me.Panel2.ResumeLayout(False)
+        Me.Panel2.PerformLayout()
+        Me.Panel5.ResumeLayout(False)
+        Me.Panel5.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -495,8 +558,6 @@ Partial Class TagsMaker
     Friend WithEvents Panel1 As Panel
     Friend WithEvents ShapeContainer2 As ShapeContainer
     Friend WithEvents RectangleShape_Animation As RectangleShape
-    Friend WithEvents Panel_TAGSmd As Panel
-    Friend WithEvents ShapeContainer3 As ShapeContainer
     Friend WithEvents RectangleShape1 As RectangleShape
     Friend WithEvents Panel3 As Panel
     Friend WithEvents ShapeContainer4 As ShapeContainer
@@ -523,4 +584,11 @@ Partial Class TagsMaker
     Friend WithEvents SaveFileDialog1 As SaveFileDialog
     Friend WithEvents ToolTip1 As ToolTip
     Friend WithEvents LinkLabel_Wiki_Info As LinkLabel
+    Friend WithEvents Label1 As Label
+    Friend WithEvents ListBox1 As ListBox
+    Friend WithEvents RectangleShape4 As RectangleShape
+    Friend WithEvents Panel2 As Panel
+    Friend WithEvents ShapeContainer1 As ShapeContainer
+    Friend WithEvents Panel5 As Panel
+    Friend WithEvents ShapeContainer6 As ShapeContainer
 End Class

@@ -527,6 +527,7 @@ Public Class MetadataGenerator
                 GenerateMetadataFilesToolStripMenuItem.Enabled = True
                 RegenerateMetadataFilesToolStripMenuItem.Enabled = True
                 AssetStorePreviewToolStripMenuItem1.Enabled = True
+                TagsMakerToolStripMenuItem.Enabled = True
                 OpenDirectoryToolStripMenuItem.Enabled = True
                 If Not TreeView1.SelectedNode.Index = -1 And TreeView1.SelectedNode.Text.EndsWith(".json") Then 'Changed
                     LoopedAnimationKeywordsToolStripMenuItem1.Enabled = True
@@ -535,6 +536,7 @@ Public Class MetadataGenerator
                     GenerateMetadataFilesToolStripMenuItem.Enabled = False
                     RegenerateMetadataFilesToolStripMenuItem.Enabled = False
                     AssetStorePreviewToolStripMenuItem1.Enabled = False
+                    TagsMakerToolStripMenuItem.Enabled = False
                 Else
                     LoopedAnimationKeywordsToolStripMenuItem1.Enabled = False
                     OpenFileToolStripMenuItem.Enabled = False
@@ -542,11 +544,13 @@ Public Class MetadataGenerator
                     GenerateMetadataFilesToolStripMenuItem.Enabled = True
                     RegenerateMetadataFilesToolStripMenuItem.Enabled = True
                     AssetStorePreviewToolStripMenuItem1.Enabled = True
+                    TagsMakerToolStripMenuItem.Enabled = True
                 End If
             Else
                 GenerateMetadataFilesToolStripMenuItem.Enabled = False
                 RegenerateMetadataFilesToolStripMenuItem.Enabled = False
                 AssetStorePreviewToolStripMenuItem1.Enabled = False
+                TagsMakerToolStripMenuItem.Enabled = False
                 OpenDirectoryToolStripMenuItem.Enabled = False
             End If
         End If
@@ -993,16 +997,25 @@ Public Class MetadataGenerator
     Private Sub TagsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TagsToolStripMenuItem.Click
         TagsMaker.Show()
         TagsMaker.BringToFront()
+        If Directory.Exists(FolderBrowserDialog_Selected_Directory.SelectedPath) Then
+            TagsMaker.LoadDirTagsAndDir(FolderBrowserDialog_Selected_Directory.SelectedPath)
+        End If
     End Sub
     'License (ToolStripMenuItem) - Click
     Private Sub LicenseToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LicenseToolStripMenuItem.Click
         LicenseMaker.Show()
         LicenseMaker.BringToFront()
+        If Directory.Exists(FolderBrowserDialog_Selected_Directory.SelectedPath) Then
+            LicenseMaker.SaveFileDialog_License.InitialDirectory = FolderBrowserDialog_Selected_Directory.SelectedPath
+        End If
     End Sub
     'Package (ToolStripMenuItem) - Click
     Private Sub PackageToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PackageToolStripMenuItem.Click
         PackageMaker.Show()
         PackageMaker.BringToFront()
+        If Directory.Exists(FolderBrowserDialog_Selected_Directory.SelectedPath) Then
+            PackageMaker.SaveFileDialog_PackJson.InitialDirectory = FolderBrowserDialog_Selected_Directory.SelectedPath
+        End If
     End Sub
     'ClipboardAsset (ToolStripMenuItem) - Click
     Private Sub ClipboardAssetToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ClipboardAssetToolStripMenuItem.Click
@@ -1018,6 +1031,9 @@ Public Class MetadataGenerator
     Private Sub AssetStorePreviewToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AssetStorePreviewToolStripMenuItem.Click
         AssetStorePreview.Show()
         AssetStorePreview.BringToFront()
+        If Directory.Exists(FolderBrowserDialog_Selected_Directory.SelectedPath) Then
+            AssetStorePreview.LoadAssetsFromSelectedDirectory(FolderBrowserDialog_Selected_Directory.SelectedPath)
+        End If
     End Sub
     'FileNameValidator (ToolStripMenuItem) - Click
     Private Sub FileNameValidatorToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles FileNameValidatorToolStripMenuItem.Click
@@ -1098,6 +1114,14 @@ Public Class MetadataGenerator
             AssetStorePreview.Show()
             AssetStorePreview.BringToFront()
             AssetStorePreview.LoadAssetsFromSelectedDirectory(FolderBrowserDialog_Selected_Directory.SelectedPath & "\" & TreeView1.SelectedNode.FullPath)
+        End If
+    End Sub
+    'TagsMaker (ToolStripMenuItem) - Click
+    Private Sub TagsMakerToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TagsMakerToolStripMenuItem.Click
+        If Directory.Exists(FolderBrowserDialog_Selected_Directory.SelectedPath & "\" & TreeView1.SelectedNode.FullPath) Then
+            TagsMaker.Show()
+            TagsMaker.BringToFront()
+            TagsMaker.LoadDirTagsAndDir(FolderBrowserDialog_Selected_Directory.SelectedPath & "\" & TreeView1.SelectedNode.FullPath)
         End If
     End Sub
     '

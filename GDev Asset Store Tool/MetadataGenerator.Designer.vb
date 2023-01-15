@@ -35,6 +35,8 @@ Partial Class MetadataGenerator
         Me.ToolStripSeparator4 = New System.Windows.Forms.ToolStripSeparator()
         Me.OpenFileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.OpenDirectoryToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
+        Me.TagsMakerToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AssetStorePreviewToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator6 = New System.Windows.Forms.ToolStripSeparator()
         Me.LoopedAnimationKeywordsToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
@@ -148,11 +150,11 @@ Partial Class MetadataGenerator
         '
         Me.ContextMenuStrip_TreeView.BackColor = System.Drawing.Color.FromArgb(CType(CType(54, Byte), Integer), CType(CType(57, Byte), Integer), CType(CType(62, Byte), Integer))
         Me.ContextMenuStrip_TreeView.Font = New System.Drawing.Font("Segoe UI", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ContextMenuStrip_TreeView.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.RegenerateSelectedFileToolStripMenuItem, Me.ToolStripSeparator1, Me.GenerateMetadataFilesToolStripMenuItem, Me.RegenerateMetadataFilesToolStripMenuItem, Me.ToolStripSeparator3, Me.XFramesToolStripMenuItem, Me.ToolStripSeparator4, Me.OpenFileToolStripMenuItem, Me.OpenDirectoryToolStripMenuItem, Me.AssetStorePreviewToolStripMenuItem1, Me.ToolStripSeparator6, Me.LoopedAnimationKeywordsToolStripMenuItem1})
+        Me.ContextMenuStrip_TreeView.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.RegenerateSelectedFileToolStripMenuItem, Me.ToolStripSeparator1, Me.GenerateMetadataFilesToolStripMenuItem, Me.RegenerateMetadataFilesToolStripMenuItem, Me.ToolStripSeparator3, Me.XFramesToolStripMenuItem, Me.ToolStripSeparator4, Me.OpenFileToolStripMenuItem, Me.OpenDirectoryToolStripMenuItem, Me.ToolStripSeparator2, Me.TagsMakerToolStripMenuItem, Me.AssetStorePreviewToolStripMenuItem1, Me.ToolStripSeparator6, Me.LoopedAnimationKeywordsToolStripMenuItem1})
         Me.ContextMenuStrip_TreeView.Name = "ContextMenuStrip_Listbox"
         Me.ContextMenuStrip_TreeView.ShowCheckMargin = True
         Me.ContextMenuStrip_TreeView.ShowImageMargin = False
-        Me.ContextMenuStrip_TreeView.Size = New System.Drawing.Size(271, 220)
+        Me.ContextMenuStrip_TreeView.Size = New System.Drawing.Size(271, 250)
         '
         'RegenerateSelectedFileToolStripMenuItem
         '
@@ -215,6 +217,19 @@ Partial Class MetadataGenerator
         Me.OpenDirectoryToolStripMenuItem.Name = "OpenDirectoryToolStripMenuItem"
         Me.OpenDirectoryToolStripMenuItem.Size = New System.Drawing.Size(270, 24)
         Me.OpenDirectoryToolStripMenuItem.Text = "Open directory"
+        '
+        'ToolStripSeparator2
+        '
+        Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
+        Me.ToolStripSeparator2.Size = New System.Drawing.Size(267, 6)
+        '
+        'TagsMakerToolStripMenuItem
+        '
+        Me.TagsMakerToolStripMenuItem.Enabled = False
+        Me.TagsMakerToolStripMenuItem.ForeColor = System.Drawing.Color.WhiteSmoke
+        Me.TagsMakerToolStripMenuItem.Name = "TagsMakerToolStripMenuItem"
+        Me.TagsMakerToolStripMenuItem.Size = New System.Drawing.Size(270, 24)
+        Me.TagsMakerToolStripMenuItem.Text = "Tags Maker"
         '
         'AssetStorePreviewToolStripMenuItem1
         '
@@ -1168,4 +1183,6 @@ Partial Class MetadataGenerator
     Friend WithEvents AssetStorePreviewToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents AssetStorePreviewToolStripMenuItem1 As ToolStripMenuItem
     Friend WithEvents AddAnimationNameToolStripMenuItem1 As ToolStripMenuItem
+    Friend WithEvents TagsMakerToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ToolStripSeparator2 As ToolStripSeparator
 End Class

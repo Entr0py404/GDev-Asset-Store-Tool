@@ -9,12 +9,8 @@
     Private Sub Button_Save_Click(sender As Object, e As EventArgs) Handles Button_Save.Click
         If TextBox_PackageName.Text.Length > 0 And TextBox_Tag.Text.Length > 0 And PixelBox_PackageThumbnail.Image IsNot Nothing Then
             SaveFileDialog_PackJson.FileName = "PACK.json"
-            If SaveFileDialog_PackJson.InitialDirectory = "" Then
-                If Directory.Exists(MetadataGenerator.FolderBrowserDialog_Selected_Directory.SelectedPath) Then
-                    SaveFileDialog_PackJson.InitialDirectory = MetadataGenerator.FolderBrowserDialog_Selected_Directory.SelectedPath
-                Else
-                    SaveFileDialog_PackJson.InitialDirectory = My.Computer.FileSystem.SpecialDirectories.Desktop
-                End If
+            If Not Directory.Exists(SaveFileDialog_PackJson.InitialDirectory) Then
+                SaveFileDialog_PackJson.InitialDirectory = My.Computer.FileSystem.SpecialDirectories.Desktop
             End If
 
             If SaveFileDialog_PackJson.ShowDialog = DialogResult.OK Then
@@ -45,7 +41,7 @@
                 My.Computer.FileSystem.WriteAllText(SaveFileDialog_PackJson.FileName, sb.ToString, False)
 
                 'Clear all for next
-                SaveFileDialog_PackJson.InitialDirectory = ""
+                'SaveFileDialog_PackJson.InitialDirectory = ""
                 TextBox_PackageName.Clear()
                 TextBox_Tag.Clear()
                 PixelBox_PackageThumbnail.Image = Nothing

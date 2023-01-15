@@ -29,7 +29,7 @@
         End If
     End Sub
     'Panel_TAGSmd - DragDrop
-    Private Sub Panel_TAGSmd_DragDrop(sender As Object, e As DragEventArgs) Handles Panel_TAGSmd.DragDrop
+    Private Sub Panel_TAGSmd_DragDrop(sender As Object, e As DragEventArgs)
         Dim files() As String = CType(e.Data.GetData(DataFormats.FileDrop), String())
         If files.Length <> 0 Then
             Try
@@ -40,13 +40,14 @@
                 For Each Tag As String In Tags
                     ListBox_TAGS.Items.Add(Tag)
                 Next
+                LoadDirTagsAndDir(SaveFileDialog1.InitialDirectory)
             Catch ex As Exception
                 MsgBox("Problem opening file.", MsgBoxStyle.Critical)
             End Try
         End If
     End Sub
     'Panel_TAGSmd - DragEnter
-    Private Sub Panel_TAGSmd_DragEnter(sender As Object, e As DragEventArgs) Handles Panel_TAGSmd.DragEnter
+    Private Sub Panel_TAGSmd_DragEnter(sender As Object, e As DragEventArgs)
         Dim files() As String = CType(e.Data.GetData(DataFormats.FileDrop), String())
         If e.Data.GetDataPresent(DataFormats.FileDrop) And Path.GetExtension(files(0)) = ".md" Then
             e.Effect = DragDropEffects.Copy
@@ -90,25 +91,15 @@
             MsgBox("You must include at least one speacial tag," & vbNewLine & "(top-down, side view, isometric, interface)." & vbNewLine & "The tag 'pixel art' is a optionary tag.", MsgBoxStyle.Information)
         Else
             SaveFileDialog1.FileName = "TAGS.md"
-            If SaveFileDialog1.InitialDirectory = "" Then
-                If MetadataGenerator.TreeView1.Nodes.Count > 0 Then
-                    If Directory.Exists(MetadataGenerator.FolderBrowserDialog_Selected_Directory.SelectedPath + "\" + MetadataGenerator.TreeView1.SelectedNode.FullPath) Then
-                        SaveFileDialog1.InitialDirectory = MetadataGenerator.FolderBrowserDialog_Selected_Directory.SelectedPath + "\" + MetadataGenerator.TreeView1.SelectedNode.FullPath
-                    ElseIf Directory.Exists(MetadataGenerator.FolderBrowserDialog_Selected_Directory.SelectedPath) Then
-                        SaveFileDialog1.InitialDirectory = MetadataGenerator.FolderBrowserDialog_Selected_Directory.SelectedPath
-                    Else
-                        SaveFileDialog1.InitialDirectory = My.Computer.FileSystem.SpecialDirectories.Desktop
-                    End If
-                Else
-                    SaveFileDialog1.InitialDirectory = My.Computer.FileSystem.SpecialDirectories.Desktop
-                End If
+            If Not Directory.Exists(SaveFileDialog1.InitialDirectory) Then
+                SaveFileDialog1.InitialDirectory = My.Computer.FileSystem.SpecialDirectories.Desktop
             End If
 
             If SaveFileDialog1.ShowDialog = DialogResult.OK Then
                 Build_TAGS()
                 File.WriteAllText(SaveFileDialog1.FileName, TAGS_StringBuilder.ToString)
                 'Clear all for next
-                SaveFileDialog1.InitialDirectory = ""
+                'SaveFileDialog1.InitialDirectory = ""
                 TextBox_NewTag.Clear()
                 ListBox_TAGS.Items.Clear()
             End If
@@ -211,5 +202,19 @@
     Private Sub Main_Activated(sender As Object, e As EventArgs) Handles Me.Activated
         PictureBox_Close.Image = My.Resources.Close_Red
         Panel_Main.BackColor = Color.Black
+    End Sub
+    'LoadDirTagsAndDir
+    Public Sub LoadDirTagsAndDir(stir As String)
+        If Directory.Exists(stir) Then
+            SaveFileDialog1.InitialDirectory = stir
+            ListBox1.Items.Clear()
+            For Each dir As String In Directory.GetDirectories(stir, "*", SearchOption.AllDirectories)
+                If Not Path.GetFileName(dir).StartsWith("!") Then
+                    ListBox1.Items.Add(Path.GetFileName(dir))
+                End If
+            Next
+        Else
+            SaveFileDialog1.InitialDirectory = My.Computer.FileSystem.SpecialDirectories.Desktop
+        End If
     End Sub
 End Class
