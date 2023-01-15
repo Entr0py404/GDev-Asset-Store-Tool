@@ -453,9 +453,9 @@ Partial Class TagsMaker
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold)
         Me.Label1.Location = New System.Drawing.Point(8, 8)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(131, 13)
+        Me.Label1.Size = New System.Drawing.Size(194, 13)
         Me.Label1.TabIndex = 95
-        Me.Label1.Text = "Tags From Directories"
+        Me.Label1.Text = "Tags Generated From Directories"
         '
         'RectangleShape4
         '
