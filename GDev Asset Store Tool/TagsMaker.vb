@@ -1,6 +1,7 @@
 ﻿Public Class TagsMaker
     Dim TAGS_StringBuilder As New StringBuilder
     ReadOnly SpecialTags As String() = {"top-down", "side view", "isometric", "interface"}
+    Dim UsingDirFromDragDrop As Boolean = False
     'TagsMaker - Load
     Private Sub TagsMaker_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ReadFileAssetFilters()
@@ -35,6 +36,7 @@
             Try
                 ListBox_TAGS.Items.Clear()
                 SaveFileDialog1.InitialDirectory = Path.GetDirectoryName(files(0))
+                UsingDirFromDragDrop = True
                 Dim TagsFileStr As String = File.ReadAllText(files(0))
                 Dim Tags As String() = TagsFileStr.Split(New Char() {","c})
                 For Each Tag As String In Tags
@@ -91,6 +93,11 @@
             MsgBox("You must include at least one speacial tag," & vbNewLine & "(top-down, side view, isometric, interface)." & vbNewLine & "The tag 'pixel art' is a optionary tag.", MsgBoxStyle.Information)
         Else
             SaveFileDialog1.FileName = "TAGS.md"
+
+            If UsingDirFromDragDrop = False And Not SaveFileDialog1.InitialDirectory = MetadataGenerator.FolderBrowserDialog_Selected_Directory.SelectedPath Then
+                SaveFileDialog1.InitialDirectory = MetadataGenerator.FolderBrowserDialog_Selected_Directory.SelectedPath
+            End If
+
             If Not Directory.Exists(SaveFileDialog1.InitialDirectory) Then
                 SaveFileDialog1.InitialDirectory = My.Computer.FileSystem.SpecialDirectories.Desktop
             End If

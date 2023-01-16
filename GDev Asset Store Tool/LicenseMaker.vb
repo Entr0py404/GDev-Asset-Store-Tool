@@ -1,4 +1,5 @@
 ﻿Public Class LicenseMaker
+    Dim UsingDirFromDragDrop As Boolean = False
     'Button_Open - Click
     Private Sub Button_Open_Click(sender As Object, e As EventArgs) Handles Button_Open.Click
         If OpenFileDialog_License.ShowDialog = DialogResult.OK Then
@@ -18,6 +19,11 @@
     Private Sub Button_Save_Click(sender As Object, e As EventArgs) Handles Button_Save.Click
         If ComboBox_License.SelectedIndex > -1 And Not TextBox_Artist.Text = "" And Not TextBox_ArtistLink.Text = "" Then
             SaveFileDialog_License.FileName = "license.txt"
+
+            If UsingDirFromDragDrop = False And Not SaveFileDialog_License.InitialDirectory = MetadataGenerator.FolderBrowserDialog_Selected_Directory.SelectedPath Then
+                SaveFileDialog_License.InitialDirectory = MetadataGenerator.FolderBrowserDialog_Selected_Directory.SelectedPath
+            End If
+
             If Not Directory.Exists(SaveFileDialog_License.InitialDirectory) Then
                 SaveFileDialog_License.InitialDirectory = My.Computer.FileSystem.SpecialDirectories.Desktop
             End If
@@ -53,6 +59,7 @@
         Dim files() As String = CType(e.Data.GetData(DataFormats.FileDrop), String())
         Dim Readfile As String() = File.ReadAllLines(files(0))
         SaveFileDialog_License.InitialDirectory = Path.GetDirectoryName(files(0))
+        UsingDirFromDragDrop = True
         If Readfile(0) = "CC0 (public domain)" Then
             ComboBox_License.SelectedIndex = 0
         Else
