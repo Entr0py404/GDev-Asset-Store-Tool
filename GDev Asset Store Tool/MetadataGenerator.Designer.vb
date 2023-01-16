@@ -644,16 +644,16 @@ Partial Class MetadataGenerator
         '
         Me.FastColoredTextBox_Selected_File.AutoCompleteBracketsList = New Char() {Global.Microsoft.VisualBasic.ChrW(40), Global.Microsoft.VisualBasic.ChrW(41), Global.Microsoft.VisualBasic.ChrW(123), Global.Microsoft.VisualBasic.ChrW(125), Global.Microsoft.VisualBasic.ChrW(91), Global.Microsoft.VisualBasic.ChrW(93), Global.Microsoft.VisualBasic.ChrW(34), Global.Microsoft.VisualBasic.ChrW(34), Global.Microsoft.VisualBasic.ChrW(39), Global.Microsoft.VisualBasic.ChrW(39)}
         Me.FastColoredTextBox_Selected_File.AutoIndentCharsPatterns = "" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "^\s*[\w\.\(\)]+\s*(?<range>=)\s*(?<range>.+)" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
-        Me.FastColoredTextBox_Selected_File.AutoScrollMinSize = New System.Drawing.Size(2, 12)
+        Me.FastColoredTextBox_Selected_File.AutoScrollMinSize = New System.Drawing.Size(2, 13)
         Me.FastColoredTextBox_Selected_File.BackBrush = Nothing
         Me.FastColoredTextBox_Selected_File.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(49, Byte), Integer), CType(CType(54, Byte), Integer))
-        Me.FastColoredTextBox_Selected_File.CharHeight = 12
+        Me.FastColoredTextBox_Selected_File.CharHeight = 13
         Me.FastColoredTextBox_Selected_File.CharWidth = 7
         Me.FastColoredTextBox_Selected_File.CommentPrefix = "'"
         Me.FastColoredTextBox_Selected_File.ContextMenuStrip = Me.ContextMenuStrip_FastColoredTextBox_Selected_File
         Me.FastColoredTextBox_Selected_File.Cursor = System.Windows.Forms.Cursors.IBeam
         Me.FastColoredTextBox_Selected_File.DisabledColor = System.Drawing.Color.FromArgb(CType(CType(100, Byte), Integer), CType(CType(180, Byte), Integer), CType(CType(180, Byte), Integer), CType(CType(180, Byte), Integer))
-        Me.FastColoredTextBox_Selected_File.Font = New System.Drawing.Font("Courier New", 8.25!)
+        Me.FastColoredTextBox_Selected_File.Font = New System.Drawing.Font("Courier New", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.FastColoredTextBox_Selected_File.ForeColor = System.Drawing.Color.WhiteSmoke
         Me.FastColoredTextBox_Selected_File.IsReplaceMode = False
         Me.FastColoredTextBox_Selected_File.LeftBracket = Global.Microsoft.VisualBasic.ChrW(40)
