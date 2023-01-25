@@ -110,7 +110,7 @@ Public Class AssetInfo
                 ObjectName = TempFileNameNoExt
 
                 ComboBox_Animations.BeginUpdate()
-                AllAnimationFiles.AddRange(Directory.GetFiles(Path.GetDirectoryName(assetFilePath), "*.png", SearchOption.TopDirectoryOnly).Where(Function(x) Path.GetFileName(x).StartsWith(TempFileNameNoExt)))
+                AllAnimationFiles.AddRange(Directory.GetFiles(Path.GetDirectoryName(assetFilePath), "*.png", SearchOption.TopDirectoryOnly).Where(Function(x) Path.GetFileName(x).StartsWith(TempFileNameNoExt + "_")))
 
                 Label_AnimationsList.Text = ""
 
