@@ -653,7 +653,7 @@ Partial Class MetadataGenerator
         Me.FastColoredTextBox_Selected_File.ContextMenuStrip = Me.ContextMenuStrip_FastColoredTextBox_Selected_File
         Me.FastColoredTextBox_Selected_File.Cursor = System.Windows.Forms.Cursors.IBeam
         Me.FastColoredTextBox_Selected_File.DisabledColor = System.Drawing.Color.FromArgb(CType(CType(100, Byte), Integer), CType(CType(180, Byte), Integer), CType(CType(180, Byte), Integer), CType(CType(180, Byte), Integer))
-        Me.FastColoredTextBox_Selected_File.Font = New System.Drawing.Font("Courier New", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.FastColoredTextBox_Selected_File.Font = New System.Drawing.Font("Courier New", 9.0!)
         Me.FastColoredTextBox_Selected_File.ForeColor = System.Drawing.Color.WhiteSmoke
         Me.FastColoredTextBox_Selected_File.IsReplaceMode = False
         Me.FastColoredTextBox_Selected_File.LeftBracket = Global.Microsoft.VisualBasic.ChrW(40)

@@ -62,7 +62,7 @@ Partial Class TagsMaker
         Me.RectangleShape4 = New Microsoft.VisualBasic.PowerPacks.RectangleShape()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.ShapeContainer1 = New Microsoft.VisualBasic.PowerPacks.ShapeContainer()
-        Me.Panel5 = New System.Windows.Forms.Panel()
+        Me.Panel_TAGSmd = New System.Windows.Forms.Panel()
         Me.ShapeContainer6 = New Microsoft.VisualBasic.PowerPacks.ShapeContainer()
         Me.Panel1.SuspendLayout()
         Me.Panel3.SuspendLayout()
@@ -74,7 +74,7 @@ Partial Class TagsMaker
         CType(Me.PictureBox_AppIcon, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel7.SuspendLayout()
         Me.Panel2.SuspendLayout()
-        Me.Panel5.SuspendLayout()
+        Me.Panel_TAGSmd.SuspendLayout()
         Me.SuspendLayout()
         '
         'ListBox_ExistingTags
@@ -490,15 +490,16 @@ Partial Class TagsMaker
         Me.ShapeContainer1.TabIndex = 96
         Me.ShapeContainer1.TabStop = False
         '
-        'Panel5
+        'Panel_TAGSmd
         '
-        Me.Panel5.Controls.Add(Me.Label_TAGSmd)
-        Me.Panel5.Controls.Add(Me.ListBox_TAGS)
-        Me.Panel5.Controls.Add(Me.ShapeContainer6)
-        Me.Panel5.Location = New System.Drawing.Point(272, 280)
-        Me.Panel5.Name = "Panel5"
-        Me.Panel5.Size = New System.Drawing.Size(272, 192)
-        Me.Panel5.TabIndex = 97
+        Me.Panel_TAGSmd.AllowDrop = True
+        Me.Panel_TAGSmd.Controls.Add(Me.Label_TAGSmd)
+        Me.Panel_TAGSmd.Controls.Add(Me.ListBox_TAGS)
+        Me.Panel_TAGSmd.Controls.Add(Me.ShapeContainer6)
+        Me.Panel_TAGSmd.Location = New System.Drawing.Point(272, 280)
+        Me.Panel_TAGSmd.Name = "Panel_TAGSmd"
+        Me.Panel_TAGSmd.Size = New System.Drawing.Size(272, 192)
+        Me.Panel_TAGSmd.TabIndex = 97
         '
         'ShapeContainer6
         '
@@ -519,7 +520,7 @@ Partial Class TagsMaker
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.Button_Open)
         Me.Controls.Add(Me.Button_Save)
-        Me.Controls.Add(Me.Panel5)
+        Me.Controls.Add(Me.Panel_TAGSmd)
         Me.Controls.Add(Me.Panel7)
         Me.Controls.Add(Me.Panel_Main)
         Me.Controls.Add(Me.Panel4)
@@ -546,8 +547,8 @@ Partial Class TagsMaker
         Me.Panel7.ResumeLayout(False)
         Me.Panel2.ResumeLayout(False)
         Me.Panel2.PerformLayout()
-        Me.Panel5.ResumeLayout(False)
-        Me.Panel5.PerformLayout()
+        Me.Panel_TAGSmd.ResumeLayout(False)
+        Me.Panel_TAGSmd.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -589,6 +590,6 @@ Partial Class TagsMaker
     Friend WithEvents RectangleShape4 As RectangleShape
     Friend WithEvents Panel2 As Panel
     Friend WithEvents ShapeContainer1 As ShapeContainer
-    Friend WithEvents Panel5 As Panel
+    Friend WithEvents Panel_TAGSmd As Panel
     Friend WithEvents ShapeContainer6 As ShapeContainer
 End Class

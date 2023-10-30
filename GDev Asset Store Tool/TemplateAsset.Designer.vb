@@ -49,7 +49,7 @@ Partial Class TemplateAsset
         Me.RectangleShape1 = New Microsoft.VisualBasic.PowerPacks.RectangleShape()
         Me.OpenFileDialog_JSON = New System.Windows.Forms.OpenFileDialog()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
-        Me.TextBox_PanelSpriteIamge = New System.Windows.Forms.TextBox()
+        Me.TextBox_PanelSpriteImage = New System.Windows.Forms.TextBox()
         Me.TextBox_TilemapAtlasImage = New System.Windows.Forms.TextBox()
         Me.TextBox_TilemapJSONFile = New System.Windows.Forms.TextBox()
         Me.TextBox_TilesetJSONFile = New System.Windows.Forms.TextBox()
@@ -57,6 +57,7 @@ Partial Class TemplateAsset
         Me.TextBox_Button_Idle_Image = New System.Windows.Forms.TextBox()
         Me.TextBox_Button_Hovered_Image = New System.Windows.Forms.TextBox()
         Me.TextBox_Button_Pressed_Image = New System.Windows.Forms.TextBox()
+        Me.PixelBox_PreviewImage = New GDev_Asset_Store_Tool.PixelBox()
         Me.ContextMenuStrip_PreviewImage = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.SaveToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ClearPreviewImageToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -93,8 +94,8 @@ Partial Class TemplateAsset
         Me.ShapeContainer11 = New Microsoft.VisualBasic.PowerPacks.ShapeContainer()
         Me.RectangleShape19 = New Microsoft.VisualBasic.PowerPacks.RectangleShape()
         Me.CheckBox_PSRepeatBoarders = New System.Windows.Forms.CheckBox()
-        Me.Panel_PanelSpriteIamge = New System.Windows.Forms.Panel()
-        Me.Button_PanelSpriteIamge = New System.Windows.Forms.Button()
+        Me.Panel_PanelSpriteImage = New System.Windows.Forms.Panel()
+        Me.Button_PanelSpriteImage = New System.Windows.Forms.Button()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.ShapeContainer7 = New Microsoft.VisualBasic.PowerPacks.ShapeContainer()
         Me.RectangleShape5 = New Microsoft.VisualBasic.PowerPacks.RectangleShape()
@@ -332,11 +333,11 @@ Partial Class TemplateAsset
         Me.ErrorProvider1 = New System.Windows.Forms.ErrorProvider(Me.components)
         Me.SplitContainer1 = New System.Windows.Forms.SplitContainer()
         Me.OpenFileDialog_FNT_XML = New System.Windows.Forms.OpenFileDialog()
-        Me.PixelBox_PreviewImage = New GDev_Asset_Store_Tool.PixelBox()
         CType(Me.FastColoredTextBox_AssetJson, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ContextMenuStrip_AssetJSON.SuspendLayout()
         Me.Panel_BitmapFont.SuspendLayout()
         Me.Panel_BitmapAtlasImage.SuspendLayout()
+        CType(Me.PixelBox_PreviewImage, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ContextMenuStrip_PreviewImage.SuspendLayout()
         Me.TabControl1.SuspendLayout()
         Me.TabPage_PanelSprite.SuspendLayout()
@@ -352,7 +353,7 @@ Partial Class TemplateAsset
         CType(Me.NumericUpDown_PSBottomMargin, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel14.SuspendLayout()
         CType(Me.NumericUpDown_PSTopMargin, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.Panel_PanelSpriteIamge.SuspendLayout()
+        Me.Panel_PanelSpriteImage.SuspendLayout()
         Me.TabPage_BitmapText.SuspendLayout()
         Me.Panel10.SuspendLayout()
         CType(Me.NumericUpDown_BitmapTextScale, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -443,7 +444,6 @@ Partial Class TemplateAsset
         Me.SplitContainer1.Panel1.SuspendLayout()
         Me.SplitContainer1.Panel2.SuspendLayout()
         Me.SplitContainer1.SuspendLayout()
-        CType(Me.PixelBox_PreviewImage, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'SaveFileDialog1
@@ -711,16 +711,16 @@ Partial Class TemplateAsset
         Me.ToolTip1.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info
         Me.ToolTip1.ToolTipTitle = "Hint"
         '
-        'TextBox_PanelSpriteIamge
+        'TextBox_PanelSpriteImage
         '
-        Me.TextBox_PanelSpriteIamge.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(49, Byte), Integer), CType(CType(54, Byte), Integer))
-        Me.TextBox_PanelSpriteIamge.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.TextBox_PanelSpriteIamge.ForeColor = System.Drawing.Color.WhiteSmoke
-        Me.TextBox_PanelSpriteIamge.Location = New System.Drawing.Point(16, 24)
-        Me.TextBox_PanelSpriteIamge.Name = "TextBox_PanelSpriteIamge"
-        Me.TextBox_PanelSpriteIamge.Size = New System.Drawing.Size(320, 13)
-        Me.TextBox_PanelSpriteIamge.TabIndex = 106
-        Me.ToolTip1.SetToolTip(Me.TextBox_PanelSpriteIamge, "You can drag & drop a png file here.")
+        Me.TextBox_PanelSpriteImage.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(49, Byte), Integer), CType(CType(54, Byte), Integer))
+        Me.TextBox_PanelSpriteImage.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.TextBox_PanelSpriteImage.ForeColor = System.Drawing.Color.WhiteSmoke
+        Me.TextBox_PanelSpriteImage.Location = New System.Drawing.Point(16, 24)
+        Me.TextBox_PanelSpriteImage.Name = "TextBox_PanelSpriteImage"
+        Me.TextBox_PanelSpriteImage.Size = New System.Drawing.Size(320, 13)
+        Me.TextBox_PanelSpriteImage.TabIndex = 106
+        Me.ToolTip1.SetToolTip(Me.TextBox_PanelSpriteImage, "You can drag & drop a png file here.")
         '
         'TextBox_TilemapAtlasImage
         '
@@ -799,6 +799,20 @@ Partial Class TemplateAsset
         Me.TextBox_Button_Pressed_Image.TabIndex = 106
         Me.ToolTip1.SetToolTip(Me.TextBox_Button_Pressed_Image, "You can drag & drop a png file here.")
         '
+        'PixelBox_PreviewImage
+        '
+        Me.PixelBox_PreviewImage.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(49, Byte), Integer), CType(CType(54, Byte), Integer))
+        Me.PixelBox_PreviewImage.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality
+        Me.PixelBox_PreviewImage.ContextMenuStrip = Me.ContextMenuStrip_PreviewImage
+        Me.PixelBox_PreviewImage.Location = New System.Drawing.Point(88, 24)
+        Me.PixelBox_PreviewImage.Name = "PixelBox_PreviewImage"
+        Me.PixelBox_PreviewImage.Size = New System.Drawing.Size(184, 184)
+        Me.PixelBox_PreviewImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.PixelBox_PreviewImage.TabIndex = 103
+        Me.PixelBox_PreviewImage.TabStop = False
+        Me.ToolTip1.SetToolTip(Me.PixelBox_PreviewImage, "Right-click for options." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "You can drag & drop a image here." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Saved image will be " &
+        "scaled to a 1:1 aspect ratio.")
+        '
         'ContextMenuStrip_PreviewImage
         '
         Me.ContextMenuStrip_PreviewImage.BackColor = System.Drawing.Color.FromArgb(CType(CType(54, Byte), Integer), CType(CType(57, Byte), Integer), CType(CType(62, Byte), Integer))
@@ -845,7 +859,7 @@ Partial Class TemplateAsset
         Me.TabPage_PanelSprite.Controls.Add(Me.Panel15)
         Me.TabPage_PanelSprite.Controls.Add(Me.Panel14)
         Me.TabPage_PanelSprite.Controls.Add(Me.CheckBox_PSRepeatBoarders)
-        Me.TabPage_PanelSprite.Controls.Add(Me.Panel_PanelSpriteIamge)
+        Me.TabPage_PanelSprite.Controls.Add(Me.Panel_PanelSpriteImage)
         Me.TabPage_PanelSprite.Location = New System.Drawing.Point(4, 22)
         Me.TabPage_PanelSprite.Name = "TabPage_PanelSprite"
         Me.TabPage_PanelSprite.Padding = New System.Windows.Forms.Padding(3)
@@ -1196,31 +1210,31 @@ Partial Class TemplateAsset
         Me.CheckBox_PSRepeatBoarders.Text = "Repeat boarders and center textures (instead of stretching them)"
         Me.CheckBox_PSRepeatBoarders.UseVisualStyleBackColor = True
         '
-        'Panel_PanelSpriteIamge
+        'Panel_PanelSpriteImage
         '
-        Me.Panel_PanelSpriteIamge.AllowDrop = True
-        Me.Panel_PanelSpriteIamge.Controls.Add(Me.Button_PanelSpriteIamge)
-        Me.Panel_PanelSpriteIamge.Controls.Add(Me.Label4)
-        Me.Panel_PanelSpriteIamge.Controls.Add(Me.TextBox_PanelSpriteIamge)
-        Me.Panel_PanelSpriteIamge.Controls.Add(Me.ShapeContainer7)
-        Me.Panel_PanelSpriteIamge.Location = New System.Drawing.Point(0, 8)
-        Me.Panel_PanelSpriteIamge.Name = "Panel_PanelSpriteIamge"
-        Me.Panel_PanelSpriteIamge.Size = New System.Drawing.Size(416, 48)
-        Me.Panel_PanelSpriteIamge.TabIndex = 121
+        Me.Panel_PanelSpriteImage.AllowDrop = True
+        Me.Panel_PanelSpriteImage.Controls.Add(Me.Button_PanelSpriteImage)
+        Me.Panel_PanelSpriteImage.Controls.Add(Me.Label4)
+        Me.Panel_PanelSpriteImage.Controls.Add(Me.TextBox_PanelSpriteImage)
+        Me.Panel_PanelSpriteImage.Controls.Add(Me.ShapeContainer7)
+        Me.Panel_PanelSpriteImage.Location = New System.Drawing.Point(0, 8)
+        Me.Panel_PanelSpriteImage.Name = "Panel_PanelSpriteImage"
+        Me.Panel_PanelSpriteImage.Size = New System.Drawing.Size(416, 48)
+        Me.Panel_PanelSpriteImage.TabIndex = 121
         '
-        'Button_PanelSpriteIamge
+        'Button_PanelSpriteImage
         '
-        Me.Button_PanelSpriteIamge.BackColor = System.Drawing.Color.DodgerBlue
-        Me.Button_PanelSpriteIamge.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer))
-        Me.Button_PanelSpriteIamge.FlatAppearance.BorderSize = 0
-        Me.Button_PanelSpriteIamge.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button_PanelSpriteIamge.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button_PanelSpriteIamge.Location = New System.Drawing.Point(352, 16)
-        Me.Button_PanelSpriteIamge.Name = "Button_PanelSpriteIamge"
-        Me.Button_PanelSpriteIamge.Size = New System.Drawing.Size(56, 24)
-        Me.Button_PanelSpriteIamge.TabIndex = 111
-        Me.Button_PanelSpriteIamge.Text = "..."
-        Me.Button_PanelSpriteIamge.UseVisualStyleBackColor = False
+        Me.Button_PanelSpriteImage.BackColor = System.Drawing.Color.DodgerBlue
+        Me.Button_PanelSpriteImage.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer))
+        Me.Button_PanelSpriteImage.FlatAppearance.BorderSize = 0
+        Me.Button_PanelSpriteImage.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button_PanelSpriteImage.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button_PanelSpriteImage.Location = New System.Drawing.Point(352, 16)
+        Me.Button_PanelSpriteImage.Name = "Button_PanelSpriteImage"
+        Me.Button_PanelSpriteImage.Size = New System.Drawing.Size(56, 24)
+        Me.Button_PanelSpriteImage.TabIndex = 111
+        Me.Button_PanelSpriteImage.Text = "..."
+        Me.Button_PanelSpriteImage.UseVisualStyleBackColor = False
         '
         'Label4
         '
@@ -3882,20 +3896,6 @@ Partial Class TemplateAsset
         '
         Me.OpenFileDialog_FNT_XML.Filter = "Supported Files|*.fnt;*.xml"
         '
-        'PixelBox_PreviewImage
-        '
-        Me.PixelBox_PreviewImage.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(49, Byte), Integer), CType(CType(54, Byte), Integer))
-        Me.PixelBox_PreviewImage.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality
-        Me.PixelBox_PreviewImage.ContextMenuStrip = Me.ContextMenuStrip_PreviewImage
-        Me.PixelBox_PreviewImage.Location = New System.Drawing.Point(88, 24)
-        Me.PixelBox_PreviewImage.Name = "PixelBox_PreviewImage"
-        Me.PixelBox_PreviewImage.Size = New System.Drawing.Size(184, 184)
-        Me.PixelBox_PreviewImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
-        Me.PixelBox_PreviewImage.TabIndex = 103
-        Me.PixelBox_PreviewImage.TabStop = False
-        Me.ToolTip1.SetToolTip(Me.PixelBox_PreviewImage, "Right-click for options." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "You can drag & drop a image here." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Saved image will be " &
-        "scaled to a 1:1 aspect ratio.")
-        '
         'TemplateAsset
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -3915,6 +3915,7 @@ Partial Class TemplateAsset
         Me.Panel_BitmapFont.PerformLayout()
         Me.Panel_BitmapAtlasImage.ResumeLayout(False)
         Me.Panel_BitmapAtlasImage.PerformLayout()
+        CType(Me.PixelBox_PreviewImage, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ContextMenuStrip_PreviewImage.ResumeLayout(False)
         Me.TabControl1.ResumeLayout(False)
         Me.TabPage_PanelSprite.ResumeLayout(False)
@@ -3937,8 +3938,8 @@ Partial Class TemplateAsset
         Me.Panel14.ResumeLayout(False)
         Me.Panel14.PerformLayout()
         CType(Me.NumericUpDown_PSTopMargin, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.Panel_PanelSpriteIamge.ResumeLayout(False)
-        Me.Panel_PanelSpriteIamge.PerformLayout()
+        Me.Panel_PanelSpriteImage.ResumeLayout(False)
+        Me.Panel_PanelSpriteImage.PerformLayout()
         Me.TabPage_BitmapText.ResumeLayout(False)
         Me.Panel10.ResumeLayout(False)
         CType(Me.NumericUpDown_BitmapTextScale, System.ComponentModel.ISupportInitialize).EndInit()
@@ -4070,7 +4071,6 @@ Partial Class TemplateAsset
         Me.SplitContainer1.Panel2.PerformLayout()
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.SplitContainer1.ResumeLayout(False)
-        CType(Me.PixelBox_PreviewImage, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -4151,9 +4151,9 @@ Partial Class TemplateAsset
     Friend WithEvents NumericUpDown_PSLeftMargin As NumericUpDown
     Friend WithEvents NumericUpDown_PSTopMargin As NumericUpDown
     Friend WithEvents CheckBox_PSRepeatBoarders As CheckBox
-    Friend WithEvents Panel_PanelSpriteIamge As Panel
+    Friend WithEvents Panel_PanelSpriteImage As Panel
     Friend WithEvents Label4 As Label
-    Friend WithEvents TextBox_PanelSpriteIamge As TextBox
+    Friend WithEvents TextBox_PanelSpriteImage As TextBox
     Friend WithEvents ShapeContainer7 As ShapeContainer
     Friend WithEvents RectangleShape5 As RectangleShape
     Friend WithEvents BitmapTextToolStripMenuItem As ToolStripMenuItem
@@ -4220,7 +4220,7 @@ Partial Class TemplateAsset
     Friend WithEvents ToolStripSeparator1 As ToolStripSeparator
     Friend WithEvents ClearToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ButtonToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents Button_PanelSpriteIamge As Button
+    Friend WithEvents Button_PanelSpriteImage As Button
     Friend WithEvents Button_TilemapAtlasImage As Button
     Friend WithEvents Button_TilemapJSONFile As Button
     Friend WithEvents Button_TilesetJSONFile As Button

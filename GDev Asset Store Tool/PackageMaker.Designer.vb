@@ -46,11 +46,28 @@ Partial Class PackageMaker
         Me.RectangleShape2 = New Microsoft.VisualBasic.PowerPacks.RectangleShape()
         Me.SaveFileDialog_PackJson = New System.Windows.Forms.SaveFileDialog()
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.Label_Tag = New System.Windows.Forms.Label()
-        Me.TextBox_Tag = New System.Windows.Forms.TextBox()
+        Me.Label_Description = New System.Windows.Forms.Label()
+        Me.TextBox_Description = New System.Windows.Forms.TextBox()
         Me.ShapeContainer1 = New Microsoft.VisualBasic.PowerPacks.ShapeContainer()
         Me.RectangleShape1 = New Microsoft.VisualBasic.PowerPacks.RectangleShape()
         Me.SaveFileDialog_PackageThumbnail = New System.Windows.Forms.SaveFileDialog()
+        Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.NumericUpDown_Price = New System.Windows.Forms.NumericUpDown()
+        Me.Label_Price = New System.Windows.Forms.Label()
+        Me.ShapeContainer2 = New Microsoft.VisualBasic.PowerPacks.ShapeContainer()
+        Me.RectangleShape3 = New Microsoft.VisualBasic.PowerPacks.RectangleShape()
+        Me.CheckBox_FullGamePack = New System.Windows.Forms.CheckBox()
+        Me.RectangleShape4 = New Microsoft.VisualBasic.PowerPacks.RectangleShape()
+        Me.CheckBox_Character = New System.Windows.Forms.CheckBox()
+        Me.CheckBox_Props = New System.Windows.Forms.CheckBox()
+        Me.CheckBox_Background = New System.Windows.Forms.CheckBox()
+        Me.CheckBox_VisualEffect = New System.Windows.Forms.CheckBox()
+        Me.CheckBox_Interface = New System.Windows.Forms.CheckBox()
+        Me.CheckBox_Prefab = New System.Windows.Forms.CheckBox()
+        Me.Label_Categories = New System.Windows.Forms.Label()
+        Me.Panel4 = New System.Windows.Forms.Panel()
+        Me.CheckBox_Sounds = New System.Windows.Forms.CheckBox()
+        Me.ShapeContainer6 = New Microsoft.VisualBasic.PowerPacks.ShapeContainer()
         CType(Me.PixelBox_PackageThumbnail, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ContextMenuStrip_PackageThumbnail.SuspendLayout()
         Me.Panel_Main.SuspendLayout()
@@ -61,6 +78,9 @@ Partial Class PackageMaker
         Me.Panel_PackageThumbnail.SuspendLayout()
         Me.Panel3.SuspendLayout()
         Me.Panel1.SuspendLayout()
+        Me.Panel2.SuspendLayout()
+        CType(Me.NumericUpDown_Price, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Panel4.SuspendLayout()
         Me.SuspendLayout()
         '
         'ToolTip1
@@ -73,9 +93,9 @@ Partial Class PackageMaker
         Me.PixelBox_PackageThumbnail.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(49, Byte), Integer), CType(CType(54, Byte), Integer))
         Me.PixelBox_PackageThumbnail.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality
         Me.PixelBox_PackageThumbnail.ContextMenuStrip = Me.ContextMenuStrip_PackageThumbnail
-        Me.PixelBox_PackageThumbnail.Location = New System.Drawing.Point(16, 24)
+        Me.PixelBox_PackageThumbnail.Location = New System.Drawing.Point(16, 32)
         Me.PixelBox_PackageThumbnail.Name = "PixelBox_PackageThumbnail"
-        Me.PixelBox_PackageThumbnail.Size = New System.Drawing.Size(320, 180)
+        Me.PixelBox_PackageThumbnail.Size = New System.Drawing.Size(168, 120)
         Me.PixelBox_PackageThumbnail.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
         Me.PixelBox_PackageThumbnail.TabIndex = 103
         Me.PixelBox_PackageThumbnail.TabStop = False
@@ -109,7 +129,7 @@ Partial Class PackageMaker
         Me.Panel_Main.ForeColor = System.Drawing.Color.White
         Me.Panel_Main.Location = New System.Drawing.Point(0, 0)
         Me.Panel_Main.Name = "Panel_Main"
-        Me.Panel_Main.Size = New System.Drawing.Size(354, 26)
+        Me.Panel_Main.Size = New System.Drawing.Size(551, 26)
         Me.Panel_Main.TabIndex = 80
         '
         'Panel_ControlBox
@@ -117,7 +137,7 @@ Partial Class PackageMaker
         Me.Panel_ControlBox.Controls.Add(Me.PictureBox_Close)
         Me.Panel_ControlBox.Controls.Add(Me.PictureBox_Minimize)
         Me.Panel_ControlBox.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Panel_ControlBox.Location = New System.Drawing.Point(302, 0)
+        Me.Panel_ControlBox.Location = New System.Drawing.Point(499, 0)
         Me.Panel_ControlBox.Name = "Panel_ControlBox"
         Me.Panel_ControlBox.Size = New System.Drawing.Size(52, 26)
         Me.Panel_ControlBox.TabIndex = 4
@@ -169,7 +189,7 @@ Partial Class PackageMaker
         Me.Button_Save.FlatAppearance.BorderSize = 0
         Me.Button_Save.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button_Save.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button_Save.Location = New System.Drawing.Point(248, 368)
+        Me.Button_Save.Location = New System.Drawing.Point(440, 328)
         Me.Button_Save.Name = "Button_Save"
         Me.Button_Save.Size = New System.Drawing.Size(96, 24)
         Me.Button_Save.TabIndex = 93
@@ -184,17 +204,16 @@ Partial Class PackageMaker
         Me.Panel_PackageThumbnail.Location = New System.Drawing.Point(0, 32)
         Me.Panel_PackageThumbnail.Name = "Panel_PackageThumbnail"
         Me.Panel_PackageThumbnail.Padding = New System.Windows.Forms.Padding(0, 8, 0, 0)
-        Me.Panel_PackageThumbnail.Size = New System.Drawing.Size(352, 216)
+        Me.Panel_PackageThumbnail.Size = New System.Drawing.Size(200, 168)
         Me.Panel_PackageThumbnail.TabIndex = 94
         '
         'Label_PackageThumbnail
         '
         Me.Label_PackageThumbnail.AutoSize = True
         Me.Label_PackageThumbnail.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.Label_PackageThumbnail.Location = New System.Drawing.Point(0, 0)
+        Me.Label_PackageThumbnail.Location = New System.Drawing.Point(8, 8)
         Me.Label_PackageThumbnail.Name = "Label_PackageThumbnail"
-        Me.Label_PackageThumbnail.Padding = New System.Windows.Forms.Padding(8, 0, 0, 0)
-        Me.Label_PackageThumbnail.Size = New System.Drawing.Size(127, 13)
+        Me.Label_PackageThumbnail.Size = New System.Drawing.Size(119, 13)
         Me.Label_PackageThumbnail.TabIndex = 103
         Me.Label_PackageThumbnail.Text = "Package Thumbnail"
         '
@@ -204,7 +223,7 @@ Partial Class PackageMaker
         Me.ShapeContainer3.Margin = New System.Windows.Forms.Padding(0)
         Me.ShapeContainer3.Name = "ShapeContainer3"
         Me.ShapeContainer3.Shapes.AddRange(New Microsoft.VisualBasic.PowerPacks.Shape() {Me.RectangleShape_Image})
-        Me.ShapeContainer3.Size = New System.Drawing.Size(352, 208)
+        Me.ShapeContainer3.Size = New System.Drawing.Size(200, 160)
         Me.ShapeContainer3.TabIndex = 104
         Me.ShapeContainer3.TabStop = False
         '
@@ -216,19 +235,19 @@ Partial Class PackageMaker
         Me.RectangleShape_Image.CornerRadius = 3
         Me.RectangleShape_Image.FillColor = System.Drawing.Color.WhiteSmoke
         Me.RectangleShape_Image.FillGradientColor = System.Drawing.Color.WhiteSmoke
-        Me.RectangleShape_Image.Location = New System.Drawing.Point(8, 8)
+        Me.RectangleShape_Image.Location = New System.Drawing.Point(8, 16)
         Me.RectangleShape_Image.Name = "RectangleShape_Image"
         Me.RectangleShape_Image.SelectionColor = System.Drawing.Color.Transparent
-        Me.RectangleShape_Image.Size = New System.Drawing.Size(336, 192)
+        Me.RectangleShape_Image.Size = New System.Drawing.Size(184, 136)
         '
         'Panel3
         '
         Me.Panel3.Controls.Add(Me.Label_PackageName)
         Me.Panel3.Controls.Add(Me.TextBox_PackageName)
         Me.Panel3.Controls.Add(Me.ShapeContainer4)
-        Me.Panel3.Location = New System.Drawing.Point(0, 248)
+        Me.Panel3.Location = New System.Drawing.Point(200, 32)
         Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(352, 56)
+        Me.Panel3.Size = New System.Drawing.Size(248, 56)
         Me.Panel3.TabIndex = 95
         '
         'Label_PackageName
@@ -248,7 +267,7 @@ Partial Class PackageMaker
         Me.TextBox_PackageName.ForeColor = System.Drawing.Color.WhiteSmoke
         Me.TextBox_PackageName.Location = New System.Drawing.Point(16, 32)
         Me.TextBox_PackageName.Name = "TextBox_PackageName"
-        Me.TextBox_PackageName.Size = New System.Drawing.Size(320, 13)
+        Me.TextBox_PackageName.Size = New System.Drawing.Size(216, 13)
         Me.TextBox_PackageName.TabIndex = 8
         '
         'ShapeContainer4
@@ -257,7 +276,7 @@ Partial Class PackageMaker
         Me.ShapeContainer4.Margin = New System.Windows.Forms.Padding(0)
         Me.ShapeContainer4.Name = "ShapeContainer4"
         Me.ShapeContainer4.Shapes.AddRange(New Microsoft.VisualBasic.PowerPacks.Shape() {Me.RectangleShape2})
-        Me.ShapeContainer4.Size = New System.Drawing.Size(352, 56)
+        Me.ShapeContainer4.Size = New System.Drawing.Size(248, 56)
         Me.ShapeContainer4.TabIndex = 9
         Me.ShapeContainer4.TabStop = False
         '
@@ -272,7 +291,7 @@ Partial Class PackageMaker
         Me.RectangleShape2.Location = New System.Drawing.Point(8, 24)
         Me.RectangleShape2.Name = "RectangleShape2"
         Me.RectangleShape2.SelectionColor = System.Drawing.Color.Transparent
-        Me.RectangleShape2.Size = New System.Drawing.Size(336, 24)
+        Me.RectangleShape2.Size = New System.Drawing.Size(232, 24)
         '
         'SaveFileDialog_PackJson
         '
@@ -281,33 +300,36 @@ Partial Class PackageMaker
         '
         'Panel1
         '
-        Me.Panel1.Controls.Add(Me.Label_Tag)
-        Me.Panel1.Controls.Add(Me.TextBox_Tag)
+        Me.Panel1.Controls.Add(Me.Label_Description)
+        Me.Panel1.Controls.Add(Me.TextBox_Description)
         Me.Panel1.Controls.Add(Me.ShapeContainer1)
-        Me.Panel1.Location = New System.Drawing.Point(0, 304)
+        Me.Panel1.Location = New System.Drawing.Point(0, 200)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(352, 56)
+        Me.Panel1.Size = New System.Drawing.Size(552, 128)
         Me.Panel1.TabIndex = 96
         '
-        'Label_Tag
+        'Label_Description
         '
-        Me.Label_Tag.AutoSize = True
-        Me.Label_Tag.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.Label_Tag.Location = New System.Drawing.Point(8, 8)
-        Me.Label_Tag.Name = "Label_Tag"
-        Me.Label_Tag.Size = New System.Drawing.Size(29, 13)
-        Me.Label_Tag.TabIndex = 83
-        Me.Label_Tag.Text = "Tag"
+        Me.Label_Description.AutoSize = True
+        Me.Label_Description.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold)
+        Me.Label_Description.Location = New System.Drawing.Point(8, 8)
+        Me.Label_Description.Name = "Label_Description"
+        Me.Label_Description.Size = New System.Drawing.Size(71, 13)
+        Me.Label_Description.TabIndex = 83
+        Me.Label_Description.Text = "Description"
         '
-        'TextBox_Tag
+        'TextBox_Description
         '
-        Me.TextBox_Tag.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(49, Byte), Integer), CType(CType(54, Byte), Integer))
-        Me.TextBox_Tag.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.TextBox_Tag.ForeColor = System.Drawing.Color.WhiteSmoke
-        Me.TextBox_Tag.Location = New System.Drawing.Point(16, 32)
-        Me.TextBox_Tag.Name = "TextBox_Tag"
-        Me.TextBox_Tag.Size = New System.Drawing.Size(320, 13)
-        Me.TextBox_Tag.TabIndex = 8
+        Me.TextBox_Description.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(49, Byte), Integer), CType(CType(54, Byte), Integer))
+        Me.TextBox_Description.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.TextBox_Description.ForeColor = System.Drawing.Color.WhiteSmoke
+        Me.TextBox_Description.Location = New System.Drawing.Point(16, 32)
+        Me.TextBox_Description.Multiline = True
+        Me.TextBox_Description.Name = "TextBox_Description"
+        Me.TextBox_Description.ScrollBars = System.Windows.Forms.ScrollBars.Both
+        Me.TextBox_Description.Size = New System.Drawing.Size(520, 80)
+        Me.TextBox_Description.TabIndex = 8
+        Me.TextBox_Description.WordWrap = False
         '
         'ShapeContainer1
         '
@@ -315,7 +337,7 @@ Partial Class PackageMaker
         Me.ShapeContainer1.Margin = New System.Windows.Forms.Padding(0)
         Me.ShapeContainer1.Name = "ShapeContainer1"
         Me.ShapeContainer1.Shapes.AddRange(New Microsoft.VisualBasic.PowerPacks.Shape() {Me.RectangleShape1})
-        Me.ShapeContainer1.Size = New System.Drawing.Size(352, 56)
+        Me.ShapeContainer1.Size = New System.Drawing.Size(552, 128)
         Me.ShapeContainer1.TabIndex = 9
         Me.ShapeContainer1.TabStop = False
         '
@@ -330,12 +352,223 @@ Partial Class PackageMaker
         Me.RectangleShape1.Location = New System.Drawing.Point(8, 24)
         Me.RectangleShape1.Name = "RectangleShape2"
         Me.RectangleShape1.SelectionColor = System.Drawing.Color.Transparent
-        Me.RectangleShape1.Size = New System.Drawing.Size(336, 24)
+        Me.RectangleShape1.Size = New System.Drawing.Size(536, 96)
         '
         'SaveFileDialog_PackageThumbnail
         '
         Me.SaveFileDialog_PackageThumbnail.FileName = "thumbnail"
         Me.SaveFileDialog_PackageThumbnail.Filter = "Png Image (*.png)|*.png"
+        '
+        'Panel2
+        '
+        Me.Panel2.Controls.Add(Me.NumericUpDown_Price)
+        Me.Panel2.Controls.Add(Me.Label_Price)
+        Me.Panel2.Controls.Add(Me.ShapeContainer2)
+        Me.Panel2.Location = New System.Drawing.Point(448, 32)
+        Me.Panel2.Name = "Panel2"
+        Me.Panel2.Size = New System.Drawing.Size(104, 56)
+        Me.Panel2.TabIndex = 97
+        '
+        'NumericUpDown_Price
+        '
+        Me.NumericUpDown_Price.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(49, Byte), Integer), CType(CType(54, Byte), Integer))
+        Me.NumericUpDown_Price.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.NumericUpDown_Price.DecimalPlaces = 2
+        Me.NumericUpDown_Price.ForeColor = System.Drawing.Color.WhiteSmoke
+        Me.NumericUpDown_Price.Location = New System.Drawing.Point(16, 29)
+        Me.NumericUpDown_Price.Maximum = New Decimal(New Integer() {99999, 0, 0, 0})
+        Me.NumericUpDown_Price.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
+        Me.NumericUpDown_Price.Name = "NumericUpDown_Price"
+        Me.NumericUpDown_Price.Size = New System.Drawing.Size(72, 16)
+        Me.NumericUpDown_Price.TabIndex = 108
+        Me.NumericUpDown_Price.Value = New Decimal(New Integer() {123, 0, 0, 131072})
+        '
+        'Label_Price
+        '
+        Me.Label_Price.AutoSize = True
+        Me.Label_Price.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold)
+        Me.Label_Price.Location = New System.Drawing.Point(8, 8)
+        Me.Label_Price.Name = "Label_Price"
+        Me.Label_Price.Size = New System.Drawing.Size(81, 13)
+        Me.Label_Price.TabIndex = 83
+        Me.Label_Price.Text = "Price€ (Euro)"
+        '
+        'ShapeContainer2
+        '
+        Me.ShapeContainer2.Location = New System.Drawing.Point(0, 0)
+        Me.ShapeContainer2.Margin = New System.Windows.Forms.Padding(0)
+        Me.ShapeContainer2.Name = "ShapeContainer2"
+        Me.ShapeContainer2.Shapes.AddRange(New Microsoft.VisualBasic.PowerPacks.Shape() {Me.RectangleShape3})
+        Me.ShapeContainer2.Size = New System.Drawing.Size(104, 56)
+        Me.ShapeContainer2.TabIndex = 9
+        Me.ShapeContainer2.TabStop = False
+        '
+        'RectangleShape3
+        '
+        Me.RectangleShape3.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(49, Byte), Integer), CType(CType(54, Byte), Integer))
+        Me.RectangleShape3.BackStyle = Microsoft.VisualBasic.PowerPacks.BackStyle.Opaque
+        Me.RectangleShape3.BorderColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer))
+        Me.RectangleShape3.CornerRadius = 3
+        Me.RectangleShape3.FillColor = System.Drawing.Color.WhiteSmoke
+        Me.RectangleShape3.FillGradientColor = System.Drawing.Color.WhiteSmoke
+        Me.RectangleShape3.Location = New System.Drawing.Point(8, 24)
+        Me.RectangleShape3.Name = "RectangleShape2"
+        Me.RectangleShape3.SelectionColor = System.Drawing.Color.Transparent
+        Me.RectangleShape3.Size = New System.Drawing.Size(88, 24)
+        '
+        'CheckBox_FullGamePack
+        '
+        Me.CheckBox_FullGamePack.AutoSize = True
+        Me.CheckBox_FullGamePack.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(49, Byte), Integer), CType(CType(54, Byte), Integer))
+        Me.CheckBox_FullGamePack.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold)
+        Me.CheckBox_FullGamePack.Location = New System.Drawing.Point(16, 32)
+        Me.CheckBox_FullGamePack.Margin = New System.Windows.Forms.Padding(3, 0, 3, 0)
+        Me.CheckBox_FullGamePack.Name = "CheckBox_FullGamePack"
+        Me.CheckBox_FullGamePack.Size = New System.Drawing.Size(115, 17)
+        Me.CheckBox_FullGamePack.TabIndex = 98
+        Me.CheckBox_FullGamePack.Text = "Full-Game-Pack"
+        Me.CheckBox_FullGamePack.UseVisualStyleBackColor = False
+        '
+        'RectangleShape4
+        '
+        Me.RectangleShape4.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(49, Byte), Integer), CType(CType(54, Byte), Integer))
+        Me.RectangleShape4.BackStyle = Microsoft.VisualBasic.PowerPacks.BackStyle.Opaque
+        Me.RectangleShape4.BorderColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer))
+        Me.RectangleShape4.CornerRadius = 3
+        Me.RectangleShape4.FillColor = System.Drawing.Color.WhiteSmoke
+        Me.RectangleShape4.FillGradientColor = System.Drawing.Color.WhiteSmoke
+        Me.RectangleShape4.Location = New System.Drawing.Point(8, 24)
+        Me.RectangleShape4.Name = "RectangleShape4"
+        Me.RectangleShape4.SelectionColor = System.Drawing.Color.Transparent
+        Me.RectangleShape4.Size = New System.Drawing.Size(336, 80)
+        '
+        'CheckBox_Character
+        '
+        Me.CheckBox_Character.AutoSize = True
+        Me.CheckBox_Character.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(49, Byte), Integer), CType(CType(54, Byte), Integer))
+        Me.CheckBox_Character.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold)
+        Me.CheckBox_Character.Location = New System.Drawing.Point(160, 56)
+        Me.CheckBox_Character.Margin = New System.Windows.Forms.Padding(3, 0, 3, 0)
+        Me.CheckBox_Character.Name = "CheckBox_Character"
+        Me.CheckBox_Character.Size = New System.Drawing.Size(81, 17)
+        Me.CheckBox_Character.TabIndex = 100
+        Me.CheckBox_Character.Text = "Character"
+        Me.CheckBox_Character.UseVisualStyleBackColor = False
+        '
+        'CheckBox_Props
+        '
+        Me.CheckBox_Props.AutoSize = True
+        Me.CheckBox_Props.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(49, Byte), Integer), CType(CType(54, Byte), Integer))
+        Me.CheckBox_Props.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold)
+        Me.CheckBox_Props.Location = New System.Drawing.Point(272, 32)
+        Me.CheckBox_Props.Margin = New System.Windows.Forms.Padding(3, 0, 3, 0)
+        Me.CheckBox_Props.Name = "CheckBox_Props"
+        Me.CheckBox_Props.Size = New System.Drawing.Size(58, 17)
+        Me.CheckBox_Props.TabIndex = 101
+        Me.CheckBox_Props.Text = "Props"
+        Me.CheckBox_Props.UseVisualStyleBackColor = False
+        '
+        'CheckBox_Background
+        '
+        Me.CheckBox_Background.AutoSize = True
+        Me.CheckBox_Background.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(49, Byte), Integer), CType(CType(54, Byte), Integer))
+        Me.CheckBox_Background.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold)
+        Me.CheckBox_Background.Location = New System.Drawing.Point(16, 80)
+        Me.CheckBox_Background.Margin = New System.Windows.Forms.Padding(3, 0, 3, 0)
+        Me.CheckBox_Background.Name = "CheckBox_Background"
+        Me.CheckBox_Background.Size = New System.Drawing.Size(94, 17)
+        Me.CheckBox_Background.TabIndex = 102
+        Me.CheckBox_Background.Text = "Background"
+        Me.CheckBox_Background.UseVisualStyleBackColor = False
+        '
+        'CheckBox_VisualEffect
+        '
+        Me.CheckBox_VisualEffect.AutoSize = True
+        Me.CheckBox_VisualEffect.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(49, Byte), Integer), CType(CType(54, Byte), Integer))
+        Me.CheckBox_VisualEffect.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold)
+        Me.CheckBox_VisualEffect.Location = New System.Drawing.Point(16, 56)
+        Me.CheckBox_VisualEffect.Margin = New System.Windows.Forms.Padding(3, 0, 3, 0)
+        Me.CheckBox_VisualEffect.Name = "CheckBox_VisualEffect"
+        Me.CheckBox_VisualEffect.Size = New System.Drawing.Size(98, 17)
+        Me.CheckBox_VisualEffect.TabIndex = 103
+        Me.CheckBox_VisualEffect.Text = "Visual-Effect"
+        Me.CheckBox_VisualEffect.UseVisualStyleBackColor = False
+        '
+        'CheckBox_Interface
+        '
+        Me.CheckBox_Interface.AutoSize = True
+        Me.CheckBox_Interface.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(49, Byte), Integer), CType(CType(54, Byte), Integer))
+        Me.CheckBox_Interface.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold)
+        Me.CheckBox_Interface.Location = New System.Drawing.Point(160, 32)
+        Me.CheckBox_Interface.Margin = New System.Windows.Forms.Padding(3, 0, 3, 0)
+        Me.CheckBox_Interface.Name = "CheckBox_Interface"
+        Me.CheckBox_Interface.Size = New System.Drawing.Size(77, 17)
+        Me.CheckBox_Interface.TabIndex = 104
+        Me.CheckBox_Interface.Text = "Interface"
+        Me.CheckBox_Interface.UseVisualStyleBackColor = False
+        '
+        'CheckBox_Prefab
+        '
+        Me.CheckBox_Prefab.AutoSize = True
+        Me.CheckBox_Prefab.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(49, Byte), Integer), CType(CType(54, Byte), Integer))
+        Me.CheckBox_Prefab.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold)
+        Me.CheckBox_Prefab.Location = New System.Drawing.Point(272, 56)
+        Me.CheckBox_Prefab.Margin = New System.Windows.Forms.Padding(3, 0, 3, 0)
+        Me.CheckBox_Prefab.Name = "CheckBox_Prefab"
+        Me.CheckBox_Prefab.Size = New System.Drawing.Size(63, 17)
+        Me.CheckBox_Prefab.TabIndex = 105
+        Me.CheckBox_Prefab.Text = "Prefab"
+        Me.CheckBox_Prefab.UseVisualStyleBackColor = False
+        '
+        'Label_Categories
+        '
+        Me.Label_Categories.AutoSize = True
+        Me.Label_Categories.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold)
+        Me.Label_Categories.Location = New System.Drawing.Point(8, 8)
+        Me.Label_Categories.Name = "Label_Categories"
+        Me.Label_Categories.Size = New System.Drawing.Size(67, 13)
+        Me.Label_Categories.TabIndex = 106
+        Me.Label_Categories.Text = "Categories"
+        '
+        'Panel4
+        '
+        Me.Panel4.Controls.Add(Me.CheckBox_Sounds)
+        Me.Panel4.Controls.Add(Me.CheckBox_Prefab)
+        Me.Panel4.Controls.Add(Me.CheckBox_Interface)
+        Me.Panel4.Controls.Add(Me.CheckBox_VisualEffect)
+        Me.Panel4.Controls.Add(Me.CheckBox_Background)
+        Me.Panel4.Controls.Add(Me.CheckBox_Props)
+        Me.Panel4.Controls.Add(Me.CheckBox_Character)
+        Me.Panel4.Controls.Add(Me.CheckBox_FullGamePack)
+        Me.Panel4.Controls.Add(Me.Label_Categories)
+        Me.Panel4.Controls.Add(Me.ShapeContainer6)
+        Me.Panel4.Location = New System.Drawing.Point(200, 88)
+        Me.Panel4.Name = "Panel4"
+        Me.Panel4.Size = New System.Drawing.Size(352, 112)
+        Me.Panel4.TabIndex = 107
+        '
+        'CheckBox_Sounds
+        '
+        Me.CheckBox_Sounds.AutoSize = True
+        Me.CheckBox_Sounds.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(49, Byte), Integer), CType(CType(54, Byte), Integer))
+        Me.CheckBox_Sounds.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold)
+        Me.CheckBox_Sounds.Location = New System.Drawing.Point(160, 80)
+        Me.CheckBox_Sounds.Margin = New System.Windows.Forms.Padding(3, 0, 3, 0)
+        Me.CheckBox_Sounds.Name = "CheckBox_Sounds"
+        Me.CheckBox_Sounds.Size = New System.Drawing.Size(68, 17)
+        Me.CheckBox_Sounds.TabIndex = 108
+        Me.CheckBox_Sounds.Text = "Sounds"
+        Me.CheckBox_Sounds.UseVisualStyleBackColor = False
+        '
+        'ShapeContainer6
+        '
+        Me.ShapeContainer6.Location = New System.Drawing.Point(0, 0)
+        Me.ShapeContainer6.Margin = New System.Windows.Forms.Padding(0)
+        Me.ShapeContainer6.Name = "ShapeContainer6"
+        Me.ShapeContainer6.Shapes.AddRange(New Microsoft.VisualBasic.PowerPacks.Shape() {Me.RectangleShape4})
+        Me.ShapeContainer6.Size = New System.Drawing.Size(352, 112)
+        Me.ShapeContainer6.TabIndex = 107
+        Me.ShapeContainer6.TabStop = False
         '
         'PackageMaker
         '
@@ -343,12 +576,14 @@ Partial Class PackageMaker
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(54, Byte), Integer), CType(CType(57, Byte), Integer), CType(CType(62, Byte), Integer))
-        Me.ClientSize = New System.Drawing.Size(354, 403)
-        Me.Controls.Add(Me.Panel1)
+        Me.ClientSize = New System.Drawing.Size(551, 359)
+        Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.Panel3)
         Me.Controls.Add(Me.Panel_PackageThumbnail)
-        Me.Controls.Add(Me.Button_Save)
+        Me.Controls.Add(Me.Panel4)
         Me.Controls.Add(Me.Panel_Main)
+        Me.Controls.Add(Me.Button_Save)
+        Me.Controls.Add(Me.Panel1)
         Me.ForeColor = System.Drawing.Color.WhiteSmoke
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
@@ -369,6 +604,11 @@ Partial Class PackageMaker
         Me.Panel3.PerformLayout()
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
+        Me.Panel2.ResumeLayout(False)
+        Me.Panel2.PerformLayout()
+        CType(Me.NumericUpDown_Price, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Panel4.ResumeLayout(False)
+        Me.Panel4.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -382,7 +622,6 @@ Partial Class PackageMaker
     Friend WithEvents PictureBox_AppIcon As PictureBox
     Friend WithEvents Button_Save As Button
     Friend WithEvents Panel_PackageThumbnail As Panel
-    Friend WithEvents Label_PackageThumbnail As Label
     Friend WithEvents PixelBox_PackageThumbnail As PixelBox
     Friend WithEvents ShapeContainer3 As ShapeContainer
     Friend WithEvents RectangleShape_Image As RectangleShape
@@ -393,11 +632,29 @@ Partial Class PackageMaker
     Friend WithEvents RectangleShape2 As RectangleShape
     Friend WithEvents SaveFileDialog_PackJson As SaveFileDialog
     Friend WithEvents Panel1 As Panel
-    Friend WithEvents Label_Tag As Label
-    Friend WithEvents TextBox_Tag As TextBox
+    Friend WithEvents Label_Description As Label
+    Friend WithEvents TextBox_Description As TextBox
     Friend WithEvents ShapeContainer1 As ShapeContainer
     Friend WithEvents RectangleShape1 As RectangleShape
     Friend WithEvents ContextMenuStrip_PackageThumbnail As ContextMenuStrip
     Friend WithEvents SaveToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents SaveFileDialog_PackageThumbnail As SaveFileDialog
+    Friend WithEvents Panel2 As Panel
+    Friend WithEvents Label_Price As Label
+    Friend WithEvents ShapeContainer2 As ShapeContainer
+    Friend WithEvents RectangleShape3 As RectangleShape
+    Friend WithEvents CheckBox_FullGamePack As CheckBox
+    Friend WithEvents RectangleShape4 As RectangleShape
+    Friend WithEvents CheckBox_Character As CheckBox
+    Friend WithEvents CheckBox_Props As CheckBox
+    Friend WithEvents CheckBox_Background As CheckBox
+    Friend WithEvents CheckBox_VisualEffect As CheckBox
+    Friend WithEvents CheckBox_Interface As CheckBox
+    Friend WithEvents CheckBox_Prefab As CheckBox
+    Friend WithEvents Label_Categories As Label
+    Friend WithEvents Panel4 As Panel
+    Friend WithEvents ShapeContainer6 As ShapeContainer
+    Friend WithEvents CheckBox_Sounds As CheckBox
+    Friend WithEvents NumericUpDown_Price As NumericUpDown
+    Private WithEvents Label_PackageThumbnail As Label
 End Class

@@ -1,60 +1,64 @@
 ﻿Imports FastColoredTextBoxNS
 
 Public Class ClipboardAsset
-    ReadOnly SupportedIamgeFormats() As String = {".png", ".bmp", ".jpeg", ".jpg", ".tiff", ".tif"}
+    ReadOnly SupportedImageFormats() As String = {".png", ".bmp", ".jpeg", ".jpg", ".tiff", ".tif"}
     Dim ForceImageAspectRatio_1_1_Size As Size
     Dim aspectRatio_IsAlready_1_1 As Boolean = False
-    Dim ObjectsJson As New JArray
-    Dim objectAssets As New JArray
+    Dim ObjectsJSON As New JArray
+    Dim ObjectAssets As New JArray
     Private key As New TextStyle(Brushes.MediumAquamarine, Nothing, FontStyle.Regular)
     Private str As New TextStyle(Brushes.PaleGoldenrod, Nothing, FontStyle.Regular)
     Private boo As New TextStyle(Brushes.MediumSlateBlue, Nothing, FontStyle.Regular)
     Private num As New TextStyle(Brushes.DeepPink, Nothing, FontStyle.Regular)
     Private nul As New TextStyle(Brushes.DarkGray, Nothing, FontStyle.Regular)
-    'ClipboardAsset - Load
+
+    ' ClipboardAsset - Load
     Private Sub ClipboardAsset_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ContextMenuStrip_PreviewImage.Renderer = New ToolStripProfessionalRenderer(New ColorTable())
         ContextMenuStrip_AssetJSON.Renderer = New ToolStripProfessionalRenderer(New ColorTable())
         ContextMenuStrip_Resources.Renderer = New ToolStripProfessionalRenderer(New ColorTable())
     End Sub
-    'Button_PasteObjects - Click
+
+    ' Button_PasteObjects - Click
     Private Sub Button_PasteObjects_Click(sender As Object, e As EventArgs) Handles Button_PasteObject.Click
         If Clipboard.ContainsText Then
             Dim CB_Text As String = Clipboard.GetText
             If CB_Text.Contains("GDEVELOP_Object_CLIPBOARD_KIND") Or CB_Text.Contains("000kind") Then
-                Dim jsonFromClipboard As JObject = JObject.Parse(CB_Text)
-                ListBox_Objects.Items.Add(jsonFromClipboard.Item("content")("name"))
-                ObjectsJson.Add(jsonFromClipboard.SelectToken("content")("object"))
+                Dim JSONFromClipboard As JObject = JObject.Parse(CB_Text)
+                ListBox_Objects.Items.Add(JSONFromClipboard.Item("content")("name"))
+                ObjectsJSON.Add(JSONFromClipboard.SelectToken("content")("object"))
                 ErrorProvider1.SetError(ListBox_Objects, Nothing)
             End If
         End If
     End Sub
-    'ListBox_Objects - DoubleClick
+
+    ' ListBox_Objects - DoubleClick
     Private Sub ListBox_Objects_DoubleClick(sender As Object, e As EventArgs) Handles ListBox_Objects.DoubleClick
         If Not ListBox_Objects.SelectedIndex = -1 Then
-            ObjectsJson.RemoveAt(ListBox_Objects.SelectedIndex)
+            ObjectsJSON.RemoveAt(ListBox_Objects.SelectedIndex)
             ListBox_Objects.Items.RemoveAt(ListBox_Objects.SelectedIndex)
         End If
     End Sub
-    'Button_GenerateAsset - Click
+
+    ' Button_GenerateAsset - Click
     Private Sub Button_GenerateAsset_Click(sender As Object, e As EventArgs) Handles Button_GenerateAsset.Click
         If TextBox_Description.Text.Length > 0 And ListBox_Objects.Items.Count > 0 Then
-            Dim jsonFile As JObject = JObject.Parse(My.Resources.asset_template)
+            Dim JSONFile As JObject = JObject.Parse(My.Resources.asset_template)
 
-            jsonFile.Item("description") = TextBox_Description.Text
+            JSONFile.Item("description") = TextBox_Description.Text
 
             For i As Integer = 0 To ListBox_Objects.Items.Count - 1
-                Dim jsonFile_objectAssets As JObject = JObject.Parse(My.Resources.objectAssets_template)
-                jsonFile_objectAssets.Item("object") = ObjectsJson.Item(i)
-                objectAssets.Add(jsonFile_objectAssets)
+                Dim JSONFile_objectAssets As JObject = JObject.Parse(My.Resources.objectAssets_template)
+                JSONFile_objectAssets.Item("object") = ObjectsJSON.Item(i)
+                ObjectAssets.Add(JSONFile_objectAssets)
             Next
 
-            jsonFile.Item("objectAssets") = objectAssets
+            JSONFile.Item("objectAssets") = ObjectAssets
 
-            FastColoredTextBox_AssetJson.Text = jsonFile.ToString
+            FastColoredTextBox_AssetJson.Text = JSONFile.ToString
             ErrorProvider1.SetError(FastColoredTextBox_AssetJson, Nothing)
 
-            objectAssets.Clear()
+            ObjectAssets.Clear()
         Else
 
             If TextBox_Description.Text.Length = 0 Then
@@ -68,7 +72,8 @@ Public Class ClipboardAsset
             MsgBox("Please fill out all fields.", MsgBoxStyle.Information)
         End If
     End Sub
-    'Button_Save - Click
+
+    ' Button_Save - Click
     Private Sub Button_Save_Click(sender As Object, e As EventArgs) Handles Button_Save.Click
         If TextBox_Description.Text.Length > 0 And FastColoredTextBox_AssetJson.Text.Length > 0 Then
             If SaveFileDialog1.InitialDirectory = "" Then
@@ -86,7 +91,7 @@ Public Class ClipboardAsset
             End If
 
             If SaveFileDialog1.ShowDialog = DialogResult.OK Then
-                'Write Asset Json
+                'Write Asset JSON
                 My.Computer.FileSystem.WriteAllText(SaveFileDialog1.FileName, FastColoredTextBox_AssetJson.Text, False)
 
                 If PixelBox_PreviewImage.Image IsNot Nothing Then
@@ -97,7 +102,7 @@ Public Class ClipboardAsset
                         Using g As Graphics = Graphics.FromImage(bmp)
                             'draw the original at the new size on memory bitmap
                             g.DrawImage(PixelBox_PreviewImage.Image, 0, 0, bmp.Width, bmp.Height)
-                            'save the temp resized bitmamp
+                            'save the temp resized bitmap
                             bmp.Save(Path.GetDirectoryName(SaveFileDialog1.FileName) & "\" & tempImageName & ".preview.png", Imaging.ImageFormat.Png)
                         End Using
                     Else
@@ -110,8 +115,8 @@ Public Class ClipboardAsset
                 ListBox_Objects.Items.Clear()
                 FastColoredTextBox_AssetJson.Clear()
                 PixelBox_PreviewImage.Image = Nothing
-                ObjectsJson.Clear()
-                objectAssets.Clear()
+                ObjectsJSON.Clear()
+                ObjectAssets.Clear()
 
             End If
         Else
@@ -127,7 +132,8 @@ Public Class ClipboardAsset
             MsgBox("Please fill out all fields.", MsgBoxStyle.Information)
         End If
     End Sub
-    'Panel_PreviewImage - DragDrop
+
+    ' Panel_PreviewImage - DragDrop
     Private Sub Panel_PreviewImage_DragDrop(sender As Object, e As DragEventArgs) Handles Panel_PreviewImage.DragDrop
         If e.Data.GetDataPresent(DataFormats.FileDrop) Then
             Dim files() As String = CType(e.Data.GetData(DataFormats.FileDrop), String())
@@ -154,18 +160,20 @@ Public Class ClipboardAsset
             End If
         End If
     End Sub
-    'Panel_PreviewImage - DragEnter
+
+    ' Panel_PreviewImage - DragEnter
     Private Sub Panel_PreviewImage_DragEnter(sender As Object, e As DragEventArgs) Handles Panel_PreviewImage.DragEnter
         If e.Data.GetDataPresent(DataFormats.FileDrop) Then
-            Dim files() As String = CType(e.Data.GetData(DataFormats.FileDrop), String())
-            If e.Data.GetDataPresent(DataFormats.FileDrop) And SupportedIamgeFormats.Contains(Path.GetExtension(files(0)).ToLower) Then
+            Dim DraggedFiles() As String = CType(e.Data.GetData(DataFormats.FileDrop), String())
+            If e.Data.GetDataPresent(DataFormats.FileDrop) And SupportedImageFormats.Contains(Path.GetExtension(DraggedFiles(0)).ToLower) Then
                 e.Effect = DragDropEffects.Copy
             Else
                 e.Effect = DragDropEffects.None
             End If
         End If
     End Sub
-    'ContextMenuStrip_PreviewImage - Opening
+
+    ' ContextMenuStrip_PreviewImage - Opening
     Private Sub ContextMenuStrip_PreviewImage_Opening(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles ContextMenuStrip_PreviewImage.Opening
         If PixelBox_PreviewImage.Image IsNot Nothing Then
             SaveToolStripMenuItem.Enabled = True
@@ -175,7 +183,8 @@ Public Class ClipboardAsset
             ClearPreviewImageToolStripMenuItem.Enabled = False
         End If
     End Sub
-    'Save (ToolStripMenuItem) - Click
+
+    ' Save (ToolStripMenuItem) - Click
     Private Sub SaveToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SaveToolStripMenuItem.Click
         If SaveFileDialog_PreviewImage.ShowDialog = DialogResult.OK Then
             If aspectRatio_IsAlready_1_1 = False Then
@@ -183,7 +192,7 @@ Public Class ClipboardAsset
                 Using g As Graphics = Graphics.FromImage(bmp)
                     'draw the original at the new size on memory bitmap
                     g.DrawImage(PixelBox_PreviewImage.Image, 0, 0, bmp.Width, bmp.Height)
-                    'save the temp resized bitmamp
+                    'save the temp resized bitmap
                     bmp.Save(SaveFileDialog_PreviewImage.FileName, Imaging.ImageFormat.Png)
                 End Using
             Else
@@ -191,17 +200,20 @@ Public Class ClipboardAsset
             End If
         End If
     End Sub
-    'ClearPreviewImage (ToolStripMenuItem) - Click
+
+    ' ClearPreviewImage (ToolStripMenuItem) - Click
     Private Sub ClearPreviewImageToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ClearPreviewImageToolStripMenuItem.Click
         PixelBox_PreviewImage.Image = Nothing
     End Sub
-    'TextBox_Description - TextChanged
+
+    ' TextBox_Description - TextChanged
     Private Sub TextBox_Description_TextChanged(sender As Object, e As EventArgs) Handles TextBox_Description.TextChanged
         If TextBox_Description.Text.Length > 0 And ErrorProvider1.GetError(TextBox_Description) IsNot Nothing Then
             ErrorProvider1.SetError(TextBox_Description, Nothing)
         End If
     End Sub
-    'SafeImageFromFile()
+
+    ' SafeImageFromFile()
     Public Shared Function SafeImageFromFile(path As String) As Image
         Dim bytes = File.ReadAllBytes(path)
         Using ms As New MemoryStream(bytes)
@@ -209,7 +221,8 @@ Public Class ClipboardAsset
             Return img
         End Using
     End Function
-    'FastColoredTextBox_AssetJson - TextChanged
+
+    ' FastColoredTextBox_AssetJson - TextChanged
     Private Sub FastColoredTextBox_AssetJson_TextChanged(sender As Object, e As TextChangedEventArgs) Handles FastColoredTextBox_AssetJson.TextChanged
         e.ChangedRange.ClearFoldingMarkers()
         e.ChangedRange.SetFoldingMarkers("{", "}")
@@ -231,22 +244,24 @@ Public Class ClipboardAsset
             End If
         Next
     End Sub
-    'FastColoredTextBox_Resources - DragDrop
+
+    ' FastColoredTextBox_Resources - DragDrop
     Private Sub FastColoredTextBox_Resources_DragDrop(sender As Object, e As DragEventArgs) Handles FastColoredTextBox_Resources.DragDrop
         If e.Data.GetDataPresent(DataFormats.FileDrop) Then
-            Dim files() As String = CType(e.Data.GetData(DataFormats.FileDrop), String())
-            If files.Length <> 0 Then
+            Dim DroppedFiles() As String = CType(e.Data.GetData(DataFormats.FileDrop), String())
+            If DroppedFiles.Length <> 0 Then
                 Try
-                    Dim jsonFile As JObject = JObject.Parse(File.ReadAllText(files(0)))
-                    TextBox_ProjectFilepath.Text = files(0)
-                    FastColoredTextBox_Resources.Text = jsonFile.Item("resources")("resources").ToString
+                    Dim JSONFile As JObject = JObject.Parse(File.ReadAllText(DroppedFiles(0)))
+                    TextBox_ProjectFilepath.Text = DroppedFiles(0)
+                    FastColoredTextBox_Resources.Text = JSONFile.Item("resources")("resources").ToString
                 Catch ex As Exception
                     MsgBox("Problem opening file.", MsgBoxStyle.Critical)
                 End Try
             End If
         End If
     End Sub
-    'FastColoredTextBox_Resources - DragEnter
+
+    ' FastColoredTextBox_Resources - DragEnter
     Private Sub FastColoredTextBox_Resources_DragEnter(sender As Object, e As DragEventArgs) Handles FastColoredTextBox_Resources.DragEnter
         If e.Data.GetDataPresent(DataFormats.FileDrop) Then
             Dim files() As String = CType(e.Data.GetData(DataFormats.FileDrop), String())
@@ -257,7 +272,8 @@ Public Class ClipboardAsset
             End If
         End If
     End Sub
-    'FastColoredTextBox_Resources - TextChanged
+
+    ' FastColoredTextBox_Resources - TextChanged
     Private Sub FastColoredTextBox_Resources_TextChanged(sender As Object, e As TextChangedEventArgs) Handles FastColoredTextBox_Resources.TextChanged
         e.ChangedRange.ClearFoldingMarkers()
         e.ChangedRange.SetFoldingMarkers("{", "}")
@@ -279,27 +295,32 @@ Public Class ClipboardAsset
             End If
         Next
     End Sub
+
     '
     'ContextMenuStrip - Resources
     '
-    'CutToolStripMenuItem_Click
+
+    ' CutToolStripMenuItem_Click
     Private Sub CutToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CutToolStripMenuItem.Click
         FastColoredTextBox_Resources.Cut()
     End Sub
-    'CopyToolStripMenuItem_Click
+
+    ' CopyToolStripMenuItem_Click
     Private Sub CopyToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CopyToolStripMenuItem.Click
         FastColoredTextBox_Resources.Copy()
     End Sub
-    'ClearToolStripMenuItem_Click
+
+    ' ClearToolStripMenuItem_Click
     Private Sub ClearToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ClearToolStripMenuItem.Click
         FastColoredTextBox_Resources.Clear()
         TextBox_ProjectFilepath.Clear()
     End Sub
-    'ReloadToolStripMenuItem_Click
+
+    ' ReloadToolStripMenuItem_Click
     Private Sub ReloadToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ReloadToolStripMenuItem.Click
         If File.Exists(TextBox_ProjectFilepath.Text) Then
-            Dim jsonFile As JObject = JObject.Parse(File.ReadAllText(TextBox_ProjectFilepath.Text))
-            FastColoredTextBox_Resources.Text = jsonFile.Item("resources")("resources").ToString
+            Dim JSONFile As JObject = JObject.Parse(File.ReadAllText(TextBox_ProjectFilepath.Text))
+            FastColoredTextBox_Resources.Text = JSONFile.Item("resources")("resources").ToString
         Else
             'Tell the user that the file does not exist
 
@@ -307,7 +328,8 @@ Public Class ClipboardAsset
             TextBox_ProjectFilepath.Clear()
         End If
     End Sub
-    'ContextMenuStrip_Resources - Opening
+
+    ' ContextMenuStrip_Resources - Opening
     Private Sub ContextMenuStrip2_Opening(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles ContextMenuStrip_Resources.Opening
         If Not FastColoredTextBox_Resources.SelectionLength = 0 Then
             CutToolStripMenuItem.Enabled = True
@@ -323,22 +345,27 @@ Public Class ClipboardAsset
             ReloadToolStripMenuItem.Enabled = False
         End If
     End Sub
+
     '
     'ContextMenuStrip - AssetJSON
     '
-    'CutToolStripMenuItem1 - Click
+
+    ' CutToolStripMenuItem1 - Click
     Private Sub CutToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles CutToolStripMenuItem1.Click
         FastColoredTextBox_AssetJson.Cut()
     End Sub
-    'CopyToolStripMenuItem1 - Click
+
+    ' CopyToolStripMenuItem1 - Click
     Private Sub CopyToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles CopyToolStripMenuItem1.Click
         FastColoredTextBox_AssetJson.Copy()
     End Sub
-    'PasteToolStripMenuItem - Click
+
+    ' PasteToolStripMenuItem - Click
     Private Sub PasteToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PasteToolStripMenuItem.Click
         FastColoredTextBox_AssetJson.Paste()
     End Sub
-    'ContextMenuStrip_AssetJSON - Opening
+
+    ' ContextMenuStrip_AssetJSON - Opening
     Private Sub ContextMenuStrip1_Opening(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles ContextMenuStrip_AssetJSON.Opening
         If Not FastColoredTextBox_AssetJson.SelectionLength = 0 Then
             CutToolStripMenuItem1.Enabled = True
