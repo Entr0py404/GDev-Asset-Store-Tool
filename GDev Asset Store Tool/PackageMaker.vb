@@ -12,7 +12,18 @@
     ' Button_Save - Click
     Private Sub Button_Save_Click(sender As Object, e As EventArgs) Handles Button_Save.Click
         ' Check if the required fields are filled and a thumbnail image is selected
-        If TextBox_PackageName.Text.Length > 0 And TextBox_Description.Text.Length > 0 And PixelBox_PackageThumbnail.Image IsNot Nothing Then
+        If TextBox_PackageName.Text.Length > 0 AndAlso
+            TextBox_Description.Text.Length > 0 AndAlso
+            PixelBox_PackageThumbnail.Image IsNot Nothing AndAlso
+            (CheckBox_FullGamePack.Checked OrElse
+            CheckBox_Character.Checked OrElse
+            CheckBox_Props.Checked OrElse
+            CheckBox_Background.Checked OrElse
+            CheckBox_VisualEffect.Checked OrElse
+            CheckBox_Interface.Checked OrElse
+            CheckBox_Prefab.Checked OrElse
+            CheckBox_Sounds.Checked) Then
+
             SaveFileDialog_PackJson.FileName = "PACK.json"
 
             'Dim euroValue As Double = NumericUpDown_Price.Value / 100.0
@@ -128,6 +139,15 @@
                 TextBox_Description.Clear()
                 PixelBox_PackageThumbnail.Image = Nothing
                 PixelBox_PackageThumbnail.Refresh()
+                NumericUpDown_Price.Value = NumericUpDown_Price.Minimum
+                CheckBox_FullGamePack.Checked = False
+                CheckBox_Character.Checked = False
+                CheckBox_Props.Checked = False
+                CheckBox_Background.Checked = False
+                CheckBox_VisualEffect.Checked = False
+                CheckBox_Interface.Checked = False
+                CheckBox_Prefab.Checked = False
+                CheckBox_Sounds.Checked = False
             End If
         Else
             ' Display a message if all required fields are not filled
