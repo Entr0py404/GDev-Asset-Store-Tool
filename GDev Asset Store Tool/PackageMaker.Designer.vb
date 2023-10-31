@@ -25,7 +25,6 @@ Partial Class PackageMaker
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(PackageMaker))
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
-        Me.PixelBox_PackageThumbnail = New GDev_Asset_Store_Tool.PixelBox()
         Me.ContextMenuStrip_PackageThumbnail = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.SaveToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.Panel_Main = New System.Windows.Forms.Panel()
@@ -68,7 +67,7 @@ Partial Class PackageMaker
         Me.Panel4 = New System.Windows.Forms.Panel()
         Me.CheckBox_Sounds = New System.Windows.Forms.CheckBox()
         Me.ShapeContainer6 = New Microsoft.VisualBasic.PowerPacks.ShapeContainer()
-        CType(Me.PixelBox_PackageThumbnail, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.PixelBox_PackageThumbnail = New GDev_Asset_Store_Tool.PixelBox()
         Me.ContextMenuStrip_PackageThumbnail.SuspendLayout()
         Me.Panel_Main.SuspendLayout()
         Me.Panel_ControlBox.SuspendLayout()
@@ -81,26 +80,13 @@ Partial Class PackageMaker
         Me.Panel2.SuspendLayout()
         CType(Me.NumericUpDown_Price, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel4.SuspendLayout()
+        CType(Me.PixelBox_PackageThumbnail, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'ToolTip1
         '
         Me.ToolTip1.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info
         Me.ToolTip1.ToolTipTitle = "Hint"
-        '
-        'PixelBox_PackageThumbnail
-        '
-        Me.PixelBox_PackageThumbnail.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(49, Byte), Integer), CType(CType(54, Byte), Integer))
-        Me.PixelBox_PackageThumbnail.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality
-        Me.PixelBox_PackageThumbnail.ContextMenuStrip = Me.ContextMenuStrip_PackageThumbnail
-        Me.PixelBox_PackageThumbnail.Location = New System.Drawing.Point(16, 32)
-        Me.PixelBox_PackageThumbnail.Name = "PixelBox_PackageThumbnail"
-        Me.PixelBox_PackageThumbnail.Size = New System.Drawing.Size(168, 120)
-        Me.PixelBox_PackageThumbnail.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
-        Me.PixelBox_PackageThumbnail.TabIndex = 103
-        Me.PixelBox_PackageThumbnail.TabStop = False
-        Me.ToolTip1.SetToolTip(Me.PixelBox_PackageThumbnail, "Right-click for options." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "You can drag & drop a image here." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Saved image will be " &
-        "scaled to a 16:9 aspect ratio.")
         '
         'ContextMenuStrip_PackageThumbnail
         '
@@ -377,11 +363,9 @@ Partial Class PackageMaker
         Me.NumericUpDown_Price.ForeColor = System.Drawing.Color.WhiteSmoke
         Me.NumericUpDown_Price.Location = New System.Drawing.Point(16, 29)
         Me.NumericUpDown_Price.Maximum = New Decimal(New Integer() {99999, 0, 0, 0})
-        Me.NumericUpDown_Price.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
         Me.NumericUpDown_Price.Name = "NumericUpDown_Price"
         Me.NumericUpDown_Price.Size = New System.Drawing.Size(72, 16)
         Me.NumericUpDown_Price.TabIndex = 108
-        Me.NumericUpDown_Price.Value = New Decimal(New Integer() {123, 0, 0, 131072})
         '
         'Label_Price
         '
@@ -570,6 +554,20 @@ Partial Class PackageMaker
         Me.ShapeContainer6.TabIndex = 107
         Me.ShapeContainer6.TabStop = False
         '
+        'PixelBox_PackageThumbnail
+        '
+        Me.PixelBox_PackageThumbnail.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(49, Byte), Integer), CType(CType(54, Byte), Integer))
+        Me.PixelBox_PackageThumbnail.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality
+        Me.PixelBox_PackageThumbnail.ContextMenuStrip = Me.ContextMenuStrip_PackageThumbnail
+        Me.PixelBox_PackageThumbnail.Location = New System.Drawing.Point(16, 32)
+        Me.PixelBox_PackageThumbnail.Name = "PixelBox_PackageThumbnail"
+        Me.PixelBox_PackageThumbnail.Size = New System.Drawing.Size(168, 120)
+        Me.PixelBox_PackageThumbnail.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.PixelBox_PackageThumbnail.TabIndex = 103
+        Me.PixelBox_PackageThumbnail.TabStop = False
+        Me.ToolTip1.SetToolTip(Me.PixelBox_PackageThumbnail, "Right-click for options." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "You can drag & drop a image here." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Saved image will be " &
+        "scaled to a 16:9 aspect ratio.")
+        '
         'PackageMaker
         '
         Me.AllowDrop = True
@@ -591,7 +589,6 @@ Partial Class PackageMaker
         Me.Name = "PackageMaker"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Package Maker"
-        CType(Me.PixelBox_PackageThumbnail, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ContextMenuStrip_PackageThumbnail.ResumeLayout(False)
         Me.Panel_Main.ResumeLayout(False)
         Me.Panel_ControlBox.ResumeLayout(False)
@@ -609,6 +606,7 @@ Partial Class PackageMaker
         CType(Me.NumericUpDown_Price, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel4.ResumeLayout(False)
         Me.Panel4.PerformLayout()
+        CType(Me.PixelBox_PackageThumbnail, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
