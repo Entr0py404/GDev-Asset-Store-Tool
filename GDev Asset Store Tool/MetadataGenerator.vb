@@ -500,11 +500,11 @@ Public Class MetadataGenerator
             Dim SelectedItem_FilePath As String = FolderBrowserDialog_Selected_Directory.SelectedPath + "\" + TreeView1.SelectedNode.FullPath
             Dim TempDirectoryString As String = FolderBrowserDialog_Selected_Directory.SelectedPath + "\" + Path.GetDirectoryName(TreeView1.SelectedNode.FullPath)
             'Console.WriteLine(e.Node.Level)
-            If e.Node.Text.EndsWith(".json") And Not e.Node.Text.EndsWith(".asset.json") And Not e.Node.Text = "PACK.json" Then 'Ignore PACK.json and .asset.json 'e.Node.Level > 0 And
-                If File.Exists(selectedItem_filepath) Then
+            If e.Node.Text.EndsWith(".json") And Not e.Node.Text.EndsWith(".asset.json") And Not e.Node.Text.ToLower = "pack.json" Then 'Ignore pack.json and .asset.json 'e.Node.Level > 0 And
+                If File.Exists(SelectedItem_FilePath) Then
 
                     Label_MetadataFileToGen.Text = ""
-                    FastColoredTextBox_Selected_File.Text = File.ReadAllText(selectedItem_filepath)
+                    FastColoredTextBox_Selected_File.Text = File.ReadAllText(SelectedItem_FilePath)
 
                     'Clear
                     AnimationFiles.Clear()
@@ -513,14 +513,14 @@ Public Class MetadataGenerator
 
                     Dim Frames As Integer = 0
                     Dim METADATA_Name As String = ""
-                    METADATA_Name = Path.GetFileNameWithoutExtension(selectedItem_filepath)
+                    METADATA_Name = Path.GetFileNameWithoutExtension(SelectedItem_FilePath)
                     METADATA_Name = METADATA_Name.Replace("_METADATA", "")
                     METADATA_Name = METADATA_Name.Substring(METADATA_Name.IndexOf("_") + 1)
 
                     Dim AnimationName2 As String = ""
                     AnimationName2 = METADATA_Name.Substring(METADATA_Name.IndexOf("_") + 1)
 
-                    Dim ObjectName1 As String = Microsoft.VisualBasic.Left(Path.GetFileNameWithoutExtension(selectedItem_filepath), Path.GetFileNameWithoutExtension(selectedItem_filepath).IndexOf("_"))
+                    Dim ObjectName1 As String = Microsoft.VisualBasic.Left(Path.GetFileNameWithoutExtension(SelectedItem_FilePath), Path.GetFileNameWithoutExtension(SelectedItem_FilePath).IndexOf("_"))
                     Dim ObjectName2 As String = ""
 
                     For Each PNG_file As String In Directory.GetFiles(TempDirectoryString, "*.png", SearchOption.TopDirectoryOnly)
@@ -587,7 +587,7 @@ Public Class MetadataGenerator
                         AnimationLoop = False
                     End If
 
-                    Dim JSONFile As JObject = JObject.Parse(File.ReadAllText(selectedItem_filepath))
+                    Dim JSONFile As JObject = JObject.Parse(File.ReadAllText(SelectedItem_FilePath))
                     Dim tBF As Decimal = CDec(JSONFile.SelectToken("timeBetweenFrames"))
                     Timer_Animation.Interval = CInt(tBF * 1000) 'This with cause a crash if 0
 

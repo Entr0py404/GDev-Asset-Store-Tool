@@ -230,11 +230,18 @@ Public Class AssetInfo
                 Timer_Animation.Enabled = True
                 ' Loop
                 Label_Loop.Text = "Loop: " & JSONFile.SelectToken("loop").ToString
-            ElseIf IsNumeric(Path.GetFileNameWithoutExtension(AllAnimationFiles(0).ToString).Last()) Then
+
+
+            ElseIf IsNumeric(Path.GetFileNameWithoutExtension(AllAnimationFiles(0).ToString).Last()) And CountCharacter(AllAnimationFiles(0).ToString, CChar("_")) > 1 Then
+
+
+                Console.WriteLine(AllAnimationFiles(0).ToString)
                 PixelBox_PreviewImage.Image = SafeImageFromFile(AllAnimationFiles(0).ToString)
                 Label_TimeBetweenFrames.Text = "Time Between Frames: NA"
                 Label_Loop.Text = "Loop: NA"
                 Timer_Animation.Enabled = False
+
+
             Else
                 Timer_Animation.Enabled = False
                 'Console.WriteLine(assetPath & "\" & ObjectName & ComboBox_SelectedItem & ".png")
