@@ -151,6 +151,12 @@ Public Class FileNameValidator
                 'Console.WriteLine("PNG_file: " + PNG_file)
                 If Not RegexValidWords.IsMatch(PNG_FileNameNoExt) Or RegexInvalidWords.IsMatch(PNG_FileNameNoExt) Or CountCharacter(PNG_FileNameNoExt, CChar("_")) > 2 Or PNG_FileFull.ToLower.EndsWith(".png.png") Or Not Char.IsLetter(PNG_FileNameNoExt.First) And Not PNG_FileNameNoExt.ToLower.StartsWith("9patch_") Then
                     TempListOfFiles.Add(PNG_FileFull)
+
+
+                ElseIf CountCharacter(PNG_FileFull, CChar("_")) = 2 And Not PNG_FileNameNoExt.ToLower.StartsWith("9patch_") And Not LineEndsWithNumber(PNG_FileNameNoExt) Then
+                    TempListOfFiles.Add("Animation does not end with a frame number. | " + PNG_FileFull)
+
+
                 ElseIf CountCharacter(PNG_FileFull, CChar("_")) = 1 Then
                     Dim AllAnimationFiles As New List(Of String)()
                     AllAnimationFiles.AddRange(Directory.GetFiles(Path.GetDirectoryName(PNG_file), "*.png", SearchOption.TopDirectoryOnly).Where(Function(x) Path.GetFileName(x).StartsWith(PNG_FileNameNoExt + "_"))) 'Check if there are any files starting with sprite name _
@@ -311,6 +317,11 @@ Public Class FileNameValidator
         End Using
     End Function
 
+    'LineEndsWithNumber()
+    Function LineEndsWithNumber(line As String) As Boolean
+        ' Use IsNumeric to check if the last character is a number
+        Return IsNumeric(line.LastOrDefault())
+    End Function
     '
     'Window Handle Code
     '

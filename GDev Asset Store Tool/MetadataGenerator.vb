@@ -30,7 +30,6 @@ Public Class MetadataGenerator
         tBF_Str = tBF_Str.TrimEnd(CChar("."))
         TextBox_TimeBetweenFrames.Text = tBF_Str
 
-
         Label_MetadataFileToGen.Text = "" ' Clear the metadata file label
 
         ' Check if the "Looped Animation Keywords.txt" file exists
@@ -119,10 +118,10 @@ Public Class MetadataGenerator
         End If
     End Sub
 
-    ' NumericUpDown_FPS - ValueChanged
-    Private Sub NumericUpDown_FPS_ValueChanged(sender As Object, e As EventArgs) Handles NumericUpDown_FPS.ValueChanged
+    'NumericUpDown_FPS - TextChanged
+    Private Sub NumericUpDown_FPS_TextChanged(sender As Object, e As EventArgs) Handles NumericUpDown_FPS.TextChanged
         ' Check if the NumericUpDown control has focus to avoid recursive triggering
-        If NumericUpDown_FPS.Focused Then
+        If NumericUpDown_FPS.Focused And NumericUpDown_FPS.Value > -1 Then
             ' Calculate the time between frames based on the new FPS value
             NumericUpDown_TimeBetweenFrames.Value = 1 / NumericUpDown_FPS.Value
 
@@ -136,6 +135,14 @@ Public Class MetadataGenerator
 
             ' Update the Timer interval for animation based on the new time between frames value
             Timer_Animation.Interval = CInt(NumericUpDown_TimeBetweenFrames.Value * 1000)
+        End If
+    End Sub
+
+    'NumericUpDown_FPS - KeyDown
+    Private Sub NumericUpDown_FPS_KeyDown(sender As Object, e As KeyEventArgs) Handles NumericUpDown_FPS.KeyDown
+        If e.KeyData = Keys.Enter Then
+            e.Handled = True
+            e.SuppressKeyPress = True
         End If
     End Sub
 

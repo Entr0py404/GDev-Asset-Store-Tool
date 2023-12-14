@@ -57,7 +57,7 @@
     ' Panel_TAGSmd - DragEnter
     Private Sub Panel_TAGSmd_DragEnter(sender As Object, e As DragEventArgs) Handles Panel_TAGSmd.DragEnter
         Dim DraggedFiles() As String = CType(e.Data.GetData(DataFormats.FileDrop), String())
-        If e.Data.GetDataPresent(DataFormats.FileDrop) And Path.GetExtension(DraggedFiles(0)) = ".md" Then
+        If e.Data.GetDataPresent(DataFormats.FileDrop) And Path.GetFileName(DraggedFiles(0)).ToLower() = "tags.md" Then
             e.Effect = DragDropEffects.Copy
         Else
             e.Effect = DragDropEffects.None

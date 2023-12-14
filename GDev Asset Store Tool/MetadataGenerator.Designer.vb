@@ -784,6 +784,7 @@ Partial Class MetadataGenerator
         '
         Me.TextBox_TimeBetweenFrames.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(49, Byte), Integer), CType(CType(54, Byte), Integer))
         Me.TextBox_TimeBetweenFrames.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.TextBox_TimeBetweenFrames.Cursor = System.Windows.Forms.Cursors.Default
         Me.TextBox_TimeBetweenFrames.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TextBox_TimeBetweenFrames.ForeColor = System.Drawing.Color.WhiteSmoke
         Me.TextBox_TimeBetweenFrames.Location = New System.Drawing.Point(48, 128)

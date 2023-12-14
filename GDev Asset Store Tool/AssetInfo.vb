@@ -201,8 +201,8 @@ Public Class AssetInfo
             For Each PNG_file As String In AllAnimationFiles
 
                 If CountCharacter(Path.GetFileName(PNG_file), CChar("_")) >= 2 Then
-                    ThisObjectname = Path.GetFileName(PNG_file)
-                    ThisObjectname = ThisObjectname.Substring(0, ThisObjectname.IndexOf("_"))
+                    ThisObjectName = Path.GetFileName(PNG_file)
+                    ThisObjectName = ThisObjectName.Substring(0, ThisObjectName.IndexOf("_"))
 
                     AnimationName = Path.GetFileName(PNG_file)
                     AnimationName = AnimationName.Substring(AnimationName.IndexOf("_") + 1)
@@ -257,4 +257,10 @@ Public Class AssetInfo
             MsgBox(ex.Message, MsgBoxStyle.Critical)
         End Try
     End Sub
+
+    'LineEndsWithNumber()
+    Function LineEndsWithNumber(line As String) As Boolean
+        ' Use IsNumeric to check if the last character is a number
+        Return IsNumeric(line.LastOrDefault())
+    End Function
 End Class

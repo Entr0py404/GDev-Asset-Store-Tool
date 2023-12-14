@@ -38,19 +38,19 @@ Partial Class PackageMaker
         Me.Label_PackageThumbnail = New System.Windows.Forms.Label()
         Me.ShapeContainer3 = New Microsoft.VisualBasic.PowerPacks.ShapeContainer()
         Me.RectangleShape_Image = New Microsoft.VisualBasic.PowerPacks.RectangleShape()
-        Me.Panel3 = New System.Windows.Forms.Panel()
+        Me.Panel_PackageName = New System.Windows.Forms.Panel()
         Me.Label_PackageName = New System.Windows.Forms.Label()
         Me.TextBox_PackageName = New System.Windows.Forms.TextBox()
         Me.ShapeContainer4 = New Microsoft.VisualBasic.PowerPacks.ShapeContainer()
         Me.RectangleShape2 = New Microsoft.VisualBasic.PowerPacks.RectangleShape()
         Me.SaveFileDialog_PackJson = New System.Windows.Forms.SaveFileDialog()
-        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.Panel_Description = New System.Windows.Forms.Panel()
         Me.Label_Description = New System.Windows.Forms.Label()
         Me.TextBox_Description = New System.Windows.Forms.TextBox()
         Me.ShapeContainer1 = New Microsoft.VisualBasic.PowerPacks.ShapeContainer()
         Me.RectangleShape1 = New Microsoft.VisualBasic.PowerPacks.RectangleShape()
         Me.SaveFileDialog_PackageThumbnail = New System.Windows.Forms.SaveFileDialog()
-        Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.Panel_Price = New System.Windows.Forms.Panel()
         Me.NumericUpDown_Price = New System.Windows.Forms.NumericUpDown()
         Me.Label_Price = New System.Windows.Forms.Label()
         Me.ShapeContainer2 = New Microsoft.VisualBasic.PowerPacks.ShapeContainer()
@@ -64,7 +64,7 @@ Partial Class PackageMaker
         Me.CheckBox_Interface = New System.Windows.Forms.CheckBox()
         Me.CheckBox_Prefab = New System.Windows.Forms.CheckBox()
         Me.Label_Categories = New System.Windows.Forms.Label()
-        Me.Panel4 = New System.Windows.Forms.Panel()
+        Me.Panel_Categories = New System.Windows.Forms.Panel()
         Me.CheckBox_Sounds = New System.Windows.Forms.CheckBox()
         Me.ShapeContainer6 = New Microsoft.VisualBasic.PowerPacks.ShapeContainer()
         Me.PixelBox_PackageThumbnail = New GDev_Asset_Store_Tool.PixelBox()
@@ -75,11 +75,11 @@ Partial Class PackageMaker
         CType(Me.PictureBox_Minimize, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox_AppIcon, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel_PackageThumbnail.SuspendLayout()
-        Me.Panel3.SuspendLayout()
-        Me.Panel1.SuspendLayout()
-        Me.Panel2.SuspendLayout()
+        Me.Panel_PackageName.SuspendLayout()
+        Me.Panel_Description.SuspendLayout()
+        Me.Panel_Price.SuspendLayout()
         CType(Me.NumericUpDown_Price, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.Panel4.SuspendLayout()
+        Me.Panel_Categories.SuspendLayout()
         CType(Me.PixelBox_PackageThumbnail, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -115,7 +115,7 @@ Partial Class PackageMaker
         Me.Panel_Main.ForeColor = System.Drawing.Color.White
         Me.Panel_Main.Location = New System.Drawing.Point(0, 0)
         Me.Panel_Main.Name = "Panel_Main"
-        Me.Panel_Main.Size = New System.Drawing.Size(551, 26)
+        Me.Panel_Main.Size = New System.Drawing.Size(554, 26)
         Me.Panel_Main.TabIndex = 80
         '
         'Panel_ControlBox
@@ -123,7 +123,7 @@ Partial Class PackageMaker
         Me.Panel_ControlBox.Controls.Add(Me.PictureBox_Close)
         Me.Panel_ControlBox.Controls.Add(Me.PictureBox_Minimize)
         Me.Panel_ControlBox.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Panel_ControlBox.Location = New System.Drawing.Point(499, 0)
+        Me.Panel_ControlBox.Location = New System.Drawing.Point(502, 0)
         Me.Panel_ControlBox.Name = "Panel_ControlBox"
         Me.Panel_ControlBox.Size = New System.Drawing.Size(52, 26)
         Me.Panel_ControlBox.TabIndex = 4
@@ -184,6 +184,7 @@ Partial Class PackageMaker
         '
         'Panel_PackageThumbnail
         '
+        Me.Panel_PackageThumbnail.AllowDrop = True
         Me.Panel_PackageThumbnail.Controls.Add(Me.Label_PackageThumbnail)
         Me.Panel_PackageThumbnail.Controls.Add(Me.PixelBox_PackageThumbnail)
         Me.Panel_PackageThumbnail.Controls.Add(Me.ShapeContainer3)
@@ -226,15 +227,15 @@ Partial Class PackageMaker
         Me.RectangleShape_Image.SelectionColor = System.Drawing.Color.Transparent
         Me.RectangleShape_Image.Size = New System.Drawing.Size(184, 136)
         '
-        'Panel3
+        'Panel_PackageName
         '
-        Me.Panel3.Controls.Add(Me.Label_PackageName)
-        Me.Panel3.Controls.Add(Me.TextBox_PackageName)
-        Me.Panel3.Controls.Add(Me.ShapeContainer4)
-        Me.Panel3.Location = New System.Drawing.Point(200, 32)
-        Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(248, 56)
-        Me.Panel3.TabIndex = 95
+        Me.Panel_PackageName.Controls.Add(Me.Label_PackageName)
+        Me.Panel_PackageName.Controls.Add(Me.TextBox_PackageName)
+        Me.Panel_PackageName.Controls.Add(Me.ShapeContainer4)
+        Me.Panel_PackageName.Location = New System.Drawing.Point(200, 32)
+        Me.Panel_PackageName.Name = "Panel_PackageName"
+        Me.Panel_PackageName.Size = New System.Drawing.Size(248, 56)
+        Me.Panel_PackageName.TabIndex = 95
         '
         'Label_PackageName
         '
@@ -284,15 +285,16 @@ Partial Class PackageMaker
         Me.SaveFileDialog_PackJson.FileName = "PACK.json"
         Me.SaveFileDialog_PackJson.Filter = "Json files (*.json)|*.json"
         '
-        'Panel1
+        'Panel_Description
         '
-        Me.Panel1.Controls.Add(Me.Label_Description)
-        Me.Panel1.Controls.Add(Me.TextBox_Description)
-        Me.Panel1.Controls.Add(Me.ShapeContainer1)
-        Me.Panel1.Location = New System.Drawing.Point(0, 200)
-        Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(552, 128)
-        Me.Panel1.TabIndex = 96
+        Me.Panel_Description.AllowDrop = True
+        Me.Panel_Description.Controls.Add(Me.Label_Description)
+        Me.Panel_Description.Controls.Add(Me.TextBox_Description)
+        Me.Panel_Description.Controls.Add(Me.ShapeContainer1)
+        Me.Panel_Description.Location = New System.Drawing.Point(0, 200)
+        Me.Panel_Description.Name = "Panel_Description"
+        Me.Panel_Description.Size = New System.Drawing.Size(552, 128)
+        Me.Panel_Description.TabIndex = 96
         '
         'Label_Description
         '
@@ -345,15 +347,15 @@ Partial Class PackageMaker
         Me.SaveFileDialog_PackageThumbnail.FileName = "thumbnail"
         Me.SaveFileDialog_PackageThumbnail.Filter = "Png Image (*.png)|*.png"
         '
-        'Panel2
+        'Panel_Price
         '
-        Me.Panel2.Controls.Add(Me.NumericUpDown_Price)
-        Me.Panel2.Controls.Add(Me.Label_Price)
-        Me.Panel2.Controls.Add(Me.ShapeContainer2)
-        Me.Panel2.Location = New System.Drawing.Point(448, 32)
-        Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(104, 56)
-        Me.Panel2.TabIndex = 97
+        Me.Panel_Price.Controls.Add(Me.NumericUpDown_Price)
+        Me.Panel_Price.Controls.Add(Me.Label_Price)
+        Me.Panel_Price.Controls.Add(Me.ShapeContainer2)
+        Me.Panel_Price.Location = New System.Drawing.Point(448, 32)
+        Me.Panel_Price.Name = "Panel_Price"
+        Me.Panel_Price.Size = New System.Drawing.Size(104, 56)
+        Me.Panel_Price.TabIndex = 97
         '
         'NumericUpDown_Price
         '
@@ -514,22 +516,22 @@ Partial Class PackageMaker
         Me.Label_Categories.TabIndex = 106
         Me.Label_Categories.Text = "Categories"
         '
-        'Panel4
+        'Panel_Categories
         '
-        Me.Panel4.Controls.Add(Me.CheckBox_Sounds)
-        Me.Panel4.Controls.Add(Me.CheckBox_Prefab)
-        Me.Panel4.Controls.Add(Me.CheckBox_Interface)
-        Me.Panel4.Controls.Add(Me.CheckBox_VisualEffect)
-        Me.Panel4.Controls.Add(Me.CheckBox_Background)
-        Me.Panel4.Controls.Add(Me.CheckBox_Props)
-        Me.Panel4.Controls.Add(Me.CheckBox_Character)
-        Me.Panel4.Controls.Add(Me.CheckBox_FullGamePack)
-        Me.Panel4.Controls.Add(Me.Label_Categories)
-        Me.Panel4.Controls.Add(Me.ShapeContainer6)
-        Me.Panel4.Location = New System.Drawing.Point(200, 88)
-        Me.Panel4.Name = "Panel4"
-        Me.Panel4.Size = New System.Drawing.Size(352, 112)
-        Me.Panel4.TabIndex = 107
+        Me.Panel_Categories.Controls.Add(Me.CheckBox_Sounds)
+        Me.Panel_Categories.Controls.Add(Me.CheckBox_Prefab)
+        Me.Panel_Categories.Controls.Add(Me.CheckBox_Interface)
+        Me.Panel_Categories.Controls.Add(Me.CheckBox_VisualEffect)
+        Me.Panel_Categories.Controls.Add(Me.CheckBox_Background)
+        Me.Panel_Categories.Controls.Add(Me.CheckBox_Props)
+        Me.Panel_Categories.Controls.Add(Me.CheckBox_Character)
+        Me.Panel_Categories.Controls.Add(Me.CheckBox_FullGamePack)
+        Me.Panel_Categories.Controls.Add(Me.Label_Categories)
+        Me.Panel_Categories.Controls.Add(Me.ShapeContainer6)
+        Me.Panel_Categories.Location = New System.Drawing.Point(200, 88)
+        Me.Panel_Categories.Name = "Panel_Categories"
+        Me.Panel_Categories.Size = New System.Drawing.Size(352, 112)
+        Me.Panel_Categories.TabIndex = 107
         '
         'CheckBox_Sounds
         '
@@ -570,18 +572,17 @@ Partial Class PackageMaker
         '
         'PackageMaker
         '
-        Me.AllowDrop = True
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(54, Byte), Integer), CType(CType(57, Byte), Integer), CType(CType(62, Byte), Integer))
-        Me.ClientSize = New System.Drawing.Size(551, 359)
-        Me.Controls.Add(Me.Panel2)
-        Me.Controls.Add(Me.Panel3)
+        Me.ClientSize = New System.Drawing.Size(554, 359)
+        Me.Controls.Add(Me.Panel_Price)
+        Me.Controls.Add(Me.Panel_PackageName)
         Me.Controls.Add(Me.Panel_PackageThumbnail)
-        Me.Controls.Add(Me.Panel4)
+        Me.Controls.Add(Me.Panel_Categories)
         Me.Controls.Add(Me.Panel_Main)
         Me.Controls.Add(Me.Button_Save)
-        Me.Controls.Add(Me.Panel1)
+        Me.Controls.Add(Me.Panel_Description)
         Me.ForeColor = System.Drawing.Color.WhiteSmoke
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
@@ -597,15 +598,15 @@ Partial Class PackageMaker
         CType(Me.PictureBox_AppIcon, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel_PackageThumbnail.ResumeLayout(False)
         Me.Panel_PackageThumbnail.PerformLayout()
-        Me.Panel3.ResumeLayout(False)
-        Me.Panel3.PerformLayout()
-        Me.Panel1.ResumeLayout(False)
-        Me.Panel1.PerformLayout()
-        Me.Panel2.ResumeLayout(False)
-        Me.Panel2.PerformLayout()
+        Me.Panel_PackageName.ResumeLayout(False)
+        Me.Panel_PackageName.PerformLayout()
+        Me.Panel_Description.ResumeLayout(False)
+        Me.Panel_Description.PerformLayout()
+        Me.Panel_Price.ResumeLayout(False)
+        Me.Panel_Price.PerformLayout()
         CType(Me.NumericUpDown_Price, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.Panel4.ResumeLayout(False)
-        Me.Panel4.PerformLayout()
+        Me.Panel_Categories.ResumeLayout(False)
+        Me.Panel_Categories.PerformLayout()
         CType(Me.PixelBox_PackageThumbnail, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
@@ -623,13 +624,13 @@ Partial Class PackageMaker
     Friend WithEvents PixelBox_PackageThumbnail As PixelBox
     Friend WithEvents ShapeContainer3 As ShapeContainer
     Friend WithEvents RectangleShape_Image As RectangleShape
-    Friend WithEvents Panel3 As Panel
+    Friend WithEvents Panel_PackageName As Panel
     Friend WithEvents Label_PackageName As Label
     Friend WithEvents TextBox_PackageName As TextBox
     Friend WithEvents ShapeContainer4 As ShapeContainer
     Friend WithEvents RectangleShape2 As RectangleShape
     Friend WithEvents SaveFileDialog_PackJson As SaveFileDialog
-    Friend WithEvents Panel1 As Panel
+    Friend WithEvents Panel_Description As Panel
     Friend WithEvents Label_Description As Label
     Friend WithEvents TextBox_Description As TextBox
     Friend WithEvents ShapeContainer1 As ShapeContainer
@@ -637,7 +638,7 @@ Partial Class PackageMaker
     Friend WithEvents ContextMenuStrip_PackageThumbnail As ContextMenuStrip
     Friend WithEvents SaveToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents SaveFileDialog_PackageThumbnail As SaveFileDialog
-    Friend WithEvents Panel2 As Panel
+    Friend WithEvents Panel_Price As Panel
     Friend WithEvents Label_Price As Label
     Friend WithEvents ShapeContainer2 As ShapeContainer
     Friend WithEvents RectangleShape3 As RectangleShape
@@ -650,7 +651,7 @@ Partial Class PackageMaker
     Friend WithEvents CheckBox_Interface As CheckBox
     Friend WithEvents CheckBox_Prefab As CheckBox
     Friend WithEvents Label_Categories As Label
-    Friend WithEvents Panel4 As Panel
+    Friend WithEvents Panel_Categories As Panel
     Friend WithEvents ShapeContainer6 As ShapeContainer
     Friend WithEvents CheckBox_Sounds As CheckBox
     Friend WithEvents NumericUpDown_Price As NumericUpDown

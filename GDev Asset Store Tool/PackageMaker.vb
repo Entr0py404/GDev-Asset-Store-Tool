@@ -1,4 +1,6 @@
-﻿Public Class PackageMaker
+﻿Imports System.Drawing.Drawing2D
+
+Public Class PackageMaker
     ReadOnly SupportedImageFormats() As String = {".png", ".bmp", ".jpeg", ".jpg", ".tiff", ".tif"}
     Dim ForceImageAspectRatio_16_9_Size As Size
     Dim aspectRatio_IsAlready_16_9 As Boolean = False
@@ -14,7 +16,6 @@
         ' Check if the required fields are filled and a thumbnail image is selected
         If TextBox_PackageName.Text.Length > 0 AndAlso
             TextBox_Description.Text.Length > 0 AndAlso
-            PixelBox_PackageThumbnail.Image IsNot Nothing AndAlso
             (CheckBox_FullGamePack.Checked OrElse
             CheckBox_Character.Checked OrElse
             CheckBox_Props.Checked OrElse
@@ -115,19 +116,21 @@
                 sw.Close()
 
 
-                ' Resize and save the thumbnail image
-                If aspectRatio_IsAlready_16_9 = False Then
-                    Dim bmp = New Bitmap(ForceImageAspectRatio_16_9_Size.Width, ForceImageAspectRatio_16_9_Size.Height)
-                    Using g As Graphics = Graphics.FromImage(bmp)
-                        ' Draw the original image at the new size on the memory bitmap
-                        g.DrawImage(PixelBox_PackageThumbnail.Image, 0, 0, bmp.Width, bmp.Height)
+                If PixelBox_PackageThumbnail.Image IsNot Nothing Then
+                    ' Resize and save the thumbnail image
+                    If aspectRatio_IsAlready_16_9 = False Then
+                        Dim bmp = New Bitmap(ForceImageAspectRatio_16_9_Size.Width, ForceImageAspectRatio_16_9_Size.Height)
+                        Using g As Graphics = Graphics.FromImage(bmp)
+                            ' Draw the original image at the new size on the memory bitmap
+                            g.DrawImage(PixelBox_PackageThumbnail.Image, 0, 0, bmp.Width, bmp.Height)
 
-                        ' Save the temporarily resized bitmap
-                        bmp.Save(Path.GetDirectoryName(SaveFileDialog_PackJson.FileName) & "\thumbnail.png", Imaging.ImageFormat.Png)
-                    End Using
-                Else
-                    ' Save the original thumbnail image
-                    PixelBox_PackageThumbnail.Image.Save(Path.GetDirectoryName(SaveFileDialog_PackJson.FileName) & "\thumbnail.png", Imaging.ImageFormat.Png)
+                            ' Save the temporarily resized bitmap
+                            bmp.Save(Path.GetDirectoryName(SaveFileDialog_PackJson.FileName) & "\thumbnail.png", Imaging.ImageFormat.Png)
+                        End Using
+                    Else
+                        ' Save the original thumbnail image
+                        PixelBox_PackageThumbnail.Image.Save(Path.GetDirectoryName(SaveFileDialog_PackJson.FileName) & "\thumbnail.png", Imaging.ImageFormat.Png)
+                    End If
                 End If
 
                 ' Write the JSON data to the file
@@ -173,8 +176,8 @@
         End If
     End Sub
 
-    ' PackageMaker - DragDrop
-    Private Sub PackageMaker_DragDrop(sender As Object, e As DragEventArgs) Handles Me.DragDrop
+    ' Panel_PackageThumbnail - DragDrop
+    Private Sub Panel_PackageThumbnail_DragDrop(sender As Object, e As DragEventArgs) Handles Panel_PackageThumbnail.DragDrop
         ' Retrieve the dropped files
         Dim files() As String = CType(e.Data.GetData(DataFormats.FileDrop), String())
 
@@ -206,12 +209,58 @@
         End If
     End Sub
 
-    ' PackageMaker - DragEnter
-    Private Sub PackageMaker_DragEnter(sender As Object, e As DragEventArgs) Handles Me.DragEnter
+    ' Panel_PackageThumbnail - DragEnter
+    Private Sub Panel_PackageThumbnail_DragEnter(sender As Object, e As DragEventArgs) Handles Panel_PackageThumbnail.DragEnter
         ' Check if the dragged file is supported and set the appropriate drag effect
         Dim files() As String = CType(e.Data.GetData(DataFormats.FileDrop), String())
-
         If e.Data.GetDataPresent(DataFormats.FileDrop) And SupportedImageFormats.Contains(Path.GetExtension(files(0)).ToLower) Then
+            e.Effect = DragDropEffects.Copy
+        Else
+            e.Effect = DragDropEffects.None
+        End If
+    End Sub
+
+    ' Panel_Description - DragDrop
+    Private Sub Panel_Description_DragDrop(sender As Object, e As DragEventArgs) Handles Panel_Description.DragDrop
+        Dim files() As String = CType(e.Data.GetData(DataFormats.FileDrop), String())
+
+        If files.Length <> 0 Then
+            Try
+                ' Deserialize the JSON into an object
+                Dim packData As PackData = JsonConvert.DeserializeObject(Of PackData)(File.ReadAllText(files(0)))
+
+                ' Now you can access the properties of packData object
+                TextBox_Description.Text = packData.LongDescription.Replace("\n", vbNewLine)
+                TextBox_PackageName.Text = packData.Tag
+                NumericUpDown_Price.Value = packData.Prices(0).Value
+
+                If packData.Prices(0).Value > 0 Then
+                    NumericUpDown_Price.Value = Decimal.Round(CDec(packData.Prices(0).Value / 100), 2)
+                Else
+                    NumericUpDown_Price.Value = 0
+                End If
+
+                CheckBox_Background.Checked = packData.Categories.Contains("background")
+                CheckBox_Character.Checked = packData.Categories.Contains("character")
+                CheckBox_FullGamePack.Checked = packData.Categories.Contains("full-game-pack")
+                CheckBox_Interface.Checked = packData.Categories.Contains("interface")
+                CheckBox_Prefab.Checked = packData.Categories.Contains("prefab")
+                CheckBox_Props.Checked = packData.Categories.Contains("props")
+                CheckBox_Sounds.Checked = packData.Categories.Contains("sounds")
+                CheckBox_VisualEffect.Checked = packData.Categories.Contains("visual-effect")
+
+            Catch ex As Exception
+                ' Handle any exception that might occur during the deserialization process
+                MsgBox("Error reading JSON file: " & ex.Message, MsgBoxStyle.Critical)
+            End Try
+        End If
+    End Sub
+
+    ' Panel_Description - DragEnter
+    Private Sub Panel_Description_DragEnter(sender As Object, e As DragEventArgs) Handles Panel_Description.DragEnter
+        ' Check if the dragged file is supported and set the appropriate drag effect
+        Dim files() As String = CType(e.Data.GetData(DataFormats.FileDrop), String())
+        If e.Data.GetDataPresent(DataFormats.FileDrop) And Path.GetFileName(files(0)).ToLower() = "pack.json" Then
             e.Effect = DragDropEffects.Copy
         Else
             e.Effect = DragDropEffects.None
@@ -246,6 +295,14 @@
             SaveToolStripMenuItem.Enabled = True
         Else
             SaveToolStripMenuItem.Enabled = False
+        End If
+    End Sub
+
+    ' NumericUpDown_Price - KeyDown
+    Private Sub NumericUpDown_Price_KeyDown(sender As Object, e As KeyEventArgs) Handles NumericUpDown_Price.KeyDown
+        If e.KeyData = Keys.Enter Then
+            e.Handled = True
+            e.SuppressKeyPress = True
         End If
     End Sub
 
@@ -325,4 +382,16 @@
         PictureBox_Close.Image = My.Resources.Close_Red
         Panel_Main.BackColor = Color.Black
     End Sub
+
+    Public Class PriceData
+        Public Property Value As Integer
+        Public Property Name As String
+    End Class
+
+    Public Class PackData
+        Public Property LongDescription As String
+        Public Property Tag As String
+        Public Property Prices As List(Of PriceData)
+        Public Property Categories As List(Of String)
+    End Class
 End Class

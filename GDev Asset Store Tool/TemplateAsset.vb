@@ -29,7 +29,7 @@ Public Class TemplateAsset
     Private Sub Button_GenerateAsset_Click(sender As Object, e As EventArgs) Handles Button_GenerateAsset.Click
         If TabControl1.SelectedTab Is TabPage_BitmapText Then
 
-            If TextBox_Name.Text.Length > 0 And TextBox_Description.Text.Length > 0 And TextBox_BitmapAtlasImage.Text.EndsWith(".png") And (TextBox_BitmapFont.Text.EndsWith(".fnt") Or TextBox_BitmapFont.Text.EndsWith(".xml")) Then
+            If TextBox_Name.Text.Length > 0 And TextBox_BitmapAtlasImage.Text.EndsWith(".png") And (TextBox_BitmapFont.Text.EndsWith(".fnt") Or TextBox_BitmapFont.Text.EndsWith(".xml")) Then
                 FastColoredTextBox_AssetJson.Clear()
                 ErrorProvider1.SetError(FastColoredTextBox_AssetJson, Nothing)
                 Dim jsonFile As JObject = JObject.Parse(My.Resources.bitmaptext_template)
@@ -49,9 +49,9 @@ Public Class TemplateAsset
                     ErrorProvider1.SetError(TextBox_Name, "Required")
                 End If
 
-                If TextBox_Description.Text.Length = 0 Then
-                    ErrorProvider1.SetError(TextBox_Description, "Required")
-                End If
+                'If TextBox_Description.Text.Length = 0 Then
+                'ErrorProvider1.SetError(TextBox_Description, "Required")
+                'End If
 
                 If Not TextBox_BitmapAtlasImage.Text.EndsWith(".png") Then
                     ErrorProvider1.SetError(TextBox_BitmapAtlasImage, "Blank or does not end with .png")
@@ -66,7 +66,7 @@ Public Class TemplateAsset
 
         ElseIf TabControl1.SelectedTab Is TabPage_Light Then
 
-            If TextBox_Name.Text.Length > 0 And TextBox_Description.Text.Length > 0 And TextBox_LightTexture.Text.EndsWith(".png") Then
+            If TextBox_Name.Text.Length > 0 And TextBox_LightTexture.Text.EndsWith(".png") Then
                 FastColoredTextBox_AssetJson.Clear()
                 ErrorProvider1.SetError(FastColoredTextBox_AssetJson, Nothing)
                 Dim jsonFile As JObject = JObject.Parse(My.Resources.light_template)
@@ -84,9 +84,9 @@ Public Class TemplateAsset
                     ErrorProvider1.SetError(TextBox_Name, "Required")
                 End If
 
-                If TextBox_Description.Text.Length = 0 Then
-                    ErrorProvider1.SetError(TextBox_Description, "Required")
-                End If
+                'If TextBox_Description.Text.Length = 0 Then
+                'ErrorProvider1.SetError(TextBox_Description, "Required")
+                'End If
 
                 If Not TextBox_LightTexture.Text.EndsWith(".png") Then
                     ErrorProvider1.SetError(TextBox_LightTexture, "Blank or does not end with .png")
@@ -97,7 +97,7 @@ Public Class TemplateAsset
 
         ElseIf TabControl1.SelectedTab Is TabPage_PanelSprite Then
 
-            If TextBox_Name.Text.Length > 0 And TextBox_Description.Text.Length > 0 And TextBox_PanelSpriteImage.Text.EndsWith(".png") Then
+            If TextBox_Name.Text.Length > 0 And TextBox_PanelSpriteImage.Text.EndsWith(".png") Then
                 FastColoredTextBox_AssetJson.Clear()
                 ErrorProvider1.SetError(FastColoredTextBox_AssetJson, Nothing)
                 Dim jsonFile As JObject = JObject.Parse(My.Resources.panelsprite_template)
@@ -120,9 +120,9 @@ Public Class TemplateAsset
                     ErrorProvider1.SetError(TextBox_Name, "Required")
                 End If
 
-                If TextBox_Description.Text.Length = 0 Then
-                    ErrorProvider1.SetError(TextBox_Description, "Required")
-                End If
+                'If TextBox_Description.Text.Length = 0 Then
+                'ErrorProvider1.SetError(TextBox_Description, "Required")
+                'End If
 
                 If Not TextBox_PanelSpriteImage.Text.EndsWith(".png") Then
                     ErrorProvider1.SetError(TextBox_PanelSpriteImage, "Blank or does not end with .png")
@@ -133,7 +133,7 @@ Public Class TemplateAsset
 
         ElseIf TabControl1.SelectedTab Is TabPage_Tilemap Then
 
-            If TextBox_Name.Text.Length > 0 And TextBox_Description.Text.Length > 0 And TextBox_TilemapJSONFile.Text.EndsWith(".json") And TextBox_TilemapAtlasImage.Text.EndsWith(".png") Then
+            If TextBox_Name.Text.Length > 0 And TextBox_TilemapJSONFile.Text.EndsWith(".json") And TextBox_TilemapAtlasImage.Text.EndsWith(".png") Then
                 FastColoredTextBox_AssetJson.Clear()
                 ErrorProvider1.SetError(FastColoredTextBox_AssetJson, Nothing)
                 Dim jsonFile As JObject = JObject.Parse(My.Resources.tilemap_template)
@@ -164,9 +164,9 @@ Public Class TemplateAsset
                     ErrorProvider1.SetError(TextBox_Name, "Required")
                 End If
 
-                If TextBox_Description.Text.Length = 0 Then
-                    ErrorProvider1.SetError(TextBox_Description, "Required")
-                End If
+                'If TextBox_Description.Text.Length = 0 Then
+                'ErrorProvider1.SetError(TextBox_Description, "Required")
+                'End If
 
                 If Not TextBox_TilemapJSONFile.Text.EndsWith(".json") Then
                     ErrorProvider1.SetError(TextBox_TilemapJSONFile, "Blank or does not end with .json")
@@ -254,9 +254,9 @@ Public Class TemplateAsset
                     ErrorProvider1.SetError(TextBox_Name, "Required")
                 End If
 
-                If TextBox_Description.Text.Length = 0 Then
-                    ErrorProvider1.SetError(TextBox_Description, "Required")
-                End If
+                'If TextBox_Description.Text.Length = 0 Then
+                'ErrorProvider1.SetError(TextBox_Description, "Required")
+                'End If
 
                 If TextBox_Button_Hovered_Image.Text.Length = 0 Then
                     ErrorProvider1.SetError(TextBox_Button_Hovered_Image, "Required")
@@ -747,6 +747,13 @@ Public Class TemplateAsset
     ' TabControl1 - Selected
     Private Sub TabControl1_Selected(sender As Object, e As TabControlEventArgs) Handles TabControl1.Selected
         ErrorProvider1.Clear()
+        If TabControl1.SelectedTab Is TabPage_Button Then
+            TextBox_Description.Text = "A button that can be clicked. The background images and text can be edited.\n\nThis button provides conditions and actions for an easy use."
+            TextBox_Description.ReadOnly = True
+        Else
+            TextBox_Description.Text = ""
+            TextBox_Description.ReadOnly = False
+        End If
     End Sub
 
     '
@@ -784,11 +791,11 @@ Public Class TemplateAsset
     End Sub
 
     ' TextBox_Description - TextChanged
-    Private Sub TextBox_Description_TextChanged(sender As Object, e As EventArgs) Handles TextBox_Description.TextChanged
-        If TextBox_Description.Text.Length > 0 And ErrorProvider1.GetError(TextBox_Description) IsNot Nothing Then
-            ErrorProvider1.SetError(TextBox_Description, Nothing)
-        End If
-    End Sub
+    'Private Sub TextBox_Description_TextChanged(sender As Object, e As EventArgs) Handles TextBox_Description.TextChanged
+    'If TextBox_Description.Text.Length > 0 And ErrorProvider1.GetError(TextBox_Description) IsNot Nothing Then
+    'ErrorProvider1.SetError(TextBox_Description, Nothing)
+    'End If
+    'End Sub
 
     '
     ' LostFocus
